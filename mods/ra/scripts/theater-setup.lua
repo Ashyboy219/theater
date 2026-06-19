@@ -64,18 +64,8 @@ local function PlaceNode(actorType, cell, neutral)
 	end
 end
 
--- DEV SANDBOX: give HUMAN players effectively unlimited money, topped up each tick. The AI keeps a
--- normal economy. IsBot is deterministic (same on every client), so branching on it is sync-safe.
--- The human list is resolved once at WorldLoaded and cached (players don't change mid-skirmish).
-local SandboxCash = 1000000
-local HumanPlayers = {}
-local function TopUpHumanCash()
-	for i = 1, #HumanPlayers do
-		if HumanPlayers[i].Cash < SandboxCash then
-			HumanPlayers[i].Cash = SandboxCash
-		end
-	end
-end
+-- NOTE: human-only sandbox cash is handled in C# now (DeveloperMode's per-tick top-up, gated to human
+-- combatants), so there is no cash logic in this script anymore — it only places the territory nodes.
 
 WorldLoaded = function()
 	local neutral = Player.GetPlayer("Neutral")
@@ -108,13 +98,4 @@ WorldLoaded = function()
 	PlaceNode("fcom", CPos.New(cx - Ring, cy), neutral)
 	PlaceNode("fcom", CPos.New(cx + Ring, cy), neutral)
 	PlaceNode("ctrlcash", CPos.New(cx, cy - Ring), neutral)
-
-	-- Sandbox money for the human player(s); the global Tick hook below keeps it topped up.
-	HumanPlayers = Player.GetPlayers(function(p) return not p.IsBot and not p.IsNonCombatant end)
-	TopUpHumanCash()
-end
-
--- Engine per-tick hook (ScriptContext reads the global `Tick`): keep human cash from ever running dry.
-Tick = function()
-	TopUpHumanCash()
 end

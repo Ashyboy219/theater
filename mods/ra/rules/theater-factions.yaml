@@ -76,8 +76,12 @@ World:
 	Faction@ukraine:
 		Selectable: False
 
-# DEV: the "Unlock All Factions" lobby checkbox lives here (default OFF for normal play); the THEATER
-# test map flips it ON. When enabled it grants every faction's tech prerequisite to every player.
+# DEV: the tech-tree unlock lobby checkbox lives here (default OFF for normal play); the THEATER test
+# map flips it ON. When enabled it grants the building-name + tech-level prerequisites so a player can
+# build their WHOLE roster with no building-grind — but it grants NO `tech.<faction>` tokens, so each
+# player still only gets their OWN faction's unique unit (their Construction Yard provides that), and
+# the side gating (~structures.allies/soviet, auto from the conyard) keeps the opposite side locked.
+# Net: "unlock my faction's tech tree", NOT "unlock everything".
 Player:
 	LobbyPrerequisiteCheckbox@DEVUNLOCK:
 		ID: devunlock
@@ -86,7 +90,7 @@ Player:
 		Enabled: False
 		Visible: True
 		DisplayOrder: 50
-		Prerequisites: tech.federation, tech.northern_union, tech.continental_bloc, tech.rhine_compact, tech.isles_coalition, tech.eastern_maritime, tech.subcontinent_federation, tech.anatolian_alliance
+		Prerequisites: afld, atek, barr, dome, fix, ftur, hpad, kenn, pdox, proc, spen, stek, syrd, tent, tsla, weap, techlevel.infonly, techlevel.low, techlevel.medium, techlevel.high, techlevel.unrestricted
 
 # The Construction Yard provides each faction its own tech prerequisite (only for that faction).
 FACT:

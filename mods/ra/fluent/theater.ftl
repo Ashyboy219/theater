@@ -68,8 +68,8 @@ actor-bayrak =
 
 ## Dev mode
 checkbox-devunlock =
-    .label = Dev: Unlock All Factions
-    .description = Grants every faction's unique-unit prerequisite, so you can build all factions' units for playtesting.
+    .label = Dev: Unlock Tech Tree
+    .description = Grants all building + tech-level prerequisites for your OWN faction, so you can build your whole roster with no building-grind. Does not unlock other factions' units — pick another faction in the lobby to test it.
 
 ## Structures
 actor-thcom =

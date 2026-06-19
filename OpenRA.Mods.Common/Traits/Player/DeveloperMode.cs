@@ -68,6 +68,14 @@ namespace OpenRA.Mods.Common.Traits
 		[Desc("Enable the all-tech cheat (build everything, ignore prerequisites) by default.")]
 		public readonly bool AllTech;
 
+		[Desc("Enable the THEATER \"sandbox\" master toggle by default. Bundles fast build, build anywhere, ",
+			"unlimited power, fast support-power charge and a continuous cash top-up into one switch that ",
+			"the /dev chat command flips. Does NOT enable all-tech, so faction/side gating still applies.")]
+		public readonly bool Sandbox;
+
+		[Desc("Cash level the sandbox top-up keeps the player at while it is enabled.")]
+		public readonly int SandboxCash = 1000000;
+
 		IEnumerable<LobbyOption> ILobbyOptions.LobbyOptions(MapPreview map)
 		{
 			yield return new LobbyBooleanOption(map, "cheats",
@@ -77,11 +85,12 @@ namespace OpenRA.Mods.Common.Traits
 		public override object Create(ActorInitializer init) { return new DeveloperMode(this); }
 	}
 
-	public class DeveloperMode : IResolveOrder, ISync, INotifyCreated, IUnlocksRenderPlayer
+	public class DeveloperMode : IResolveOrder, ISync, INotifyCreated, IUnlocksRenderPlayer, ITick
 	{
 		public static class Orders
 		{
 			public const string All = "DevAll";
+			public const string Sandbox = "DevSandbox";
 			public const string EnableTech = "DevEnableTech";
 			public const string FastCharge = "DevFastCharge";
 			public const string FastBuild = "DevFastBuild";
@@ -132,6 +141,11 @@ namespace OpenRA.Mods.Common.Traits
 		[VerifySync]
 		bool buildAnywhere;
 
+		[VerifySync]
+		bool sandbox;
+
+		PlayerResources resources;
+
 		public bool FastCharge => Enabled && fastCharge;
 		public bool AllTech => Enabled && allTech;
 		public bool FastBuild => Enabled && fastBuild;
@@ -152,6 +166,7 @@ namespace OpenRA.Mods.Common.Traits
 			unlimitedPower = info.UnlimitedPower;
 			buildAnywhere = info.BuildAnywhere;
 			allTech = info.AllTech;
+			sandbox = info.Sandbox;
 		}
 
 		void INotifyCreated.Created(Actor self)
@@ -159,11 +174,22 @@ namespace OpenRA.Mods.Common.Traits
 			Enabled = self.World.LobbyInfo.NonBotPlayers.Count() == 1 || self.World.LobbyInfo.GlobalSettings
 				.OptionOrDefault("cheats", info.CheckboxEnabled);
 
+			resources = self.Trait<PlayerResources>();
+
 			// Cheats that default ON via the Info fields are a single-player sandbox convenience.
 			// Only apply them to human combatant players so AI opponents keep playing the normal game.
 			// (Determined from IsBot/NonCombatant, both deterministic, so this stays sync-safe.)
 			if (self.Owner.IsBot || self.Owner.NonCombatant)
-				allTech = fastCharge = fastBuild = disableShroud = unlimitedPower = buildAnywhere = pathDebug = false;
+				allTech = fastCharge = fastBuild = disableShroud = unlimitedPower = buildAnywhere = pathDebug = sandbox = false;
+			else if (sandbox)
+				fastBuild = buildAnywhere = unlimitedPower = fastCharge = true;
+		}
+
+		void ITick.Tick(Actor self)
+		{
+			// Sandbox master toggle: keep the human player topped up to SandboxCash so money never runs dry.
+			if (Enabled && sandbox && resources.GetCashAndResources() < info.SandboxCash)
+				resources.ChangeCash(info.SandboxCash - resources.GetCashAndResources());
 		}
 
 		public void ResolveOrder(Actor self, Order order)
@@ -188,6 +214,19 @@ namespace OpenRA.Mods.Common.Traits
 					self.Owner.Shroud.Disabled = DisableShroud;
 					if (self.World.LocalPlayer == self.Owner)
 						self.World.RenderPlayer = DisableShroud ? null : self.Owner;
+
+					break;
+				}
+
+				case Orders.Sandbox:
+				{
+					// THEATER master toggle (/dev): bundle the "no friction" cheats + a cash top-up.
+					// Deliberately excludes AllTech, so faction/side build gating stays intact.
+					sandbox ^= true;
+					fastBuild = buildAnywhere = unlimitedPower = fastCharge = sandbox;
+
+					if (sandbox)
+						resources.ChangeCash(info.SandboxCash);
 
 					break;
 				}
@@ -326,6 +365,7 @@ namespace OpenRA.Mods.Common.Traits
 			var notification = order.OrderString switch
 			{
 				Orders.All => enableAll ? CheatEnabled : CheatDisabled,
+				Orders.Sandbox => sandbox ? CheatEnabled : CheatDisabled,
 				Orders.EnableTech => allTech ? CheatEnabled : CheatDisabled,
 				Orders.FastCharge => fastCharge ? CheatEnabled : CheatDisabled,
 				Orders.FastBuild => fastBuild ? CheatEnabled : CheatDisabled,

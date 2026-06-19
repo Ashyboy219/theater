@@ -15,24 +15,21 @@
 # "capture -> forward production". Those are the next, most exciting verbs once we add owner-change
 # handling. Opt-in (slice map only).
 
-# --- DEV MODE: cheats on by default. In chat, `/visibility` toggles full-map reveal (non-destructive).
+# --- DEV MODE: a single chat-toggleable sandbox. In chat: `/dev` toggles the sandbox (unlimited cash,
+#     instant build, build anywhere, free power, fast support powers); `/visibility` toggles full-map
+#     reveal (non-destructive). The sandbox does NOT enable AllTech, so the build menu stays limited to
+#     YOUR faction's roster (the "every weapon/vehicle" bug is gone — switch faction in the lobby to test
+#     another). DeveloperMode gates all of this to human combatants only, so the AI plays the normal game.
 Player:
-	# DEV SANDBOX: cheats on, and every cheat that means "no friction" defaulted ON —
-	# build anything ignoring prerequisites (AllTech), build anywhere, instant build, free power.
-	# NOTE: these defaults are now applied to HUMAN combatant players only (DeveloperMode.cs gates
-	# them by !IsBot/!NonCombatant) so the AI opponents play the normal game.
 	DeveloperMode:
 		CheckboxEnabled: True
-		AllTech: True
-		FastBuild: True
-		BuildAnywhere: True
-		UnlimitedPower: True
-		FastCharge: True
-	# DEV: flip the global "Unlock All Factions" checkbox ON by default for this test map.
+		Sandbox: True
+	# DEV: flip the global tech-tree unlock checkbox ON by default for this test map. It grants the
+	# building + tech-level prerequisites for YOUR faction only (no other-faction techs), so there is no
+	# building grind but no cross-faction unlocks either.
 	LobbyPrerequisiteCheckbox@DEVUNLOCK:
 		Enabled: True
-	# Unlimited money is granted to HUMAN players only, topped up each tick by theater-setup.lua
-	# (so the AI keeps a normal economy). No global DefaultCash override here on purpose.
+	# Sandbox cash (human only) is handled by DeveloperMode's per-tick top-up — no Lua / DefaultCash needed.
 
 # --- DEV SANDBOX: spawn anything from the Construction Yard — no production buildings needed.
 #     The conyard now also runs the Infantry, Vehicle and Aircraft queues and ejects units from the
