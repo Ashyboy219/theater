@@ -65,6 +65,9 @@ namespace OpenRA.Mods.Common.Traits
 		[Desc("Enable the path debug overlay by default.")]
 		public readonly bool PathDebug;
 
+		[Desc("Enable the all-tech cheat (build everything, ignore prerequisites) by default.")]
+		public readonly bool AllTech;
+
 		IEnumerable<LobbyOption> ILobbyOptions.LobbyOptions(MapPreview map)
 		{
 			yield return new LobbyBooleanOption(map, "cheats",
@@ -148,12 +151,19 @@ namespace OpenRA.Mods.Common.Traits
 			pathDebug = info.PathDebug;
 			unlimitedPower = info.UnlimitedPower;
 			buildAnywhere = info.BuildAnywhere;
+			allTech = info.AllTech;
 		}
 
 		void INotifyCreated.Created(Actor self)
 		{
 			Enabled = self.World.LobbyInfo.NonBotPlayers.Count() == 1 || self.World.LobbyInfo.GlobalSettings
 				.OptionOrDefault("cheats", info.CheckboxEnabled);
+
+			// Cheats that default ON via the Info fields are a single-player sandbox convenience.
+			// Only apply them to human combatant players so AI opponents keep playing the normal game.
+			// (Determined from IsBot/NonCombatant, both deterministic, so this stays sync-safe.)
+			if (self.Owner.IsBot || self.Owner.NonCombatant)
+				allTech = fastCharge = fastBuild = disableShroud = unlimitedPower = buildAnywhere = pathDebug = false;
 		}
 
 		public void ResolveOrder(Actor self, Order order)

@@ -1,0 +1,5 @@
+Game asset concept art of a modern main battle tank fitted with an active protection system — boxy APS sensor panels on the turret sides and small clustered interceptor launchers — single object centered in frame, viewed from a 3/4 high-angle top-down perspective for a real-time-strategy unit cameo.
+
+Art direction: "retro but revamped" — a modern high-definition take on classic 1990s RTS sprite art (Command & Conquer reimagined at today's fidelity). Clean bold readable silhouette, subtle cel/cartoon shading with a faint pixel-art texture, strong rim light, soft ambient occlusion so the shape reads at small size. Desert-sand and slate armor with olive accents; keep the main hull a neutral mid-grey so a team color can be tinted onto it later.
+
+Background: a perfectly flat, uniform, solid pure-magenta background (hex FF00FF), evenly lit, no gradient, no ground, no scenery, no shadow cast onto the background, so it can be chroma-keyed out cleanly. Subject only. No text, no labels, no UI frames. Centered, sharp edges, high contrast, downscale-friendly for a small RTS cameo.

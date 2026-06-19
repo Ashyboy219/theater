@@ -400,6 +400,15 @@ flags:
 		RandomAllies: 226, 225, 30, 15
 		Random: 226, 241, 30, 15
 		spectator: 226, 241, 30, 15
+		# THEATER contemporary factions reuse existing flag regions (placeholder until bespoke flags).
+		federation: 226, 177, 30, 15
+		northern_union: 226, 161, 30, 15
+		continental_bloc: 226, 193, 30, 15
+		rhine_compact: 226, 65, 30, 15
+		isles_coalition: 226, 49, 30, 15
+		eastern_maritime: 226, 177, 30, 15
+		subcontinent_federation: 226, 193, 30, 15
+		anatolian_alliance: 226, 113, 30, 15
 
 music:
 	Inherits: ^Glyphs

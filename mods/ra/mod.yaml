@@ -87,6 +87,9 @@ Rules:
 	ra|rules/ships.yaml
 	ra|rules/fakes.yaml
 	ra|rules/map-generators.yaml
+	ra|rules/theater-factions.yaml
+	ra|rules/theater-units.yaml
+	ra|rules/theater-structures.yaml
 
 Sequences:
 	ra|sequences/ships.yaml
@@ -178,6 +181,7 @@ FluentMessages:
 	ra|fluent/chrome.ftl
 	ra|fluent/hotkeys.ftl
 	ra|fluent/rules.ftl
+	ra|fluent/theater.ftl
 
 AllowUnusedFluentMessagesInExternalPackages: false
 

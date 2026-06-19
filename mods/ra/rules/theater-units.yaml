@@ -1,0 +1,99 @@
+# THEATER — one signature unique unit per contemporary faction.
+# Each reuses an existing RA body (art ceiling) with a modern name, gated to its faction via the
+# tech.<faction> prerequisite from theater-factions.yaml. Modern cameos get wired once generated.
+
+# Federation (USA) — stealth strike jet.
+SPECTER:
+	Inherits: MIG
+	RenderSprites:
+		Image: mig
+	Tooltip:
+		Name: actor-specter.name
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 90
+		Prerequisites: tech.federation, afld
+
+# Northern Union (Russia) — EW heavy command tank.
+BASTION:
+	Inherits: TTNK
+	RenderSprites:
+		Image: ttnk
+	Tooltip:
+		Name: actor-bastion.name
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 90
+		Prerequisites: tech.northern_union, weap
+
+# Continental Bloc (China) — cheap mass strike drone.
+WINGLOONG:
+	Inherits: YAK
+	RenderSprites:
+		Image: yak
+	Tooltip:
+		Name: actor-wingloong.name
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 91
+		Prerequisites: tech.continental_bloc, afld
+
+# Rhine Compact (Germany) — most durable MBT.
+LOEWE:
+	Inherits: 3TNK
+	RenderSprites:
+		Image: 3tnk
+	Tooltip:
+		Name: actor-loewe.name
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 91
+		Prerequisites: tech.rhine_compact, weap
+
+# Isles Coalition (UK) — elite infiltration team.
+PATHFINDER:
+	Inherits: E6
+	RenderSprites:
+		Image: e6
+	Tooltip:
+		Name: actor-pathfinder.name
+	Buildable:
+		Queue: Infantry
+		BuildPaletteOrder: 90
+		Prerequisites: tech.isles_coalition, tent
+
+# Eastern Maritime Pact (Japan) — autonomous combat robot.
+KUNAI:
+	Inherits: SHOK
+	RenderSprites:
+		Image: shok
+	Tooltip:
+		Name: actor-kunai.name
+	Buildable:
+		Queue: Infantry
+		BuildPaletteOrder: 91
+		Prerequisites: tech.eastern_maritime, tent
+
+# Subcontinent Federation (India) — supersonic cruise-missile launcher.
+GARUDA:
+	Inherits: V2RL
+	RenderSprites:
+		Image: v2rl
+	Tooltip:
+		Name: actor-garuda.name
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 92
+		Prerequisites: tech.subcontinent_federation, weap
+
+# Anatolian Alliance (Turkey) — cheap armed loiter drone.
+BAYRAK:
+	Inherits: YAK
+	RenderSprites:
+		Image: yak
+	Tooltip:
+		Name: actor-bayrak.name
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 92
+		Prerequisites: tech.anatolian_alliance, afld

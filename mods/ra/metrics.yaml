@@ -11,6 +11,15 @@ Metrics:
 	FactionSuffix-russia: soviet
 	FactionSuffix-soviet: soviet
 	FactionSuffix-ukraine: soviet
+	# THEATER contemporary factions inherit their side's UI/sidebar theme.
+	FactionSuffix-federation: allies
+	FactionSuffix-rhine_compact: allies
+	FactionSuffix-isles_coalition: allies
+	FactionSuffix-eastern_maritime: allies
+	FactionSuffix-northern_union: soviet
+	FactionSuffix-continental_bloc: soviet
+	FactionSuffix-subcontinent_federation: soviet
+	FactionSuffix-anatolian_alliance: soviet
 	IncompatibleProtectedGameColor: B22222
 	IncompatibleVersionColor: D3D3D3
 	TextfieldColorHighlight: 562020

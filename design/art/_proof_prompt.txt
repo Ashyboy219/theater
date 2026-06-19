@@ -1,0 +1,5 @@
+Game asset concept art of a modern military reconnaissance-strike drone (UCAV / loitering munition aircraft), a single object centered in frame, viewed from a 3/4 high-angle top-down perspective as used for a real-time-strategy game unit.
+
+Art direction: "retro but revamped" — a modern high-definition take on classic 1990s RTS sprite art (think Command & Conquer / Red Alert reimagined with today's fidelity). Clean crisp readable silhouette, bold confident forms, subtle cel/cartoon shading with a faint pixel-art texture, strong rim lighting and soft ambient occlusion so the shape reads instantly at small size. Military but vivid palette: slate grey and gunmetal body with olive and warning-orange accents; keep the main fuselage a neutral mid-grey so a team color can be tinted onto it later.
+
+Background: a perfectly flat, uniform, solid pure-magenta background (hex FF00FF), evenly lit with no gradient, no scenery, no ground, no shadow cast onto the background, so it can be chroma-keyed out cleanly. The subject only. No text, no labels, no UI frames. Centered, sharp edges, high contrast, suitable to be downscaled into a small RTS unit cameo icon.

@@ -1,0 +1,125 @@
+# THEATER — Match Slice v1.1 "Hold & Develop" (positional revision).
+#
+# Playtest verdict: hybrid economy = win; but the passive-stat structures (vision, hospital) didn't
+# change decisions, while the POSITIONAL one (Forward Command — "I can build/project from here") did.
+# Design rule learned: territory structures should grant VERBS (new things you can DO), not NUMBERS
+# (passive stat auras). So this revision drops vision + hospital and leans into option/positioning:
+#
+#   • CTRLCASH (Oil Derrick) — ECONOMIC, develops: income 12 -> 24 cr/s. (kept, just ONE on the map)
+#   • FCOM (Forward Command) — POSITIONAL: build/project from a forward foothold. (the proven winner; 2 on map)
+#   • CTRLLAB (Tech Lab)     — OPTION: capturing it UNLOCKS the Mammoth Tank for you (RA's capture-tech
+#                              mechanic — verified capture-safe). A new army option, not a passive buff.
+#
+# Deferred (need new C# to be capture-safe — the engine's SupportPowerManager tracks powers by
+# actor-add/remove, NOT owner-change): "capture -> a support power" (paratroopers / spy plane) and
+# "capture -> forward production". Those are the next, most exciting verbs once we add owner-change
+# handling. Opt-in (slice map only).
+
+# --- DEV MODE: cheats on by default. In chat, `/visibility` toggles full-map reveal (non-destructive).
+Player:
+	# DEV SANDBOX: cheats on, and every cheat that means "no friction" defaulted ON —
+	# build anything ignoring prerequisites (AllTech), build anywhere, instant build, free power.
+	# NOTE: these defaults are now applied to HUMAN combatant players only (DeveloperMode.cs gates
+	# them by !IsBot/!NonCombatant) so the AI opponents play the normal game.
+	DeveloperMode:
+		CheckboxEnabled: True
+		AllTech: True
+		FastBuild: True
+		BuildAnywhere: True
+		UnlimitedPower: True
+		FastCharge: True
+	# DEV: flip the global "Unlock All Factions" checkbox ON by default for this test map.
+	LobbyPrerequisiteCheckbox@DEVUNLOCK:
+		Enabled: True
+	# Unlimited money is granted to HUMAN players only, topped up each tick by theater-setup.lua
+	# (so the AI keeps a normal economy). No global DefaultCash override here on purpose.
+
+# --- DEV SANDBOX: spawn anything from the Construction Yard — no production buildings needed.
+#     The conyard now also runs the Infantry, Vehicle and Aircraft queues and ejects units from the
+#     bib row below it. Combined with the AllTech cheat (which ignores Buildable prerequisites) you can
+#     build every unit straight from your starting MCV's deployed conyard.
+#     Also: emptying the conyard's Buildable `Queue` drops it from the build palette. The stock FACT
+#     carries a hidden `Buildable: Prerequisites: ~disabled` so it never shows normally, but AllTech
+#     bypasses that and made it appear as a buildable "building". Production yards come from deploying an
+#     MCV (Transforms), never from the menu. We keep the Buildable trait (the editor's `fact.colorpicker`
+#     inherits FACT and removes it, which a full `-Buildable:` would break) but give it no queue, so it
+#     belongs to no palette. MCV -> deploy still works.
+FACT:
+	Buildable:
+		Queue:
+		Prerequisites: ~disabled
+	Production:
+		Produces: Building, Defense, Infantry, Vehicle, Aircraft
+	Reservable:
+	RallyPoint:
+	Exit@dev1:
+		SpawnOffset: 0,512,0
+		ExitCell: 1,3
+	Exit@dev2:
+		SpawnOffset: -512,512,0
+		ExitCell: 0,3
+	Exit@dev3:
+		SpawnOffset: 512,512,0
+		ExitCell: 2,3
+	ProductionBar@Infantry:
+		ProductionType: Infantry
+	ProductionBar@Vehicle:
+		ProductionType: Vehicle
+	ProductionBar@Aircraft:
+		ProductionType: Aircraft
+
+# --- ATTACK-MOVE BY DEFAULT: a plain right-click move makes combat units engage enemies they meet on
+#     the way (no 'A' / shift-'A' micro). Hold Alt for a plain move that ignores enemies; Ctrl to force-
+#     fire. Added to the combat base templates (each already carries AttackMove + AutoTarget).
+^Infantry:
+	AttackMoveByDefault:
+^Vehicle:
+	AttackMoveByDefault:
+^Ship:
+	AttackMoveByDefault:
+
+# --- PROTECT leg: killing an enemy harvester pays the attacker a bounty.
+HARV:
+	GivesBounty:
+		Percentage: 25
+
+# --- Tech Lab unlock: while you hold a Tech Lab (theater.techlab), the Mammoth Tank is buildable
+#     from your War Factory, regardless of faction. Lose the lab and you lose the unlock.
+4TNK:
+	Buildable:
+		Queue: Vehicle
+		Prerequisites: theater.techlab
+
+World:
+	LuaScript:
+		Scripts: theater-setup.lua
+
+# === ECONOMIC node — develops from one-harvester income to two. ===
+CTRLCASH:
+	Inherits: OILB
+	RenderSprites:
+		Image: oilb
+	-CashTrickler:
+	-GivesCashOnCapture:
+	-UpdatesDerrickCount:
+	CashTrickler@base:
+		Interval: 25
+		Amount: 12
+		ShowTicks: true
+		RequiresCondition: enabled && !developed
+	CashTrickler@dev:
+		Interval: 25
+		Amount: 24
+		ShowTicks: true
+		RequiresCondition: enabled && developed
+	DevelopsWhileHeld:
+		DevelopedCondition: developed
+		DevelopTicks: 1200
+
+# === OPTION node — capture unlocks the Mammoth Tank (reskins the Bio Lab). ===
+CTRLLAB:
+	Inherits: BIO
+	RenderSprites:
+		Image: bio
+	ProvidesPrerequisite@techlab:
+		Prerequisite: theater.techlab

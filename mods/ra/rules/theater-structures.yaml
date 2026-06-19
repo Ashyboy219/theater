@@ -1,0 +1,45 @@
+# THEATER — shared "advanced coordination" structures.
+#
+# THCOM (Theater Command) is the planning HQ / advanced barracks the design calls for: a forward
+# command post that gives you radar AND a real VERB — a combined-arms paradrop that coordinates
+# reinforcements from the sky with your ground push. It reskins the radar dome (proven art/footprint)
+# and adds a self-contained support power, so it is capture-safe and needs no new C#.
+#
+# (Attack-move-by-default already delivers the "smart troop control" half of the ask — combat units
+# auto-engage on a normal move. True multi-unit FORMATION movement is a deeper engine feature and is
+# the next planned step; this structure is the home it will hang off.)
+
+THCOM:
+	Inherits: DOME
+	RenderSprites:
+		Image: dome
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 92
+		Prerequisites: fact, ~techlevel.medium
+		Description: actor-thcom.description
+	Tooltip:
+		Name: actor-thcom.name
+	ParatroopersPower@coord:
+		OrderName: TheaterParadrop
+		Icon: paratroopers
+		ChargeInterval: 1500
+		Name: actor-thcom.para-name
+		Description: actor-thcom.para-description
+		DropItems: E1R1,E1R1,E3R1,E3R1,E3R1
+		ReinforcementsArrivedSpeechNotification: ReinforcementsArrived
+		SelectTargetSpeechNotification: SelectTarget
+		ReinforcementsArrivedTextNotification: notification-reinforcements-have-arrived
+		SelectTargetTextNotification: notification-select-target
+		AllowImpassableCells: false
+		QuantizedFacings: 8
+		CameraActor: camera.paradrop
+		DisplayBeacon: true
+		BeaconPoster: pinficon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		SupportPowerPaletteOrder: 50
+	SupportPowerChargeBar:
