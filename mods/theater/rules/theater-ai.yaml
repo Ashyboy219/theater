@@ -1,0 +1,78 @@
+# THEATER — teach the skirmish AI to build the faction uniques.
+#
+# Doctrine stat-modifiers already apply to AI armies automatically (the AI's Construction Yard provides
+# the same tech.<faction> token that grants the doctrine condition). This file additionally lets the AI
+# PRODUCE the unique units. The uniques are faction-gated by tech.<faction>, so an AI only builds the
+# ones its own faction unlocks — listing them all in every bot type is safe (BuildableItems filters by
+# prerequisite, the rest are simply never selected).
+#
+# UnitsToBuild is a dictionary → these entries MERGE into (add to) the stock lists. AirUnitsTypes is a
+# replace-list → restated in full (stock + new) so the squad manager treats the air uniques as aircraft.
+
+Player:
+	UnitBuilderBotModule@rush:
+		UnitsToBuild:
+			specter: 10
+			wingloong: 15
+			bayrak: 15
+			reaper: 10
+			hayabusa: 10
+			tejas: 10
+			bastion: 12
+			loewe: 15
+			garuda: 12
+			grad: 15
+			redoubt: 10
+			dazhbog: 15
+			kunai: 12
+	UnitBuilderBotModule@normal:
+		UnitsToBuild:
+			specter: 10
+			wingloong: 15
+			bayrak: 15
+			reaper: 10
+			hayabusa: 10
+			tejas: 10
+			bastion: 12
+			loewe: 15
+			garuda: 12
+			grad: 15
+			redoubt: 10
+			dazhbog: 15
+			kunai: 12
+	UnitBuilderBotModule@turtle:
+		UnitsToBuild:
+			specter: 10
+			wingloong: 15
+			bayrak: 15
+			reaper: 10
+			hayabusa: 10
+			tejas: 10
+			bastion: 12
+			loewe: 15
+			garuda: 12
+			grad: 15
+			redoubt: 10
+			dazhbog: 15
+			kunai: 12
+	UnitBuilderBotModule@naval:
+		UnitsToBuild:
+			specter: 10
+			wingloong: 15
+			bayrak: 15
+			reaper: 10
+			hayabusa: 10
+			tejas: 10
+			bastion: 12
+			loewe: 15
+			garuda: 12
+			grad: 15
+			redoubt: 10
+			dazhbog: 15
+			kunai: 12
+	SquadManagerBotModule@rush:
+		AirUnitsTypes: mig, yak, heli, hind, mh60, specter, wingloong, bayrak, reaper, hayabusa, tejas
+	SquadManagerBotModule@normal:
+		AirUnitsTypes: mig, yak, heli, hind, mh60, specter, wingloong, bayrak, reaper, hayabusa, tejas
+	SquadManagerBotModule@turtle:
+		AirUnitsTypes: mig, yak, heli, hind, mh60, specter, wingloong, bayrak, reaper, hayabusa, tejas

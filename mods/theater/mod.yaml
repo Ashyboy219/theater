@@ -1,9 +1,9 @@
 Metadata:
-	Title: THEATER
+	Title: mod-title
 	Version: {DEV_VERSION}
 	Website: https://www.openra.net
 	WebIcon32: https://www.openra.net/images/icons/ra_32x32.png
-	WindowTitle: THEATER
+	WindowTitle: mod-windowtitle
 
 PackageFormats: Mix
 
@@ -92,8 +92,10 @@ Rules:
 	ra|rules/map-generators.yaml
 	theater|rules/theater-factions.yaml
 	theater|rules/theater-common.yaml
+	theater|rules/theater-doctrines.yaml
 	theater|rules/theater-units.yaml
 	theater|rules/theater-structures.yaml
+	theater|rules/theater-ai.yaml
 
 Sequences:
 	ra|sequences/ships.yaml

@@ -97,3 +97,143 @@ BAYRAK:
 		Queue: Aircraft
 		BuildPaletteOrder: 92
 		Prerequisites: tech.anatolian_alliance, afld
+
+# ============================================================================
+# Additional faction uniques (each faction gets 2-3 total). All reuse complete
+# stock RA bodies and are faction-gated by tech.<faction>; identity in v1 comes
+# from faction-exclusivity + the doctrine modifiers (theater-doctrines.yaml).
+# Bespoke cameos/reskins are a later art pass.
+# ============================================================================
+
+# Federation (USA) — persistent close-air-support gunship.
+REAPER:
+	Inherits: MH60
+	RenderSprites:
+		Image: mh60
+	Tooltip:
+		Name: actor-reaper.name
+	Buildable:
+		Queue: Aircraft
+		BuildAtProductionType: Helicopter
+		BuildPaletteOrder: 93
+		Prerequisites: tech.federation, hpad
+
+# Northern Union (Russia) — salvo rocket battery (mass fires).
+GRAD:
+	Inherits: V2RL
+	RenderSprites:
+		Image: v2rl
+	Tooltip:
+		Name: actor-grad.name
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 93
+		Prerequisites: tech.northern_union, weap
+
+# Northern Union (Russia) — mobile bunker / armoured transport.
+REDOUBT:
+	Inherits: APC
+	RenderSprites:
+		Image: apc
+	Tooltip:
+		Name: actor-redoubt.name
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 94
+		Prerequisites: tech.northern_union, weap
+
+# Continental Bloc (China) — cheap printed artillery.
+DAZHBOG:
+	Inherits: V2RL
+	RenderSprites:
+		Image: v2rl
+	Tooltip:
+		Name: actor-dazhbog.name
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 93
+		Prerequisites: tech.continental_bloc, weap
+
+# Rhine Compact (Germany) — forward combat engineer (capture + field repair).
+PIONEER:
+	Inherits: MECH
+	RenderSprites:
+		Image: mech
+	Tooltip:
+		Name: actor-pioneer.name
+	Buildable:
+		Queue: Infantry
+		BuildPaletteOrder: 93
+		Prerequisites: tech.rhine_compact, fix
+
+# Isles Coalition (UK) — mobile EW / radar-jamming cell.
+COMMS:
+	Inherits: MRJ
+	RenderSprites:
+		Image: mrj
+	Tooltip:
+		Name: actor-comms.name
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 93
+		Prerequisites: tech.isles_coalition, dome
+
+# Eastern Maritime (Japan) — point-defence missile turret.
+AEGIS:
+	Inherits: SAM
+	RenderSprites:
+		Image: sam
+	Tooltip:
+		Name: actor-aegis.name
+	Buildable:
+		Queue: Defense
+		BuildPaletteOrder: 93
+		Prerequisites: tech.eastern_maritime, dome
+
+# Eastern Maritime (Japan) — autonomous interceptor drone (anti-air).
+HAYABUSA:
+	Inherits: YAK
+	RenderSprites:
+		Image: yak
+	Tooltip:
+		Name: actor-hayabusa.name
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 93
+		Prerequisites: tech.eastern_maritime, afld
+
+# Subcontinent Federation (India) — layered SAM battery.
+AKASH:
+	Inherits: AGUN
+	RenderSprites:
+		Image: agun
+	Tooltip:
+		Name: actor-akash.name
+	Buildable:
+		Queue: Defense
+		BuildPaletteOrder: 94
+		Prerequisites: tech.subcontinent_federation, dome
+
+# Subcontinent Federation (India) — multirole strike fighter (upper air layer).
+TEJAS:
+	Inherits: MIG
+	RenderSprites:
+		Image: mig
+	Tooltip:
+		Name: actor-tejas.name
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 94
+		Prerequisites: tech.subcontinent_federation, afld
+
+# Anatolian Alliance (Turkey) — electronic-warfare van (blinds enemy radar).
+KORAL:
+	Inherits: MRJ
+	RenderSprites:
+		Image: mrj
+	Tooltip:
+		Name: actor-koral.name
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 93
+		Prerequisites: tech.anatolian_alliance, dome

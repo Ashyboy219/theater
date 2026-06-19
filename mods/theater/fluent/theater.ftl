@@ -1,45 +1,49 @@
 # THEATER — contemporary factions, their unique units, and dev-mode strings.
 
-## Factions
+## Mod identity (override ra's title strings).
+mod-title = THEATER
+mod-windowtitle = THEATER
+
+## Factions — doctrine line, the army's strength/tradeoff, and unique units.
 faction-federation =
     .name = The Federation
-    .description = United States bloc: networked air & naval power-projection.
-     Unique Unit: Specter Stealth Fighter
+    .description = USA — "See first, strike from nowhere." Far-seeing, long-range, cheap & fast AIR; fragile ground.
+     Uniques: Specter Stealth Fighter, Reaper Gunship.
 
 faction-northern_union =
     .name = Northern Union
-    .description = Russia bloc: heavy armor, artillery and electronic warfare.
-     Unique Unit: Bastion EW Command Tank
+    .description = Russia — "Mass fires, then move the mass." TANKY, hard-hitting vehicles; SLOW.
+     Uniques: Bastion EW Tank, Grad Rocket Battery, Redoubt Bunker.
 
 faction-continental_bloc =
     .name = Continental Bloc
-    .description = China bloc: mass production, missile umbrellas and drones.
-     Unique Unit: Wing Loong Swarm Drone
+    .description = China — "Attrition is a resource we print." CHEAP, builds FAST; fragile (spam the map).
+     Uniques: Wing Loong Swarm Drone, Dazhbog Rocket Truck.
 
 faction-rhine_compact =
     .name = Rhine Compact
-    .description = Germany bloc: engineering and armored durability.
-     Unique Unit: Loewe Heavy MBT
+    .description = Germany — "Build forward, don't break." DURABLE units; EXPENSIVE and slow to build.
+     Uniques: Loewe Heavy MBT, Pioneer Combat-Engineer.
 
 faction-isles_coalition =
     .name = Isles Coalition
-    .description = United Kingdom bloc: expeditionary, intelligence and special forces.
-     Unique Unit: Pathfinder Team
+    .description = UK — "The op is won before the shooting." Long-range, far-seeing, cheaper INFANTRY; weak vehicles.
+     Uniques: Pathfinder Team, Comms EW Cell.
 
 faction-eastern_maritime =
     .name = Eastern Maritime Pact
-    .description = Japan bloc: naval missile-defense and combat robotics.
-     Unique Unit: Kunai Combat Robot
+    .description = Japan — "Autonomy holds the line." DURABLE but low-offense (turtle); point defense.
+     Uniques: Kunai Combat Robot, Aegis Turret, Hayabusa Interceptor.
 
 faction-subcontinent_federation =
     .name = Subcontinent Federation
-    .description = India bloc: layered air defense and supersonic cruise missiles.
-     Unique Unit: Garuda Cruise-Missile Launcher
+    .description = India — "Layered skies, deep reach." Long-RANGE but slow; layered air defense.
+     Uniques: Garuda Cruise Launcher, Akash SAM, Tejas Strike Fighter.
 
 faction-anatolian_alliance =
     .name = Anatolian Alliance
-    .description = Turkey bloc: cheap attritable armed drones and electronic warfare.
-     Unique Unit: Bayrak UCAV
+    .description = Turkey — "Cheap eyes, cheap teeth, everywhere." Cheap, fast, far-seeing AIR; attritable.
+     Uniques: Bayrak Loiter Drone, Koral EW Van.
 
 ## Unique units
 actor-specter =
@@ -65,6 +69,30 @@ actor-garuda =
 
 actor-bayrak =
     .name = Bayrak UCAV
+
+## Additional faction uniques
+actor-reaper =
+    .name = Reaper Gunship
+actor-grad =
+    .name = Grad Rocket Battery
+actor-redoubt =
+    .name = Redoubt Bunker
+actor-dazhbog =
+    .name = Dazhbog Rocket Truck
+actor-pioneer =
+    .name = Pioneer Combat-Engineer
+actor-comms =
+    .name = Comms EW Cell
+actor-aegis =
+    .name = Aegis Point-Defense Turret
+actor-hayabusa =
+    .name = Hayabusa Interceptor
+actor-akash =
+    .name = Akash SAM Battery
+actor-tejas =
+    .name = Tejas Strike Fighter
+actor-koral =
+    .name = Koral EW Van
 
 ## Dev mode
 checkbox-devunlock =
