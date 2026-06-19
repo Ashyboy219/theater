@@ -40,6 +40,10 @@ namespace OpenRA.Mods.Common.Commands
 			// Faction info lookups.
 			console.RegisterCommand("factions", this);
 			console.RegisterCommand("faction", this);
+
+			// Army-wide targeting doctrine (command layer).
+			console.RegisterCommand("target", this);
+			console.RegisterCommand("focus", this);
 		}
 
 		public void InvokeCommand(string name, string arg)
@@ -65,7 +69,46 @@ namespace OpenRA.Mods.Common.Commands
 				case "faction":
 					PrintFactions(arg);
 					return;
+
+				case "target":
+				case "focus":
+					SetTargetDoctrine(arg);
+					return;
 			}
+		}
+
+		// Army-wide targeting doctrine: tell the whole army what to prioritise.
+		void SetTargetDoctrine(string arg)
+		{
+			var player = world.LocalPlayer;
+			if (player == null || player.PlayerActor.TraitOrDefault<ArmyCommand>() == null)
+			{
+				TextNotificationsManager.Debug("No army command available (spectating?).");
+				return;
+			}
+
+			int doctrine;
+			switch ((arg ?? "").Trim().ToLowerInvariant())
+			{
+				case "structures": case "structure": case "buildings": case "building": doctrine = 1; break;
+				case "armor": case "armour": case "tanks": case "vehicles": case "vehicle": doctrine = 2; break;
+				case "infantry": case "inf": case "troops": doctrine = 3; break;
+				case "balanced": case "balance": case "normal": case "off": case "": doctrine = 0; break;
+				default:
+					TextNotificationsManager.Debug("Usage: /target structures | armor | infantry | balanced");
+					return;
+			}
+
+			world.IssueOrder(new Order(ArmyCommand.OrderName, player.PlayerActor, false) { ExtraData = (uint)doctrine });
+
+			var label = doctrine switch
+			{
+				1 => "STRUCTURES first — your army prioritises enemy buildings & defenses.",
+				2 => "ARMOR first — your army prioritises enemy vehicles/tanks.",
+				3 => "INFANTRY first — your army prioritises enemy infantry.",
+				_ => "BALANCED — normal targeting.",
+			};
+			TextNotificationsManager.Debug($"Army targeting doctrine: {label}");
 		}
 
 		// Toggles a DeveloperMode cheat and prints a state-accurate message. currentState reads the value

@@ -1,0 +1,42 @@
+# THEATER — Command layer, Phase 1: army-wide TARGETING DOCTRINE.
+#
+# At the Theater Command you choose what your whole army prioritises. A player-level ArmyCommand trait
+# holds the doctrine and propagates a condition to every combat unit; condition-gated AutoTargetPriority
+# profiles (Priority 20 > the stock default of 1) then re-rank targets army-wide. Toggle it with the
+# /target chat command for now (structures | armor | infantry | balanced); the war-room panel buys/sets
+# these in Phase 2. Pure targeting layer — deterministic, no float/Random.
+
+Player:
+	ArmyCommand:
+
+# Ground combatants (and their assault-move variant, which inherits this).
+^AutoTargetGround:
+	ArmyCommandConsumer:
+	AutoTargetPriority@CMDSTRUCT:
+		RequiresCondition: cmd-focus-structures
+		ValidTargets: Structure, Defense
+		Priority: 20
+	AutoTargetPriority@CMDARMOR:
+		RequiresCondition: cmd-focus-armor
+		ValidTargets: Vehicle
+		Priority: 20
+	AutoTargetPriority@CMDINF:
+		RequiresCondition: cmd-focus-infantry
+		ValidTargets: Infantry
+		Priority: 20
+
+# Air/ground all-target combatants (and their assault-move variant).
+^AutoTargetAll:
+	ArmyCommandConsumer:
+	AutoTargetPriority@CMDSTRUCT:
+		RequiresCondition: cmd-focus-structures
+		ValidTargets: Structure, Defense
+		Priority: 20
+	AutoTargetPriority@CMDARMOR:
+		RequiresCondition: cmd-focus-armor
+		ValidTargets: Vehicle
+		Priority: 20
+	AutoTargetPriority@CMDINF:
+		RequiresCondition: cmd-focus-infantry
+		ValidTargets: Infantry
+		Priority: 20

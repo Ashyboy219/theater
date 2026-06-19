@@ -71,7 +71,6 @@ FileSystem: ContentInstallerFileSystem
 
 MapFolders:
 	theater|maps: System
-	~ra|maps: System
 	~^SupportDir|maps/theater/{DEV_VERSION}: User
 
 Rules:
@@ -98,6 +97,7 @@ Rules:
 	theater|rules/theater-structures.yaml
 	theater|rules/theater-ai.yaml
 	theater|rules/theater-cameos.yaml
+	theater|rules/theater-command.yaml
 
 Sequences:
 	ra|sequences/ships.yaml
