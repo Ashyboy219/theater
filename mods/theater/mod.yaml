@@ -18,6 +18,7 @@ FileSystem: ContentInstallerFileSystem
 		ra|scripts
 		theater|scripts
 		ra|uibits
+		theater|bits
 	ContentPackages:
 		content|allies.mix
 		content|conquer.mix
@@ -96,6 +97,7 @@ Rules:
 	theater|rules/theater-units.yaml
 	theater|rules/theater-structures.yaml
 	theater|rules/theater-ai.yaml
+	theater|rules/theater-cameos.yaml
 
 Sequences:
 	ra|sequences/ships.yaml
@@ -105,6 +107,7 @@ Sequences:
 	ra|sequences/aircraft.yaml
 	ra|sequences/misc.yaml
 	ra|sequences/decorations.yaml
+	theater|sequences/theater.yaml
 
 TileSets:
 	ra|tilesets/snow.yaml
@@ -280,7 +283,7 @@ SupportsMapsFrom: ra
 
 SoundFormats: Aud, Wav
 
-SpriteFormats: ShpD2, ShpTD, TmpRA, TmpTD, ShpTS
+SpriteFormats: ShpD2, ShpTD, TmpRA, TmpTD, ShpTS, PngSheet
 
 VideoFormats: Vqa, Wsa
 

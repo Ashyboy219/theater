@@ -1,0 +1,63 @@
+# THEATER — point each unique unit/structure at its bespoke cameo (see sequences/theater.yaml).
+# Field-merges Buildable.Icon onto the actors defined in theater-units.yaml / theater-structures.yaml.
+
+SPECTER:
+	Buildable:
+		Icon: specter-icon
+BASTION:
+	Buildable:
+		Icon: bastion-icon
+WINGLOONG:
+	Buildable:
+		Icon: wingloong-icon
+LOEWE:
+	Buildable:
+		Icon: loewe-icon
+PATHFINDER:
+	Buildable:
+		Icon: pathfinder-icon
+KUNAI:
+	Buildable:
+		Icon: kunai-icon
+GARUDA:
+	Buildable:
+		Icon: garuda-icon
+BAYRAK:
+	Buildable:
+		Icon: bayrak-icon
+REAPER:
+	Buildable:
+		Icon: reaper-icon
+GRAD:
+	Buildable:
+		Icon: grad-icon
+REDOUBT:
+	Buildable:
+		Icon: redoubt-icon
+DAZHBOG:
+	Buildable:
+		Icon: dazhbog-icon
+PIONEER:
+	Buildable:
+		Icon: pioneer-icon
+COMMS:
+	Buildable:
+		Icon: comms-icon
+AEGIS:
+	Buildable:
+		Icon: aegis-icon
+HAYABUSA:
+	Buildable:
+		Icon: hayabusa-icon
+AKASH:
+	Buildable:
+		Icon: akash-icon
+TEJAS:
+	Buildable:
+		Icon: tejas-icon
+KORAL:
+	Buildable:
+		Icon: koral-icon
+THCOM:
+	Buildable:
+		Icon: thcom-icon

@@ -1,0 +1,72 @@
+# THEATER — bespoke sidebar cameos (full-colour PNG, drawn directly via PngSheet).
+# Each icon is a uniquely-named sequence keyed under the actor's inherited RenderSprites.Image, so it
+# never overwrites the stock unit's own `icon`. Buildable.Icon (theater-cameos.yaml) points each unit
+# at its sequence. Filenames resolve in the theater|bits package (mods/theater/bits/).
+
+mig:
+	specter-icon:
+		Filename: specter-cameo.png
+	tejas-icon:
+		Filename: tejas-cameo.png
+
+ttnk:
+	bastion-icon:
+		Filename: bastion-cameo.png
+
+yak:
+	wingloong-icon:
+		Filename: wingloong-cameo.png
+	bayrak-icon:
+		Filename: bayrak-cameo.png
+	hayabusa-icon:
+		Filename: hayabusa-cameo.png
+
+3tnk:
+	loewe-icon:
+		Filename: loewe-cameo.png
+
+e6:
+	pathfinder-icon:
+		Filename: pathfinder-cameo.png
+
+shok:
+	kunai-icon:
+		Filename: kunai-cameo.png
+
+v2rl:
+	garuda-icon:
+		Filename: garuda-cameo.png
+	grad-icon:
+		Filename: grad-cameo.png
+	dazhbog-icon:
+		Filename: dazhbog-cameo.png
+
+mh60:
+	reaper-icon:
+		Filename: reaper-cameo.png
+
+apc:
+	redoubt-icon:
+		Filename: redoubt-cameo.png
+
+mech:
+	pioneer-icon:
+		Filename: pioneer-cameo.png
+
+mrj:
+	comms-icon:
+		Filename: comms-cameo.png
+	koral-icon:
+		Filename: koral-cameo.png
+
+sam:
+	aegis-icon:
+		Filename: aegis-cameo.png
+
+agun:
+	akash-icon:
+		Filename: akash-cameo.png
+
+dome:
+	thcom-icon:
+		Filename: thcom-cameo.png
