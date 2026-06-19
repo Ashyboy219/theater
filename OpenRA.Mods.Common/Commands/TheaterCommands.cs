@@ -48,15 +48,17 @@ namespace OpenRA.Mods.Common.Commands
 			{
 				case "dev":
 				case "sandbox":
-					IssueDevOrder(DeveloperMode.Orders.Sandbox,
-						"Dev sandbox toggled: unlimited cash, instant build, build anywhere, free power, fast support powers. " +
-						"Build options stay limited to your faction (use the lobby's faction picker to test another).");
+					IssueDevOrder(DeveloperMode.Orders.Sandbox, d => d.Sandbox,
+						"Dev sandbox ON — unlimited cash, instant build, build anywhere, free power, fast support powers. " +
+						"Build options stay limited to YOUR faction (pick another faction in the lobby to test it). Type /dev again to turn it off.",
+						"Dev sandbox OFF — back to a normal economy and build times. Type /dev again to turn it back on.");
 					return;
 
 				case "visibility":
 				case "reveal":
-					IssueDevOrder(DeveloperMode.Orders.Visibility,
-						"Full-map visibility toggled (non-destructive — reveals the map without changing your real vision).");
+					IssueDevOrder(DeveloperMode.Orders.Visibility, d => d.DisableShroud,
+						"Full-map reveal ON — non-destructive (your real vision is unchanged). Type /visibility again to turn it off.",
+						"Full-map reveal OFF — back to fog of war.");
 					return;
 
 				case "factions":
@@ -66,7 +68,9 @@ namespace OpenRA.Mods.Common.Commands
 			}
 		}
 
-		void IssueDevOrder(string devOrder, string hint)
+		// Toggles a DeveloperMode cheat and prints a state-accurate message. currentState reads the value
+		// BEFORE the order resolves, so the new state is its negation (no other toggle is in flight locally).
+		void IssueDevOrder(string devOrder, Func<DeveloperMode, bool> currentState, string onMessage, string offMessage)
 		{
 			var player = world.LocalPlayer;
 			if (player == null)
@@ -82,9 +86,11 @@ namespace OpenRA.Mods.Common.Commands
 				return;
 			}
 
+			var willEnable = !currentState(dev);
+
 			// Route through the order system so it stays deterministic / network-synced.
 			world.IssueOrder(new Order(devOrder, player.PlayerActor, false));
-			TextNotificationsManager.Debug(hint);
+			TextNotificationsManager.Debug(willEnable ? onMessage : offMessage);
 		}
 
 		void PrintFactions(string arg)

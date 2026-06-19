@@ -153,6 +153,7 @@ namespace OpenRA.Mods.Common.Traits
 		public bool PathDebug => Enabled && pathDebug;
 		public bool UnlimitedPower => Enabled && unlimitedPower;
 		public bool BuildAnywhere => Enabled && buildAnywhere;
+		public bool Sandbox => Enabled && sandbox;
 
 		bool enableAll;
 
