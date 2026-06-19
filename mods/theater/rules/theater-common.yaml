@@ -1,0 +1,45 @@
+# THEATER — unified common roster.
+#
+# All 8 contemporary factions share ONE baseline roster (the Allied/NATO-styled set — it reads as
+# generic modern military) plus their single tech.<faction> unique. We achieve that by granting every
+# faction the Allied side-prerequisite tokens from the building that normally provides them, keyed to
+# the 8 contemporary factions only (stock RA/AI factions are untouched).
+#
+# This ALSO fixes a latent bug: the 8 factions are in no stock `Factions:` list, so the buildings/
+# vehicles/air/navy gated on `~structures.allies` / `~vehicles.allies` / `~aircraft.allies` /
+# `~ships.allies` / `~infantry.allies` are granted by nobody — i.e. their rosters were broken in real
+# (non-sandbox) play. Granting these tokens makes them fully buildable.
+#
+# Pure prerequisite plumbing (TechTree / UI layer) — nothing here runs in world.Tick(), so determinism
+# is unaffected. The faction-unique gating in theater-units.yaml (tech.<faction>) is orthogonal and
+# unchanged. Curating the shared roster down to a hand-picked modern subset is a later art/balance pass.
+
+# Construction Yard → the buildings tier.
+FACT:
+	ProvidesPrerequisite@theatercommon:
+		Prerequisite: structures.allies
+		Factions: federation, northern_union, continental_bloc, rhine_compact, isles_coalition, eastern_maritime, subcontinent_federation, anatolian_alliance
+
+# War Factory → the vehicle tier.
+WEAP:
+	ProvidesPrerequisite@theatercommon:
+		Prerequisite: vehicles.allies
+		Factions: federation, northern_union, continental_bloc, rhine_compact, isles_coalition, eastern_maritime, subcontinent_federation, anatolian_alliance
+
+# Barracks (Allied tent) → the infantry tier.
+TENT:
+	ProvidesPrerequisite@theatercommon:
+		Prerequisite: infantry.allies
+		Factions: federation, northern_union, continental_bloc, rhine_compact, isles_coalition, eastern_maritime, subcontinent_federation, anatolian_alliance
+
+# Helipad → the air tier.
+HPAD:
+	ProvidesPrerequisite@theatercommon:
+		Prerequisite: aircraft.allies
+		Factions: federation, northern_union, continental_bloc, rhine_compact, isles_coalition, eastern_maritime, subcontinent_federation, anatolian_alliance
+
+# Naval Yard → the navy tier.
+SYRD:
+	ProvidesPrerequisite@theatercommon:
+		Prerequisite: ships.allies
+		Factions: federation, northern_union, continental_bloc, rhine_compact, isles_coalition, eastern_maritime, subcontinent_federation, anatolian_alliance

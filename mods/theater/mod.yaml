@@ -91,6 +91,7 @@ Rules:
 	ra|rules/fakes.yaml
 	ra|rules/map-generators.yaml
 	theater|rules/theater-factions.yaml
+	theater|rules/theater-common.yaml
 	theater|rules/theater-units.yaml
 	theater|rules/theater-structures.yaml
 
