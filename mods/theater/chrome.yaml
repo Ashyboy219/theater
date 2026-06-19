@@ -1,0 +1,5 @@
+# THEATER — chrome collections (custom UI art).
+warroom:
+	Image: general-portrait.png
+	Regions:
+		general: 0, 0, 168, 208

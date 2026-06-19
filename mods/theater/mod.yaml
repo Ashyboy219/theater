@@ -120,6 +120,7 @@ Cursors:
 
 Chrome:
 	ra|chrome.yaml
+	theater|chrome.yaml
 
 Assemblies: OpenRA.Mods.Common.dll, OpenRA.Mods.Cnc.dll
 
@@ -179,6 +180,7 @@ ChromeLayout:
 	common|chrome/editor.yaml
 	common|chrome/playerprofile.yaml
 	common|chrome/text-notifications.yaml
+	theater|chrome/ingame-warroom.yaml
 
 FluentMessages:
 	common|fluent/common.ftl

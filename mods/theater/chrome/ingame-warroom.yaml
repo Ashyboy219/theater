@@ -1,0 +1,114 @@
+# THEATER — the War Room: a modal situation-room overlay opened from the Theater Command (or /warroom).
+Background@WARROOM_ROOT:
+	Logic: WarRoomLogic
+	X: (WINDOW_WIDTH - WIDTH) / 2
+	Y: (WINDOW_HEIGHT - HEIGHT) / 2
+	Width: 564
+	Height: 484
+	Background: dialog2
+	Children:
+		Label@TITLE:
+			X: 0
+			Y: 14
+			Width: PARENT_WIDTH
+			Height: 34
+			Align: Center
+			Font: BigBold
+			Contrast: True
+			Text: warroom-title
+		Image@PORTRAIT:
+			X: 20
+			Y: 52
+			Width: 168
+			Height: 208
+			ImageCollection: warroom
+			ImageName: general
+		Label@FACTION:
+			X: 204
+			Y: 56
+			Width: 344
+			Height: 22
+			Font: Bold
+			Contrast: True
+		Label@DOCTRINE:
+			X: 204
+			Y: 82
+			Width: 344
+			Height: 22
+			Font: Regular
+			Contrast: True
+		Background@SPEECH_BG:
+			X: 204
+			Y: 116
+			Width: 344
+			Height: 132
+			Background: dialog3
+			Children:
+				Label@SPEECH:
+					X: 12
+					Y: 10
+					Width: 320
+					Height: 112
+					Font: Regular
+					VAlign: Top
+					WordWrap: True
+					Contrast: True
+		Label@DOCTRINE_HDR:
+			X: 20
+			Y: 272
+			Width: 524
+			Height: 20
+			Font: Bold
+			Contrast: True
+			Text: warroom-set-doctrine
+		Button@DOC_BALANCED:
+			X: 20
+			Y: 296
+			Width: 128
+			Height: 28
+			Font: Bold
+			Text: button-doctrine-balanced
+		Button@DOC_STRUCT:
+			X: 154
+			Y: 296
+			Width: 128
+			Height: 28
+			Font: Bold
+			Text: button-doctrine-structures
+		Button@DOC_ARMOR:
+			X: 288
+			Y: 296
+			Width: 128
+			Height: 28
+			Font: Bold
+			Text: button-doctrine-armor
+		Button@DOC_INF:
+			X: 422
+			Y: 296
+			Width: 122
+			Height: 28
+			Font: Bold
+			Text: button-doctrine-infantry
+		Label@GUIDE_HDR:
+			X: 20
+			Y: 334
+			Width: 524
+			Height: 20
+			Font: Bold
+			Contrast: True
+			Text: warroom-tech-path
+		Label@TECHGUIDE:
+			X: 24
+			Y: 356
+			Width: 516
+			Height: 96
+			Font: Small
+			VAlign: Top
+			Contrast: True
+		Button@CLOSE:
+			X: 444
+			Y: 450
+			Width: 100
+			Height: 26
+			Font: Bold
+			Text: button-warroom-close

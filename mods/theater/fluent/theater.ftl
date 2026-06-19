@@ -105,3 +105,13 @@ actor-thcom =
     .description = Forward planning HQ. Provides radar and calls in a combined-arms paradrop to coordinate reinforcements from the sky with your ground push.
     .para-name = Combined Paradrop
     .para-description = Drop a mixed rifle-and-rocket infantry squad onto any visible ground.
+
+## War Room overlay
+warroom-title = WAR ROOM
+warroom-set-doctrine = SET ARMY TARGETING DOCTRINE (also: /target structures|armor|infantry|balanced)
+warroom-tech-path = TECH PATH — how to unlock each tier:
+button-doctrine-balanced = Balanced
+button-doctrine-structures = Structures
+button-doctrine-armor = Armor
+button-doctrine-infantry = Infantry
+button-warroom-close = Close

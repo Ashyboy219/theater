@@ -13,6 +13,7 @@ THCOM:
 	Inherits: DOME
 	RenderSprites:
 		Image: dome
+	WarRoomOnSelect:
 	Buildable:
 		Queue: Building
 		BuildPaletteOrder: 92
