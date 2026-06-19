@@ -1,20 +1,22 @@
 Metadata:
-	Title: mod-title
+	Title: THEATER
 	Version: {DEV_VERSION}
 	Website: https://www.openra.net
 	WebIcon32: https://www.openra.net/images/icons/ra_32x32.png
-	WindowTitle: mod-windowtitle
+	WindowTitle: THEATER
 
 PackageFormats: Mix
 
 FileSystem: ContentInstallerFileSystem
 	SystemPackages:
 		^EngineDir
+		$theater: theater
 		$ra: ra
 		^EngineDir|mods/common: common
 		~^SupportDir|Content/ra/v2/: content
 		common|scripts
 		ra|scripts
+		theater|scripts
 		ra|uibits
 	ContentPackages:
 		content|allies.mix
@@ -67,8 +69,9 @@ FileSystem: ContentInstallerFileSystem
 	ContentInstallerMod: ra-content
 
 MapFolders:
-	ra|maps: System
-	~^SupportDir|maps/ra/{DEV_VERSION}: User
+	theater|maps: System
+	~ra|maps: System
+	~^SupportDir|maps/theater/{DEV_VERSION}: User
 
 Rules:
 	ra|rules/misc.yaml
@@ -87,6 +90,9 @@ Rules:
 	ra|rules/ships.yaml
 	ra|rules/fakes.yaml
 	ra|rules/map-generators.yaml
+	theater|rules/theater-factions.yaml
+	theater|rules/theater-units.yaml
+	theater|rules/theater-structures.yaml
 
 Sequences:
 	ra|sequences/ships.yaml
@@ -178,6 +184,7 @@ FluentMessages:
 	ra|fluent/chrome.ftl
 	ra|fluent/hotkeys.ftl
 	ra|fluent/rules.ftl
+	theater|fluent/theater.ftl
 
 AllowUnusedFluentMessagesInExternalPackages: false
 

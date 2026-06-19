@@ -1,6 +1,6 @@
 MapFormat: 12
 
-RequiresMod: ra
+RequiresMod: theater
 
 Title: THEATER Phase 0 - A Path Beyond
 
@@ -16,7 +16,7 @@ Visibility: Lobby
 
 Categories: Conquest
 
-Rules: ra|rules/territory-economy.yaml
+Rules: theater|rules/territory-economy.yaml
 
 Players:
 	PlayerReference@Neutral:

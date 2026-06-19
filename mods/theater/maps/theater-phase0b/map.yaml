@@ -1,6 +1,6 @@
 MapFormat: 12
 
-RequiresMod: ra
+RequiresMod: theater
 
 Title: THEATER Slice v1 - Hold and Develop
 
@@ -16,7 +16,7 @@ Visibility: Lobby
 
 Categories: Conquest
 
-Rules: ra|rules/theater.yaml
+Rules: theater|rules/theater.yaml
 
 Players:
 	PlayerReference@Neutral:
