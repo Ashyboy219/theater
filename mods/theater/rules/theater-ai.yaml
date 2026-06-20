@@ -1,15 +1,22 @@
-# THEATER — teach the skirmish AI to build the faction uniques.
+# THEATER — teach the skirmish AI to use the faction system: build the uniques, BUY a mid-game doctrine
+# branch (and the units/powers it unlocks), and fire the doctrine support powers.
 #
 # Doctrine stat-modifiers already apply to AI armies automatically (the AI's Construction Yard provides
-# the same tech.<faction> token that grants the doctrine condition). This file additionally lets the AI
-# PRODUCE the unique units. The uniques are faction-gated by tech.<faction>, so an AI only builds the
-# ones its own faction unlocks — listing them all in every bot type is safe (BuildableItems filters by
-# prerequisite, the rest are simply never selected).
-#
-# UnitsToBuild is a dictionary → these entries MERGE into (add to) the stock lists. AirUnitsTypes is a
-# replace-list → restated in full (stock + new) so the squad manager treats the air uniques as aircraft.
+# the tech.<faction> token that grants the doctrine condition). The additions below make the AI:
+#   1. PRODUCE the faction uniques + doctrine-unlocked units (UnitBuilderBotModule.UnitsToBuild — a dict
+#      that MERGES; faction-gating means an AI only builds what its own faction unlocks).
+#   2. BUILD a Theater Command and BUY one doctrine branch from the "Command" queue. This mirrors the d2k
+#      AI's upgrade-buying: add "Command" to BaseBuilderBotModule.BuildingQueues and list the items in
+#      BuildingFractions/BuildingLimits. The branches are faction-gated (~tech.<faction>) and mutually
+#      exclusive, so an AI buys exactly ONE — its own faction's first affordable branch. Japan/Germany
+#      have no branches, so they simply build none (still fully functional).
+#   3. FIRE the doctrine support powers (SupportPowerBotModule only acts on powers that have a
+#      SupportPowerDecision for their OrderName — offensive strikes target enemy structures; the airborne
+#      reinforcement drops near the enemy). One shared module covers every AI personality.
+# These all MERGE onto the stock ra AI (mods/ra/rules/ai.yaml); only the deltas are restated here.
 
 Player:
+	# --- Faction uniques + doctrine-unlocked units (merge into each personality's build list). ---
 	UnitBuilderBotModule@rush:
 		UnitsToBuild:
 			specter: 10
@@ -25,6 +32,10 @@ Player:
 			redoubt: 10
 			dazhbog: 15
 			kunai: 12
+			molot: 14
+			dongfeng: 20
+			arjun: 14
+			raider: 8
 	UnitBuilderBotModule@normal:
 		UnitsToBuild:
 			specter: 10
@@ -40,6 +51,10 @@ Player:
 			redoubt: 10
 			dazhbog: 15
 			kunai: 12
+			molot: 14
+			dongfeng: 20
+			arjun: 14
+			raider: 8
 	UnitBuilderBotModule@turtle:
 		UnitsToBuild:
 			specter: 10
@@ -55,6 +70,10 @@ Player:
 			redoubt: 10
 			dazhbog: 15
 			kunai: 12
+			molot: 14
+			dongfeng: 20
+			arjun: 14
+			raider: 8
 	UnitBuilderBotModule@naval:
 		UnitsToBuild:
 			specter: 10
@@ -70,6 +89,228 @@ Player:
 			redoubt: 10
 			dazhbog: 15
 			kunai: 12
+			molot: 14
+			dongfeng: 20
+			arjun: 14
+			raider: 8
+
+	# --- Build the Theater Command + buy one doctrine branch from the Command queue (per personality). ---
+	# BuildingQueues REPLACES (so restate Building + add Command); BuildingFractions/Limits MERGE (add to
+	# the stock ra building lists). thcom hosts the Command queue; the 12 doctrine.* items are all listed
+	# (faction-gating + mutual exclusion mean each AI buys just its own one). Low fractions = built after
+	# the core base/army, mid-game.
+	BaseBuilderBotModule@rush:
+		BuildingQueues: Building, Command
+		BuildingFractions:
+			thcom: 2
+			doctrine.usa.air: 1
+			doctrine.usa.networked: 1
+			doctrine.rus.armor: 1
+			doctrine.rus.arty: 1
+			doctrine.chn.air: 1
+			doctrine.chn.industrial: 1
+			doctrine.tur.recon: 1
+			doctrine.tur.rapid: 1
+			doctrine.uk.specops: 1
+			doctrine.uk.intel: 1
+			doctrine.ind.missile: 1
+			doctrine.ind.networked: 1
+		BuildingLimits:
+			thcom: 1
+			doctrine.usa.air: 1
+			doctrine.usa.networked: 1
+			doctrine.rus.armor: 1
+			doctrine.rus.arty: 1
+			doctrine.chn.air: 1
+			doctrine.chn.industrial: 1
+			doctrine.tur.recon: 1
+			doctrine.tur.rapid: 1
+			doctrine.uk.specops: 1
+			doctrine.uk.intel: 1
+			doctrine.ind.missile: 1
+			doctrine.ind.networked: 1
+	BaseBuilderBotModule@normal:
+		BuildingQueues: Building, Command
+		BuildingFractions:
+			thcom: 2
+			doctrine.usa.air: 1
+			doctrine.usa.networked: 1
+			doctrine.rus.armor: 1
+			doctrine.rus.arty: 1
+			doctrine.chn.air: 1
+			doctrine.chn.industrial: 1
+			doctrine.tur.recon: 1
+			doctrine.tur.rapid: 1
+			doctrine.uk.specops: 1
+			doctrine.uk.intel: 1
+			doctrine.ind.missile: 1
+			doctrine.ind.networked: 1
+		BuildingLimits:
+			thcom: 1
+			doctrine.usa.air: 1
+			doctrine.usa.networked: 1
+			doctrine.rus.armor: 1
+			doctrine.rus.arty: 1
+			doctrine.chn.air: 1
+			doctrine.chn.industrial: 1
+			doctrine.tur.recon: 1
+			doctrine.tur.rapid: 1
+			doctrine.uk.specops: 1
+			doctrine.uk.intel: 1
+			doctrine.ind.missile: 1
+			doctrine.ind.networked: 1
+	BaseBuilderBotModule@turtle:
+		BuildingQueues: Building, Command
+		BuildingFractions:
+			thcom: 2
+			doctrine.usa.air: 1
+			doctrine.usa.networked: 1
+			doctrine.rus.armor: 1
+			doctrine.rus.arty: 1
+			doctrine.chn.air: 1
+			doctrine.chn.industrial: 1
+			doctrine.tur.recon: 1
+			doctrine.tur.rapid: 1
+			doctrine.uk.specops: 1
+			doctrine.uk.intel: 1
+			doctrine.ind.missile: 1
+			doctrine.ind.networked: 1
+		BuildingLimits:
+			thcom: 1
+			doctrine.usa.air: 1
+			doctrine.usa.networked: 1
+			doctrine.rus.armor: 1
+			doctrine.rus.arty: 1
+			doctrine.chn.air: 1
+			doctrine.chn.industrial: 1
+			doctrine.tur.recon: 1
+			doctrine.tur.rapid: 1
+			doctrine.uk.specops: 1
+			doctrine.uk.intel: 1
+			doctrine.ind.missile: 1
+			doctrine.ind.networked: 1
+	BaseBuilderBotModule@naval:
+		BuildingQueues: Building, Command
+		BuildingFractions:
+			thcom: 2
+			doctrine.usa.air: 1
+			doctrine.usa.networked: 1
+			doctrine.rus.armor: 1
+			doctrine.rus.arty: 1
+			doctrine.chn.air: 1
+			doctrine.chn.industrial: 1
+			doctrine.tur.recon: 1
+			doctrine.tur.rapid: 1
+			doctrine.uk.specops: 1
+			doctrine.uk.intel: 1
+			doctrine.ind.missile: 1
+			doctrine.ind.networked: 1
+		BuildingLimits:
+			thcom: 1
+			doctrine.usa.air: 1
+			doctrine.usa.networked: 1
+			doctrine.rus.armor: 1
+			doctrine.rus.arty: 1
+			doctrine.chn.air: 1
+			doctrine.chn.industrial: 1
+			doctrine.tur.recon: 1
+			doctrine.tur.rapid: 1
+			doctrine.uk.specops: 1
+			doctrine.uk.intel: 1
+			doctrine.ind.missile: 1
+			doctrine.ind.networked: 1
+
+	# --- Fire the doctrine support powers (merges new decisions into the shared ra SupportPowerBotModule).
+	# Offensive strikes (CAS / barrage / drone-swarm / cruise / recon flyover) target enemy structures;
+	# the airborne reinforcement drops near the enemy. Only the power the AI actually bought is ever ready.
+	SupportPowerBotModule:
+		Decisions:
+			doctrine-strike-usa:
+				OrderName: FederationSweepStrike
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			doctrine-strike-rus:
+				OrderName: NorthernUnionSaturationBarrage
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			doctrine-strike-chn:
+				OrderName: ChnDroneSwarm
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			doctrine-strike-ind:
+				OrderName: SubcontinentCruiseStrike
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			doctrine-recon-uk:
+				OrderName: UkReconOverflight
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			doctrine-recon-tur:
+				OrderName: AnatolianUavSweep
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			doctrine-para-tur:
+				OrderName: AnatolianRapidDeploy
+				MinimumAttractiveness: 5
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 8c0
+				Consideration@2:
+					Against: Enemy
+					Types: Water
+					Attractiveness: -5
+					TargetMetric: None
+					CheckRadius: 8c0
+			doctrine-para-uk:
+				OrderName: UkSpecOpsInsertion
+				MinimumAttractiveness: 5
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 8c0
+				Consideration@2:
+					Against: Enemy
+					Types: Water
+					Attractiveness: -5
+					TargetMetric: None
+					CheckRadius: 8c0
+
+	# --- Air-squad classification unchanged (no doctrine-unlocked unit is an aircraft). ---
 	SquadManagerBotModule@rush:
 		AirUnitsTypes: mig, yak, heli, hind, mh60, specter, wingloong, bayrak, reaper, hayabusa, tejas
 	SquadManagerBotModule@normal:
