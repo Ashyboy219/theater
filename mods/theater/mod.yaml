@@ -105,6 +105,7 @@ Rules:
 	theater|rules/theater-doctrine-tur.yaml
 	theater|rules/theater-doctrine-uk.yaml
 	theater|rules/theater-doctrine-ind.yaml
+	theater|rules/theater-roster.yaml
 
 Sequences:
 	ra|sequences/ships.yaml
@@ -200,7 +201,7 @@ FluentMessages:
 	ra|fluent/rules.ftl
 	theater|fluent/theater.ftl
 
-AllowUnusedFluentMessagesInExternalPackages: false
+AllowUnusedFluentMessagesInExternalPackages: true
 
 Weapons:
 	ra|weapons/explosions.yaml

@@ -1,0 +1,136 @@
+# THEATER — modern land-war roster pass.
+#
+# Fills combined-arms ROLE GAPS in the shared Allied baseline with grounded-modern units (reusing stock
+# bodies/weapons — no new art, no new C#), and grounds the names of the core land units. Faction identity
+# stays in the uniques (theater-units.yaml) + doctrines (theater-doctrine-*.yaml); these shared roles just
+# make every faction's combined-arms richer. All gated on the Allied tokens (theater-common.yaml grants
+# them to the 8 contemporary factions), so the whole roster is buildable by all of them (incl. Japan/Germany).
+#
+# Roles & counters:
+#   Rifleman (E1) ...... cheap anti-infantry line; countered by armor/artillery.
+#   Anti-Tank Team (E3)  anti-armor missile team (+ light AA); countered by infantry/artillery.
+#   Air-Defense Team ... DEDICATED anti-air (AA-only, helpless vs ground); countered by any ground unit.
+#   Scout Team ......... recon/forward-observer: deep vision + cloak detection, weak in a fight.
+#   IFV ................ troop transport + autocannon fire support; countered by anti-tank.
+#   Mobile SAM ......... mobile anti-air vehicle; countered by ground units.
+#   Light Tank (1TNK) .. fast light armor;  Main Battle Tank (2TNK) .. core armor;  SPG (ARTY) .. siege.
+
+# ============================ NEW shared infantry roles ============================
+
+# Air-Defense Team (MANPADS) — strip the rocket soldier (E3) down to its anti-air missile so it becomes a
+# dedicated AA specialist: it can ONLY engage aircraft (RedEye is air-only), so it must be escorted. The
+# Anti-Tank Team (E3, kept) covers armor; this covers the sky. Cheap, so you can spread AA cover.
+manpads:
+	Inherits: E3
+	RenderSprites:
+		Image: e3
+	-Armament@SECONDARY:
+	-Armament@GARRISONEDSECONDARY:
+	Valued:
+		Cost: 200
+	Tooltip:
+		Name: actor-manpads.name
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Soldier
+		BuildPaletteOrder: 31
+		Prerequisites: ~barracks, ~techlevel.low
+		Description: actor-manpads.description
+
+# Scout Team — a forward observer: a rifleman (E1) with a big sight radius and cloak detection. Its value
+# is information (spot the push, reveal stealth), not firepower — it dies to almost anything.
+scout:
+	Inherits: E1
+	RenderSprites:
+		Image: e1
+	Valued:
+		Cost: 200
+	Tooltip:
+		Name: actor-scout.name
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Soldier
+		BuildPaletteOrder: 32
+		Prerequisites: ~barracks, ~techlevel.low
+		Description: actor-scout.description
+	RevealsShroud:
+		Range: 10c0
+		Type: CenterPosition
+	DetectCloaked:
+		Range: 6c0
+		DetectionTypes: Cloak
+	RenderDetectionCircle:
+
+# ============================ NEW shared vehicle roles ============================
+
+# IFV — the shared infantry fighting vehicle: the Soviet APC body (carries 5) re-gated to the Allied/NATO
+# roster and up-gunned to a 25mm autocannon (fire support), distinct from Russia's M60mg Redoubt bunker.
+ifv:
+	Inherits: APC
+	RenderSprites:
+		Image: apc
+	Valued:
+		Cost: 800
+	Tooltip:
+		Name: actor-ifv.name
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 121
+		Prerequisites: ~vehicles.allies, ~techlevel.low
+		Description: actor-ifv.description
+	Armament:
+		Weapon: 25mm
+		LocalOffset: 85,0,171
+		MuzzleSequence: muzzle
+
+# Mobile SAM — a wheeled air-defense vehicle (the recon-jeep chassis with an AA missile). Targets aircraft
+# only; pair it with the army to deny the sky on the move. Helpless against ground attack.
+mobsam:
+	Inherits: JEEP
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	RenderSprites:
+		Image: jeep
+	Valued:
+		Cost: 700
+	Tooltip:
+		Name: actor-mobsam.name
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 131
+		Prerequisites: dome, ~vehicles.allies, ~techlevel.medium
+		Description: actor-mobsam.description
+	Armament:
+		Weapon: RedEye
+		LocalOffset: 128,0,43
+		MuzzleSequence: muzzle
+
+# ============================ Grounded names for the core land roster ============================
+# Tooltip.Name overrides only (cosmetic) — the faction uniques + doctrine units keep their own names.
+
+E1:
+	Tooltip:
+		Name: actor-rifleman.name
+E3:
+	Tooltip:
+		Name: actor-at-team.name
+E6:
+	Tooltip:
+		Name: actor-combat-engineer.name
+MEDI:
+	Tooltip:
+		Name: actor-combat-medic.name
+E7:
+	Tooltip:
+		Name: actor-special-forces.name
+JEEP:
+	Tooltip:
+		Name: actor-recon-vehicle.name
+1TNK:
+	Tooltip:
+		Name: actor-light-tank.name
+2TNK:
+	Tooltip:
+		Name: actor-mbt.name
+ARTY:
+	Tooltip:
+		Name: actor-spg.name

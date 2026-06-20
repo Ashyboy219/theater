@@ -36,6 +36,10 @@ Player:
 			dongfeng: 20
 			arjun: 14
 			raider: 8
+			manpads: 12
+			scout: 6
+			ifv: 12
+			mobsam: 10
 	UnitBuilderBotModule@normal:
 		UnitsToBuild:
 			specter: 10
@@ -55,6 +59,10 @@ Player:
 			dongfeng: 20
 			arjun: 14
 			raider: 8
+			manpads: 12
+			scout: 6
+			ifv: 12
+			mobsam: 10
 	UnitBuilderBotModule@turtle:
 		UnitsToBuild:
 			specter: 10
@@ -74,6 +82,10 @@ Player:
 			dongfeng: 20
 			arjun: 14
 			raider: 8
+			manpads: 12
+			scout: 6
+			ifv: 12
+			mobsam: 10
 	UnitBuilderBotModule@naval:
 		UnitsToBuild:
 			specter: 10
@@ -93,6 +105,10 @@ Player:
 			dongfeng: 20
 			arjun: 14
 			raider: 8
+			manpads: 12
+			scout: 6
+			ifv: 12
+			mobsam: 10
 
 	# --- Build the Theater Command + buy one doctrine branch from the Command queue (per personality). ---
 	# BuildingQueues REPLACES (so restate Building + add Command); BuildingFractions/Limits MERGE (add to

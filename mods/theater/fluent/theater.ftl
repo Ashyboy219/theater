@@ -215,3 +215,42 @@ actor-raider =
 actor-arjun =
     .name = Arjun Heavy MBT
     .description = Heavily armored main battle tank with a 120mm gun. Anchors an Integrated Battle Group.
+
+## ============================ Modern land roster ============================
+
+## New shared combined-arms roles
+actor-manpads =
+    .name = Air-Defense Team
+    .description = Dedicated anti-air infantry (man-portable SAM). Shoots down aircraft but cannot fight on the ground — keep it escorted.
+
+actor-scout =
+    .name = Scout Team
+    .description = Forward observer — a wide sight radius and cloak detection. Spots the enemy and reveals stealth; weak in a fight.
+
+actor-ifv =
+    .name = IFV
+    .description = Infantry fighting vehicle. Carries a squad and supports it with a 25mm autocannon.
+
+actor-mobsam =
+    .name = Mobile SAM
+    .description = Mobile anti-air vehicle. Denies the sky on the move; helpless against ground attack.
+
+## Grounded names for the core land roster
+actor-rifleman =
+    .name = Rifleman
+actor-at-team =
+    .name = Anti-Tank Team
+actor-combat-engineer =
+    .name = Combat Engineer
+actor-combat-medic =
+    .name = Combat Medic
+actor-special-forces =
+    .name = Special Forces
+actor-recon-vehicle =
+    .name = Recon Vehicle
+actor-light-tank =
+    .name = Light Tank
+actor-mbt =
+    .name = Main Battle Tank
+actor-spg =
+    .name = Self-Propelled Artillery
