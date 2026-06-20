@@ -25,3 +25,28 @@ cap.firecontrol:
 	RenderSprites:
 		Image: dome
 	ProvidesPrerequisite@self:
+
+# --- Formations: unlocks formation movement (Line / Column / Wedge / Box). Until bought, grouped moves
+#     behave normally. Pick a shape with the formation toggle, or /formation line|column|wedge|box|off.
+cap.formations:
+	Interactable:
+	Tooltip:
+		Name: actor-cap-formations.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 20
+		BuildLimit: 1
+		BuildDuration: 250
+		BuildDurationModifier: 100
+		Description: actor-cap-formations.description
+		Icon: icon
+	Valued:
+		Cost: 1500
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:
+
+# Local (unsynced) holder for the selected formation shape. Read by FormationOrderGenerator; it never
+# enters the simulation tick or the sync hash.
+World:
+	FormationState:

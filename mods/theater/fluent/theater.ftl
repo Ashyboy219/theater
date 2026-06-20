@@ -112,3 +112,7 @@ button-production-types-command-tooltip = Command Capabilities
 actor-cap-firecontrol =
     .name = Fire Control
     .description = Unlocks army-wide targeting focus — order your whole force to prioritise enemy structures, armor, or infantry. Bought once; lasts the match.
+
+actor-cap-formations =
+    .name = Formations
+    .description = Unlocks formation movement — grouped units spread into a Line, Column, Wedge, or Box at the destination instead of funneling single-file. Bought once; lasts the match.

@@ -279,7 +279,7 @@ Missions:
 MapGrid:
 	Type: Rectangular
 
-DefaultOrderGenerator: UnitOrderGenerator
+DefaultOrderGenerator: FormationOrderGenerator
 
 SupportsMapsFrom: ra
 

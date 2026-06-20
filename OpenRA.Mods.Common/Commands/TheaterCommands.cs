@@ -24,6 +24,7 @@ namespace OpenRA.Mods.Common.Commands
 	public class TheaterCommands : IChatCommand, IWorldLoaded
 	{
 		static readonly string[] FireControlPrereq = ["cap.firecontrol"];
+		static readonly string[] FormationsPrereq = ["cap.formations"];
 
 		World world;
 		ChatCommands console;
@@ -46,6 +47,10 @@ namespace OpenRA.Mods.Common.Commands
 			// Army-wide targeting doctrine (command layer).
 			console.RegisterCommand("target", this);
 			console.RegisterCommand("focus", this);
+
+			// Movement formation (Formations capability).
+			console.RegisterCommand("formation", this);
+			console.RegisterCommand("form", this);
 		}
 
 		public void InvokeCommand(string name, string arg)
@@ -75,6 +80,11 @@ namespace OpenRA.Mods.Common.Commands
 				case "target":
 				case "focus":
 					SetTargetDoctrine(arg);
+					return;
+
+				case "formation":
+				case "form":
+					SetFormation(arg);
 					return;
 			}
 		}
@@ -121,6 +131,49 @@ namespace OpenRA.Mods.Common.Commands
 				_ => "BALANCED — normal targeting.",
 			};
 			TextNotificationsManager.Debug($"Army targeting doctrine: {label}");
+		}
+
+		// Movement formation: pick the shape grouped moves arrange into at the destination.
+		void SetFormation(string arg)
+		{
+			var player = world.LocalPlayer;
+			if (player == null)
+			{
+				TextNotificationsManager.Debug("No formations available (spectating?).");
+				return;
+			}
+
+			FormationShape shape;
+			switch ((arg ?? "").Trim().ToLowerInvariant())
+			{
+				case "line": shape = FormationShape.Line; break;
+				case "column": case "col": shape = FormationShape.Column; break;
+				case "wedge": case "v": shape = FormationShape.Wedge; break;
+				case "box": case "grid": shape = FormationShape.Box; break;
+				case "off": case "none": case "": shape = FormationShape.None; break;
+				default:
+					TextNotificationsManager.Debug("Usage: /formation line | column | wedge | box | off");
+					return;
+			}
+
+			if (shape != FormationShape.None)
+			{
+				var techTree = player.PlayerActor.TraitOrDefault<TechTree>();
+				if (techTree == null || !techTree.HasPrerequisites(FormationsPrereq))
+				{
+					TextNotificationsManager.Debug("Formations not acquired — build them at the Theater Command to unlock.");
+					return;
+				}
+			}
+
+			var formationState = world.WorldActor.TraitOrDefault<FormationState>();
+			if (formationState == null)
+				return;
+
+			formationState.Shape = shape;
+			TextNotificationsManager.Debug(shape == FormationShape.None
+				? "Formation OFF — units move normally."
+				: $"Formation: {shape} — grouped moves arrange into a {shape.ToString().ToLowerInvariant()} at the destination.");
 		}
 
 		// Toggles a DeveloperMode cheat and prints a state-accurate message. currentState reads the value
