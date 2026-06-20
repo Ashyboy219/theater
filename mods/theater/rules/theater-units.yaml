@@ -127,23 +127,17 @@ PATHFINDER:
 		DetectionTypes: Cloak
 	RenderDetectionCircle:
 
-# Eastern Maritime Pact (Japan) — autonomous combat robot.
+# Eastern Maritime Pact (Japan) — grounded JGSDF anti-tank team (no sci-fi robot; internal id is legacy).
 KUNAI:
-	Inherits: SHOK
+	Inherits: E3
 	RenderSprites:
-		Image: shok
+		Image: e3
 	Tooltip:
 		Name: actor-kunai.name
 	Buildable:
 		Queue: Infantry
 		BuildPaletteOrder: 91
 		Prerequisites: tech.eastern_maritime, tent
-	# TOY — autonomous combat robot: self-repairs in the field once it breaks contact.
-	ChangesHealth:
-		Step: 50
-		Delay: 5
-		StartIfBelow: 100
-		DamageCooldown: 150
 
 # Subcontinent Federation (India) — supersonic cruise-missile launcher.
 GARUDA:

@@ -32,8 +32,8 @@ faction-isles_coalition =
 
 faction-eastern_maritime =
     .name = Eastern Maritime Pact
-    .description = Japan — "Autonomy holds the line." DURABLE but low-offense (turtle); point defense.
-     Uniques: Kunai Combat Robot, Aegis Turret, Hayabusa Interceptor.
+    .description = Japan — "Hold the line, deny the sky." DURABLE but low-offense (turtle); layered point defense.
+     Uniques: JGSDF Anti-Tank Team, Aegis Turret, Hayabusa Interceptor.
 
 faction-subcontinent_federation =
     .name = Subcontinent Federation
@@ -64,7 +64,7 @@ actor-pathfinder =
     .name = Pathfinder Team
 
 actor-kunai =
-    .name = Kunai Combat Robot
+    .name = JGSDF Anti-Tank Team
 
 actor-garuda =
     .name = Garuda Cruise-Missile Launcher

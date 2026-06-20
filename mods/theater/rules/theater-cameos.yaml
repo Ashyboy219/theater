@@ -16,9 +16,6 @@ LOEWE:
 PATHFINDER:
 	Buildable:
 		Icon: pathfinder-icon
-KUNAI:
-	Buildable:
-		Icon: kunai-icon
 GARUDA:
 	Buildable:
 		Icon: garuda-icon
