@@ -13,6 +13,18 @@ SPECTER:
 		Queue: Aircraft
 		BuildPaletteOrder: 90
 		Prerequisites: tech.federation, afld
+	# TOY — stealth strike jet: cloaks when idle, snaps visible the instant it fires or is hit.
+	Cloak:
+		InitialDelay: 125
+		CloakDelay: 175
+		UncloakOn: Attack, Damage
+		DetectionTypes: Cloak
+		CloakSound: appear1.aud
+		UncloakSound: appear1.aud
+		PauseOnCondition: cloak-force-disabled
+	GrantConditionOnDamageState@UNCLOAK:
+		Condition: cloak-force-disabled
+		ValidDamageStates: Critical
 
 # Northern Union (Russia) — EW heavy command tank.
 BASTION:
@@ -25,6 +37,19 @@ BASTION:
 		Queue: Vehicle
 		BuildPaletteOrder: 90
 		Prerequisites: tech.northern_union, weap
+	# TOY — electronic warfare: enemy guided missiles (AA/rockets) veer off near this tank.
+	JamsMissiles:
+		Range: 5c0
+		DeflectionRelationships: Neutral, Enemy
+	ProximityExternalCondition@JAMMER:
+		Range: 14c0
+		ValidRelationships: Enemy, Neutral
+		Condition: jammed
+	WithRangeCircle@JAMMER:
+		Type: jammer
+		Range: 14c0
+		Color: 0000FF80
+	RenderJammerCircle:
 
 # Continental Bloc (China) — cheap mass strike drone.
 WINGLOONG:
@@ -37,6 +62,29 @@ WINGLOONG:
 		Queue: Aircraft
 		BuildPaletteOrder: 91
 		Prerequisites: tech.continental_bloc, afld
+	# TOY — drone hive: while a Wing Loong is alive, call in a 3-drone strike on a target area.
+	AirstrikePower@dronehive:
+		OrderName: WingloongDroneSwarm
+		Prerequisites: tech.continental_bloc
+		Icon: parabombs
+		ChargeInterval: 4500
+		Name: actor-wingloong.dronehive-name
+		Description: actor-wingloong.dronehive-description
+		SelectTargetSpeechNotification: SelectTarget
+		SelectTargetTextNotification: notification-select-target
+		UnitType: badr.bomber
+		SquadSize: 3
+		SquadOffset: 1792,1792,0
+		QuantizedFacings: 8
+		CameraActor: camera
+		CameraRemoveDelay: 150
+		DisplayBeacon: true
+		BeaconPoster: pbmbicon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
 
 # Rhine Compact (Germany) — most durable MBT.
 LOEWE:
@@ -61,6 +109,23 @@ PATHFINDER:
 		Queue: Infantry
 		BuildPaletteOrder: 90
 		Prerequisites: tech.isles_coalition, tent
+	# TOY — stealth recon infiltrator: cloaks (breaks on move/attack), sees far, and detects enemy stealth.
+	Cloak:
+		InitialDelay: 250
+		CloakDelay: 120
+		UncloakOn: Attack, Move, Unload, Infiltrate, Demolish
+		DetectionTypes: Cloak
+		PauseOnCondition: cloak-force-disabled
+	GrantConditionOnDamageState@UNCLOAK:
+		Condition: cloak-force-disabled
+		ValidDamageStates: Critical
+	RevealsShroud:
+		Range: 9c0
+		Type: CenterPosition
+	DetectCloaked:
+		Range: 6c0
+		DetectionTypes: Cloak
+	RenderDetectionCircle:
 
 # Eastern Maritime Pact (Japan) — autonomous combat robot.
 KUNAI:
@@ -73,6 +138,12 @@ KUNAI:
 		Queue: Infantry
 		BuildPaletteOrder: 91
 		Prerequisites: tech.eastern_maritime, tent
+	# TOY — autonomous combat robot: self-repairs in the field once it breaks contact.
+	ChangesHealth:
+		Step: 50
+		Delay: 5
+		StartIfBelow: 100
+		DamageCooldown: 150
 
 # Subcontinent Federation (India) — supersonic cruise-missile launcher.
 GARUDA:
@@ -97,6 +168,10 @@ BAYRAK:
 		Queue: Aircraft
 		BuildPaletteOrder: 92
 		Prerequisites: tech.anatolian_alliance, afld
+	# TOY — cheap loiter recon drone: huge sight radius, sees the battlefield first.
+	RevealsShroud:
+		MinRange: 0
+		Range: 14c0
 
 # ============================================================================
 # Additional faction uniques (each faction gets 2-3 total). All reuse complete

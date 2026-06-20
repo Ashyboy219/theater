@@ -54,6 +54,8 @@ actor-bastion =
 
 actor-wingloong =
     .name = Wing Loong Swarm Drone
+    .dronehive-name = Drone Swarm
+    .dronehive-description = Launch a swarm of strike drones at the target area.
 
 actor-loewe =
     .name = Loewe Heavy MBT
