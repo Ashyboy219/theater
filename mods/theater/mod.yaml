@@ -106,6 +106,7 @@ Rules:
 	theater|rules/theater-doctrine-uk.yaml
 	theater|rules/theater-doctrine-ind.yaml
 	theater|rules/theater-roster.yaml
+	theater|rules/theater-roster-factions.yaml
 
 Sequences:
 	ra|sequences/ships.yaml

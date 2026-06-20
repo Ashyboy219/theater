@@ -254,3 +254,33 @@ actor-mbt =
     .name = Main Battle Tank
 actor-spg =
     .name = Self-Propelled Artillery
+
+## ============================ Per-faction land variants ============================
+
+actor-bradley =
+    .name = M2 Bradley IFV
+    .description = USA — advanced networked IFV: 25mm autocannon, anti-tank ATGM, carries a squad, extra sight.
+
+actor-jtac =
+    .name = JTAC Humvee
+    .description = USA — recon + precision strike: wide vision and a Hellfire-class missile to designate and kill priority targets. Fragile.
+
+actor-bmpt =
+    .name = BMPT Terminator
+    .description = Russia — heavy tank-support: twin autocannons shred infantry and light vehicles, plus an anti-tank missile. No transport; escort for the armored fist.
+
+actor-loiter =
+    .name = Loitering-Munition Truck
+    .description = China — cheap, fast launcher for a precision kamikaze drone against armor and structures. Field it in numbers; it dies if caught.
+
+actor-cobra =
+    .name = Cobra Recon-Strike
+    .description = Turkey — fast wheeled scout/harasser: 25mm autocannon and a wide sight radius. Gets eyes and fire forward fast.
+
+actor-jackal =
+    .name = Jackal Recon
+    .description = UK — fast mobile counter-stealth sensor: wide vision and cloak detection on the move. Reveals enemy stealth.
+
+actor-namica =
+    .name = NAMICA Tank-Destroyer
+    .description = India — standoff ATGM carrier: kills armor from range but is helpless against infantry. Screen it.
