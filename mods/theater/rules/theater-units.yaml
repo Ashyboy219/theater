@@ -37,6 +37,7 @@ BASTION:
 		Queue: Vehicle
 		BuildPaletteOrder: 90
 		Prerequisites: tech.northern_union, weap
+		Description: actor-bastion.description
 	# TOY — electronic warfare: enemy guided missiles (AA/rockets) veer off near this tank.
 	JamsMissiles:
 		Range: 5c0
@@ -297,6 +298,7 @@ COMMS:
 		Queue: Vehicle
 		BuildPaletteOrder: 93
 		Prerequisites: tech.isles_coalition, dome
+		Description: actor-comms.description
 
 # Eastern Maritime (Japan) — point-defence missile turret.
 AEGIS:
@@ -379,3 +381,4 @@ KORAL:
 		Queue: Vehicle
 		BuildPaletteOrder: 93
 		Prerequisites: tech.anatolian_alliance, dome
+		Description: actor-koral.description

@@ -104,9 +104,11 @@ BARBAROS:
 		MinRange: 6c0
 		Range: 11c0
 		RevealGeneratedShroud: False
+	# A recon platform: detects BOTH submerged subs (sonar) AND cloaked land/air stealth in its patrol radius,
+	# so Turkey's USV is the eyes of the littoral — spots what's hidden, on the surface and below it.
 	DetectCloaked:
 		Range: 6c0
-		DetectionTypes: Underwater
+		DetectionTypes: Underwater, Cloak
 
 # ============================ UK (Isles Coalition) — intelligence attack submarine ============================
 # Astute-class SSN: a quieter hunter-killer with the best sonar in the game (detects subs AND cloak) and a
@@ -150,3 +152,8 @@ KOLKATA:
 		Cost: 1300
 	Health:
 		HP: 50000
+	# Layered sea control includes the sensor picture: this hull's radar/sonar sees further than a stock
+	# destroyer and detects cloaked stealth as well as submerged subs — India's standoff fleet fights informed.
+	DetectCloaked:
+		Range: 7c0
+		DetectionTypes: Underwater, Cloak

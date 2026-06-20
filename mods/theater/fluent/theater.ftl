@@ -51,6 +51,7 @@ actor-specter =
 
 actor-bastion =
     .name = Bastion EW Command Tank
+    .description = Electronic-warfare tank. Deflects enemy guided missiles (ATGMs, SAMs, AA) near it and blacks out enemy radar. Counter with gun-armed units — autocannons, flak and tank guns fire straight through the jamming.
 
 actor-wingloong =
     .name = Wing Loong Swarm Drone
@@ -85,6 +86,7 @@ actor-pioneer =
     .name = Pioneer Combat-Engineer
 actor-comms =
     .name = Comms EW Cell
+    .description = Mobile EW cell. Jams enemy guided missiles and radar across a wide radius. Fragile — and gun weapons (autocannon, flak, naval guns) ignore the jamming, so screen it or it dies.
 actor-aegis =
     .name = Aegis Point-Defense Turret
 actor-hayabusa =
@@ -95,6 +97,7 @@ actor-tejas =
     .name = Tejas Strike Fighter
 actor-koral =
     .name = Koral EW Van
+    .description = Rapid EW van. Jams enemy guided missiles and radar, and sees far. Expendable; countered by gun-armed units that ignore the jamming.
 actor-raptor =
     .name = Raptor Air-Superiority Fighter
 actor-tunguska =

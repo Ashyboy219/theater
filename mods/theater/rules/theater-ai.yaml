@@ -55,6 +55,9 @@ Player:
 			barbaros: 8
 			astute: 10
 			kolkata: 8
+			pathfinder: 6
+			comms: 8
+			koral: 8
 	UnitBuilderBotModule@normal:
 		UnitsToBuild:
 			specter: 10
@@ -93,6 +96,9 @@ Player:
 			barbaros: 8
 			astute: 10
 			kolkata: 8
+			pathfinder: 6
+			comms: 8
+			koral: 8
 	UnitBuilderBotModule@turtle:
 		UnitsToBuild:
 			specter: 10
@@ -131,6 +137,9 @@ Player:
 			barbaros: 8
 			astute: 10
 			kolkata: 8
+			pathfinder: 6
+			comms: 8
+			koral: 8
 	UnitBuilderBotModule@naval:
 		UnitsToBuild:
 			specter: 10
@@ -169,6 +178,9 @@ Player:
 			barbaros: 8
 			astute: 10
 			kolkata: 8
+			pathfinder: 6
+			comms: 8
+			koral: 8
 
 	# --- Build the Theater Command + buy one doctrine branch from the Command queue (per personality). ---
 	# BuildingQueues REPLACES (so restate Building + add Command); BuildingFractions/Limits MERGE (add to
