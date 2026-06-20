@@ -96,10 +96,14 @@
 	SpeedMultiplier@doc-sf:
 		RequiresCondition: doctrine-subcontinent_federation
 		Modifier: 88
-	# Anatolian Alliance — attritable (cheap eyes, dies fast).
+	# Anatolian Alliance — attritable (cheap eyes, dies fast) BUT FAST: rapid-response mobility is the
+	# identity that separates Turkey from USA (durable long-range air) and China (slow mass ground).
 	DamageMultiplier@doc-aa:
 		RequiresCondition: doctrine-anatolian_alliance
 		Modifier: 115
+	SpeedMultiplier@doc-aa:
+		RequiresCondition: doctrine-anatolian_alliance
+		Modifier: 112
 
 # ============================ INFANTRY TIER ============================
 ^Infantry:
@@ -155,10 +159,13 @@
 	FirepowerMultiplier@doc-em:
 		RequiresCondition: doctrine-eastern_maritime
 		Modifier: 90
-	# Anatolian Alliance — attritable.
+	# Anatolian Alliance — attritable BUT FAST (rapid-response mobility).
 	DamageMultiplier@doc-aa:
 		RequiresCondition: doctrine-anatolian_alliance
 		Modifier: 115
+	SpeedMultiplier@doc-aa:
+		RequiresCondition: doctrine-anatolian_alliance
+		Modifier: 112
 
 # ============================ AIR TIER (planes + helicopters) ============================
 ^Plane:
@@ -168,10 +175,14 @@
 	GrantConditionOnPrerequisite@doc-aa:
 		Condition: doctrine-anatolian_alliance
 		Prerequisites: tech.anatolian_alliance
-	# Federation — long reach, far-seeing, cheap/fast air (the doctrine's core).
+	# Federation — long reach, far-seeing, PRECISE, cheap/fast air (the doctrine's core). The precision
+	# (tighter aim) is what separates USA's quality air from Turkey's cheap, expendable far-seeing air.
 	RangeMultiplier@doc-fed:
 		RequiresCondition: doctrine-federation
 		Modifier: 115
+	InaccuracyMultiplier@doc-fed:
+		RequiresCondition: doctrine-federation
+		Modifier: 90
 	RevealsShroudMultiplier@doc-fed:
 		RequiresCondition: doctrine-federation
 		Modifier: 120
