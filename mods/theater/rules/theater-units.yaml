@@ -187,6 +187,30 @@ REAPER:
 		BuildPaletteOrder: 93
 		Prerequisites: tech.federation, hpad
 
+# Federation (USA) — air-superiority fighter (the air-dominance identity). A dedicated air-to-air
+# interceptor — the role NO other faction fields a fighter for (everyone else denies air with ground
+# SAMs). Pure anti-air: helpless vs ground, so it owns the sky for SPECTER/REAPER to strike under, and
+# it is still killable by enemy SAMs/MANPADS. Ammo-limited (rearms at the airfield). Reuses the MIG body.
+RAPTOR:
+	Inherits: MIG
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	RenderSprites:
+		Image: mig
+	Tooltip:
+		Name: actor-raptor.name
+	Buildable:
+		Queue: Aircraft
+		BuildAtProductionType: Plane
+		BuildPaletteOrder: 89
+		Prerequisites: tech.federation, afld
+	Valued:
+		Cost: 1800
+	Armament:
+		Weapon: Nike
+	AutoTarget:
+		InitialStance: Defend
+		InitialStanceAI: Defend
+
 # Northern Union (Russia) — salvo rocket battery (mass fires).
 GRAD:
 	Inherits: V2RL
@@ -210,6 +234,33 @@ REDOUBT:
 		Queue: Vehicle
 		BuildPaletteOrder: 94
 		Prerequisites: tech.northern_union, weap
+
+# Northern Union (Russia) — heavy mobile air-defense (Tunguska/Pantsir-class SPAAG). A long-range anti-air
+# missile on a tanky tracked chassis (Russia's baseline armor bonus applies), so it umbrellas the slow
+# Russian advance and makes Russian airspace deadly. Pure AA — helpless vs ground attack, so it must be
+# escorted; that is its counter. Russia is the air-DENIAL faction (it fields no offensive aircraft). Mirrors
+# the proven Mobile SAM pattern (ground body + ^AutoTargetAllAssaultMove + AA missile) on a heavier chassis.
+TUNGUSKA:
+	Inherits: 2TNK
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	RenderSprites:
+		Image: 2tnk
+	Tooltip:
+		Name: actor-tunguska.name
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 96
+		Prerequisites: tech.northern_union, dome, weap
+	Valued:
+		Cost: 950
+	Armament:
+		Weapon: Nike
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 9c0
+	AutoTarget:
+		InitialStance: Defend
+		InitialStanceAI: Defend
 
 # Continental Bloc (China) — cheap printed artillery.
 DAZHBOG:
@@ -262,6 +313,7 @@ AEGIS:
 # Eastern Maritime (Japan) — autonomous interceptor drone (anti-air).
 HAYABUSA:
 	Inherits: YAK
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
 	RenderSprites:
 		Image: yak
 	Tooltip:
@@ -270,6 +322,13 @@ HAYABUSA:
 		Queue: Aircraft
 		BuildPaletteOrder: 93
 		Prerequisites: tech.eastern_maritime, afld
+	# Real interceptor: the YAK body is a GROUND strafer by default — swap in an air-to-air missile and
+	# air-targeting so it actually shoots down aircraft (the anti-air drone its name implies). Pure AA.
+	Armament:
+		Weapon: Nike
+	AutoTarget:
+		InitialStance: Defend
+		InitialStanceAI: Defend
 
 # Subcontinent Federation (India) — layered SAM battery.
 AKASH:
@@ -282,6 +341,16 @@ AKASH:
 		Queue: Defense
 		BuildPaletteOrder: 94
 		Prerequisites: tech.subcontinent_federation, dome
+	# Layered air defense: a long-range standoff SAM (Nike) on a hardened battery — outranges and outlasts
+	# the flak AA gun it replaces, so India's airspace is tiered (this on top; shared MANPADS / Mobile SAM
+	# / AA-gun form the short-range layer below). India is the layered-air-defense faction.
+	Health:
+		HP: 60000
+	Armament:
+		Weapon: Nike
+	RevealsShroud:
+		MinRange: 5c0
+		Range: 9c0
 
 # Subcontinent Federation (India) — multirole strike fighter (upper air layer).
 TEJAS:
@@ -294,6 +363,10 @@ TEJAS:
 		Queue: Aircraft
 		BuildPaletteOrder: 94
 		Prerequisites: tech.subcontinent_federation, afld
+	# Resilient conventional air: a hardened airframe (more HP than the baseline strike jet) so India's
+	# strike fighter survives a SAM pass and keeps fighting — the "resilient air power" identity.
+	Health:
+		HP: 11000
 
 # Anatolian Alliance (Turkey) — electronic-warfare van (blinds enemy radar).
 KORAL:

@@ -47,6 +47,8 @@ Player:
 			cobra: 12
 			jackal: 8
 			namica: 12
+			raptor: 10
+			tunguska: 12
 	UnitBuilderBotModule@normal:
 		UnitsToBuild:
 			specter: 10
@@ -77,6 +79,8 @@ Player:
 			cobra: 12
 			jackal: 8
 			namica: 12
+			raptor: 10
+			tunguska: 12
 	UnitBuilderBotModule@turtle:
 		UnitsToBuild:
 			specter: 10
@@ -107,6 +111,8 @@ Player:
 			cobra: 12
 			jackal: 8
 			namica: 12
+			raptor: 10
+			tunguska: 12
 	UnitBuilderBotModule@naval:
 		UnitsToBuild:
 			specter: 10
@@ -137,6 +143,8 @@ Player:
 			cobra: 12
 			jackal: 8
 			namica: 12
+			raptor: 10
+			tunguska: 12
 
 	# --- Build the Theater Command + buy one doctrine branch from the Command queue (per personality). ---
 	# BuildingQueues REPLACES (so restate Building + add Command); BuildingFractions/Limits MERGE (add to
@@ -356,8 +364,8 @@ Player:
 
 	# --- Air-squad classification unchanged (no doctrine-unlocked unit is an aircraft). ---
 	SquadManagerBotModule@rush:
-		AirUnitsTypes: mig, yak, heli, hind, mh60, specter, wingloong, bayrak, reaper, hayabusa, tejas
+		AirUnitsTypes: mig, yak, heli, hind, mh60, specter, wingloong, bayrak, reaper, hayabusa, tejas, raptor
 	SquadManagerBotModule@normal:
-		AirUnitsTypes: mig, yak, heli, hind, mh60, specter, wingloong, bayrak, reaper, hayabusa, tejas
+		AirUnitsTypes: mig, yak, heli, hind, mh60, specter, wingloong, bayrak, reaper, hayabusa, tejas, raptor
 	SquadManagerBotModule@turtle:
-		AirUnitsTypes: mig, yak, heli, hind, mh60, specter, wingloong, bayrak, reaper, hayabusa, tejas
+		AirUnitsTypes: mig, yak, heli, hind, mh60, specter, wingloong, bayrak, reaper, hayabusa, tejas, raptor

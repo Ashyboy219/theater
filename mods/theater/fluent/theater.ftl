@@ -95,6 +95,10 @@ actor-tejas =
     .name = Tejas Strike Fighter
 actor-koral =
     .name = Koral EW Van
+actor-raptor =
+    .name = Raptor Air-Superiority Fighter
+actor-tunguska =
+    .name = Tunguska Air-Defense System
 
 ## Dev mode
 checkbox-devunlock =
