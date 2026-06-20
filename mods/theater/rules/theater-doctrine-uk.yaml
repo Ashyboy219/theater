@@ -1,0 +1,205 @@
+# ==========================================================================
+# THEATER — Isles Coalition (UK) EXCLUSIVE doctrine choice.
+# Two non-occupying buy-once actors sold from the Theater Command's "Command"
+# queue. Buying one provides doctrine.uk.<branch>; the other lists
+# !doctrine.uk.<branch> in its Buildable Prerequisites so it vanishes from the
+# sidebar (mutual exclusion). BuildLimit:1 hides the bought one. Mirrors the
+# cap.firecontrol pattern in theater-capabilities.yaml exactly. No new C#.
+# ==========================================================================
+
+# --- Special Operations: small elite cloaked-raider force; armor sacrificed.
+doctrine.uk.specops:
+	Interactable:
+	Tooltip:
+		Name: actor-doctrine-uk-specops.name
+	Buildable:
+		Queue: Command
+		BuildLimit: 1
+		BuildDuration: 250
+		BuildDurationModifier: 100
+		BuildPaletteOrder: 30
+		Prerequisites: ~tech.isles_coalition, ~!doctrine.uk.intel
+		Description: actor-doctrine-uk-specops.description
+		Icon: pathfinder-icon
+	Valued:
+		Cost: 2500
+	RenderSprites:
+		Image: e6
+	ProvidesPrerequisite@self:
+
+# --- Intelligence Dominance: map-wide detection + reach; frontline thinned.
+doctrine.uk.intel:
+	Interactable:
+	Tooltip:
+		Name: actor-doctrine-uk-intel.name
+	Buildable:
+		Queue: Command
+		BuildLimit: 1
+		BuildDuration: 250
+		BuildDurationModifier: 100
+		BuildPaletteOrder: 31
+		Prerequisites: ~tech.isles_coalition, ~!doctrine.uk.specops
+		Description: actor-doctrine-uk-intel.description
+		Icon: comms-icon
+	Valued:
+		Cost: 2500
+	RenderSprites:
+		Image: mrj
+	ProvidesPrerequisite@self:
+
+# ==========================================================================
+# Branch stat profiles — LAYER on top of the always-on isles_coalition profile
+# already on these templates in theater-doctrines.yaml. Conditional multiplier
+# traits keyed on doc-uk-<branch>; baseline 100. Integer-only, determinism-safe.
+# DamageMultiplier = damage TAKEN (>100 = more fragile). The ^Vehicle/^Infantry
+# templates already carry the baseline isles_coalition multipliers, so these are
+# ADDED as new @-suffixed traits (they stack with the baseline).
+# ==========================================================================
+
+^Vehicle:
+	# Condition grants on the TEMPLATE (not Player) so the RequiresCondition multipliers below resolve.
+	GrantConditionOnPrerequisite@grant-uk-specops:
+		Condition: doc-uk-specops
+		Prerequisites: doctrine.uk.specops
+	GrantConditionOnPrerequisite@grant-uk-intel:
+		Condition: doc-uk-intel
+		Prerequisites: doctrine.uk.intel
+	# Special Operations — armor is sacrificed for the elite-infantry force.
+	DamageMultiplier@doc-uk-specops:
+		RequiresCondition: doc-uk-specops
+		Modifier: 122
+	ProductionCostMultiplier@doc-uk-specops:
+		Prerequisites: doctrine.uk.specops
+		Multiplier: 112
+	# Intelligence Dominance — thin frontline: even more fragile, but longer reach.
+	DamageMultiplier@doc-uk-intel:
+		RequiresCondition: doc-uk-intel
+		Modifier: 124
+	RangeMultiplier@doc-uk-intel:
+		RequiresCondition: doc-uk-intel
+		Modifier: 110
+	# Army-wide counter-stealth: every vehicle detects cloak under Intel Dominance.
+	DetectCloaked@doc-uk-intel:
+		RequiresCondition: doc-uk-intel
+		Range: 6c0
+		DetectionTypes: Cloak
+
+^Infantry:
+	# Condition grants on the TEMPLATE (not Player) so the RequiresCondition multipliers below resolve.
+	GrantConditionOnPrerequisite@grant-uk-specops:
+		Condition: doc-uk-specops
+		Prerequisites: doctrine.uk.specops
+	GrantConditionOnPrerequisite@grant-uk-intel:
+		Condition: doc-uk-intel
+		Prerequisites: doctrine.uk.intel
+	# Special Operations — fewer but tougher, harder-hitting infantry (elite).
+	FirepowerMultiplier@doc-uk-specops:
+		RequiresCondition: doc-uk-specops
+		Modifier: 112
+	DamageMultiplier@doc-uk-specops:
+		RequiresCondition: doc-uk-specops
+		Modifier: 90
+	# Elite force is pricier than the baseline -12% discount (keeps the force small).
+	ProductionCostMultiplier@doc-uk-specops:
+		Prerequisites: doctrine.uk.specops
+		Multiplier: 118
+	# Intelligence Dominance — even longer sight + reach; army-wide detection.
+	RangeMultiplier@doc-uk-intel:
+		RequiresCondition: doc-uk-intel
+		Modifier: 110
+	RevealsShroudMultiplier@doc-uk-intel:
+		RequiresCondition: doc-uk-intel
+		Modifier: 115
+	DetectCloaked@doc-uk-intel:
+		RequiresCondition: doc-uk-intel
+		Range: 6c0
+		DetectionTypes: Cloak
+
+# ==========================================================================
+# Visible support-power hooks added to THCOM (theater-structures.yaml hosts the
+# Command queue). Each is gated on its branch's doctrine prerequisite, so the
+# power only appears after that branch is bought. Both copy verified configs:
+# the ParatroopersPower mirrors THCOM's @coord; the AirstrikePower mirrors the
+# stock spyplane recon flyover (grounded, no ordnance — pure reveal).
+# ==========================================================================
+THCOM:
+	# Special Operations — drop a cloaked SAS raider team behind enemy lines.
+	ParatroopersPower@uk-specops:
+		OrderName: UkSpecOpsInsertion
+		Prerequisites: doctrine.uk.specops
+		Icon: paratroopers
+		ChargeInterval: 3000
+		Name: actor-thcom.uk-specops-name
+		Description: actor-thcom.uk-specops-description
+		DropItems: RAIDER,E1R1,E1R1
+		ReinforcementsArrivedSpeechNotification: ReinforcementsArrived
+		SelectTargetSpeechNotification: SelectTarget
+		ReinforcementsArrivedTextNotification: notification-reinforcements-have-arrived
+		SelectTargetTextNotification: notification-select-target
+		AllowImpassableCells: false
+		QuantizedFacings: 8
+		CameraActor: camera.paradrop
+		DisplayBeacon: true
+		BeaconPoster: pinficon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		SupportPowerPaletteOrder: 51
+	# Intelligence Dominance — recon overflight: a grounded spyplane reveals a lane.
+	AirstrikePower@uk-intel:
+		OrderName: UkReconOverflight
+		Prerequisites: doctrine.uk.intel
+		Icon: spyplane
+		ChargeInterval: 2700
+		Name: actor-thcom.uk-intel-name
+		Description: actor-thcom.uk-intel-description
+		SelectTargetSpeechNotification: SelectTarget
+		EndChargeSpeechNotification: SpyPlaneReady
+		SelectTargetTextNotification: notification-select-target
+		EndChargeTextNotification: notification-spy-plane-ready
+		CameraActor: camera.spyplane
+		CameraRemoveDelay: 150
+		UnitType: u2
+		QuantizedFacings: 8
+		DisplayBeacon: true
+		BeaconPoster: camicon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		SupportPowerPaletteOrder: 52
+
+# ==========================================================================
+# Special Operations unit unlock — RAIDER: a cloaked SAS infiltration team.
+# Reskins the E6 infiltrator body (same as PATHFINDER). Cloaks while still,
+# breaks cloak on move/attack/infiltrate; captures/infiltrates buildings = the
+# grounded "sabotage/raid" hook. Gated on doctrine.uk.specops, so it only
+# appears in the Infantry queue once Special Operations is chosen.
+# ==========================================================================
+RAIDER:
+	Inherits: E6
+	RenderSprites:
+		Image: e6
+	Tooltip:
+		Name: actor-raider.name
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Soldier
+		BuildPaletteOrder: 94
+		Prerequisites: tech.isles_coalition, doctrine.uk.specops, tent
+		Description: actor-raider.description
+	Valued:
+		Cost: 700
+	# TOY — cloaked raider: stealthy until it acts; infiltrates/sabotages on contact.
+	Cloak:
+		InitialDelay: 250
+		CloakDelay: 120
+		UncloakOn: Attack, Move, Unload, Infiltrate, Demolish
+		DetectionTypes: Cloak
+		PauseOnCondition: cloak-force-disabled
+	GrantConditionOnDamageState@UNCLOAK:
+		Condition: cloak-force-disabled
+		ValidDamageStates: Critical

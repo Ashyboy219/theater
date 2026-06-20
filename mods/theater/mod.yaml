@@ -99,6 +99,12 @@ Rules:
 	theater|rules/theater-cameos.yaml
 	theater|rules/theater-command.yaml
 	theater|rules/theater-capabilities.yaml
+	theater|rules/theater-doctrine-usa.yaml
+	theater|rules/theater-doctrine-rus.yaml
+	theater|rules/theater-doctrine-chn.yaml
+	theater|rules/theater-doctrine-tur.yaml
+	theater|rules/theater-doctrine-uk.yaml
+	theater|rules/theater-doctrine-ind.yaml
 
 Sequences:
 	ra|sequences/ships.yaml

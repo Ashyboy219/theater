@@ -28,9 +28,9 @@ SPECTER:
 
 # Northern Union (Russia) — EW heavy command tank.
 BASTION:
-	Inherits: TTNK
+	Inherits: 3TNK
 	RenderSprites:
-		Image: ttnk
+		Image: 3tnk
 	Tooltip:
 		Name: actor-bastion.name
 	Buildable:

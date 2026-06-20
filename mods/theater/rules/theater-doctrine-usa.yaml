@@ -1,0 +1,163 @@
+# ============================ USA (The Federation) — exclusive doctrine branches ============================
+# Sold from the Theater Command's "Command" queue (a sidebar tab). Non-occupying buildables (no Inherits,
+# no IOccupySpace) mirroring cap.firecontrol exactly. Buying one provides doctrine.usa.<branch> and lists
+# !doctrine.usa.<other> as a prerequisite, so the unpicked branch VANISHES from the sidebar the moment one
+# is bought (verified: TechTree honours the '!' prefix in Buildable Prerequisites — TechTree.cs L144-145).
+# BuildLimit:1 hides the bought one. Net: exactly ONE branch per match, mutually exclusive.
+
+doctrine.usa.air:
+	Interactable:
+	Tooltip:
+		Name: actor-doctrine-usa-air.name
+	Buildable:
+		Queue: Command
+		BuildLimit: 1
+		BuildDuration: 250
+		BuildDurationModifier: 100
+		BuildPaletteOrder: 30
+		Prerequisites: ~tech.federation, ~!doctrine.usa.networked
+		Description: actor-doctrine-usa-air.description
+		Icon: specter-icon
+	Valued:
+		Cost: 2500
+	RenderSprites:
+		Image: mig
+	ProvidesPrerequisite@self:
+
+doctrine.usa.networked:
+	Interactable:
+	Tooltip:
+		Name: actor-doctrine-usa-networked.name
+	Buildable:
+		Queue: Command
+		BuildLimit: 1
+		BuildDuration: 250
+		BuildDurationModifier: 100
+		BuildPaletteOrder: 31
+		Prerequisites: ~tech.federation, ~!doctrine.usa.air
+		Description: actor-doctrine-usa-networked.description
+		Icon: comms-icon
+	Valued:
+		Cost: 2500
+	RenderSprites:
+		Image: mrj
+	ProvidesPrerequisite@self:
+
+# Branch stat profiles LAYER on top of the always-on Federation doctrine in theater-doctrines.yaml.
+# These @doc-usa-* keys are additive to the existing @doc-fed keys on the same templates (MiniYaml merges
+# by node key, and the unique @suffixes avoid collisions). All Modifier:/Multiplier: are baseline 100.
+
+# ---- AIR tier: Air Superiority makes the air arm even cheaper/faster to build. ----
+^Plane:
+	# Condition grants on the TEMPLATE (not Player) so the RequiresCondition multipliers below resolve.
+	GrantConditionOnPrerequisite@grant-usa-networked:
+		Condition: doc-usa-networked
+		Prerequisites: doctrine.usa.networked
+	# Air Superiority — press the air advantage: cheaper + faster air (stacks with the Federation baseline).
+	ProductionCostMultiplier@doc-usa-air:
+		Prerequisites: doctrine.usa.air
+		Multiplier: 88
+	ProductionTimeMultiplier@doc-usa-air:
+		Prerequisites: doctrine.usa.air
+		Multiplier: 85
+	# Networked Fires — networked planes reach farther and shoot tighter, but cost the network tax.
+	RangeMultiplier@doc-usa-networked:
+		RequiresCondition: doc-usa-networked
+		Modifier: 110
+	InaccuracyMultiplier@doc-usa-networked:
+		RequiresCondition: doc-usa-networked
+		Modifier: 70
+	ProductionCostMultiplier@doc-usa-networked:
+		Prerequisites: doctrine.usa.networked
+		Multiplier: 112
+
+# ---- VEHICLE tier ----
+^Vehicle:
+	# Condition grants on the TEMPLATE (not Player) so the RequiresCondition multipliers below resolve.
+	GrantConditionOnPrerequisite@grant-usa-air:
+		Condition: doc-usa-air
+		Prerequisites: doctrine.usa.air
+	GrantConditionOnPrerequisite@grant-usa-networked:
+		Condition: doc-usa-networked
+		Prerequisites: doctrine.usa.networked
+	# Air Superiority — soft tradeoff: ground armor is the bill. Extra fragility (stacks with baseline 110)
+	# and pricier ground, so the air commitment leaves your tanks a glass liability.
+	DamageMultiplier@doc-usa-air:
+		RequiresCondition: doc-usa-air
+		Modifier: 112
+	ProductionCostMultiplier@doc-usa-air:
+		Prerequisites: doctrine.usa.air
+		Multiplier: 110
+	# Networked Fires — sensor-to-shooter: farther reach + tighter shots + deeper vision; network tax cost.
+	RangeMultiplier@doc-usa-networked:
+		RequiresCondition: doc-usa-networked
+		Modifier: 112
+	InaccuracyMultiplier@doc-usa-networked:
+		RequiresCondition: doc-usa-networked
+		Modifier: 70
+	RevealsShroudMultiplier@doc-usa-networked:
+		RequiresCondition: doc-usa-networked
+		Modifier: 115
+	ProductionCostMultiplier@doc-usa-networked:
+		Prerequisites: doctrine.usa.networked
+		Multiplier: 112
+
+# ---- INFANTRY tier (USA has no baseline @doc-fed here; both nodes new) ----
+^Infantry:
+	GrantConditionOnPrerequisite@doc-usa-networked:
+		Condition: doc-usa-networked
+		Prerequisites: doctrine.usa.networked
+	# Networked Fires — infantry are also networked: longer reach, tighter shots, deeper sight, network tax.
+	RangeMultiplier@doc-usa-networked:
+		RequiresCondition: doc-usa-networked
+		Modifier: 110
+	InaccuracyMultiplier@doc-usa-networked:
+		RequiresCondition: doc-usa-networked
+		Modifier: 75
+	RevealsShroudMultiplier@doc-usa-networked:
+		RequiresCondition: doc-usa-networked
+		Modifier: 115
+	ProductionCostMultiplier@doc-usa-networked:
+		Prerequisites: doctrine.usa.networked
+		Multiplier: 112
+
+# Both branches' VISIBLE support-power hooks hang on THCOM (which already hosts the Command queue and the
+# ParatroopersPower@coord). Each is gated by the branch prerequisite, so the power only appears once that
+# branch is bought. THCOM already has a SupportPowerChargeBar; these reuse it.
+THCOM:
+	# --- Air Superiority: precision CAS bomb run. Grounded — a single strike jet on a chosen heading. ---
+	AirstrikePower@usaair:
+		OrderName: FederationSweepStrike
+		Prerequisites: doctrine.usa.air
+		Icon: spyplane
+		ChargeInterval: 4500
+		Name: actor-thcom.usaair-name
+		Description: actor-thcom.usaair-description
+		SelectTargetSpeechNotification: SelectTarget
+		SelectTargetTextNotification: notification-select-target
+		UnitType: badr.bomber
+		SquadSize: 1
+		SquadOffset: 1792,1792,0
+		QuantizedFacings: 8
+		CameraActor: camera
+		CameraRemoveDelay: 150
+		DisplayBeacon: true
+		BeaconPoster: pbmbicon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		SupportPowerPaletteOrder: 60
+	# --- Networked Fires: Common Operating Picture — a satellite/COP sweep that reveals the map. ---
+	GpsPower@usanet:
+		Prerequisites: doctrine.usa.networked
+		Icon: gps
+		ChargeInterval: 9000
+		Name: actor-thcom.usanet-name
+		Description: actor-thcom.usanet-description
+		RevealDelay: 375
+		LaunchSpeechNotification: SatelliteLaunched
+		LaunchTextNotification: notification-satellite-launched
+		DisplayTimerRelationships: Ally, Neutral, Enemy
+		SupportPowerPaletteOrder: 61

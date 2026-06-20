@@ -24,6 +24,14 @@ yak:
 3tnk:
 	loewe-icon:
 		Filename: loewe-cameo.png
+	# BASTION renders on the 3tnk body (grounded heavy tank); reuse its cameo here.
+	bastion-icon:
+		Filename: bastion-cameo.png
+
+# MOLOT (rus) and ARJUN (ind) render on the 4tnk body but show the heavy-tank cameo.
+4tnk:
+	loewe-icon:
+		Filename: loewe-cameo.png
 
 e6:
 	pathfinder-icon:

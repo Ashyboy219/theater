@@ -1,0 +1,160 @@
+# ============================ CHINA (Continental Bloc) — exclusive mid-game doctrine branches ============================
+# Bought ONCE from the Theater Command's "Command" sidebar queue. Non-occupying (no IOccupySpace, no
+# Inherits), exactly mirrors cap.firecontrol. Buying one provides its doctrine.chn.<branch> prerequisite;
+# the other branch lists !doctrine.chn.<otherbranch> so it vanishes from the sidebar (mutual exclusion).
+# BuildLimit:1 hides the bought one. The '!' negation in Buildable.Prerequisites is honored by
+# TechTree.HasPrerequisites (OpenRA.Mods.Common/Traits/Player/TechTree.cs L69-70).
+
+# --- Drone Swarm Command: lean into UAVs (a 2nd mass drone strike + recon), ground armor more fragile.
+doctrine.chn.air:
+	Interactable:
+	Tooltip:
+		Name: actor-doctrine-chn-air.name
+	Buildable:
+		Queue: Command
+		BuildLimit: 1
+		BuildDuration: 250
+		BuildDurationModifier: 100
+		BuildPaletteOrder: 30
+		Prerequisites: ~tech.continental_bloc, ~!doctrine.chn.industrial
+		Description: actor-doctrine-chn-air.description
+		Icon: wingloong-icon
+	Valued:
+		Cost: 2500
+	RenderSprites:
+		Image: yak
+	ProvidesPrerequisite@self:
+
+# --- Industrial Mobilization: total war-economy mass production + a cheap mass-tank unlock, lower quality.
+doctrine.chn.industrial:
+	Interactable:
+	Tooltip:
+		Name: actor-doctrine-chn-industrial.name
+	Buildable:
+		Queue: Command
+		BuildLimit: 1
+		BuildDuration: 250
+		BuildDurationModifier: 100
+		BuildPaletteOrder: 31
+		Prerequisites: ~tech.continental_bloc, ~!doctrine.chn.air
+		Description: actor-doctrine-chn-industrial.description
+		Icon: dazhbog-icon
+	Valued:
+		Cost: 2500
+	RenderSprites:
+		Image: v2rl
+	ProvidesPrerequisite@self:
+
+# ============================ Branch stat profiles — LAYER on top of the always-on CB profile ============================
+# These ADD to theater-doctrines.yaml's doctrine-continental_bloc modifiers (which already give cheap/fast
+# everything + DamageMultiplier 120 = +20% damage taken). Gated on the per-branch doc-chn-<branch> /
+# doctrine.chn.<branch> prerequisites, so they only apply once a branch is bought. baseline = 100.
+
+^Vehicle:
+	# Condition grants on the TEMPLATE (not Player) so the RequiresCondition multipliers below resolve.
+	GrantConditionOnPrerequisite@grant-chn-air:
+		Condition: doc-chn-air
+		Prerequisites: doctrine.chn.air
+	GrantConditionOnPrerequisite@grant-chn-industrial:
+		Condition: doc-chn-industrial
+		Prerequisites: doctrine.chn.industrial
+	# Drone Swarm Command — armor even more fragile (you rely on the air, not the tanks).
+	DamageMultiplier@doc-chn-air:
+		RequiresCondition: doc-chn-air
+		Modifier: 110
+	# Industrial Mobilization — cheaper/faster mass armor, but lower quality (weaker + dies faster).
+	ProductionCostMultiplier@doc-chn-industrial:
+		Prerequisites: doctrine.chn.industrial
+		Multiplier: 88
+	ProductionTimeMultiplier@doc-chn-industrial:
+		Prerequisites: doctrine.chn.industrial
+		Multiplier: 88
+	DamageMultiplier@doc-chn-industrial:
+		RequiresCondition: doc-chn-industrial
+		Modifier: 108
+	FirepowerMultiplier@doc-chn-industrial:
+		RequiresCondition: doc-chn-industrial
+		Modifier: 92
+
+^Infantry:
+	# Condition grant on the TEMPLATE (not Player) so the RequiresCondition multipliers below resolve.
+	GrantConditionOnPrerequisite@grant-chn-industrial:
+		Condition: doc-chn-industrial
+		Prerequisites: doctrine.chn.industrial
+	# Industrial Mobilization — same mass-vs-quality trade for the infantry tier.
+	ProductionCostMultiplier@doc-chn-industrial:
+		Prerequisites: doctrine.chn.industrial
+		Multiplier: 88
+	ProductionTimeMultiplier@doc-chn-industrial:
+		Prerequisites: doctrine.chn.industrial
+		Multiplier: 88
+	DamageMultiplier@doc-chn-industrial:
+		RequiresCondition: doc-chn-industrial
+		Modifier: 108
+	FirepowerMultiplier@doc-chn-industrial:
+		RequiresCondition: doc-chn-industrial
+		Modifier: 92
+
+^Plane:
+	# Condition grant on the TEMPLATE (not Player) so the RequiresCondition multiplier below resolves.
+	GrantConditionOnPrerequisite@grant-chn-air:
+		Condition: doc-chn-air
+		Prerequisites: doctrine.chn.air
+	# Drone Swarm Command — drones/planes see further (recon-first air doctrine, the visible buff).
+	RevealsShroudMultiplier@doc-chn-air:
+		RequiresCondition: doc-chn-air
+		Modifier: 125
+
+# ============================ Drone Swarm Command support power — hosted on THCOM ============================
+# A second standing AirstrikePower (5-drone loiter-munition strike), gated on doctrine.chn.air. Config
+# copied from the verified WINGLOONG AirstrikePower@dronehive (theater-units.yaml); badr.bomber, camera,
+# pbmbicon, paradirection are all the same stock actors/sequences that power already uses. Icon parabombs
+# is one of the allowed grounded AirstrikePower icons. Field-merges onto the existing THCOM actor.
+THCOM:
+	AirstrikePower@chnswarm:
+		OrderName: ChnDroneSwarm
+		Prerequisites: doctrine.chn.air
+		Icon: parabombs
+		ChargeInterval: 3600
+		Name: actor-thcom.chnswarm-name
+		Description: actor-thcom.chnswarm-description
+		SelectTargetSpeechNotification: SelectTarget
+		SelectTargetTextNotification: notification-select-target
+		UnitType: badr.bomber
+		SquadSize: 5
+		SquadOffset: 1792,1792,0
+		QuantizedFacings: 8
+		CameraActor: camera
+		CameraRemoveDelay: 150
+		DisplayBeacon: true
+		BeaconPoster: pbmbicon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		SupportPowerPaletteOrder: 60
+
+# ============================ Industrial Mobilization unit unlock — the Dongfeng Mass Tank ============================
+# A dirt-cheap mass-produced light tank, grounded reskin of the stock 1TNK body. Gated on
+# doctrine.chn.industrial so it only appears after Industrial Mobilization is chosen. Cheaper than the
+# standard MBT (Cost 560 vs 1TNK 700) so the player floods the map with them; the branch's
+# ProductionCost/TimeMultiplier + DamageMultiplier on ^Vehicle (above) make it cheap, fast AND fragile.
+# Reuses the 1TNK stock cameo/sprite (no new art). 1TNK already carries ^AutoTargetGroundAssaultMove so
+# the ArmyCommand fire-control focus works on it too.
+DONGFENG:
+	Inherits: 1TNK
+	RenderSprites:
+		Image: 1tnk
+	Tooltip:
+		Name: actor-dongfeng.name
+		GenericName: actor-dongfeng.generic-name
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 95
+		Prerequisites: tech.continental_bloc, weap, doctrine.chn.industrial
+		Description: actor-dongfeng.description
+	Valued:
+		Cost: 560
+	Health:
+		HP: 19000

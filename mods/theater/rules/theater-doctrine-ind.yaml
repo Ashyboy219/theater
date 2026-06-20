@@ -1,0 +1,137 @@
+# ============================================================================
+# India (Subcontinent Federation) — EXCLUSIVE mid-game doctrine branches.
+# Sold from the Theater Command's "Command" queue. Buying one provides its
+# doctrine.ind.<branch> prerequisite, which (a) hides the chosen actor
+# (BuildLimit:1) and (b) removes the OTHER branch from the sidebar via its
+# !doctrine.ind.<other> negative prerequisite. Net = one branch per match,
+# locks out the other. Non-occupying (no Inherits / no IOccupySpace), mirrors
+# cap.firecontrol. Layers ON TOP of the always-on subcontinent_federation
+# profile in theater-doctrines.yaml.
+# ============================================================================
+
+# --- Missile Command: standoff fires + a precision cruise-missile strike power.
+doctrine.ind.missile:
+	Interactable:
+	Tooltip:
+		Name: actor-doctrine-ind-missile.name
+	Buildable:
+		Queue: Command
+		BuildLimit: 1
+		BuildDuration: 250
+		BuildDurationModifier: 100
+		BuildPaletteOrder: 30
+		Prerequisites: ~tech.subcontinent_federation, ~!doctrine.ind.networked
+		Description: actor-doctrine-ind-missile.description
+		Icon: garuda-icon
+	Valued:
+		Cost: 2500
+	RenderSprites:
+		Image: v2rl
+	ProvidesPrerequisite@self:
+
+# --- Integrated Battle Groups: resilient combined-arms + Arjun heavy-MBT unlock.
+doctrine.ind.networked:
+	Interactable:
+	Tooltip:
+		Name: actor-doctrine-ind-networked.name
+	Buildable:
+		Queue: Command
+		BuildLimit: 1
+		BuildDuration: 250
+		BuildDurationModifier: 100
+		BuildPaletteOrder: 31
+		Prerequisites: ~tech.subcontinent_federation, ~!doctrine.ind.missile
+		Description: actor-doctrine-ind-networked.description
+		Icon: loewe-icon
+	Valued:
+		Cost: 2500
+	RenderSprites:
+		Image: 3tnk
+	ProvidesPrerequisite@self:
+
+# Layered ON TOP of the always-on subcontinent_federation vehicle profile
+# (RangeMultiplier 115 / SpeedMultiplier 88). Add these conditional traits to
+# the shared ^Vehicle template. Condition-gated so they only apply after the
+# branch is bought; @-suffixes are unique and won't collide with the existing
+# doc-sf / doc-fed / doc-nu etc. traits already on ^Vehicle.
+^Vehicle:
+	# Condition grants on the TEMPLATE (not Player) so the RequiresCondition multipliers below resolve.
+	GrantConditionOnPrerequisite@grant-ind-missile:
+		Condition: doc-ind-missile
+		Prerequisites: doctrine.ind.missile
+	GrantConditionOnPrerequisite@grant-ind-networked:
+		Condition: doc-ind-networked
+		Prerequisites: doctrine.ind.networked
+	# --- Missile Command: more reach + firepower, but slow-firing and brittle.
+	RangeMultiplier@doc-ind-missile:
+		RequiresCondition: doc-ind-missile
+		Modifier: 112
+	FirepowerMultiplier@doc-ind-missile:
+		RequiresCondition: doc-ind-missile
+		Modifier: 112
+	ReloadDelayMultiplier@doc-ind-missile:
+		RequiresCondition: doc-ind-missile
+		Modifier: 122
+	DamageMultiplier@doc-ind-missile:
+		RequiresCondition: doc-ind-missile
+		Modifier: 112
+	# --- Integrated Battle Groups: tougher + more mobile, but no reach edge, pricier.
+	DamageMultiplier@doc-ind-networked:
+		RequiresCondition: doc-ind-networked
+		Modifier: 85
+	SpeedMultiplier@doc-ind-networked:
+		RequiresCondition: doc-ind-networked
+		Modifier: 110
+	RangeMultiplier@doc-ind-networked:
+		RequiresCondition: doc-ind-networked
+		Modifier: 90
+	ProductionCostMultiplier@doc-ind-networked:
+		Prerequisites: doctrine.ind.networked
+		Multiplier: 110
+
+# Add to THCOM (theater-structures.yaml). A precision long-range cruise-missile
+# strike, gated on the Missile Command branch. Config mirrors WINGLOONG's
+# verified AirstrikePower@dronehive (single precision run: SquadSize 1).
+# Name/Description are THCOM fluent keys (THCOM already owns actor-thcom.para-*).
+# THCOM already has a SupportPowerChargeBar, so no extra trait needed.
+THCOM:
+	AirstrikePower@indmissile:
+		OrderName: SubcontinentCruiseStrike
+		Prerequisites: doctrine.ind.missile
+		Icon: parabombs
+		ChargeInterval: 5000
+		Name: actor-thcom.missile-name
+		Description: actor-thcom.missile-description
+		SelectTargetSpeechNotification: SelectTarget
+		SelectTargetTextNotification: notification-select-target
+		UnitType: badr.bomber
+		SquadSize: 1
+		SquadOffset: 1792,1792,0
+		QuantizedFacings: 8
+		CameraActor: camera
+		CameraRemoveDelay: 150
+		DisplayBeacon: true
+		BeaconPoster: pbmbicon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		SupportPowerPaletteOrder: 55
+
+# Integrated Battle Groups unlock — Arjun Heavy MBT. Grounded 4TNK reskin
+# (conventional 120mm gun, no sci-fi). Inherits 4TNK so it keeps the heavy
+# armor/HP body AND picks up the national + branch ^Vehicle doctrine modifiers.
+# Buildable only after the networked branch is bought (faction + doctrine gated).
+ARJUN:
+	Inherits: 4TNK
+	RenderSprites:
+		Image: 4tnk
+	Tooltip:
+		Name: actor-arjun.name
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 95
+		Prerequisites: tech.subcontinent_federation, doctrine.ind.networked, weap
+		Description: actor-arjun.description
+		Icon: loewe-icon

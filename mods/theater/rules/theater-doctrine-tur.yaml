@@ -1,0 +1,160 @@
+# ============================ TURKEY (Anatolian Alliance) — exclusive mid-game doctrine branches ============================
+# Two non-occupying buildables sold from the Theater Command's "Command" queue (mirrors theater-capabilities.yaml
+# cap.firecontrol exactly: no Inherits, no IOccupySpace). Each provides its own player prerequisite on completion
+# (ProvidesPrerequisite@self defaults to the actor name). Each branch lists !the-other in its Buildable Prerequisites,
+# so buying one makes the other VANISH from the sidebar (the ! prefix inverts/disables — verified in Buildable.cs).
+# BuildLimit: 1 + the persistent bodiless actor hide the bought one. Net: exactly ONE branch per match, locks the other.
+
+doctrine.tur.recon:
+	Interactable:
+	Tooltip:
+		Name: actor-doctrine-tur-recon.name
+	Buildable:
+		Queue: Command
+		BuildLimit: 1
+		BuildDuration: 250
+		BuildDurationModifier: 100
+		BuildPaletteOrder: 30
+		Prerequisites: ~tech.anatolian_alliance, ~!doctrine.tur.rapid
+		Description: actor-doctrine-tur-recon.description
+		Icon: bayrak-icon
+	Valued:
+		Cost: 2500
+	RenderSprites:
+		Image: yak
+	ProvidesPrerequisite@self:
+
+doctrine.tur.rapid:
+	Interactable:
+	Tooltip:
+		Name: actor-doctrine-tur-rapid.name
+	Buildable:
+		Queue: Command
+		BuildLimit: 1
+		BuildDuration: 250
+		BuildDurationModifier: 100
+		BuildPaletteOrder: 31
+		Prerequisites: ~tech.anatolian_alliance, ~!doctrine.tur.recon
+		Description: actor-doctrine-tur-rapid.description
+		Icon: reaper-icon
+	Valued:
+		Cost: 2500
+	RenderSprites:
+		Image: mh60
+	ProvidesPrerequisite@self:
+
+# Branch stat profiles LAYER on top of the always-on Anatolian baseline. These are appended to the shared base
+# templates already defined in theater-doctrines.yaml (^Vehicle / ^Infantry / ^Plane). MiniYaml merges same-named
+# nodes by @suffix, so these @doc-tur-* traits coexist with the existing @doc-aa baseline traits.
+
+# ---- DRONE RECON NETWORK: army-wide sight bonus (the visible "see further") + a firepower tradeoff ----
+# ---- RAPID RESPONSE: army-wide speed bonus (visible "move faster") + a durability tradeoff ----
+
+^Vehicle:
+	# Condition grants on the TEMPLATE (not Player) so the RequiresCondition multipliers below resolve.
+	GrantConditionOnPrerequisite@grant-tur-recon:
+		Condition: doc-tur-recon
+		Prerequisites: doctrine.tur.recon
+	GrantConditionOnPrerequisite@grant-tur-rapid:
+		Condition: doc-tur-rapid
+		Prerequisites: doctrine.tur.rapid
+	# Recon — eyes everywhere: ground vehicles see further, but the whole vehicle force hits softer.
+	RevealsShroudMultiplier@doc-tur-recon:
+		RequiresCondition: doc-tur-recon
+		Modifier: 125
+	FirepowerMultiplier@doc-tur-recon:
+		RequiresCondition: doc-tur-recon
+		Modifier: 90
+	# Rapid — faster vehicles, but more fragile (stacks with the fragile baseline).
+	SpeedMultiplier@doc-tur-rapid:
+		RequiresCondition: doc-tur-rapid
+		Modifier: 115
+	DamageMultiplier@doc-tur-rapid:
+		RequiresCondition: doc-tur-rapid
+		Modifier: 112
+
+^Infantry:
+	# Condition grants on the TEMPLATE (not Player) so the RequiresCondition multipliers below resolve.
+	GrantConditionOnPrerequisite@grant-tur-recon:
+		Condition: doc-tur-recon
+		Prerequisites: doctrine.tur.recon
+	GrantConditionOnPrerequisite@grant-tur-rapid:
+		Condition: doc-tur-rapid
+		Prerequisites: doctrine.tur.rapid
+	# Recon — infantry see further; softer punch.
+	RevealsShroudMultiplier@doc-tur-recon:
+		RequiresCondition: doc-tur-recon
+		Modifier: 125
+	FirepowerMultiplier@doc-tur-recon:
+		RequiresCondition: doc-tur-recon
+		Modifier: 90
+	# Rapid — faster infantry; more fragile.
+	SpeedMultiplier@doc-tur-rapid:
+		RequiresCondition: doc-tur-rapid
+		Modifier: 115
+	DamageMultiplier@doc-tur-rapid:
+		RequiresCondition: doc-tur-rapid
+		Modifier: 112
+
+^Plane:
+	# Condition grant on the TEMPLATE (not Player) so the RequiresCondition multiplier below resolves.
+	GrantConditionOnPrerequisite@grant-tur-recon:
+		Condition: doc-tur-recon
+		Prerequisites: doctrine.tur.recon
+	# Recon — the air arm's already-best vision pushes even further out.
+	RevealsShroudMultiplier@doc-tur-recon:
+		RequiresCondition: doc-tur-recon
+		Modifier: 125
+
+# Two support powers hung on THCOM (the Command host), each gated to ONE branch via Prerequisites: doctrine.tur.<branch>.
+# A power is only offered while the player owns its branch + a Theater Command, so they are mutually exclusive in practice.
+# Both copy verified configs: UAV Sweep = the stock recon AirstrikePower@spyplane (no ordnance, reveals via CameraActor);
+# Rapid Deployment = THCOM's own ParatroopersPower@coord. Distinct OrderName / @suffix so they never collide.
+
+THCOM:
+	# DRONE RECON NETWORK — on-demand UAV reveal of a target region (recon only, no bombs).
+	AirstrikePower@turuav:
+		OrderName: AnatolianUavSweep
+		Prerequisites: doctrine.tur.recon
+		Icon: spyplane
+		ChargeInterval: 3000
+		Name: actor-doctrine-tur-recon.power-name
+		Description: actor-doctrine-tur-recon.power-description
+		SelectTargetSpeechNotification: SelectTarget
+		SelectTargetTextNotification: notification-select-target
+		CameraActor: camera.spyplane
+		CameraRemoveDelay: 150
+		UnitType: u2
+		QuantizedFacings: 8
+		DisplayBeacon: true
+		BeaconPoster: camicon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		SupportPowerPaletteOrder: 60
+	# RAPID RESPONSE DOCTRINE — airborne reinforcement: drop a fast light squad anywhere visible, short charge.
+	ParatroopersPower@turrapid:
+		OrderName: AnatolianRapidDeploy
+		Prerequisites: doctrine.tur.rapid
+		Icon: paratroopers
+		ChargeInterval: 1200
+		Name: actor-doctrine-tur-rapid.power-name
+		Description: actor-doctrine-tur-rapid.power-description
+		DropItems: E1R1,E1R1,E3R1,E3R1
+		ReinforcementsArrivedSpeechNotification: ReinforcementsArrived
+		SelectTargetSpeechNotification: SelectTarget
+		ReinforcementsArrivedTextNotification: notification-reinforcements-have-arrived
+		SelectTargetTextNotification: notification-select-target
+		AllowImpassableCells: false
+		QuantizedFacings: 8
+		CameraActor: camera.paradrop
+		DisplayBeacon: true
+		BeaconPoster: pinficon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		SupportPowerPaletteOrder: 51
