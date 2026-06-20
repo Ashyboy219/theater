@@ -14,7 +14,6 @@ using System.Linq;
 using OpenRA.Graphics;
 using OpenRA.Mods.Common.Traits;
 using OpenRA.Traits;
-using OpenRA.Widgets;
 
 namespace OpenRA.Mods.Common.Commands
 {
@@ -45,10 +44,6 @@ namespace OpenRA.Mods.Common.Commands
 			// Army-wide targeting doctrine (command layer).
 			console.RegisterCommand("target", this);
 			console.RegisterCommand("focus", this);
-
-			// War Room overlay (also opens by selecting the Theater Command).
-			console.RegisterCommand("warroom", this);
-			console.RegisterCommand("command", this);
 		}
 
 		public void InvokeCommand(string name, string arg)
@@ -78,14 +73,6 @@ namespace OpenRA.Mods.Common.Commands
 				case "target":
 				case "focus":
 					SetTargetDoctrine(arg);
-					return;
-
-				case "warroom":
-				case "command":
-					if (world.LocalPlayer == null)
-						TextNotificationsManager.Debug("No war room available (spectating?).");
-					else if (Ui.Root.GetOrNull<Widget>("WARROOM_ROOT") == null)
-						Ui.OpenWindow("WARROOM_ROOT", new WidgetArgs { { "world", world } });
 					return;
 			}
 		}

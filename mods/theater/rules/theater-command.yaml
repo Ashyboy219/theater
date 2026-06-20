@@ -1,24 +1,19 @@
-# THEATER — Command layer: army-wide TARGETING DOCTRINE + purchasable STRATEGIC UPGRADES.
+# THEATER — Command layer: army-wide TARGETING DOCTRINE (the "Fire Control" capability).
 #
-# At the Theater Command (the War Room) you command your whole army like a head of state:
-#   * DOCTRINE — what your army prioritises / how it fights. A player-level ArmyCommand trait holds the
-#     doctrine and propagates a condition to every combat unit; condition-gated AutoTargetPriority profiles
-#     (Priority 20 > the stock default of 1) re-rank targets, and gated multipliers apply posture trade-offs.
-#       0 balanced · 1 structures · 2 armor · 3 infantry · 4 defensive (slow+hard) · 5 assault (fast+hitting)
-#   * UPGRADES — a player-level StrategicUpgrades trait spends cash (via a synced order) and grants a timed
-#     or permanent player-wide condition that the gated effect traits below consume.
-# Pure data on top of two small player traits. Deterministic — integer modifiers, no float/Random/DateTime.
+# A player-level ArmyCommand trait holds the doctrine and propagates a condition to every combat unit;
+# condition-gated AutoTargetPriority profiles (Priority 20 > the stock default of 1) re-rank targets so
+# the whole army re-prioritises at once.
+#   0 balanced (default) · 1 structures · 2 armor · 3 infantry
+# Set via the /target chat command and (later) the command-bar focus buttons. Fire Control gating — the
+# doctrine stays locked to balanced until the capability is purchased — is wired with the Command queue
+# in Phase 1. Pure data on top of one small player trait. Deterministic — no float/Random/DateTime.
 
 Player:
 	ArmyCommand:
-	StrategicUpgrades:
 
 # Ground combatants (and their assault-move variant, which inherits this).
 ^AutoTargetGround:
 	ArmyCommandConsumer:
-		DoctrineConditions: , cmd-focus-structures, cmd-focus-armor, cmd-focus-infantry, cmd-defensive, cmd-assault
-	StrategicUpgradeConsumer:
-		Conditions: upg-ew, upg-precision, upg-address, upg-blackproj
 	AutoTargetPriority@CMDSTRUCT:
 		RequiresCondition: cmd-focus-structures
 		ValidTargets: Structure, Defense
@@ -31,52 +26,10 @@ Player:
 		RequiresCondition: cmd-focus-infantry
 		ValidTargets: Infantry
 		Priority: 20
-	# Doctrine 4 — Defensive Posture: slower, but harder to kill.
-	SpeedMultiplier@DEF:
-		RequiresCondition: cmd-defensive
-		Modifier: 80
-	DamageMultiplier@DEF:
-		RequiresCondition: cmd-defensive
-		Modifier: 80
-	# Doctrine 5 — Rapid Assault: faster, hits harder.
-	SpeedMultiplier@ASSAULT:
-		RequiresCondition: cmd-assault
-		Modifier: 118
-	FirepowerMultiplier@ASSAULT:
-		RequiresCondition: cmd-assault
-		Modifier: 112
-	# Upgrade — Advanced EW: longer reach, tighter aim.
-	RangeMultiplier@EW:
-		RequiresCondition: upg-ew
-		Modifier: 118
-	InaccuracyMultiplier@EW:
-		RequiresCondition: upg-ew
-		Modifier: 80
-	# Upgrade — Precision Strikes: more firepower.
-	FirepowerMultiplier@PRECISION:
-		RequiresCondition: upg-precision
-		Modifier: 125
-	# Upgrade — National Address: brief army-wide morale (firepower + speed).
-	FirepowerMultiplier@ADDRESS:
-		RequiresCondition: upg-address
-		Modifier: 112
-	SpeedMultiplier@ADDRESS:
-		RequiresCondition: upg-address
-		Modifier: 110
-	# Upgrade — Black Projects: permanent army-wide edge (firepower + armor).
-	FirepowerMultiplier@BLACK:
-		RequiresCondition: upg-blackproj
-		Modifier: 110
-	DamageMultiplier@BLACK:
-		RequiresCondition: upg-blackproj
-		Modifier: 85
 
 # Air/ground all-target combatants (and their assault-move variant).
 ^AutoTargetAll:
 	ArmyCommandConsumer:
-		DoctrineConditions: , cmd-focus-structures, cmd-focus-armor, cmd-focus-infantry, cmd-defensive, cmd-assault
-	StrategicUpgradeConsumer:
-		Conditions: upg-ew, upg-precision, upg-address, upg-blackproj
 	AutoTargetPriority@CMDSTRUCT:
 		RequiresCondition: cmd-focus-structures
 		ValidTargets: Structure, Defense
@@ -89,36 +42,3 @@ Player:
 		RequiresCondition: cmd-focus-infantry
 		ValidTargets: Infantry
 		Priority: 20
-	SpeedMultiplier@DEF:
-		RequiresCondition: cmd-defensive
-		Modifier: 80
-	DamageMultiplier@DEF:
-		RequiresCondition: cmd-defensive
-		Modifier: 80
-	SpeedMultiplier@ASSAULT:
-		RequiresCondition: cmd-assault
-		Modifier: 118
-	FirepowerMultiplier@ASSAULT:
-		RequiresCondition: cmd-assault
-		Modifier: 112
-	RangeMultiplier@EW:
-		RequiresCondition: upg-ew
-		Modifier: 118
-	InaccuracyMultiplier@EW:
-		RequiresCondition: upg-ew
-		Modifier: 80
-	FirepowerMultiplier@PRECISION:
-		RequiresCondition: upg-precision
-		Modifier: 125
-	FirepowerMultiplier@ADDRESS:
-		RequiresCondition: upg-address
-		Modifier: 112
-	SpeedMultiplier@ADDRESS:
-		RequiresCondition: upg-address
-		Modifier: 110
-	FirepowerMultiplier@BLACK:
-		RequiresCondition: upg-blackproj
-		Modifier: 110
-	DamageMultiplier@BLACK:
-		RequiresCondition: upg-blackproj
-		Modifier: 85
