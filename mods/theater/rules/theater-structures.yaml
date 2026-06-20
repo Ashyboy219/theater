@@ -44,3 +44,17 @@ THCOM:
 		DirectionArrowAnimation: paradirection
 		SupportPowerPaletteOrder: 50
 	SupportPowerChargeBar:
+	# War Room — Satellite Recon upgrade: reveals the whole map while active.
+	StrategicUpgradeConsumer:
+		Conditions: upg-satrecon
+	RevealsMap@SATRECON:
+		RequiresCondition: upg-satrecon
+
+# War Room — Economic Shift upgrade: refineries trickle bonus income while active.
+PROC:
+	StrategicUpgradeConsumer:
+		Conditions: upg-econshift
+	CashTrickler@ECON:
+		RequiresCondition: upg-econshift
+		Amount: 60
+		Interval: 25

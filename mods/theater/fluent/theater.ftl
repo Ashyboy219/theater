@@ -115,3 +115,83 @@ button-doctrine-structures = Structures
 button-doctrine-armor = Armor
 button-doctrine-infantry = Infantry
 button-warroom-close = Close
+
+## National Command — the cinematic War Room dashboard
+wr-brand = THEATER COMMAND
+wr-title = NATIONAL COMMAND
+wr-subtitle = EMERGENCY WAR ROOM
+wr-under-attack = UNDER ATTACK
+
+# Left — live resources + military
+wr-national-resources = NATIONAL RESOURCES
+wr-military-overview = MILITARY OVERVIEW
+wr-res-credits = Treasury
+wr-res-power = Power Grid
+wr-res-supplies = Supplies
+wr-res-pop = Personnel
+wr-mil-veh = Vehicles
+wr-mil-inf = Infantry
+wr-mil-air = Aircraft
+wr-mil-nav = Naval
+
+# Center — the president
+wr-president-name = PRESIDENT ANDREW HAWKINS
+wr-president-role = COMMANDER IN CHIEF
+wr-immediate-decisions = IMMEDIATE DECISIONS
+wr-card-reserves = DEPLOY RESERVES
+wr-card-air = AIR SUPPORT
+wr-card-econ = ECONOMIC SHIFT
+wr-card-address = NATIONAL ADDRESS
+wr-verb-deploy = Deploy
+wr-verb-authorize = Authorize
+wr-verb-activate = Activate
+wr-verb-broadcast = Broadcast
+
+# Right — threat + active effects
+wr-strategic-overview = STRATEGIC OVERVIEW
+wr-active-effects = ACTIVE EFFECTS
+wr-sector-n = North
+wr-sector-e = East
+wr-sector-s = South
+wr-sector-w = West
+wr-fx-ew = Advanced EW
+wr-fx-prec = Precision Strikes
+wr-fx-econ = Economic Shift
+wr-fx-addr = National Address
+
+# Bottom — doctrines
+wr-war-doctrines = WAR DOCTRINES
+wr-doc-structures = Focus Structures
+wr-doc-armor = Focus Armor
+wr-doc-defensive = Defensive Posture
+wr-doc-assault = Rapid Assault
+wr-doc-structures-desc = Your whole army targets enemy buildings and defenses first.
+wr-doc-armor-desc = Your army hunts enemy vehicles first — good against tank pushes.
+wr-doc-defensive-desc = Move ~20% slower but take ~20% less damage. Hold ground.
+wr-doc-assault-desc = Move ~18% faster and hit ~12% harder. Press the attack.
+
+# Bottom — strategic upgrades
+wr-strategic-upgrades = STRATEGIC UPGRADES
+wr-upg-satellite = Satellite Recon
+wr-upg-ew = Advanced EW
+wr-upg-precision = Precision Strikes
+wr-upg-black = Black Projects
+wr-upg-satellite-desc = Reveal the entire map for ~60 seconds. Costs $3,000.
+wr-upg-ew-desc = +18% weapon range and tighter aim, army-wide (~80s). Costs $4,500.
+wr-upg-precision-desc = +25% firepower, army-wide (~60s). Costs $4,600.
+wr-upg-black-desc = Permanent: +10% firepower and +15% armor, army-wide. Costs $8,000.
+wr-cost-3000 = $3,000
+wr-cost-4500 = $4,500
+wr-cost-4600 = $4,600
+wr-cost-8000 = $8,000
+wr-purchase = BUY
+
+# Bottom — command staff
+wr-command-staff = COMMAND STAFF
+wr-staff-steel = Gen. Steel
+wr-staff-jameson = Adm. Jameson
+wr-staff-kovalenko = Dr. Kovalenko
+wr-staff-marshall = Dir. Marshall
+
+# Bottom bar
+wr-return-battlefield = RETURN TO BATTLEFIELD

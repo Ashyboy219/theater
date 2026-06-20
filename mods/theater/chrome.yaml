@@ -1,5 +1,38 @@
-# THEATER — chrome collections (custom UI art).
-warroom:
-	Image: general-portrait.png
+# THEATER — chrome collections (custom War Room art). All PNGs are power-of-two; regions are display-sized
+# because OpenRA's ImageWidget draws a region at its native pixel size (it does not scale to widget bounds).
+warroom-president:
+	Image: warroom/president-warroom-bg.png
 	Regions:
-		general: 0, 0, 168, 208
+		background: 0, 0, 420, 260
+warroom-crest:
+	Image: warroom/theater-crest.png
+	Regions:
+		crest: 4, 4, 56, 56
+warroom-staff:
+	Image: warroom/staff.png
+	Regions:
+		general: 0, 0, 48, 48
+		admiral: 48, 0, 48, 48
+		scientist: 0, 48, 48, 48
+		intel: 48, 48, 48, 48
+warroom-domains:
+	Image: warroom/domains.png
+	Regions:
+		vehicle: 0, 0, 32, 32
+		infantry: 32, 0, 32, 32
+		aircraft: 0, 32, 32, 32
+		naval: 32, 32, 32, 32
+warroom-icons:
+	Image: warroom/icons.png
+	Regions:
+		res-credits: 0, 0, 32, 32
+		res-power: 32, 0, 32, 32
+		res-supplies: 0, 32, 32, 32
+		res-pop: 32, 32, 32, 32
+warroom-cards:
+	Image: warroom/cards.png
+	Regions:
+		satellite: 0, 0, 48, 48
+		ew: 48, 0, 48, 48
+		precision: 0, 48, 48, 48
+		black: 48, 48, 48, 48
