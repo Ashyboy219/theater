@@ -10,6 +10,16 @@
 
 Player:
 	ArmyCommand:
+	# Command-capability queue — a sidebar tab, like d2k's Upgrade queue. Active only while you own a
+	# Theater Command (THCOM Produces: Command). Items are non-occupying buy-once unlocks. Declared after
+	# ArmyCommand so it is never auto-selected as the game-start default tab.
+	ClassicProductionQueue@Command:
+		Type: Command
+		ReadyAudio: NewOptions
+		ReadyTextNotification: notification-new-construction-options
+		QueuedAudio: Building
+		OnHoldAudio: OnHold
+		CancelledAudio: Cancelled
 
 # Ground combatants (and their assault-move variant, which inherits this).
 ^AutoTargetGround:

@@ -1,0 +1,11 @@
+# THEATER — chrome collection overrides (merged onto ra's collections via MiniYaml.Merge).
+#
+# Adds a 'command' production-tab glyph so the Command capability queue gets its own sidebar tab.
+# Reuses the wrench/repair glyph already present in glyphs.png — no new art, no power-of-two PNG: the
+# three states just index existing pixels. ProductionTabsLogic derives the icon name from the queue
+# group (Command -> command / command-disabled / command-alert).
+production-icons:
+	Regions:
+		command: 136, 68, 16, 16
+		command-disabled: 136, 85, 16, 16
+		command-alert: 136, 102, 16, 16

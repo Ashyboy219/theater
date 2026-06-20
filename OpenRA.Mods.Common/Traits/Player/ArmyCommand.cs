@@ -21,12 +21,19 @@ namespace OpenRA.Mods.Common.Traits
 		"the war-room panel later.")]
 	public class ArmyCommandInfo : TraitInfo
 	{
-		public override object Create(ActorInitializer init) { return new ArmyCommand(); }
+		[Desc("Techtree prerequisite that unlocks advanced targeting focus (the Fire Control capability). ",
+			"Until the player owns it, the army targeting doctrine stays locked to balanced (0).")]
+		public readonly string FireControlPrerequisite = "cap.firecontrol";
+
+		public override object Create(ActorInitializer init) { return new ArmyCommand(this); }
 	}
 
 	public class ArmyCommand : IResolveOrder, ISync
 	{
 		public const string OrderName = "SetTargetDoctrine";
+
+		// Techtree prerequisite that unlocks non-balanced targeting focus (the Fire Control capability).
+		readonly string[] fireControl;
 
 		// Units self-register here on creation so a doctrine change reaches every one of them, and a unit
 		// built mid-game picks up the current doctrine immediately. Registration order is deterministic.
@@ -36,6 +43,11 @@ namespace OpenRA.Mods.Common.Traits
 		int doctrine;
 
 		public int Doctrine => doctrine;
+
+		public ArmyCommand(ArmyCommandInfo info)
+		{
+			fireControl = [info.FireControlPrerequisite];
+		}
 
 		public void Register(ArmyCommandConsumer consumer)
 		{
@@ -54,6 +66,15 @@ namespace OpenRA.Mods.Common.Traits
 				return;
 
 			var d = (int)order.ExtraData;
+
+			// Fire Control gate: only balanced (0) is available until the capability is purchased.
+			if (d != 0)
+			{
+				var techTree = self.TraitOrDefault<TechTree>();
+				if (techTree == null || !techTree.HasPrerequisites(fireControl))
+					return;
+			}
+
 			if (d == doctrine)
 				return;
 

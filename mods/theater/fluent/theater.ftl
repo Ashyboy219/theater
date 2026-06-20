@@ -105,3 +105,10 @@ actor-thcom =
     .description = Forward planning HQ. Provides radar and calls in a combined-arms paradrop to coordinate reinforcements from the sky with your ground push.
     .para-name = Combined Paradrop
     .para-description = Drop a mixed rifle-and-rocket infantry squad onto any visible ground.
+
+## Command capabilities — bought from the Theater Command's Command queue (a sidebar tab).
+button-production-types-command-tooltip = Command Capabilities
+
+actor-cap-firecontrol =
+    .name = Fire Control
+    .description = Unlocks army-wide targeting focus — order your whole force to prioritise enemy structures, armor, or infantry. Bought once; lasts the match.

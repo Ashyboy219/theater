@@ -40,3 +40,7 @@ THCOM:
 		DirectionArrowAnimation: paradirection
 		SupportPowerPaletteOrder: 50
 	SupportPowerChargeBar:
+	# Hosts the Command capability queue — its sidebar tab is active only while a Theater Command stands.
+	# Produces only non-occupying capability actors, so no exit/placement is needed.
+	Production:
+		Produces: Command

@@ -23,6 +23,8 @@ namespace OpenRA.Mods.Common.Commands
 
 	public class TheaterCommands : IChatCommand, IWorldLoaded
 	{
+		static readonly string[] FireControlPrereq = ["cap.firecontrol"];
+
 		World world;
 		ChatCommands console;
 
@@ -97,6 +99,16 @@ namespace OpenRA.Mods.Common.Commands
 				default:
 					TextNotificationsManager.Debug("Usage: /target structures | armor | infantry | balanced");
 					return;
+			}
+
+			if (doctrine != 0)
+			{
+				var techTree = player.PlayerActor.TraitOrDefault<TechTree>();
+				if (techTree == null || !techTree.HasPrerequisites(FireControlPrereq))
+				{
+					TextNotificationsManager.Debug("Fire Control not acquired — build it at the Theater Command to unlock targeting focus.");
+					return;
+				}
 			}
 
 			world.IssueOrder(new Order(ArmyCommand.OrderName, player.PlayerActor, false) { ExtraData = (uint)doctrine });

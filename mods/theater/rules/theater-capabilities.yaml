@@ -1,0 +1,27 @@
+# THEATER — Command capabilities: buy-once permanent unlocks sold from the Theater Command's Command
+# queue (a normal sidebar tab). Each capability is a NON-OCCUPYING buildable (no IOccupySpace, no
+# Inherits) so production grants it without placing anything on the map. On completion it provides a
+# permanent player prerequisite (ProvidesPrerequisite with no Prerequisite: defaults to the actor name),
+# and BuildLimit: 1 + the persistent bodiless actor keep it hidden from the sidebar afterward (can't
+# re-buy). Gating is read in C#/UI via TechTree.HasPrerequisites — no per-unit condition plumbing.
+# This is the stock d2k "build-an-upgrade-then-hide-it" pattern; the purchase needs no new C#.
+
+# --- Fire Control: unlocks army-wide targeting focus (structures / armor / infantry). Until bought, the
+#     targeting doctrine is locked to balanced (enforced in ArmyCommand + the /target command + the UI).
+cap.firecontrol:
+	Interactable:
+	Tooltip:
+		Name: actor-cap-firecontrol.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 10
+		BuildLimit: 1
+		BuildDuration: 250
+		BuildDurationModifier: 100
+		Description: actor-cap-firecontrol.description
+		Icon: icon
+	Valued:
+		Cost: 1500
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:
