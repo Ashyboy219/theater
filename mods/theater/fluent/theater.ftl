@@ -99,6 +99,18 @@ actor-raptor =
     .name = Raptor Air-Superiority Fighter
 actor-tunguska =
     .name = Tunguska Air-Defense System
+actor-burke =
+    .name = Burke Aegis Destroyer
+actor-akula =
+    .name = Akula Attack Submarine
+actor-houbei =
+    .name = Houbei Missile Boat
+actor-barbaros =
+    .name = Barbaros USV Patrol Drone
+actor-astute =
+    .name = Astute Attack Submarine
+actor-kolkata =
+    .name = Kolkata Missile Destroyer
 
 ## Dev mode
 checkbox-devunlock =

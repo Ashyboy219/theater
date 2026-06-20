@@ -212,3 +212,60 @@
 	ProductionTimeMultiplier@doc-cb:
 		Prerequisites: tech.continental_bloc
 		Multiplier: 80
+
+# ============================ NAVAL TIER (surface ships + submarines) ============================
+# ^Submarine Inherits ^Ship, so these national profiles apply to BOTH surface ships and the faction subs
+# (AKULA/ASTUTE). Conditions mirror the other tiers (granted on this template from the faction's tech token);
+# ProductionCost/Time are prerequisite-gated (no condition needed). baseline = 100. Integer, determinism-safe.
+^Ship:
+	GrantConditionOnPrerequisite@doc-nu:
+		Condition: doctrine-northern_union
+		Prerequisites: tech.northern_union
+	GrantConditionOnPrerequisite@doc-sf:
+		Condition: doctrine-subcontinent_federation
+		Prerequisites: tech.subcontinent_federation
+	GrantConditionOnPrerequisite@doc-aa:
+		Condition: doctrine-anatolian_alliance
+		Prerequisites: tech.anatolian_alliance
+	GrantConditionOnPrerequisite@doc-fed:
+		Condition: doctrine-federation
+		Prerequisites: tech.federation
+	GrantConditionOnPrerequisite@doc-ic:
+		Condition: doctrine-isles_coalition
+		Prerequisites: tech.isles_coalition
+	# Northern Union (Russia) — heavy, hard-hitting warships (tanky hulls + more firepower): heavy naval strike.
+	DamageMultiplier@doc-nu:
+		RequiresCondition: doctrine-northern_union
+		Modifier: 88
+	FirepowerMultiplier@doc-nu:
+		RequiresCondition: doctrine-northern_union
+		Modifier: 110
+	# Continental Bloc (China) — cheap, fast-built mass naval (prerequisite-gated; no condition needed).
+	ProductionCostMultiplier@doc-cb:
+		Prerequisites: tech.continental_bloc
+		Multiplier: 85
+	ProductionTimeMultiplier@doc-cb:
+		Prerequisites: tech.continental_bloc
+		Multiplier: 85
+	# Subcontinent Federation (India) — long naval reach (layered sea control), but slower hulls.
+	RangeMultiplier@doc-sf:
+		RequiresCondition: doctrine-subcontinent_federation
+		Modifier: 112
+	SpeedMultiplier@doc-sf:
+		RequiresCondition: doctrine-subcontinent_federation
+		Modifier: 92
+	# Anatolian Alliance (Turkey) — cheap, far-seeing littoral patrol fleet.
+	ProductionCostMultiplier@doc-aa:
+		Prerequisites: tech.anatolian_alliance
+		Multiplier: 88
+	RevealsShroudMultiplier@doc-aa:
+		RequiresCondition: doctrine-anatolian_alliance
+		Modifier: 115
+	# Federation (USA) — superior naval sensors (the air-naval picture).
+	RevealsShroudMultiplier@doc-fed:
+		RequiresCondition: doctrine-federation
+		Modifier: 115
+	# Isles Coalition (UK) — naval intelligence: wide sensors across the fleet.
+	RevealsShroudMultiplier@doc-ic:
+		RequiresCondition: doctrine-isles_coalition
+		Modifier: 115

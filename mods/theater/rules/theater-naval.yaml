@@ -1,0 +1,152 @@
+# THEATER — grounded modern naval layer.
+#
+# The mod was land+air only; this adds a sea layer. The SHARED surface roster is the stock RA fleet, which
+# every theater faction can already build from a Naval Yard (SYRD, granted via structures.allies):
+#   PT  (Patrol Boat) ... cheap fast patrol + anti-submarine depth charges + sonar.
+#   DD  (Destroyer) ..... escort: anti-air (Stinger/StingerAA) + anti-sub (DepthCharge) + sonar detection.
+#   CA  (Cruiser) ....... naval artillery — long-range 8-inch shore/ship bombardment.
+#   LST (Landing craft) . amphibious transport (infantry + vehicles).
+# Submarines were UNBUILDABLE for theater factions: stock SS/MSUB gate on ~spen (the SOVIET Sub Pen), which
+# no theater faction can build (they all hold Allied tokens). The fix needs NO structure edit: the faction
+# subs below re-route BuildAtProductionType from `Submarine` to `Boat`, so they build from the Naval Yard.
+#
+# Each priority faction then gets ONE signature naval unit (reusing a stock hull — DD/SS/PT — so no new art),
+# faction-gated (tech.<faction> + syrd). Broad national naval character comes from the ^Ship doctrine profiles
+# in theater-doctrines.yaml (Russia heavy, China cheap-mass, India long-reach, Turkey/USA/UK sensors). No new
+# C#. Counters are native: DD/PT depth-charges + sonar kill subs; ship AA kills aircraft; strike aircraft and
+# cruisers kill ships; submerged subs are detectable (no invisible deletion — they surface to fire torpedoes).
+
+# ============================ USA (Federation) — Aegis air-naval defense ============================
+# Arleigh Burke-class Aegis destroyer: the premier escort. Hardened hull, superior sensors + sonar (the
+# "Aegis picture") on top of the DD's AA + anti-sub kit. Pairs with USA's air arm for sea control. Reuses DD.
+BURKE:
+	Inherits: DD
+	RenderSprites:
+		Image: dd
+	Tooltip:
+		Name: actor-burke.name
+	Buildable:
+		Queue: Ship
+		BuildAtProductionType: Boat
+		BuildPaletteOrder: 46
+		Prerequisites: tech.federation, syrd, dome
+	Valued:
+		Cost: 1400
+	Health:
+		HP: 52000
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 8c0
+		RevealGeneratedShroud: False
+	DetectCloaked:
+		Range: 7c0
+		DetectionTypes: Underwater, Cloak
+
+# ============================ Russia (Northern Union) — attack submarine ============================
+# Akula-class hunter-killer sub: stealthy torpedo boat that ambushes surface ships, then submerges. The
+# Russia ^Ship profile (tanky + firepower) makes it a heavy threat. Countered by enemy sonar + depth charges
+# (DD/PT) — it must stay hidden, and it surfaces (becomes visible) when it fires. Reuses the stock SS hull.
+AKULA:
+	Inherits: SS
+	RenderSprites:
+		Image: ss
+	Tooltip:
+		Name: actor-akula.name
+	Buildable:
+		Queue: Ship
+		BuildAtProductionType: Boat
+		BuildPaletteOrder: 36
+		Prerequisites: tech.northern_union, syrd
+	Valued:
+		Cost: 1000
+
+# ============================ China (Continental Bloc) — mass missile boat ============================
+# Houbei-class missile catamaran: a dirt-cheap fast boat trading the gun for anti-ship/shore missiles
+# (longer reach than the patrol gun). The China ^Ship cost profile makes it cheaper still — swarm the
+# littoral with them (coastal missile pressure). Fragile; dies to destroyers/aircraft. Reuses the PT hull.
+HOUBEI:
+	Inherits: PT
+	RenderSprites:
+		Image: pt
+	Tooltip:
+		Name: actor-houbei.name
+	Buildable:
+		Queue: Ship
+		BuildAtProductionType: Boat
+		BuildPaletteOrder: 24
+		Prerequisites: tech.continental_bloc, syrd
+	Valued:
+		Cost: 450
+	Armament@PRIMARY:
+		Weapon: Stinger
+		LocalOffset: 208,0,48
+		MuzzleSequence: muzzle
+
+# ============================ Turkey (Anatolian Alliance) — USV recon patrol ============================
+# Unmanned surface vessel: a fast, far-seeing drone boat with sonar — littoral control and naval recon.
+# Spots the sea (and submerged subs) first, screens the fleet, harasses with a light gun. Reuses the PT hull.
+BARBAROS:
+	Inherits: PT
+	RenderSprites:
+		Image: pt
+	Tooltip:
+		Name: actor-barbaros.name
+	Buildable:
+		Queue: Ship
+		BuildAtProductionType: Boat
+		BuildPaletteOrder: 24
+		Prerequisites: tech.anatolian_alliance, syrd
+	Valued:
+		Cost: 500
+	Mobile:
+		Speed: 175
+	RevealsShroud:
+		MinRange: 6c0
+		Range: 11c0
+		RevealGeneratedShroud: False
+	DetectCloaked:
+		Range: 6c0
+		DetectionTypes: Underwater
+
+# ============================ UK (Isles Coalition) — intelligence attack submarine ============================
+# Astute-class SSN: a quieter hunter-killer with the best sonar in the game (detects subs AND cloak) and a
+# wide sight — UK's naval intelligence arm. Hunts other submarines and scouts unseen. Reuses the stock SS hull.
+ASTUTE:
+	Inherits: SS
+	RenderSprites:
+		Image: ss
+	Tooltip:
+		Name: actor-astute.name
+	Buildable:
+		Queue: Ship
+		BuildAtProductionType: Boat
+		BuildPaletteOrder: 36
+		Prerequisites: tech.isles_coalition, syrd
+	Valued:
+		Cost: 1100
+	RevealsShroud:
+		MinRange: 5c0
+		Range: 10c0
+		RevealGeneratedShroud: False
+	DetectCloaked:
+		Range: 8c0
+		DetectionTypes: Underwater, Cloak
+
+# ============================ India (Subcontinent Federation) — missile destroyer ============================
+# Kolkata-class guided-missile destroyer: a hardened air-defense + anti-ship platform. The India ^Ship range
+# profile pushes its missiles/AA out to standoff range — layered sea control and regional reach. Reuses DD.
+KOLKATA:
+	Inherits: DD
+	RenderSprites:
+		Image: dd
+	Tooltip:
+		Name: actor-kolkata.name
+	Buildable:
+		Queue: Ship
+		BuildAtProductionType: Boat
+		BuildPaletteOrder: 46
+		Prerequisites: tech.subcontinent_federation, syrd, dome
+	Valued:
+		Cost: 1300
+	Health:
+		HP: 50000

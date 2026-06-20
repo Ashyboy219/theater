@@ -107,6 +107,7 @@ Rules:
 	theater|rules/theater-doctrine-ind.yaml
 	theater|rules/theater-roster.yaml
 	theater|rules/theater-roster-factions.yaml
+	theater|rules/theater-naval.yaml
 
 Sequences:
 	ra|sequences/ships.yaml
