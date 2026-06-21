@@ -252,6 +252,11 @@ Player:
 			research.logistics: 1
 			research.mass: 1
 			research.precision: 1
+			research.netcentric: 1
+			research.reactivearmor: 1
+			research.autoloaders: 1
+			research.avionics: 1
+			research.navalcombat: 1
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
@@ -282,6 +287,11 @@ Player:
 			research.logistics: 1
 			research.mass: 1
 			research.precision: 1
+			research.netcentric: 1
+			research.reactivearmor: 1
+			research.autoloaders: 1
+			research.avionics: 1
+			research.navalcombat: 1
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
@@ -314,6 +324,11 @@ Player:
 			research.logistics: 1
 			research.mass: 1
 			research.precision: 1
+			research.netcentric: 1
+			research.reactivearmor: 1
+			research.autoloaders: 1
+			research.avionics: 1
+			research.navalcombat: 1
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
@@ -344,6 +359,11 @@ Player:
 			research.logistics: 1
 			research.mass: 1
 			research.precision: 1
+			research.netcentric: 1
+			research.reactivearmor: 1
+			research.autoloaders: 1
+			research.avionics: 1
+			research.navalcombat: 1
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
@@ -376,6 +396,11 @@ Player:
 			research.logistics: 1
 			research.mass: 1
 			research.precision: 1
+			research.netcentric: 1
+			research.reactivearmor: 1
+			research.autoloaders: 1
+			research.avionics: 1
+			research.navalcombat: 1
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
@@ -406,6 +431,11 @@ Player:
 			research.logistics: 1
 			research.mass: 1
 			research.precision: 1
+			research.netcentric: 1
+			research.reactivearmor: 1
+			research.autoloaders: 1
+			research.avionics: 1
+			research.navalcombat: 1
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
@@ -438,6 +468,11 @@ Player:
 			research.logistics: 1
 			research.mass: 1
 			research.precision: 1
+			research.netcentric: 1
+			research.reactivearmor: 1
+			research.autoloaders: 1
+			research.avionics: 1
+			research.navalcombat: 1
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
@@ -468,6 +503,11 @@ Player:
 			research.logistics: 1
 			research.mass: 1
 			research.precision: 1
+			research.netcentric: 1
+			research.reactivearmor: 1
+			research.autoloaders: 1
+			research.avionics: 1
+			research.navalcombat: 1
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1

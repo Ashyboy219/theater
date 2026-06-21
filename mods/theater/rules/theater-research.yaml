@@ -194,6 +194,106 @@ research.precision:
 		Image: dome
 	ProvidesPrerequisite@self:
 
+# =================================== TIER 2: Advanced Research (gated on the Information age) ===================================
+# A deeper tech tier that only opens once you ADVANCE to the Information age — so climbing the era ladder
+# unlocks more of the research tree (research <-> ages integration). New effect types beyond Tier 1: range,
+# rate-of-fire, and domain-specific air/naval boosts. Same buy-once Command-queue + template-condition pattern.
+
+research.netcentric:
+	Interactable:
+	Tooltip:
+		Name: actor-research-netcentric.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 62
+		BuildLimit: 1
+		BuildDuration: 550
+		BuildDurationModifier: 100
+		Prerequisites: rlab, age.information
+		Description: actor-research-netcentric.description
+		Icon: research-netcentric-icon
+	Valued:
+		Cost: 1200
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:
+
+research.reactivearmor:
+	Interactable:
+	Tooltip:
+		Name: actor-research-reactivearmor.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 63
+		BuildLimit: 1
+		BuildDuration: 550
+		BuildDurationModifier: 100
+		Prerequisites: rlab, age.information
+		Description: actor-research-reactivearmor.description
+		Icon: research-reactivearmor-icon
+	Valued:
+		Cost: 1200
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:
+
+research.autoloaders:
+	Interactable:
+	Tooltip:
+		Name: actor-research-autoloaders.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 64
+		BuildLimit: 1
+		BuildDuration: 550
+		BuildDurationModifier: 100
+		Prerequisites: rlab, age.information
+		Description: actor-research-autoloaders.description
+		Icon: research-autoloaders-icon
+	Valued:
+		Cost: 1300
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:
+
+research.avionics:
+	Interactable:
+	Tooltip:
+		Name: actor-research-avionics.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 65
+		BuildLimit: 1
+		BuildDuration: 500
+		BuildDurationModifier: 100
+		Prerequisites: rlab, age.information
+		Description: actor-research-avionics.description
+		Icon: research-avionics-icon
+	Valued:
+		Cost: 1100
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:
+
+research.navalcombat:
+	Interactable:
+	Tooltip:
+		Name: actor-research-navalcombat.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 66
+		BuildLimit: 1
+		BuildDuration: 500
+		BuildDurationModifier: 100
+		Prerequisites: rlab, age.information
+		Description: actor-research-navalcombat.description
+		Icon: research-navalcombat-icon
+	Valued:
+		Cost: 1100
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:
+
 # =================================== Effects (condition-grants on the templates) ===================================
 # Grant a condition on the TEMPLATE when its research token exists, then a RequiresCondition multiplier reads
 # it (the proven doctrine pattern). ProductionCostMultiplier reads Prerequisites directly. All stack with
@@ -247,6 +347,25 @@ research.precision:
 	ProductionCostMultiplier@res-precision:
 		Prerequisites: research.precision
 		Multiplier: 110
+	# --- TIER 2 (Information-age advanced research) ---
+	GrantConditionOnPrerequisite@res-netcentric:
+		Condition: res-netcentric
+		Prerequisites: research.netcentric
+	RangeMultiplier@res-netcentric:
+		RequiresCondition: res-netcentric
+		Modifier: 110
+	GrantConditionOnPrerequisite@res-reactivearmor:
+		Condition: res-reactivearmor
+		Prerequisites: research.reactivearmor
+	DamageMultiplier@res-reactivearmor:
+		RequiresCondition: res-reactivearmor
+		Modifier: 90
+	GrantConditionOnPrerequisite@res-autoloaders:
+		Condition: res-autoloaders
+		Prerequisites: research.autoloaders
+	ReloadDelayMultiplier@res-autoloaders:
+		RequiresCondition: res-autoloaders
+		Modifier: 85
 
 ^Infantry:
 	GrantConditionOnPrerequisite@res-optics:
@@ -261,3 +380,26 @@ research.precision:
 	FirepowerMultiplier@res-smallarms:
 		RequiresCondition: res-smallarms
 		Modifier: 115
+
+# TIER 2 air / naval domain research (Information-age gated).
+^Plane:
+	GrantConditionOnPrerequisite@res-avionics:
+		Condition: res-avionics
+		Prerequisites: research.avionics
+	FirepowerMultiplier@res-avionics:
+		RequiresCondition: res-avionics
+		Modifier: 115
+	SpeedMultiplier@res-avionics:
+		RequiresCondition: res-avionics
+		Modifier: 110
+
+^Ship:
+	GrantConditionOnPrerequisite@res-navalcombat:
+		Condition: res-navalcombat
+		Prerequisites: research.navalcombat
+	FirepowerMultiplier@res-navalcombat:
+		RequiresCondition: res-navalcombat
+		Modifier: 115
+	DamageMultiplier@res-navalcombat:
+		RequiresCondition: res-navalcombat
+		Modifier: 90

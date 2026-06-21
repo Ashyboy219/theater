@@ -381,6 +381,23 @@ actor-research-precision =
     .name = Research: Precision Manufacturing
     .description = DECISION — locks out Mass Production. Vehicles hit 22% harder but cost 10% more. Win by quality.
 
+## Tier 2 — advanced research (unlocked by advancing to the Information Age)
+actor-research-netcentric =
+    .name = Research: Network-Centric Warfare
+    .description = +10% weapon range for all your vehicles. Requires the Information Age.
+actor-research-reactivearmor =
+    .name = Research: Reactive Armor
+    .description = Your vehicles take a further 10% less damage (stacks with Composite Armor). Requires the Information Age.
+actor-research-autoloaders =
+    .name = Research: Autoloaders
+    .description = Your vehicles reload 15% faster — higher rate of fire. Requires the Information Age.
+actor-research-avionics =
+    .name = Research: Advanced Avionics
+    .description = Your aircraft hit 15% harder and fly 10% faster. Requires the Information Age.
+actor-research-navalcombat =
+    .name = Research: Integrated Naval Systems
+    .description = Your ships hit 15% harder and take 10% less damage. Requires the Information Age.
+
 ## ============================ 4X: Ages / eras (escalation ladder) ============================
 actor-age-information =
     .name = Advance: Information Age

@@ -137,6 +137,17 @@ dome:
 		Filename: cap-firecontrol-cameo.png
 	cap-formations-icon:
 		Filename: cap-formations-cameo.png
+	# Tier-2 advanced research icons.
+	research-netcentric-icon:
+		Filename: research-netcentric-cameo.png
+	research-reactivearmor-icon:
+		Filename: research-reactivearmor-cameo.png
+	research-autoloaders-icon:
+		Filename: research-autoloaders-cameo.png
+	research-avionics-icon:
+		Filename: research-avionics-cameo.png
+	research-navalcombat-icon:
+		Filename: research-navalcombat-cameo.png
 
 # 4X economy-building cameos keyed under the silo body (alloyex/bank reuse it) and the apwr body (fusion).
 silo:
