@@ -36,6 +36,25 @@ Player:
 		RequiresCondition: cmd-focus-infantry
 		ValidTargets: Infantry
 		Priority: 20
+	# --- ADVANCED TARGETING: always-on smart default (improves on top of manual Fire-Control, never replaces it).
+	# Re-ranks the ALREADY-valid auto-targets (no NEW target types vs the stock @DEFAULT set) so a unit spends fire
+	# on the real threat instead of whatever is merely nearest: air and mobile combat units outrank defensive
+	# buildings. These sit ABOVE the stock default (Priority 1) but BELOW the manual focus (@CMD*, 20), so /target
+	# still overrides on demand. A unit can never fire on something it couldn't already auto-target — this only
+	# changes WHICH valid target it prefers. (ReturnFire stance already snaps a unit onto whoever shoots it; this
+	# fixes the idle-scan pick so tanks stop chewing a pillbox while enemy armour shells them.)
+	AutoTargetPriority@ADVAIR:
+		ValidTargets: AirborneActor
+		Priority: 14
+	AutoTargetPriority@ADVMOBILE:
+		ValidTargets: Vehicle, Ship, Underwater
+		Priority: 10
+	AutoTargetPriority@ADVINF:
+		ValidTargets: Infantry, Mine
+		Priority: 8
+	AutoTargetPriority@ADVDEF:
+		ValidTargets: Defense
+		Priority: 5
 
 # Air/ground all-target combatants (and their assault-move variant).
 ^AutoTargetAll:
@@ -52,3 +71,18 @@ Player:
 		RequiresCondition: cmd-focus-infantry
 		ValidTargets: Infantry
 		Priority: 20
+	# --- ADVANCED TARGETING: always-on smart default (see ^AutoTargetGround above). For all-target combatants
+	# (incl. air-superiority fighters and AA), the air-preference (14) makes interceptors hunt aircraft first,
+	# then mobile units, then infantry, with defensive buildings last. Manual /target (20) still overrides.
+	AutoTargetPriority@ADVAIR:
+		ValidTargets: AirborneActor
+		Priority: 14
+	AutoTargetPriority@ADVMOBILE:
+		ValidTargets: Vehicle, Ship, Underwater
+		Priority: 10
+	AutoTargetPriority@ADVINF:
+		ValidTargets: Infantry, Mine
+		Priority: 8
+	AutoTargetPriority@ADVDEF:
+		ValidTargets: Defense
+		Priority: 5
