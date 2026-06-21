@@ -10,6 +10,10 @@ mig:
 		Filename: tejas-cameo.png
 	raptor-icon:
 		Filename: raptor-cameo.png
+	b21-icon:
+		Filename: b21-cameo.png
+	akinci-icon:
+		Filename: akinci-cameo.png
 
 ttnk:
 	bastion-icon:
@@ -38,6 +42,10 @@ yak:
 		Filename: molot-cameo.png
 	arjun-icon:
 		Filename: arjun-cameo.png
+	amx-icon:
+		Filename: amx-cameo.png
+	armata-icon:
+		Filename: armata-cameo.png
 
 e6:
 	pathfinder-icon:
@@ -56,10 +64,14 @@ v2rl:
 		Filename: grad-cameo.png
 	dazhbog-icon:
 		Filename: dazhbog-cameo.png
+	agni-icon:
+		Filename: agni-cameo.png
 
 mh60:
 	reaper-icon:
 		Filename: reaper-cameo.png
+	gj11-icon:
+		Filename: gj11-cameo.png
 
 apc:
 	redoubt-icon:

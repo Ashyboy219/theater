@@ -123,3 +123,23 @@ DONGFENG:
 RAIDER:
 	Buildable:
 		Icon: raider-icon
+
+# --- Late-game flagships ---
+AMX:
+	Buildable:
+		Icon: amx-icon
+ARMATA:
+	Buildable:
+		Icon: armata-icon
+B21:
+	Buildable:
+		Icon: b21-icon
+GJ11:
+	Buildable:
+		Icon: gj11-icon
+AKINCI:
+	Buildable:
+		Icon: akinci-icon
+AGNI:
+	Buildable:
+		Icon: agni-icon

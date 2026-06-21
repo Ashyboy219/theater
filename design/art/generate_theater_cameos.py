@@ -69,6 +69,13 @@ UNITS = {
     "dongfeng": "a cheap mass-produced light tank with a simple boxy welded turret and a medium gun, bare grey primer",
     "arjun": "a heavy main battle tank with a rounded welded turret and a long gun barrel, desert-tan camouflage",
     "raider": "a single elite special-forces soldier in dark stealth combat gear with a suppressed carbine and night-vision goggles, crouching",
+    # --- Late-game flagships ---
+    "amx": "a boxy 2030s American super-heavy main battle tank, low slanted angular turret with twin guns, slat and active-protection armor panels, desert tan",
+    "armata": "a massive modern Russian heavy main battle tank with an unmanned low-profile turret, reactive-armor blocks, long main gun, winter-green and rust",
+    "b21": "a flying-wing stealth bomber seen from below and front, smooth dark grey, sharp swept blended wing, weapon bay cracking open",
+    "gj11": "a sleek dark-grey Chinese stealth flying-wing combat drone, sharp angular tailless UCAV, precision missiles under the wings",
+    "akinci": "a large twin-boom twin-tail Turkish combat drone, sand-grey, bulbous sensor nose, laser-guided munitions under the straight wings",
+    "agni": "a large Indian transporter-erector-launcher military truck with a ballistic missile raised vertical at the moment of ignition, jungle-green camouflage, flame and exhaust plume",
 }
 
 FORCE = "--force" in sys.argv
