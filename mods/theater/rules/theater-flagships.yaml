@@ -9,10 +9,16 @@
 # body (120mm AP primary + tusk missiles that swat air/infantry) with self-repair. The late USA ground regime change.
 AMX:
 	Inherits: 4TNK
+	# Battlefield body: spawns as a modern main battle tank (mbtbody hull + turret), not the stock 4tnk Mammoth.
 	RenderSprites:
-		Image: 4tnk
+		Image: mbtbody
 	Tooltip:
 		Name: actor-amx.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 100
@@ -81,9 +87,14 @@ B21:
 ARMATA:
 	Inherits: 4TNK
 	RenderSprites:
-		Image: 4tnk
+		Image: mbtbody
 	Tooltip:
 		Name: actor-armata.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 100

@@ -128,9 +128,14 @@ THCOM:
 ARJUN:
 	Inherits: 4TNK
 	RenderSprites:
-		Image: 4tnk
+		Image: mbtbody
 	Tooltip:
 		Name: actor-arjun.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 95

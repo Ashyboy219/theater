@@ -248,3 +248,31 @@ subbody:
 		Filename: akula-cameo.png
 	astute-icon:
 		Filename: astute-cameo.png
+
+# Ground body: modern main battle tank (TURRETED) — separate hull + turret sprites, 32-facing each. The hull
+# (idle) and the independently-rotating turret are rendered from the same camera/origin so WithSpriteTurret
+# (Offset 0,0,0) composites them correctly. Shared by the 4tnk-based heavies AMX/ARMATA/MOLOT/ARJUN.
+mbtbody:
+	idle:
+		Filename: mbtbody.png
+		Facings: 32
+		InterpolatedFacings: 64
+	turret:
+		Filename: mbtbody-turret.png
+		Facings: 32
+		InterpolatedFacings: 64
+	# 4tnk keeps WithMuzzleOverlay + Armament MuzzleSequence: muzzle, so provide one (stock gunfire SHP).
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	roundel:
+		Filename: roundel.shp
+		Length: 1
+	amx-icon:
+		Filename: amx-cameo.png
+	armata-icon:
+		Filename: armata-cameo.png
+	molot-icon:
+		Filename: molot-cameo.png
+	arjun-icon:
+		Filename: arjun-cameo.png
