@@ -4,6 +4,9 @@
 mod-title = THEATER
 mod-windowtitle = THEATER
 
+## In-game HUD
+label-theater-alloys = ALLOYS
+
 ## Factions — doctrine line, the army's strength/tradeoff, and unique units.
 faction-federation =
     .name = The Federation

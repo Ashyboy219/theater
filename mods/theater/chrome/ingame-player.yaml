@@ -669,6 +669,33 @@ Container@PLAYER_WIDGETS:
 							Y: 4
 							ImageCollection: power-icons
 							ImageName: power-normal
+		# THEATER: a dedicated readout for the counted strategic resource (alloys), just below the money bin.
+		# Reuses the money-bin background. Position is conservative; nudge Y in-game if it overlaps.
+		Image@SIDEBAR_ALLOYBIN:
+			Logic: AddFactionSuffixLogic
+			X: WINDOW_WIDTH - 250
+			Y: 302
+			Width: 238
+			Height: 28
+			ImageCollection: sidebar
+			ImageName: background-moneybin
+			ClickThrough: false
+			Children:
+				Label@ALLOYS_CAPTION:
+					X: 10
+					Y: 3
+					Width: 100
+					Height: 23
+					Font: TinyBold
+					Text: label-theater-alloys
+				Label@ALLOYS:
+					Logic: IngameAlloyCounterLogic
+					X: PARENT_WIDTH - WIDTH - 14
+					Y: 2
+					Width: 100
+					Height: 23
+					Align: Right
+					Font: Bold
 		Container@HPF_ROOT:
 			Logic: LoadIngameHierarchicalPathFinderOverlayLogic
 			X: WINDOW_WIDTH - WIDTH - 260
