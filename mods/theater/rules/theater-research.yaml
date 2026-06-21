@@ -27,6 +27,7 @@ rlab:
 		BuildPaletteOrder: 136
 		Prerequisites: dome, ~structures.allies, ~techlevel.medium
 		Description: actor-rlab.description
+		Icon: rlab-icon
 	Valued:
 		Cost: 1400
 	Tooltip:

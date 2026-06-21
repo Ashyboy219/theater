@@ -104,6 +104,20 @@ agun:
 dome:
 	thcom-icon:
 		Filename: thcom-cameo.png
+	# 4X building cameos (rlab uses the dome body; distinct sidebar icon).
+	rlab-icon:
+		Filename: rlab-cameo.png
+
+# 4X economy-building cameos keyed under the silo body (alloyex/bank reuse it) and the apwr body (fusion).
+silo:
+	alloyex-icon:
+		Filename: alloyex-cameo.png
+	bank-icon:
+		Filename: bank-cameo.png
+
+apwr:
+	fusion-icon:
+		Filename: fusion-cameo.png
 
 # --- Visual-identity pass: cameos for the land/air/naval units added in later passes ---
 jeep:

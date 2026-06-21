@@ -26,6 +26,7 @@ alloyex:
 		BuildPaletteOrder: 137
 		Prerequisites: proc, ~structures.allies, ~techlevel.medium
 		Description: actor-alloyex.description
+		Icon: alloyex-icon
 	Valued:
 		Cost: 900
 	Tooltip:
@@ -62,6 +63,7 @@ bank:
 		BuildPaletteOrder: 138
 		Prerequisites: proc, ~structures.allies, ~techlevel.medium
 		Description: actor-bank.description
+		Icon: bank-icon
 	Valued:
 		Cost: 1000
 	Tooltip:
@@ -92,6 +94,7 @@ fusion:
 		BuildPaletteOrder: 139
 		Prerequisites: dome, ~structures.allies, ~techlevel.medium
 		Description: actor-fusion.description
+		Icon: fusion-icon
 	Valued:
 		Cost: 900
 	Tooltip:
