@@ -15,9 +15,14 @@
 bradley:
 	Inherits: APC
 	RenderSprites:
-		Image: apc
+		Image: apcbody
 	Tooltip:
 		Name: actor-bradley.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 95
@@ -178,9 +183,14 @@ jackal:
 namica:
 	Inherits: APC
 	RenderSprites:
-		Image: apc
+		Image: apcbody
 	Tooltip:
 		Name: actor-namica.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 96

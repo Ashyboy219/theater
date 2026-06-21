@@ -68,11 +68,16 @@ scout:
 ifv:
 	Inherits: APC
 	RenderSprites:
-		Image: apc
+		Image: apcbody
 	Valued:
 		Cost: 800
 	Tooltip:
 		Name: actor-ifv.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 121

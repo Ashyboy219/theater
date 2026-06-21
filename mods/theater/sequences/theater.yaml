@@ -344,3 +344,26 @@ tankbody:
 		Filename: loewe-cameo.png
 	bmpt-icon:
 		Filename: bmpt-cameo.png
+
+# Ground body: modern 8x8 wheeled IFV/APC — angular hull, sloped glacis, eight road wheels, a small fixed
+# remote weapon station. Single-body (APC has no turret), 32-facing. Shared by the apc-based carriers
+# REDOUBT/IFV/BRADLEY/NAMICA so they read as modern wheeled IFVs, distinct from the tracked tanks.
+apcbody:
+	idle:
+		Filename: apcbody.png
+		Facings: 32
+		InterpolatedFacings: 64
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	roundel:
+		Filename: roundel.shp
+		Length: 1
+	redoubt-icon:
+		Filename: redoubt-cameo.png
+	ifv-icon:
+		Filename: ifv-cameo.png
+	bradley-icon:
+		Filename: bradley-cameo.png
+	namica-icon:
+		Filename: namica-cameo.png

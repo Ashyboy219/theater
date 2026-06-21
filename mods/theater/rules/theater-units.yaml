@@ -333,10 +333,16 @@ GRAD:
 # Northern Union (Russia) — mobile BUNKER: a heavily-armoured assault transport, not a stock M60 APC.
 REDOUBT:
 	Inherits: APC
+	# Battlefield body: spawns as a modern 8x8 wheeled IFV (apcbody), not the stock APC.
 	RenderSprites:
-		Image: apc
+		Image: apcbody
 	Tooltip:
 		Name: actor-redoubt.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 94
