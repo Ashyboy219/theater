@@ -34,7 +34,7 @@ cap.formations:
 		Name: actor-cap-formations.name
 	Buildable:
 		Queue: Command
-		BuildPaletteOrder: 20
+		BuildPaletteOrder: 11
 		BuildLimit: 1
 		BuildDuration: 250
 		BuildDurationModifier: 100

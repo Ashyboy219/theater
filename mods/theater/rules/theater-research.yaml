@@ -46,7 +46,7 @@ research.ballistics:
 		Name: actor-research-ballistics.name
 	Buildable:
 		Queue: Command
-		BuildPaletteOrder: 50
+		BuildPaletteOrder: 30
 		BuildLimit: 1
 		BuildDuration: 400
 		BuildDurationModifier: 100
@@ -65,7 +65,7 @@ research.armor:
 		Name: actor-research-armor.name
 	Buildable:
 		Queue: Command
-		BuildPaletteOrder: 51
+		BuildPaletteOrder: 31
 		BuildLimit: 1
 		BuildDuration: 400
 		BuildDurationModifier: 100
@@ -84,7 +84,7 @@ research.optics:
 		Name: actor-research-optics.name
 	Buildable:
 		Queue: Command
-		BuildPaletteOrder: 52
+		BuildPaletteOrder: 32
 		BuildLimit: 1
 		BuildDuration: 300
 		BuildDurationModifier: 100
@@ -103,7 +103,7 @@ research.propulsion:
 		Name: actor-research-propulsion.name
 	Buildable:
 		Queue: Command
-		BuildPaletteOrder: 53
+		BuildPaletteOrder: 33
 		BuildLimit: 1
 		BuildDuration: 350
 		BuildDurationModifier: 100
@@ -122,7 +122,7 @@ research.smallarms:
 		Name: actor-research-smallarms.name
 	Buildable:
 		Queue: Command
-		BuildPaletteOrder: 54
+		BuildPaletteOrder: 34
 		BuildLimit: 1
 		BuildDuration: 300
 		BuildDurationModifier: 100
@@ -141,7 +141,7 @@ research.logistics:
 		Name: actor-research-logistics.name
 	Buildable:
 		Queue: Command
-		BuildPaletteOrder: 55
+		BuildPaletteOrder: 35
 		BuildLimit: 1
 		BuildDuration: 450
 		BuildDurationModifier: 100
@@ -162,7 +162,7 @@ research.mass:
 		Name: actor-research-mass.name
 	Buildable:
 		Queue: Command
-		BuildPaletteOrder: 60
+		BuildPaletteOrder: 36
 		BuildLimit: 1
 		BuildDuration: 500
 		BuildDurationModifier: 100
@@ -181,7 +181,7 @@ research.precision:
 		Name: actor-research-precision.name
 	Buildable:
 		Queue: Command
-		BuildPaletteOrder: 61
+		BuildPaletteOrder: 37
 		BuildLimit: 1
 		BuildDuration: 500
 		BuildDurationModifier: 100
@@ -205,7 +205,7 @@ research.netcentric:
 		Name: actor-research-netcentric.name
 	Buildable:
 		Queue: Command
-		BuildPaletteOrder: 62
+		BuildPaletteOrder: 50
 		BuildLimit: 1
 		BuildDuration: 550
 		BuildDurationModifier: 100
@@ -224,7 +224,7 @@ research.reactivearmor:
 		Name: actor-research-reactivearmor.name
 	Buildable:
 		Queue: Command
-		BuildPaletteOrder: 63
+		BuildPaletteOrder: 51
 		BuildLimit: 1
 		BuildDuration: 550
 		BuildDurationModifier: 100
@@ -243,7 +243,7 @@ research.autoloaders:
 		Name: actor-research-autoloaders.name
 	Buildable:
 		Queue: Command
-		BuildPaletteOrder: 64
+		BuildPaletteOrder: 52
 		BuildLimit: 1
 		BuildDuration: 550
 		BuildDurationModifier: 100
@@ -262,7 +262,7 @@ research.avionics:
 		Name: actor-research-avionics.name
 	Buildable:
 		Queue: Command
-		BuildPaletteOrder: 65
+		BuildPaletteOrder: 53
 		BuildLimit: 1
 		BuildDuration: 500
 		BuildDurationModifier: 100
@@ -281,7 +281,7 @@ research.navalcombat:
 		Name: actor-research-navalcombat.name
 	Buildable:
 		Queue: Command
-		BuildPaletteOrder: 66
+		BuildPaletteOrder: 54
 		BuildLimit: 1
 		BuildDuration: 500
 		BuildDurationModifier: 100

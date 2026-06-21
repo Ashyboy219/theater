@@ -17,7 +17,7 @@ doctrine.uk.specops:
 		BuildLimit: 1
 		BuildDuration: 250
 		BuildDurationModifier: 100
-		BuildPaletteOrder: 30
+		BuildPaletteOrder: 20
 		Prerequisites: ~tech.isles_coalition, ~!doctrine.uk.intel
 		Description: actor-doctrine-uk-specops.description
 		Icon: pathfinder-icon
@@ -37,7 +37,7 @@ doctrine.uk.intel:
 		BuildLimit: 1
 		BuildDuration: 250
 		BuildDurationModifier: 100
-		BuildPaletteOrder: 31
+		BuildPaletteOrder: 21
 		Prerequisites: ~tech.isles_coalition, ~!doctrine.uk.specops
 		Description: actor-doctrine-uk-intel.description
 		Icon: comms-icon

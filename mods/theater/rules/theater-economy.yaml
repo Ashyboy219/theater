@@ -111,7 +111,7 @@ econ.network:
 		Name: actor-econ-network.name
 	Buildable:
 		Queue: Command
-		BuildPaletteOrder: 56
+		BuildPaletteOrder: 60
 		BuildLimit: 1
 		BuildDuration: 450
 		BuildDurationModifier: 100

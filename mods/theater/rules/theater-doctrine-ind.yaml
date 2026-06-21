@@ -19,7 +19,7 @@ doctrine.ind.missile:
 		BuildLimit: 1
 		BuildDuration: 250
 		BuildDurationModifier: 100
-		BuildPaletteOrder: 30
+		BuildPaletteOrder: 20
 		Prerequisites: ~tech.subcontinent_federation, ~!doctrine.ind.networked
 		Description: actor-doctrine-ind-missile.description
 		Icon: garuda-icon
@@ -39,7 +39,7 @@ doctrine.ind.networked:
 		BuildLimit: 1
 		BuildDuration: 250
 		BuildDurationModifier: 100
-		BuildPaletteOrder: 31
+		BuildPaletteOrder: 21
 		Prerequisites: ~tech.subcontinent_federation, ~!doctrine.ind.missile
 		Description: actor-doctrine-ind-networked.description
 		Icon: loewe-icon

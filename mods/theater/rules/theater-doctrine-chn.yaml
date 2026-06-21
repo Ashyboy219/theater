@@ -15,7 +15,7 @@ doctrine.chn.air:
 		BuildLimit: 1
 		BuildDuration: 250
 		BuildDurationModifier: 100
-		BuildPaletteOrder: 30
+		BuildPaletteOrder: 20
 		Prerequisites: ~tech.continental_bloc, ~!doctrine.chn.industrial
 		Description: actor-doctrine-chn-air.description
 		Icon: wingloong-icon
@@ -35,7 +35,7 @@ doctrine.chn.industrial:
 		BuildLimit: 1
 		BuildDuration: 250
 		BuildDurationModifier: 100
-		BuildPaletteOrder: 31
+		BuildPaletteOrder: 21
 		Prerequisites: ~tech.continental_bloc, ~!doctrine.chn.air
 		Description: actor-doctrine-chn-industrial.description
 		Icon: dazhbog-icon

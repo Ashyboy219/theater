@@ -14,7 +14,7 @@ doctrine.tur.recon:
 		BuildLimit: 1
 		BuildDuration: 250
 		BuildDurationModifier: 100
-		BuildPaletteOrder: 30
+		BuildPaletteOrder: 20
 		Prerequisites: ~tech.anatolian_alliance, ~!doctrine.tur.rapid
 		Description: actor-doctrine-tur-recon.description
 		Icon: bayrak-icon
@@ -33,7 +33,7 @@ doctrine.tur.rapid:
 		BuildLimit: 1
 		BuildDuration: 250
 		BuildDurationModifier: 100
-		BuildPaletteOrder: 31
+		BuildPaletteOrder: 21
 		Prerequisites: ~tech.anatolian_alliance, ~!doctrine.tur.recon
 		Description: actor-doctrine-tur-rapid.description
 		Icon: reaper-icon

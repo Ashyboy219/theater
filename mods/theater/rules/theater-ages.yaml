@@ -23,7 +23,7 @@ age.information:
 		Name: actor-age-information.name
 	Buildable:
 		Queue: Command
-		BuildPaletteOrder: 70
+		BuildPaletteOrder: 40
 		BuildLimit: 1
 		BuildDuration: 600
 		BuildDurationModifier: 100
@@ -42,7 +42,7 @@ age.autonomous:
 		Name: actor-age-autonomous.name
 	Buildable:
 		Queue: Command
-		BuildPaletteOrder: 71
+		BuildPaletteOrder: 41
 		BuildLimit: 1
 		BuildDuration: 800
 		BuildDurationModifier: 100
@@ -61,7 +61,7 @@ age.orbital:
 		Name: actor-age-orbital.name
 	Buildable:
 		Queue: Command
-		BuildPaletteOrder: 72
+		BuildPaletteOrder: 42
 		BuildLimit: 1
 		BuildDuration: 1000
 		BuildDurationModifier: 100

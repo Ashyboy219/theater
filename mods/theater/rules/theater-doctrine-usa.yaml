@@ -14,7 +14,7 @@ doctrine.usa.air:
 		BuildLimit: 1
 		BuildDuration: 250
 		BuildDurationModifier: 100
-		BuildPaletteOrder: 30
+		BuildPaletteOrder: 20
 		Prerequisites: ~tech.federation, ~!doctrine.usa.networked
 		Description: actor-doctrine-usa-air.description
 		Icon: specter-icon
@@ -33,7 +33,7 @@ doctrine.usa.networked:
 		BuildLimit: 1
 		BuildDuration: 250
 		BuildDurationModifier: 100
-		BuildPaletteOrder: 31
+		BuildPaletteOrder: 21
 		Prerequisites: ~tech.federation, ~!doctrine.usa.air
 		Description: actor-doctrine-usa-networked.description
 		Icon: comms-icon

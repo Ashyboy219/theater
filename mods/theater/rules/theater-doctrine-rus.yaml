@@ -15,7 +15,7 @@ doctrine.rus.armor:
 		Name: actor-doctrine-rus-armor.name
 	Buildable:
 		Queue: Command
-		BuildPaletteOrder: 30
+		BuildPaletteOrder: 20
 		BuildLimit: 1
 		BuildDuration: 250
 		BuildDurationModifier: 100
@@ -36,7 +36,7 @@ doctrine.rus.arty:
 		Name: actor-doctrine-rus-arty.name
 	Buildable:
 		Queue: Command
-		BuildPaletteOrder: 31
+		BuildPaletteOrder: 21
 		BuildLimit: 1
 		BuildDuration: 250
 		BuildDurationModifier: 100
