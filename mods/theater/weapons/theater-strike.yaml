@@ -502,3 +502,23 @@ TempestBarrage:
 		Damage: 5000
 		Falloff: 1000, 368, 135, 50, 18, 7, 0
 		ValidTargets: GroundActor, WaterActor, Trees
+
+# Spectacle-unit death blast — a big VISUAL-ONLY explosion (no splash damage, so no friendly-fire grief):
+# when a gargantuan apex unit dies it goes out in a huge multi-blast fireball + crater. Pure spectacle.
+TitanBlast:
+	ValidTargets: Ground, Water, Air, GroundActor, WaterActor, Trees
+	Warhead@1Eff: CreateEffect
+		Explosions: artillery_explosion
+		ImpactSounds: kaboom25.aud
+		ValidTargets: Ground, Water, Air, GroundActor, WaterActor, Trees
+	Warhead@2Eff: CreateEffect
+		Explosions: napalm
+		ImpactSounds: kaboom25.aud
+		ValidTargets: Ground, Water, Air, GroundActor, WaterActor, Trees
+	Warhead@3Eff: CreateEffect
+		Explosions: large_explosion
+		ValidTargets: Ground, Water, Air, GroundActor, WaterActor, Trees
+	Warhead@4Smu: LeaveSmudge
+		SmudgeType: Crater
+		Size: 2, 1
+		ValidTargets: Ground, Infantry

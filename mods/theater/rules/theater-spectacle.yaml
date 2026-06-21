@@ -21,6 +21,9 @@ LEVIATHAN:
 	-WithSpriteTurret@SECONDARY:
 	Tooltip:
 		Name: actor-leviathan.name
+	FireWarheadsOnDeath:
+		Weapon: TitanBlast
+		EmptyWeapon: TitanBlast
 	Buildable:
 		Queue: Ship
 		BuildAtProductionType: Boat
@@ -61,6 +64,9 @@ CITADEL:
 	-WithSpriteTurret:
 	Tooltip:
 		Name: actor-citadel.name
+	FireWarheadsOnDeath:
+		Weapon: TitanBlast
+		EmptyWeapon: TitanBlast
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 61
@@ -95,6 +101,9 @@ ARCHANGEL:
 		Image: archangelbody
 	Tooltip:
 		Name: actor-archangel.name
+	FireWarheadsOnDeath:
+		Weapon: TitanBlast
+		EmptyWeapon: TitanBlast
 	Buildable:
 		Queue: Aircraft
 		BuildAtProductionType: Helicopter
@@ -128,6 +137,9 @@ TEMPEST:
 		Image: tempestbody
 	Tooltip:
 		Name: actor-tempest.name
+	FireWarheadsOnDeath:
+		Weapon: TitanBlast
+		EmptyWeapon: TitanBlast
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 63
