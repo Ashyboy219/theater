@@ -94,7 +94,14 @@ mobsam:
 	Inherits: JEEP
 	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
 	RenderSprites:
-		Image: jeep
+		Image: jeepbody
+	Turreted:
+		Offset: 0,0,0
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Valued:
 		Cost: 700
 	Tooltip:

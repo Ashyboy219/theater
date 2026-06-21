@@ -367,3 +367,32 @@ apcbody:
 		Filename: bradley-cameo.png
 	namica-icon:
 		Filename: namica-cameo.png
+
+# Ground body: modern 4x4 tactical vehicle (TURRETED roof weapon station) — small cab+bed chassis, four wheels,
+# a roof RWS. 32-facing hull + turret, turret Offset overridden to 0,0,0. Shared by the jeep-based scouts/
+# technicals JTAC/COBRA/JACKAL/LOITER/MOBSAM so they read as modern light vehicles, distinct from the IFV.
+jeepbody:
+	idle:
+		Filename: jeepbody.png
+		Facings: 32
+		InterpolatedFacings: 64
+	turret:
+		Filename: jeepbody-turret.png
+		Facings: 32
+		InterpolatedFacings: 64
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	roundel:
+		Filename: roundel.shp
+		Length: 1
+	jtac-icon:
+		Filename: jtac-cameo.png
+	cobra-icon:
+		Filename: cobra-cameo.png
+	jackal-icon:
+		Filename: jackal-cameo.png
+	loiter-icon:
+		Filename: loiter-cameo.png
+	mobsam-icon:
+		Filename: mobsam-cameo.png
