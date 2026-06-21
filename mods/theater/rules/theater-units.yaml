@@ -437,6 +437,11 @@ COMMS:
 	Inherits: MRJ
 	RenderSprites:
 		Image: apcbody
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Tooltip:
 		Name: actor-comms.name
 	Buildable:
@@ -556,6 +561,11 @@ KORAL:
 	Inherits: MRJ
 	RenderSprites:
 		Image: apcbody
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Tooltip:
 		Name: actor-koral.name
 	Buildable:
