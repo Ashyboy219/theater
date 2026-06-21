@@ -502,7 +502,9 @@ namespace OpenRA.Mods.Common.Traits
 						// (rather than at build completion) makes the alloys.stockpile prerequisite revoke as
 						// soon as the stockpile is spent, so a single stockpile's worth can't queue several
 						// alloy-gated units at once. Inert for mods without PlayerAlloys. Forfeit on cancel.
-						if (playerAlloys != null)
+						// Skipped under AllTech so the "unrestricted build" cheat / dev testing isn't blocked
+						// by the stockpile (matching how AllTech bypasses prerequisites).
+						if (playerAlloys != null && !developerMode.AllTech)
 						{
 							var alloyCost = unit.TraitInfoOrDefault<ConsumesAlloysInfo>()?.Cost ?? 0;
 							if (alloyCost > 0 && !playerAlloys.TakeAlloys(alloyCost))
