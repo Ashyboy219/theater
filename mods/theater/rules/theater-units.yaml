@@ -14,6 +14,7 @@ SPECTER:
 		Queue: Aircraft
 		BuildPaletteOrder: 90
 		Prerequisites: tech.federation, afld
+		Description: actor-specter.description
 	# TOY — stealth strike jet: cloaks when idle, snaps visible the instant it fires or is hit.
 	Cloak:
 		InitialDelay: 125
@@ -67,6 +68,7 @@ WINGLOONG:
 		Queue: Aircraft
 		BuildPaletteOrder: 91
 		Prerequisites: tech.continental_bloc, afld
+		Description: actor-wingloong.description
 	# Cheap ATTRITABLE strike DRONE (NOT a YAK strafer clone): cheap + fragile, fires a small guided missile
 	# (HellfireAG) at armour/structures and reveals ground. Sent in numbers, expected to die — China's mass
 	# air identity. (Stock YAK was a 1350-cost 8000-HP hitscan strafer; this is the opposite.)
@@ -116,6 +118,7 @@ LOEWE:
 		Queue: Vehicle
 		BuildPaletteOrder: 91
 		Prerequisites: tech.rhine_compact, weap
+		Description: actor-loewe.description
 	# Germany's identity is "durable but expensive" — justify the cost with a networked active-protection
 	# system (same JamsMissiles trait as AMX/BASTION): enemy guided ATGMs/AA/SAMs veer off near it, so the
 	# Rhine MBT is genuinely hard to kill by missile and must be brought down by massed cannon fire (its counter).
@@ -134,6 +137,7 @@ PATHFINDER:
 		Queue: Infantry
 		BuildPaletteOrder: 90
 		Prerequisites: tech.isles_coalition, tent
+		Description: actor-pathfinder.description
 	# TOY — stealth recon infiltrator: cloaks (breaks on move/attack), sees far, and detects enemy stealth.
 	Cloak:
 		InitialDelay: 250
@@ -163,6 +167,7 @@ KUNAI:
 		Queue: Infantry
 		BuildPaletteOrder: 91
 		Prerequisites: tech.eastern_maritime, tent
+		Description: actor-kunai.description
 	# A DEDICATED anti-tank team, not the dual-purpose E3 rocket soldier: drop the RedEye AA missiles so it commits
 	# fully to the Dragon ATGM — a pure tank-hunter (the mirror of `manpads`, which kept AA and dropped AT). It can
 	# no longer touch aircraft, so it must be screened from air — that is its counter.
@@ -180,6 +185,7 @@ GARUDA:
 		Queue: Vehicle
 		BuildPaletteOrder: 92
 		Prerequisites: tech.subcontinent_federation, weap
+		Description: actor-garuda.description
 	# India = standoff/precision. One fast, accurate, long-reach guided cruise missile with high single-target
 	# punch — the SURGICAL launcher. Distinct from GRAD's area salvo, DAZHBOG's cheap mass, and AGNI's apex ballistic.
 	Armament:
@@ -197,6 +203,7 @@ BAYRAK:
 		Queue: Aircraft
 		BuildPaletteOrder: 92
 		Prerequisites: tech.anatolian_alliance, afld
+		Description: actor-bayrak.description
 	# Cheap fragile RECON drone (NOT a YAK clone): its value is the huge sight below, not firepower — it is
 	# cheap and folds to any AA. Scouts first, plinks soft targets, attritable.
 	Valued:
@@ -231,6 +238,7 @@ REAPER:
 		BuildAtProductionType: Helicopter
 		BuildPaletteOrder: 93
 		Prerequisites: tech.federation, hpad
+		Description: actor-reaper.description
 	# Make it the standing anti-tank gunship it claims: swap the stock MH60 ChainGun for precision HellfireAG so
 	# it kills armour from standoff rather than hosing infantry. The persistent USA CAS asset (counter: SAM/MANPADS).
 	Armament:
@@ -253,6 +261,7 @@ RAPTOR:
 		BuildAtProductionType: Plane
 		BuildPaletteOrder: 89
 		Prerequisites: tech.federation, afld
+		Description: actor-raptor.description
 	Valued:
 		Cost: 1800
 	Armament:
@@ -272,6 +281,7 @@ GRAD:
 		Queue: Vehicle
 		BuildPaletteOrder: 93
 		Prerequisites: tech.northern_union, weap
+		Description: actor-grad.description
 	# A true MLRS: a 5-rocket salvo with wide spread that SATURATES an area, then a long reload (a missed salvo
 	# is punished). Area-suppression — thin vs single targets, devastating vs clumped infantry/bases. Counter: spread out.
 	Armament:
@@ -288,6 +298,7 @@ REDOUBT:
 		Queue: Vehicle
 		BuildPaletteOrder: 94
 		Prerequisites: tech.northern_union, weap
+		Description: actor-redoubt.description
 	# A true armoured bunker, distinct from the light autocannon `ifv`: much tankier and up-gunned to a 25mm so it
 	# leads the Russian push and shields its cargo. Still carries infantry — a mobile strongpoint. Counter: AT/artillery.
 	Health:
@@ -311,6 +322,7 @@ TUNGUSKA:
 		Queue: Vehicle
 		BuildPaletteOrder: 96
 		Prerequisites: tech.northern_union, dome, weap
+		Description: actor-tunguska.description
 	Valued:
 		Cost: 950
 	Armament:
@@ -339,6 +351,7 @@ DAZHBOG:
 		Queue: Vehicle
 		BuildPaletteOrder: 93
 		Prerequisites: tech.continental_bloc, weap
+		Description: actor-dazhbog.description
 	# China's cheap-mass identity: a cheaper, shorter-range 2-rocket burst with low per-shot damage but fast reload —
 	# expendable artillery you flood the field with. Folds to any fast push (glass) — that is the price of the spam.
 	Valued:
@@ -357,6 +370,7 @@ PIONEER:
 		Queue: Infantry
 		BuildPaletteOrder: 93
 		Prerequisites: tech.rhine_compact, fix
+		Description: actor-pioneer.description
 
 # Isles Coalition (UK) — mobile SENSOR / intel van (the "eyes", not a jammer — that is Turkey's KORAL).
 COMMS:
@@ -394,6 +408,7 @@ AEGIS:
 		Queue: Defense
 		BuildPaletteOrder: 93
 		Prerequisites: tech.eastern_maritime, dome
+		Description: actor-aegis.description
 	# Japan = durable defensive turtle. Harden it well past a stock SAM and add active missile-defence (JamsMissiles)
 	# so it deflects incoming guided munitions while it shoots down aircraft — the apex APS air-defence node.
 	# (India's AKASH owns the longest-RANGE niche; AEGIS owns DURABILITY + projectile defence.)
@@ -415,6 +430,7 @@ HAYABUSA:
 		Queue: Aircraft
 		BuildPaletteOrder: 93
 		Prerequisites: tech.eastern_maritime, afld
+		Description: actor-hayabusa.description
 	# Real interceptor: the YAK body is a GROUND strafer by default — swap in an air-to-air missile and
 	# air-targeting so it actually shoots down aircraft (the anti-air drone its name implies). Pure AA.
 	Armament:
@@ -434,6 +450,7 @@ AKASH:
 		Queue: Defense
 		BuildPaletteOrder: 94
 		Prerequisites: tech.subcontinent_federation, dome
+		Description: actor-akash.description
 	# Layered air defense: a long-range standoff SAM (Nike) on a hardened battery — outranges and outlasts
 	# the flak AA gun it replaces, so India's airspace is tiered (this on top; shared MANPADS / Mobile SAM
 	# / AA-gun form the short-range layer below). India is the layered-air-defense faction.
@@ -459,6 +476,7 @@ TEJAS:
 		Queue: Aircraft
 		BuildPaletteOrder: 94
 		Prerequisites: tech.subcontinent_federation, afld
+		Description: actor-tejas.description
 	# Resilient conventional air: a hardened airframe (more HP than the baseline strike jet) so India's
 	# strike fighter survives a SAM pass and keeps fighting — the "resilient air power" identity.
 	Health:

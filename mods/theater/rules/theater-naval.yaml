@@ -30,6 +30,7 @@ BURKE:
 		BuildAtProductionType: Boat
 		BuildPaletteOrder: 46
 		Prerequisites: tech.federation, syrd, dome
+		Description: actor-burke.description
 	Valued:
 		Cost: 1400
 	Health:
@@ -66,6 +67,7 @@ AKULA:
 		BuildAtProductionType: Boat
 		BuildPaletteOrder: 36
 		Prerequisites: tech.northern_union, syrd
+		Description: actor-akula.description
 	Valued:
 		Cost: 1000
 	# Heavy hunter-killer (NOT an SS clone): a tankier hull and a 3-torpedo HEAVY salvo (HeavyTorp) — the
@@ -93,6 +95,7 @@ HOUBEI:
 		BuildAtProductionType: Boat
 		BuildPaletteOrder: 24
 		Prerequisites: tech.continental_bloc, syrd
+		Description: actor-houbei.description
 	Valued:
 		Cost: 450
 	# Fast coastal MISSILE boat (NOT a gunboat clone): trades the patrol gun for anti-ship missiles and
@@ -120,6 +123,7 @@ BARBAROS:
 		BuildAtProductionType: Boat
 		BuildPaletteOrder: 24
 		Prerequisites: tech.anatolian_alliance, syrd
+		Description: actor-barbaros.description
 	Valued:
 		Cost: 500
 	Mobile:
@@ -153,6 +157,7 @@ ASTUTE:
 		BuildAtProductionType: Boat
 		BuildPaletteOrder: 36
 		Prerequisites: tech.isles_coalition, syrd
+		Description: actor-astute.description
 	Valued:
 		Cost: 1100
 	RevealsShroud:
@@ -183,6 +188,7 @@ KOLKATA:
 		BuildAtProductionType: Boat
 		BuildPaletteOrder: 46
 		Prerequisites: tech.subcontinent_federation, syrd, dome
+		Description: actor-kolkata.description
 	Valued:
 		Cost: 1300
 	Health:

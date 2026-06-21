@@ -45,75 +45,100 @@ faction-anatolian_alliance =
     .description = Turkey — "Cheap eyes, cheap teeth, everywhere." Cheap, fast, far-seeing AIR; attritable.
      Uniques: Bayrak Loiter Drone, Koral EW Van.
 
-## Unique units
+## Unique units. Descriptions name the ROLE, the COUNTER, and the build GATE
+## (which production building / tech tier) so the tech path reads off the tooltip.
 actor-specter =
     .name = Specter Stealth Fighter
+    .description = USA stealth strike jet: cloaks when idle, snaps visible the instant it fires or is hit. Build from an Airfield.
 
 actor-bastion =
     .name = Bastion EW Command Tank
-    .description = Electronic-warfare tank. Deflects enemy guided missiles (ATGMs, SAMs, AA) near it and blacks out enemy radar. Counter with gun-armed units — autocannons, flak and tank guns fire straight through the jamming.
+    .description = Electronic-warfare tank. Deflects enemy guided missiles (ATGMs, SAMs, AA) near it and blacks out enemy radar. Counter with gun-armed units — autocannons, flak and tank guns fire straight through the jamming. Build from a War Factory.
 
 actor-wingloong =
     .name = Wing Loong Swarm Drone
+    .description = China attritable strike drone: cheap and fragile, fires a guided missile and reveals ground. Sent in numbers and expected to die. Build from an Airfield.
     .dronehive-name = Drone Swarm
     .dronehive-description = Launch a swarm of strike drones at the target area.
 
 actor-loewe =
     .name = Loewe Heavy MBT
+    .description = Germany's most durable tank, with active protection that deflects enemy guided missiles — bring gun-armed units (autocannon, tank guns) to kill it. Build from a War Factory.
 
 actor-pathfinder =
     .name = Pathfinder Team
+    .description = UK elite stealth infiltrator: cloaks, sees far, detects enemy stealth. Build from a Barracks.
 
 actor-kunai =
     .name = JGSDF Anti-Tank Team
+    .description = Japan dedicated anti-tank team: a Dragon ATGM that kills armor but cannot touch aircraft — screen it from the air. Build from a Barracks.
 
 actor-garuda =
     .name = Garuda Cruise-Missile Launcher
+    .description = India precision cruise-missile launcher: one fast, accurate, long-range missile. Fragile — screen it. Build from a War Factory.
 
 actor-bayrak =
     .name = Bayrak UCAV
+    .description = Turkey cheap recon-harasser drone: a huge sight radius and a single light missile; folds to any AA. Build from an Airfield.
 
 ## Additional faction uniques
 actor-reaper =
     .name = Reaper Gunship
+    .description = USA persistent close-air-support gunship: precision Hellfire anti-armor. Killed by SAMs and MANPADS. Build from a Helipad.
 actor-grad =
     .name = Grad Rocket Battery
+    .description = Russia rocket battery: a 5-rocket salvo that saturates an area, then a long reload. Spread out to survive it. Build from a War Factory.
 actor-redoubt =
     .name = Redoubt Bunker
+    .description = Russia armored bunker: a heavily-armored 25mm transport that leads the push and shields its cargo. Build from a War Factory.
 actor-dazhbog =
     .name = Dazhbog Rocket Truck
+    .description = China cheap mass artillery: a short-range 2-rocket burst, expendable in numbers. Folds to any fast push. Build from a War Factory.
 actor-pioneer =
     .name = Pioneer Combat-Engineer
+    .description = Germany forward combat engineer: captures buildings and repairs vehicles in the field. Build from a Service Depot.
 actor-comms =
-    .name = Comms EW Cell
-    .description = Mobile EW cell. Jams enemy guided missiles and radar across a wide radius. Fragile — and gun weapons (autocannon, flak, naval guns) ignore the jamming, so screen it or it dies.
+    .name = Comms Sensor Van
+    .description = UK mobile sensor van: long-range vision and stealth detection — the eyes of the army (not a jammer). Fragile. Needs a Radar Dome.
 actor-aegis =
     .name = Aegis Point-Defense Turret
+    .description = Japan hardened point-defense turret: shoots down aircraft and deflects incoming missiles. Needs a Radar Dome.
 actor-hayabusa =
     .name = Hayabusa Interceptor
+    .description = Japan autonomous interceptor drone: pure anti-air, helpless against ground attack. Build from an Airfield.
 actor-akash =
     .name = Akash SAM Battery
+    .description = India long-range SAM battery: the longest-reach air defense in the game, fired in 2-missile salvos. Needs a Radar Dome.
 actor-tejas =
     .name = Tejas Strike Fighter
+    .description = India resilient standoff strike fighter: a hardened airframe firing a 2-missile guided salvo from distance. Build from an Airfield.
 actor-koral =
     .name = Koral EW Van
-    .description = Rapid EW van. Jams enemy guided missiles and radar, and sees far. Expendable; countered by gun-armed units that ignore the jamming.
+    .description = Turkey EW van: a wide missile-jamming umbrella that deflects enemy guided ATGMs/AA/SAMs over the task force. Unarmed — escort it; gun weapons ignore the jamming. Needs a Radar Dome.
 actor-raptor =
     .name = Raptor Air-Superiority Fighter
+    .description = USA air-superiority fighter: pure anti-air that owns the sky for your strike jets — helpless vs ground, killable by SAMs. Build from an Airfield.
 actor-tunguska =
     .name = Tunguska Air-Defense System
+    .description = Russia mobile SPAAG: a long-range SAM plus a 25mm autocannon — the only mobile AA that can also defend itself on the ground. Needs a Radar Dome + War Factory.
 actor-burke =
     .name = Burke Aegis Destroyer
+    .description = USA Aegis air-defense destroyer: dominates aircraft and incoming missiles, near-helpless vs ships/subs — screen it. Needs a Naval Yard + Radar Dome.
 actor-akula =
     .name = Akula Attack Submarine
+    .description = Russia heavy attack submarine: a 3-torpedo alpha salvo with a long reload. Surfaces to fire; countered by sonar + depth charges. Build from a Naval Yard.
 actor-houbei =
     .name = Houbei Missile Boat
+    .description = China fast missile boat: anti-ship missiles, no sub or air defense — alpha-strike and flee. Cheap; swarm the littoral. Build from a Naval Yard.
 actor-barbaros =
     .name = Barbaros USV Patrol Drone
+    .description = Turkey USV recon drone-boat: fast and far-seeing, detects subs and stealth; weak guns. Build from a Naval Yard.
 actor-astute =
     .name = Astute Attack Submarine
+    .description = UK intelligence submarine: the best sonar in the game plus a quiet precision torpedo — hunts subs and scouts unseen. Build from a Naval Yard.
 actor-kolkata =
     .name = Kolkata Missile Destroyer
+    .description = India standoff missile destroyer: long-reach anti-ship missiles and deep sensors. Needs a Naval Yard + Radar Dome.
 
 ## Late-game flagships + tech tier
 actor-techcenter =
