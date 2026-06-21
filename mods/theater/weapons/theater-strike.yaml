@@ -234,11 +234,20 @@ HeavyTorp:
 # smoke-trailing guided missiles, lower per-hit but more of them, the standoff-drone signature.
 AkinciATGM:
 	Inherits: Maverick
-	Range: 9c0
+	Range: 10c0
 	Burst: 4
-	BurstDelays: 5
+	BurstDelays: 6
+	# Distinct projectile read: a long-trailing guided missile (Maverick already uses a Missile + smokey
+	# contrail) with a heavier impact effect, so an AKINCI salvo looks like a fan of precision drone missiles.
+	Projectile: Missile
+		TrailImage: smokey
+		ContrailLength: 24
 	Warhead@1Dam: SpreadDamage
 		Damage: 5000
+	Warhead@3Eff: CreateEffect
+		Explosions: artillery_explosion
+		ImpactSounds: kaboom25.aud
+		ValidTargets: Ground, GroundActor, WaterActor, Trees
 
 # AKASH (India static SAM battery) — longest-reach AA in the game, fired as a 2-missile salvo from the tower.
 # Out-ranges every mobile SAM (TUNGUSKA Nike / MOBSAM RedEye) = the apex static layer of India's air defence.

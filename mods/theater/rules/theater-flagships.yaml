@@ -122,10 +122,14 @@ AKINCI:
 	# Was a pure MIG stat-clone (only cost/vision changed). Give it a dedicated 4-missile precision ATGM
 	# salvo (AkinciATGM) instead of the stock single Maverick — a fan of guided missiles, the standoff-drone
 	# signature, distinct from a manned strike jet. Plus the deepest recon vision below.
+	# 4 wing hardpoints (a fan of 4 smoke-trailing missiles off the wings) + a larger magazine: AKINCI loiters
+	# deep, empties its ATGM salvo, then must return to rearm — the "drone air force" tempo, not a manned jet.
 	Armament:
 		Weapon: AkinciATGM
-		LocalOffset: 0,-640,0, 0,640,0
-		LocalYaw: -40, 24
+		LocalOffset: 0,-768,0, 0,-384,0, 0,384,0, 0,768,0
+		LocalYaw: -48, -20, 20, 48
+	AmmoPool:
+		Ammo: 12
 	RevealsShroud:
 		MinRange: 11c0
 		Range: 16c0
