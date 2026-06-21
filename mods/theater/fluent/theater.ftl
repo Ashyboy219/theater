@@ -350,3 +350,33 @@ actor-jackal =
 actor-namica =
     .name = NAMICA Tank-Destroyer
     .description = India — standoff ATGM carrier: kills armor from range but is helpless against infantry. Screen it.
+
+## ============================ 4X: Research Lab + tech tree ============================
+actor-rlab =
+    .name = Research Lab
+    .description = Unlocks the research tech tree in the Command tab — accumulating army-wide upgrades (ballistics, armor, optics, propulsion, logistics) plus a mass-vs-precision decision. Build one to start researching. Needs a Radar Dome.
+
+actor-research-ballistics =
+    .name = Research: Ballistics
+    .description = +15% firepower for all your vehicles. Researched once; lasts the match.
+actor-research-armor =
+    .name = Research: Composite Armor
+    .description = Your vehicles take 12% less damage. Researched once; lasts the match.
+actor-research-optics =
+    .name = Research: Optics
+    .description = +20% sight range for vehicles and infantry — see further, react sooner.
+actor-research-propulsion =
+    .name = Research: Propulsion
+    .description = +12% movement speed for all your vehicles.
+actor-research-smallarms =
+    .name = Research: Small Arms
+    .description = +15% firepower for all your infantry.
+actor-research-logistics =
+    .name = Research: Logistics
+    .description = Your vehicles cost 12% less to build — a leaner war economy.
+actor-research-mass =
+    .name = Research: Mass Production
+    .description = DECISION — locks out Precision Manufacturing. Vehicles cost 15% less to build but are frailer (+10% damage taken). Win by quantity.
+actor-research-precision =
+    .name = Research: Precision Manufacturing
+    .description = DECISION — locks out Mass Production. Vehicles hit 22% harder but cost 10% more. Win by quality.
