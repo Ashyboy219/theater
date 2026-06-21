@@ -89,8 +89,13 @@ and meaningful decisions, and it's too short. The fix is **depth + longevity + s
       flagships, signature naval/air/land units, and the Alloy Extractor. FOLLOW-UP (chrome): a Codex panel.
 - [x] **P5.4 — Strategic-sidebar legibility** ✓: the ~31-item Command queue regrouped into tech-progression
       order (capabilities → doctrines → research T1 → ages → research T2 → economy), every item iconned.
-- [ ] **P6 — Strategic resource (real, C#)**: graduate the `alloys` proxy to a true *counted* second
-      resource + sidebar readout. Needs C# (a parallel resource trait) + a GUI test — held honestly.
+- [x] **P6 — Strategic resource (real, C#)** ✓ (commits ca30f32, a44451e): graduated the `alloys` proxy to a
+      true *counted* second currency. New self-contained C# — PlayerAlloys (counted pool), AlloyTrickler
+      (banks it), ProvidesPrerequisiteOnAlloys (gates the apex tier on a stockpile via the tech tree, no
+      ProductionQueue surgery), ConsumesAlloys (spends on build), IngameAlloyCounterLogic (sidebar readout).
+      The Alloy Extractor now banks counted alloys; apex units require a 100-alloy stockpile AND spend 100.
+      Inert for other mods. Build/check-yaml/boot clean. FOLLOW-UP (live look): nudge the readout bar's Y and
+      balance the trickle/cost numbers in a playtest.
 - [ ] **P7 — Light diplomacy / inter-faction systems** (stretch): alliances, trade, tribute. Needs C#/UI.
 - [ ] **P8 — Map objectives / secondary win conditions** (Lua, per-map): economic/tech victory paths.
 - [ ] **Custom building bodies** (visual, needs in-game tuning): rlab/alloyex/bank/fusion still reuse stock
