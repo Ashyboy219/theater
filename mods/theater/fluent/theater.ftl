@@ -173,7 +173,7 @@ checkbox-devunlock =
 ## Structures
 actor-thcom =
     .name = Theater Command
-    .description = Forward planning HQ. Provides radar and calls in a combined-arms paradrop to coordinate reinforcements from the sky with your ground push.
+    .description = Forward planning HQ. Provides radar, hosts the Command queue, and calls in a combined-arms paradrop. Projects a Command & Control aura: your vehicles and infantry near it hit 10% harder — worth defending and a prime target for the enemy.
     .para-name = Combined Paradrop
     .para-description = Drop a mixed rifle-and-rocket infantry squad onto any visible ground.
     .usaair-name = Sweep & Strike

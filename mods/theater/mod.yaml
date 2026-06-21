@@ -101,6 +101,7 @@ Rules:
 	theater|rules/theater-structures.yaml
 	theater|rules/theater-ai.yaml
 	theater|rules/theater-command.yaml
+	theater|rules/theater-command-aura.yaml
 	theater|rules/theater-capabilities.yaml
 	theater|rules/theater-doctrine-usa.yaml
 	theater|rules/theater-doctrine-rus.yaml

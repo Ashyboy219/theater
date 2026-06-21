@@ -1,0 +1,33 @@
+# ============================================================================
+# THEATER — Command & Control aura: a tactical (positional) depth mechanic.
+# Your Theater Command projects a network-centric "C2" bonus: friendly vehicles
+# and infantry fighting within range hit 10% harder. This gives THCOM real combat
+# weight beyond hosting the Command queue — it's now worth defending and forward-
+# basing, and a high-value target the enemy wants to destroy (killing it also takes
+# the Command queue + paradrop offline). A POSITIONAL decision, not flat power-creep:
+# the bonus only applies near the command post, so concentrating or rallying your
+# army there is a real choice with a cost (you're not pushing elsewhere).
+#
+# Data-only: ProximityExternalCondition (grants to allies incl. self — RelationshipWith
+# self == Ally) -> an accepted ExternalCondition on the templates -> a conditional
+# FirepowerMultiplier. Modest by design; tune Range/Modifier in a playtest.
+# ============================================================================
+
+THCOM:
+	ProximityExternalCondition@C2:
+		Range: 6c0
+		Condition: thcom-c2
+
+^Vehicle:
+	ExternalCondition@C2:
+		Condition: thcom-c2
+	FirepowerMultiplier@c2:
+		RequiresCondition: thcom-c2
+		Modifier: 110
+
+^Infantry:
+	ExternalCondition@C2:
+		Condition: thcom-c2
+	FirepowerMultiplier@c2:
+		RequiresCondition: thcom-c2
+		Modifier: 110
