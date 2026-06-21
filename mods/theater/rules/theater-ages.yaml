@@ -65,7 +65,7 @@ age.orbital:
 		BuildLimit: 1
 		BuildDuration: 1000
 		BuildDurationModifier: 100
-		Prerequisites: age.autonomous
+		Prerequisites: age.autonomous, alloys
 		Description: actor-age-orbital.description
 		Icon: icon
 	Valued:

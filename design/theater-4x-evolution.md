@@ -60,8 +60,10 @@ and meaningful decisions, and it's too short. The fix is **depth + longevity + s
       sequence; cumulative army-wide escalation (tankier/+firepower/+sight) on ^Vehicle/^Infantry/^Ship/
       ^Plane; `age.<era>` tokens gate future content (Orbital → P4 spectacle units); AI advances ages.
       FOLLOW-UP: gate some existing/late content on ages once balance-tested.
-- [ ] **P3 — Strategic resource (proxy)** (data-only): a territory/extractor building that slowly grants
-      a `alloys` prerequisite; high-tech + spectacle units require it → expansion matters.
+- [x] **P3 — Strategic resource (proxy)** ✓ (theater-economy.yaml): the Alloy Extractor (`alloyex`) — a
+      buildable economy building that drips income (CashTrickler, so building several/expanding pays) AND
+      provides the `alloys` token gating the apex tier (Orbital age now requires it; P4 spectacle units
+      will too). Honest proxy: `alloys` is a boolean prereq + income, not yet a counted currency (P6=C#).
 - [ ] **P4 — Spectacle capital units** (art + data): 1 gargantuan flagship per age (huge ship / mobile
       fortress / super-aircraft) with Blender mega-models — the "look at this HUGE thing" payoff.
 - [ ] **P5 — Economy buildings + "things to do"**: civilian/economy structures, upgrades, map objectives,

@@ -239,6 +239,7 @@ Player:
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
+			alloyex: 2
 		BuildingLimits:
 			thcom: 1
 			doctrine.usa.air: 1
@@ -265,6 +266,7 @@ Player:
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
+			alloyex: 2
 	BaseBuilderBotModule@normal:
 		BuildingQueues: Building, Command
 		BuildingFractions:
@@ -293,6 +295,7 @@ Player:
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
+			alloyex: 2
 		BuildingLimits:
 			thcom: 1
 			doctrine.usa.air: 1
@@ -319,6 +322,7 @@ Player:
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
+			alloyex: 2
 	BaseBuilderBotModule@turtle:
 		BuildingQueues: Building, Command
 		BuildingFractions:
@@ -347,6 +351,7 @@ Player:
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
+			alloyex: 2
 		BuildingLimits:
 			thcom: 1
 			doctrine.usa.air: 1
@@ -373,6 +378,7 @@ Player:
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
+			alloyex: 2
 	BaseBuilderBotModule@naval:
 		BuildingQueues: Building, Command
 		BuildingFractions:
@@ -401,6 +407,7 @@ Player:
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
+			alloyex: 2
 		BuildingLimits:
 			thcom: 1
 			doctrine.usa.air: 1
@@ -427,6 +434,7 @@ Player:
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
+			alloyex: 2
 
 	# --- Fire the doctrine support powers (merges new decisions into the shared ra SupportPowerBotModule).
 	# Offensive strikes (CAS / barrage / drone-swarm / cruise / recon flyover) target enemy structures;

@@ -114,6 +114,7 @@ Rules:
 	theater|rules/theater-tech.yaml
 	theater|rules/theater-research.yaml
 	theater|rules/theater-ages.yaml
+	theater|rules/theater-economy.yaml
 	theater|rules/theater-flagships.yaml
 	# Cameo icon assignments load LAST so Buildable.Icon merges onto each unit's complete definition
 	# (keeping its Description reference intact — see the visual-identity pass).

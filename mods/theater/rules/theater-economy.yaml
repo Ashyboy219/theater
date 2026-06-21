@@ -1,0 +1,44 @@
+# THEATER — 4X P3: STRATEGIC RESOURCE (data proxy) + economy depth.
+#
+# The military economy was a single cash pile from harvesting. This adds a STRATEGIC layer: a buildable
+# Alloy Extractor that (a) DRIPS income over time (CashTrickler) so building several across your territory
+# is economically rewarded — expansion now pays — and (b) provides the `alloys` strategic-resource token that
+# the APEX tier requires (the Orbital age now; the gargantuan spectacle units in P4). You can't reach the top
+# of the tech ladder without committing to strategic-resource infrastructure.
+#
+# This is the DATA PROXY for the strategic resource (design/theater-4x-evolution.md P3): `alloys` is a boolean
+# prerequisite + an income source, not yet a true counted second currency (that's P6, which needs C#). It is
+# honest, additive (the ore economy is untouched), and immediately meaningful. No new C# — reuses the stock
+# CashTrickler trait (the same one oil derricks use) + ProvidesPrerequisite.
+#
+# NOTE (later art pass): reuses the resource-silo body for now; a distinct Alloy Extractor body is a
+# visual-revamp item.
+
+# --- Alloy Extractor: a mid-tier strategic economy building. Drips income, stores resources, and unlocks the
+#     apex tier. Build several (expand) for more income; you need at least one to reach the Orbital age + the
+#     coming spectacle units. Inherits the resource silo (storage + fill-animated body) and adds the trickle.
+alloyex:
+	Inherits: SILO
+	RenderSprites:
+		Image: silo
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 137
+		Prerequisites: proc, ~structures.allies, ~techlevel.medium
+		Description: actor-alloyex.description
+	Valued:
+		Cost: 900
+	Tooltip:
+		Name: actor-alloyex.name
+	Health:
+		HP: 45000
+	Power:
+		Amount: -25
+	# Slow strategic income — rewards building several across your territory (expansion pays).
+	CashTrickler:
+		Interval: 50
+		Amount: 20
+		ShowTicks: true
+	# The strategic-resource token the apex tier gates on.
+	ProvidesPrerequisite@alloys:
+		Prerequisite: alloys

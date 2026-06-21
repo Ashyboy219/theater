@@ -390,4 +390,9 @@ actor-age-autonomous =
     .description = The drone-and-AI era. A further army-wide boost (tougher, +6% firepower, +5% sight) that STACKS on the Information Age. Needs the Information Age + a Tech Center. Opens the Orbital Age.
 actor-age-orbital =
     .name = Advance: Orbital Age
-    .description = The apex era. The biggest army-wide escalation yet (−8% damage taken, +8% firepower), stacking on the earlier ages, and the gate for the largest late-game platforms to come. Needs the Autonomous Age.
+    .description = The apex era. The biggest army-wide escalation yet (−8% damage taken, +8% firepower), stacking on the earlier ages, and the gate for the largest late-game platforms to come. Needs the Autonomous Age + an Alloy Extractor (strategic resource).
+
+## ============================ 4X: Strategic resource / economy ============================
+actor-alloyex =
+    .name = Alloy Extractor
+    .description = Strategic resource + economy building. Drips a steady income (build several across your territory — expansion pays) and produces the alloys your apex tier needs: the Orbital Age and the largest late-game platforms require one. Also stores resources. Needs a Refinery.
