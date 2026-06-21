@@ -60,6 +60,7 @@ The mod lives entirely under [`mods/theater/`](mods/theater) and mounts the stoc
 
 ## Design & docs
 
+- [`design/theater-codex.md`](design/theater-codex.md) — **the Codex**: the real contemporary military systems and critical-minerals geopolitics the game is modeled on (THEATER's educational goal).
 - [`design/theater-4x-evolution.md`](design/theater-4x-evolution.md) — the 4X north-star roadmap (what's done, what's next).
 - [`design/contemporary-openra-design.md`](design/contemporary-openra-design.md) — the original design + fun-validation.
 - [`design/art/render_aircraft_bodies.py`](design/art/render_aircraft_bodies.py) — the Blender pipeline for the custom 32-facing bodies.
