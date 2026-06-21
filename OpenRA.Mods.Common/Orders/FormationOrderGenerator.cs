@@ -163,14 +163,29 @@ namespace OpenRA.Mods.Common.Orders
 					break;
 
 				case FormationShape.Wedge:
-					list.Add(new CVec(0, 0));
-					for (var i = 1; i < n; i++)
+				{
+					// THEATER: a COMPACT FILLED triangle (arrowhead), not an edge-only V. Row r (r = 0 at the
+					// leading apex, increasing toward the back at +Y) holds up to 2*r+1 units on a TIGHT 1-cell
+					// pitch, centred on the travel axis and filled centre-out (0, -1, +1, -2, +2, ...) so a
+					// partial final row stays balanced. Result: 1,3,5,... stacked rows that keep the group dense
+					// and inside weapon range instead of the old hollow V that flung units onto the two arms.
+					var placed = 0;
+					for (var row = 0; placed < n; row++)
 					{
-						var depth = (i + 1) / 2;
-						list.Add(new CVec(i % 2 == 1 ? -depth : depth, depth));
+						for (var c = 0; c <= row && placed < n; c++)
+						{
+							list.Add(new CVec(-c, row));
+							placed++;
+							if (c > 0 && placed < n)
+							{
+								list.Add(new CVec(c, row));
+								placed++;
+							}
+						}
 					}
 
 					break;
+				}
 
 				case FormationShape.Box:
 					var cols = 1;
