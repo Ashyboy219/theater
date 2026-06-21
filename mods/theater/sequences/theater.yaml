@@ -319,3 +319,28 @@ ptbody:
 		Filename: houbei-cameo.png
 	barbaros-icon:
 		Filename: barbaros-cameo.png
+
+# Ground body: modern MEDIUM tank (TURRETED) — sleeker hull with side skirts and a low, flat sloped turret, so
+# it reads distinctly from the heavy mbtbody. 32-facing hull + turret, centred turret (3TNK default Offset).
+# Shared by the 3tnk-based command/medium tanks BASTION/LOEWE/BMPT. 3TNK keeps MuzzleSequence: muzzle.
+tankbody:
+	idle:
+		Filename: tankbody.png
+		Facings: 32
+		InterpolatedFacings: 64
+	turret:
+		Filename: tankbody-turret.png
+		Facings: 32
+		InterpolatedFacings: 64
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	roundel:
+		Filename: roundel.shp
+		Length: 1
+	bastion-icon:
+		Filename: bastion-cameo.png
+	loewe-icon:
+		Filename: loewe-cameo.png
+	bmpt-icon:
+		Filename: bmpt-cameo.png

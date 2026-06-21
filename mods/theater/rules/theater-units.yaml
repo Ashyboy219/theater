@@ -37,10 +37,16 @@ SPECTER:
 # Northern Union (Russia) — EW heavy command tank.
 BASTION:
 	Inherits: 3TNK
+	# Battlefield body: spawns as a modern medium tank (tankbody hull + turret), not the stock 3tnk.
 	RenderSprites:
-		Image: 3tnk
+		Image: tankbody
 	Tooltip:
 		Name: actor-bastion.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 90
@@ -122,9 +128,14 @@ WINGLOONG:
 LOEWE:
 	Inherits: 3TNK
 	RenderSprites:
-		Image: 3tnk
+		Image: tankbody
 	Tooltip:
 		Name: actor-loewe.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 91

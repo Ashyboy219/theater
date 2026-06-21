@@ -68,9 +68,14 @@ jtac:
 bmpt:
 	Inherits: 3TNK
 	RenderSprites:
-		Image: 3tnk
+		Image: tankbody
 	Tooltip:
 		Name: actor-bmpt.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 95
