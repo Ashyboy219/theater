@@ -232,3 +232,19 @@ telbody:
 		Filename: dazhbog-cameo.png
 	agni-icon:
 		Filename: agni-cameo.png
+
+# Naval body: modern hunter-killer submarine (SSN) — long low pressure hull + conning-tower sail + stern
+# rudder for heading readability, rendered 32-facing. Shared by the ss-based subs AKULA/ASTUTE so the surfaced
+# boat reads as a modern SSN, not the stock RA sub. (Submerged state still uses the engine's stock wake.)
+subbody:
+	idle:
+		Filename: subbody.png
+		Facings: 32
+		InterpolatedFacings: 64
+	roundel:
+		Filename: roundel.shp
+		Length: 1
+	akula-icon:
+		Filename: akula-cameo.png
+	astute-icon:
+		Filename: astute-cameo.png

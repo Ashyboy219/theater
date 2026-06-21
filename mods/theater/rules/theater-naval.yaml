@@ -58,10 +58,16 @@ BURKE:
 # (DD/PT) — it must stay hidden, and it surfaces (becomes visible) when it fires. Reuses the stock SS hull.
 AKULA:
 	Inherits: SS
+	# Battlefield body: spawns as a modern hunter-killer submarine (subbody), not the stock RA sub.
 	RenderSprites:
-		Image: ss
+		Image: subbody
 	Tooltip:
 		Name: actor-akula.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Buildable:
 		Queue: Ship
 		BuildAtProductionType: Boat
@@ -149,9 +155,14 @@ BARBAROS:
 ASTUTE:
 	Inherits: SS
 	RenderSprites:
-		Image: ss
+		Image: subbody
 	Tooltip:
 		Name: actor-astute.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Buildable:
 		Queue: Ship
 		BuildAtProductionType: Boat
