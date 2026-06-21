@@ -132,6 +132,11 @@ dome:
 		Filename: age-orbital-cameo.png
 	econ-network-icon:
 		Filename: econ-network-cameo.png
+	# Command-capability icons (Fire Control / Formations) — completes the strategic sidebar iconography.
+	cap-firecontrol-icon:
+		Filename: cap-firecontrol-cameo.png
+	cap-formations-icon:
+		Filename: cap-formations-cameo.png
 
 # 4X economy-building cameos keyed under the silo body (alloyex/bank reuse it) and the apwr body (fusion).
 silo:

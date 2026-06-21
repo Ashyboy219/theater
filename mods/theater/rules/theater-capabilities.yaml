@@ -19,7 +19,7 @@ cap.firecontrol:
 		BuildDuration: 250
 		BuildDurationModifier: 100
 		Description: actor-cap-firecontrol.description
-		Icon: icon
+		Icon: cap-firecontrol-icon
 	Valued:
 		Cost: 1500
 	RenderSprites:
@@ -39,7 +39,7 @@ cap.formations:
 		BuildDuration: 250
 		BuildDurationModifier: 100
 		Description: actor-cap-formations.description
-		Icon: icon
+		Icon: cap-formations-icon
 	Valued:
 		Cost: 1500
 	RenderSprites:
