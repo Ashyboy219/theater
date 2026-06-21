@@ -386,6 +386,12 @@ actor-research-wareconomy =
 actor-research-industrial =
     .name = Research: Industrial Base
     .description = ECONOMIC DECISION — locks out War Economy. Income buildings produce 30% more, but all units cost 10% more. Out-economy your opponent and afford more over time. Needs the Information Age.
+actor-research-maneuver =
+    .name = Research: Maneuver Doctrine
+    .description = POSTURE DECISION — locks out Fortress Doctrine. Mobile units move faster (vehicles +15%, infantry +12%) and see 10% farther. Be the aggressor who takes ground by movement. Needs the Information Age.
+actor-research-fortress =
+    .name = Research: Fortress Doctrine
+    .description = POSTURE DECISION — locks out Maneuver Doctrine. Every static defense takes 20% less damage and reaches 12% farther. Turn your base into a kill-zone. Needs the Information Age.
 
 ## Tier 2 — advanced research (unlocked by advancing to the Information Age)
 actor-research-netcentric =

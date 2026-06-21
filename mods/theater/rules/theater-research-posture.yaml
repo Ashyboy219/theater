@@ -1,0 +1,92 @@
+# ============================================================================
+# THEATER — Strategic Posture: a mutually-EXCLUSIVE research fork (maneuver vs fortify).
+# The third divergent decision (after Mass/Precision and War-Economy/Industrial-Base),
+# opening a NEW axis nothing else tunes: how you hold ground. Sold from the Theater
+# Command's "Command" queue, gated on the Research Lab + Information age. Picking one
+# lists ~!research.<other>, so it vanishes the other — one posture per match.
+#
+#   Maneuver Doctrine — be the mobile aggressor: mobile units move +15% (vehicles) /
+#                       +12% (infantry) and see +10% farther. Take and hold by movement.
+#   Fortress Doctrine — be the entrenched defender: every static defense takes 20% less
+#                       damage AND reaches 12% farther. Turn your base into a kill-zone.
+#
+# Distinct from the combat-cost forks: Maneuver buffs MOBILITY/VISION, Fortress buffs
+# STATIC DEFENSES (the ^Defense template — pillboxes, gun/AA turrets, Tesla, SAM), a
+# dimension untouched by mass/precision, the economy fork, or the national doctrines.
+# Deterministic, integer-only; the proven GrantConditionOnPrerequisite -> RequiresCondition
+# pattern. Stacks multiplicatively with everything else.
+# ============================================================================
+
+research.maneuver:
+	Interactable:
+	Tooltip:
+		Name: actor-research-maneuver.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 57
+		BuildLimit: 1
+		BuildDuration: 500
+		BuildDurationModifier: 100
+		Prerequisites: rlab, age.information, ~!research.fortress
+		Description: actor-research-maneuver.description
+		Icon: research-maneuver-icon
+	Valued:
+		Cost: 1200
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:
+
+research.fortress:
+	Interactable:
+	Tooltip:
+		Name: actor-research-fortress.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 58
+		BuildLimit: 1
+		BuildDuration: 500
+		BuildDurationModifier: 100
+		Prerequisites: rlab, age.information, ~!research.maneuver
+		Description: actor-research-fortress.description
+		Icon: research-fortress-icon
+	Valued:
+		Cost: 1200
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:
+
+# --- Maneuver: mobile units move faster and see farther. ---
+^Vehicle:
+	GrantConditionOnPrerequisite@res-maneuver:
+		Condition: res-maneuver
+		Prerequisites: research.maneuver
+	SpeedMultiplier@res-maneuver:
+		RequiresCondition: res-maneuver
+		Modifier: 115
+	RevealsShroudMultiplier@res-maneuver:
+		RequiresCondition: res-maneuver
+		Modifier: 110
+
+^Infantry:
+	GrantConditionOnPrerequisite@res-maneuver:
+		Condition: res-maneuver
+		Prerequisites: research.maneuver
+	SpeedMultiplier@res-maneuver:
+		RequiresCondition: res-maneuver
+		Modifier: 112
+	RevealsShroudMultiplier@res-maneuver:
+		RequiresCondition: res-maneuver
+		Modifier: 110
+
+# --- Fortress: every static defense is tougher and reaches farther (the ^Defense template
+#     covers pillboxes, gun & AA turrets, Tesla coils, SAM sites). ---
+^Defense:
+	GrantConditionOnPrerequisite@res-fortress:
+		Condition: res-fortress
+		Prerequisites: research.fortress
+	DamageMultiplier@res-fortress:
+		RequiresCondition: res-fortress
+		Modifier: 80
+	RangeMultiplier@res-fortress:
+		RequiresCondition: res-fortress
+		Modifier: 112

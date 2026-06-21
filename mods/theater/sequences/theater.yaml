@@ -153,6 +153,11 @@ dome:
 		Filename: research-wareconomy-cameo.png
 	research-industrial-icon:
 		Filename: research-industrial-cameo.png
+	# Strategic-posture fork (Maneuver / Fortress).
+	research-maneuver-icon:
+		Filename: research-maneuver-cameo.png
+	research-fortress-icon:
+		Filename: research-fortress-cameo.png
 
 # 4X economy-building cameos keyed under the silo body (alloyex/bank reuse it) and the apwr body (fusion).
 silo:
