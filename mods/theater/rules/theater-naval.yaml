@@ -41,6 +41,15 @@ BURKE:
 	DetectCloaked:
 		Range: 7c0
 		DetectionTypes: Underwater, Cloak
+	# Aegis AIR-DEFENSE escort, NOT a Destroyer clone: drop the anti-ship gun (PRIMARY Stinger) and the
+	# depth charge (SECONDARY), and mount a long-range SAM (Nike) on the main turret. Keeps the DD's
+	# StingerAA point-defence (TERTIARY). Net: dominates aircraft + incoming missiles, near-helpless vs
+	# ships/subs — a true fleet air-defence escort that must be screened by surface combatants.
+	-Armament@SECONDARY:
+	Armament@PRIMARY:
+		Weapon: Nike
+		LocalOffset: 0,-100,0, 0,100,0
+		LocalYaw: 64, -64
 
 # ============================ Russia (Northern Union) — attack submarine ============================
 # Akula-class hunter-killer sub: stealthy torpedo boat that ambushes surface ships, then submerges. The
@@ -59,6 +68,15 @@ AKULA:
 		Prerequisites: tech.northern_union, syrd
 	Valued:
 		Cost: 1000
+	# Heavy hunter-killer (NOT an SS clone): a tankier hull and a 3-torpedo HEAVY salvo (HeavyTorp) — the
+	# biggest single torpedo alpha-strike in the game, but slow to reload, so a missed ambush is punished.
+	# Distinct from UK's ASTUTE (quiet single torpedo + best sonar). Narrow sonar: it's a striker, not a scout.
+	Health:
+		HP: 32000
+	Armament:
+		Weapon: HeavyTorp
+		LocalOffset: 0,-171,0, 0,171,0
+		FireDelay: 2
 
 # ============================ China (Continental Bloc) — mass missile boat ============================
 # Houbei-class missile catamaran: a dirt-cheap fast boat trading the gun for anti-ship/shore missiles
@@ -77,6 +95,12 @@ HOUBEI:
 		Prerequisites: tech.continental_bloc, syrd
 	Valued:
 		Cost: 450
+	# Fast coastal MISSILE boat (NOT a gunboat clone): trades the patrol gun for anti-ship missiles and
+	# DROPS the depth charge + sonar — it cannot fight subs or aircraft, only alpha-strike ships then flee.
+	# Cheap + fast (China ^Ship cost profile) → swarm the littoral with hit-and-run missile pressure.
+	-Armament@SECONDARY:
+	-DetectCloaked:
+	-RenderDetectionCircle:
 	Armament@PRIMARY:
 		Weapon: Stinger
 		LocalOffset: 208,0,48
@@ -109,6 +133,11 @@ BARBAROS:
 	DetectCloaked:
 		Range: 6c0
 		DetectionTypes: Underwater, Cloak
+	# ...but its TEETH are deliberately weak (recon over firepower): swap the patrol cannon for a light MG
+	# (harass only), keeping the depth charge so it can finish a sub it has detected. Loses any straight fight.
+	Armament@PRIMARY:
+		Weapon: M60mg
+		LocalOffset: 208,0,48
 
 # ============================ UK (Isles Coalition) — intelligence attack submarine ============================
 # Astute-class SSN: a quieter hunter-killer with the best sonar in the game (detects subs AND cloak) and a
@@ -157,3 +186,12 @@ KOLKATA:
 	DetectCloaked:
 		Range: 7c0
 		DetectionTypes: Underwater, Cloak
+	# Standoff anti-SHIP missile destroyer (NOT a BURKE/DD clone — USA's BURKE is pure AA): swap the main
+	# mount for a long-reach anti-ship missile (Maverick, MinRange 2c0 so it must stand off and cannot brawl
+	# close), and DROP the depth charge. India's ^Ship RangeMultiplier stretches its reach further. Keeps the
+	# StingerAA (TERTIARY) for self-defence. The long-reach glass artillery of the sea.
+	-Armament@SECONDARY:
+	Armament@PRIMARY:
+		Weapon: Maverick
+		LocalOffset: 0,-100,0, 0,100,0
+		LocalYaw: 64, -64

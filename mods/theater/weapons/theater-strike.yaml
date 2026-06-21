@@ -72,8 +72,16 @@ AgniBallistic:
 	Report: turret1.aud
 	TargetActorCenter: true
 	InvalidTargets: Air, AirborneActor
-	Projectile: Bullet
+	# VISIBLE ballistic missile: a Bullet projectile with no Image renders NOTHING (the longest-range weapon
+	# in the game was firing an invisible shell). Use a homing Missile with the MISSILE sprite + a long smoke
+	# contrail so the strike reads as an arcing ballistic missile streaking in from off-screen.
+	Projectile: Missile
+		Image: MISSILE
+		Speed: 213
+		Arm: 6
 		Inaccuracy: 1c256
+		RangeLimit: 26c0
+		TrailImage: smokey
 		ContrailLength: 48
 	Warhead@1Dam: SpreadDamage
 		Spread: 511
@@ -211,3 +219,13 @@ CruiseHeavy:
 		Explosions: artillery_explosion
 		ImpactSounds: kaboom25.aud
 		ValidTargets: Ground, GroundActor, WaterActor, Trees
+
+# AKULA (Russia) heavy hunter-killer torpedo — a 3-torpedo alpha salvo (vs the stock SS's 2), heavier hit,
+# but slow to reload. The biggest single naval alpha-strike; a missed ambush is punished by the long reload.
+HeavyTorp:
+	Inherits: TorpTube
+	ReloadDelay: 160
+	Burst: 3
+	BurstDelays: 6
+	Warhead@1Dam: SpreadDamage
+		Damage: 26000
