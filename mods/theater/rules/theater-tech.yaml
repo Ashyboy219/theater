@@ -1,0 +1,19 @@
+# THEATER — TECH PROGRESSION: the LATE-TIER gate.
+# Clear escalation: EARLY = production buildings (barracks/war factory/airfield/helipad/naval yard);
+# MID = radar dome / refinery (SAMs, EW, strike jets, destroyers, subs); LATE = the Tech Center.
+# Every theater faction already builds the Tech Center (ATEK — they all hold structures.allies from FACT;
+# STEK covers legacy Soviet factions), but it gated NOTHING before — a dead end. It now provides the
+# `tech.center` token that the flagship platforms (theater-flagships.yaml) and the strongest support powers
+# hang off, so reaching it is the moment the late game opens up. Reskinned "Advanced Command Center" for
+# theater flavour. No new structure, no C# — just turning an existing dead-end building into the apex gate.
+ATEK:
+	ProvidesPrerequisite@theatertech:
+		Prerequisite: tech.center
+	Tooltip:
+		Name: actor-techcenter.name
+
+STEK:
+	ProvidesPrerequisite@theatertech:
+		Prerequisite: tech.center
+	Tooltip:
+		Name: actor-techcenter.name

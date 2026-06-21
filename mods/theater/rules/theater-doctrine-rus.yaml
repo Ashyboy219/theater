@@ -96,14 +96,17 @@ doctrine.rus.arty:
 THCOM:
 	AirstrikePower@rusbarrage:
 		OrderName: NorthernUnionSaturationBarrage
-		Prerequisites: doctrine.rus.arty
+		# LATE-tier (tech.center) + long charge: the heavy saturation barrage is now an earned strategic
+		# asset, delivered by a distinct lumbering heavy bomber (strike.lancer) laying a carpet, not a
+		# turn-0 triple badr run.
+		Prerequisites: doctrine.rus.arty, tech.center
 		Icon: parabombs
-		ChargeInterval: 4500
+		ChargeInterval: 8000
 		Name: actor-thcom.rusbarrage-name
 		Description: actor-thcom.rusbarrage-description
 		SelectTargetSpeechNotification: SelectTarget
 		SelectTargetTextNotification: notification-select-target
-		UnitType: badr.bomber
+		UnitType: strike.lancer
 		SquadSize: 3
 		SquadOffset: 1792,1792,0
 		QuantizedFacings: 8

@@ -97,14 +97,16 @@ doctrine.ind.networked:
 THCOM:
 	AirstrikePower@indmissile:
 		OrderName: SubcontinentCruiseStrike
-		Prerequisites: doctrine.ind.missile
+		# LATE-tier (tech.center) + long charge: a rare, devastating single conventional cruise/hypersonic
+		# blow on a key target — a lone fast inbound (strike.brahmos, one heavy warhead), not a bomber wing.
+		Prerequisites: doctrine.ind.missile, tech.center
 		Icon: parabombs
-		ChargeInterval: 5000
+		ChargeInterval: 9000
 		Name: actor-thcom.missile-name
 		Description: actor-thcom.missile-description
 		SelectTargetSpeechNotification: SelectTarget
 		SelectTargetTextNotification: notification-select-target
-		UnitType: badr.bomber
+		UnitType: strike.brahmos
 		SquadSize: 1
 		SquadOffset: 1792,1792,0
 		QuantizedFacings: 8

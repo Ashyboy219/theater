@@ -113,14 +113,17 @@ doctrine.chn.industrial:
 THCOM:
 	AirstrikePower@chnswarm:
 		OrderName: ChnDroneSwarm
-		Prerequisites: doctrine.chn.air
+		# Was the "too early / too spammy" offender (5 bombers, 3600 charge, turn-0 gate). Now LATE-tier
+		# (tech.center) + much longer charge, delivered as a true loiter-munition SWARM (strike.shahed drones,
+		# many small hits) — an earned strategic swarm that lines up with the late drone-control cruiser.
+		Prerequisites: doctrine.chn.air, tech.center
 		Icon: parabombs
-		ChargeInterval: 3600
+		ChargeInterval: 7500
 		Name: actor-thcom.chnswarm-name
 		Description: actor-thcom.chnswarm-description
 		SelectTargetSpeechNotification: SelectTarget
 		SelectTargetTextNotification: notification-select-target
-		UnitType: badr.bomber
+		UnitType: strike.shahed
 		SquadSize: 5
 		SquadOffset: 1792,1792,0
 		QuantizedFacings: 8

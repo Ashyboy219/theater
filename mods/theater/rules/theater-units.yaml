@@ -63,17 +63,19 @@ WINGLOONG:
 		Queue: Aircraft
 		BuildPaletteOrder: 91
 		Prerequisites: tech.continental_bloc, afld
-	# TOY — drone hive: while a Wing Loong is alive, call in a 3-drone strike on a target area.
+	# TOY — drone hive: while a Wing Loong is alive, call in a small loiter-drone strike. Kept early (the
+	# weaker per-unit version), but de-spammed (longer charge) and unified to the China drone silhouette
+	# (strike.shahed). The heavy LATE swarm is the tech.center ChnDroneSwarm power.
 	AirstrikePower@dronehive:
 		OrderName: WingloongDroneSwarm
 		Prerequisites: tech.continental_bloc
 		Icon: parabombs
-		ChargeInterval: 4500
+		ChargeInterval: 6000
 		Name: actor-wingloong.dronehive-name
 		Description: actor-wingloong.dronehive-description
 		SelectTargetSpeechNotification: SelectTarget
 		SelectTargetTextNotification: notification-select-target
-		UnitType: badr.bomber
+		UnitType: strike.shahed
 		SquadSize: 3
 		SquadOffset: 1792,1792,0
 		QuantizedFacings: 8

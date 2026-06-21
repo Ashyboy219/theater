@@ -125,18 +125,20 @@ doctrine.usa.networked:
 # ParatroopersPower@coord). Each is gated by the branch prerequisite, so the power only appears once that
 # branch is bought. THCOM already has a SupportPowerChargeBar; these reuse it.
 THCOM:
-	# --- Air Superiority: precision CAS bomb run. Grounded — a single strike jet on a chosen heading. ---
+	# --- Air Superiority: precision CAS. STAYS EARLY (a weak surgical tool), but reskinned to a fast
+	# jet-pair (strike.eagle) dropping a single precise JDAM — so it looks/feels different from Russia's
+	# heavy bomber and is clearly USA precision air, without buffing its power. ---
 	AirstrikePower@usaair:
 		OrderName: FederationSweepStrike
 		Prerequisites: doctrine.usa.air
 		Icon: spyplane
-		ChargeInterval: 4500
+		ChargeInterval: 4200
 		Name: actor-thcom.usaair-name
 		Description: actor-thcom.usaair-description
 		SelectTargetSpeechNotification: SelectTarget
 		SelectTargetTextNotification: notification-select-target
-		UnitType: badr.bomber
-		SquadSize: 1
+		UnitType: strike.eagle
+		SquadSize: 2
 		SquadOffset: 1792,1792,0
 		QuantizedFacings: 8
 		CameraActor: camera

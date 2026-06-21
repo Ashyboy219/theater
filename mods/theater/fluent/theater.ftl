@@ -115,6 +115,28 @@ actor-astute =
 actor-kolkata =
     .name = Kolkata Missile Destroyer
 
+## Late-game flagships + tech tier
+actor-techcenter =
+    .name = Advanced Command Center
+actor-amx =
+    .name = Abrams-X Super-Heavy Tank
+    .description = USA late-game ground anchor: a 90,000-HP twin-gun super-heavy with self-repair and anti-air missiles — the durable spearhead USA's air-first doctrine otherwise lacks. Requires a Tech Center.
+actor-armata =
+    .name = T-14 Armata Heavy Tank
+    .description = Russia siege super-heavy: a 120mm main gun plus a thermobaric fuel-air secondary that levels infantry and fortifications, advancing through defences. Requires a Tech Center.
+actor-b21 =
+    .name = B-21 Stealth Bomber
+    .description = USA strategic stealth bomber: cloaks when idle, drops a heavy precision bomb stick, then vanishes again. Alert SAMs kill it the instant it bombs. Requires a Tech Center.
+actor-gj11 =
+    .name = GJ-11 Drone Gunship
+    .description = China heavy attack drone: a survivable Hellfire gunship cheap enough to mass — the late-game drone air-arm. Requires a Tech Center.
+actor-akinci =
+    .name = Akinci Heavy UCAV
+    .description = Turkey high-end combat drone: fast, far-seeing and precision-armed — strikes ground and scouts the deepest. Cheap and fast to build. Requires a Tech Center.
+actor-agni =
+    .name = Agni Ballistic Launcher
+    .description = India road-mobile ballistic launcher: the longest reach in the game, raining a heavy conventional warhead from beyond return range. Slow and fragile — screen it. Requires a Tech Center.
+
 ## Dev mode
 checkbox-devunlock =
     .label = Dev: Unlock Tech Tree
