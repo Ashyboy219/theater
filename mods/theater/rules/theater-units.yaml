@@ -363,10 +363,16 @@ REDOUBT:
 TUNGUSKA:
 	Inherits: 2TNK
 	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	# Battlefield body: spawns as a modern tracked SPAAG (spaagbody — missile tubes + radar), not the stock 2tnk.
 	RenderSprites:
-		Image: 2tnk
+		Image: spaagbody
 	Tooltip:
 		Name: actor-tunguska.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 96

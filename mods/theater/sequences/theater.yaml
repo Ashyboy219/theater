@@ -396,3 +396,24 @@ jeepbody:
 		Filename: loiter-cameo.png
 	mobsam-icon:
 		Filename: mobsam-cameo.png
+
+# Ground body: modern self-propelled AA system (SPAAG, TURRETED) — tracked chassis + an air-defence turret with
+# side missile tube banks, twin autocannons and a tracking radar panel, so it reads as an AA system, not a tank.
+# 32-facing hull + turret (centred). Used by TUNGUSKA (Russia mobile SPAAG). 2TNK keeps MuzzleSequence: muzzle.
+spaagbody:
+	idle:
+		Filename: spaagbody.png
+		Facings: 32
+		InterpolatedFacings: 64
+	turret:
+		Filename: spaagbody-turret.png
+		Facings: 32
+		InterpolatedFacings: 64
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	roundel:
+		Filename: roundel.shp
+		Length: 1
+	tunguska-icon:
+		Filename: tunguska-cameo.png
