@@ -148,6 +148,9 @@ namespace OpenRA.Mods.Common.Traits
 		// Will change if the owner changes
 		protected PowerManager playerPower;
 		protected PlayerResources playerResources;
+
+		// Optional counted second resource (THEATER alloys); null for mods that don't use it.
+		protected PlayerAlloys playerAlloys;
 		protected DeveloperMode developerMode;
 		protected TechTree techTree;
 
@@ -178,6 +181,7 @@ namespace OpenRA.Mods.Common.Traits
 		{
 			playerPower = self.Owner.PlayerActor.TraitOrDefault<PowerManager>();
 			playerResources = self.Owner.PlayerActor.Trait<PlayerResources>();
+			playerAlloys = self.Owner.PlayerActor.TraitOrDefault<PlayerAlloys>();
 			developerMode = self.Owner.PlayerActor.Trait<DeveloperMode>();
 			techTree = self.Owner.PlayerActor.Trait<TechTree>();
 
@@ -208,6 +212,7 @@ namespace OpenRA.Mods.Common.Traits
 
 			playerPower = newOwner.PlayerActor.TraitOrDefault<PowerManager>();
 			playerResources = newOwner.PlayerActor.Trait<PlayerResources>();
+			playerAlloys = newOwner.PlayerActor.TraitOrDefault<PlayerAlloys>();
 			developerMode = newOwner.PlayerActor.Trait<DeveloperMode>();
 			techTree = newOwner.PlayerActor.Trait<TechTree>();
 
@@ -492,6 +497,17 @@ namespace OpenRA.Mods.Common.Traits
 					{
 						if (Info.PayUpFront && cost > playerResources.GetCashAndResources())
 							return;
+
+						// THEATER: charge the counted alloy cost up front, at queue time. Deducting here
+						// (rather than at build completion) makes the alloys.stockpile prerequisite revoke as
+						// soon as the stockpile is spent, so a single stockpile's worth can't queue several
+						// alloy-gated units at once. Inert for mods without PlayerAlloys. Forfeit on cancel.
+						if (playerAlloys != null)
+						{
+							var alloyCost = unit.TraitInfoOrDefault<ConsumesAlloysInfo>()?.Cost ?? 0;
+							if (alloyCost > 0 && !playerAlloys.TakeAlloys(alloyCost))
+								return;
+						}
 
 						var notified = false;
 						BeginProduction(new ProductionItem(this, order.TargetString, cost, playerPower, () => self.World.AddFrameEndTask(_ =>

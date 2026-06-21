@@ -13,34 +13,19 @@ using OpenRA.Traits;
 
 namespace OpenRA.Mods.Common.Traits
 {
-	[Desc("Deducts alloys from the owner when this actor is built (added to the world). ",
-		"Gate the actor's production on a ProvidesPrerequisiteOnAlloys prerequisite whose Threshold matches this Cost, ",
-		"so it can only be built with enough banked alloys and the stockpile is spent on completion.")]
+	[Desc("Declares an alloy cost for this actor. The ProductionQueue charges it up front when the actor is",
+		"queued (and the alloys.stockpile prerequisite revokes once the stockpile is spent). Pair with a",
+		"ProvidesPrerequisiteOnAlloys gate whose Threshold matches this Cost. Alloys are committed on build",
+		"and not refunded on cancel.")]
 	public class ConsumesAlloysInfo : TraitInfo
 	{
-		[Desc("Alloys deducted when this actor is built.")]
+		[Desc("Alloys charged when this actor is queued for production.")]
 		public readonly int Cost = 1;
 
-		public override object Create(ActorInitializer init) { return new ConsumesAlloys(this); }
+		public override object Create(ActorInitializer init) { return new ConsumesAlloys(); }
 	}
 
-	public class ConsumesAlloys : INotifyAddedToWorld
-	{
-		readonly ConsumesAlloysInfo info;
-
-		public ConsumesAlloys(ConsumesAlloysInfo info)
-		{
-			this.info = info;
-		}
-
-		void INotifyAddedToWorld.AddedToWorld(Actor self)
-		{
-			if (info.Cost <= 0)
-				return;
-
-			// Inert unless the owner runs the alloy economy (THEATER); other mods have no PlayerAlloys.
-			var alloys = self.Owner.PlayerActor.TraitOrDefault<PlayerAlloys>();
-			alloys?.TakeAlloys(info.Cost);
-		}
-	}
+	// Marker trait: the alloy cost is read from ConsumesAlloysInfo and charged by the ProductionQueue at
+	// queue time, so the runtime trait carries no behaviour itself.
+	public class ConsumesAlloys { }
 }

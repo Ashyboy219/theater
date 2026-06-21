@@ -97,12 +97,13 @@ and meaningful decisions, and it's too short. The fix is **depth + longevity + s
       Inert for other mods. Build/check-yaml/boot clean; PlayerAlloys unit-tested (8 cases). FOLLOW-UPS (need
       a live playtest, held honestly):
         - nudge the readout bar's Y if it overlaps; balance the trickle/cost numbers.
-        - KNOWN LIMITATION: alloys are deducted at build *completion* (ConsumesAlloys on AddedToWorld) while the
-          stockpile gate is checked at *order* time, so queuing several apex units of different types on one
-          stockpile's worth can under-charge the later ones (bounded by BuildLimit 2/type). The correct fix is
-          to deduct at order-acceptance inside ProductionQueue with symmetric refunds on cancel — deferred
-          because that touches shared engine code and its refund/UX correctness needs in-game testing, not a
-          headless guess.
+        - CHARGE TIMING (resolved, commit pending): alloys are now charged UP FRONT at queue time, inside the
+          ProductionQueue order path (null-guarded, inert for other mods), instead of at build completion. The
+          moment the stockpile is spent the alloys.stockpile prerequisite revokes, so a single stockpile's worth
+          can no longer queue several alloy-gated units at once (the earlier completion-time charge let you get
+          up to ~3 extra apex units nearly free). Tradeoff: alloys are committed on build and NOT refunded on
+          cancel (simpler + avoids refund-site surgery); the apex tooltips say so. A live playtest should still
+          confirm the queue/UX feel.
 - [ ] **P7 — Light diplomacy / inter-faction systems** (stretch): alliances, trade, tribute. Needs C#/UI.
 - [ ] **P8 — Map objectives / secondary win conditions** (Lua, per-map): economic/tech victory paths.
 - [ ] **Custom building bodies** (visual, needs in-game tuning): rlab/alloyex/bank/fusion still reuse stock

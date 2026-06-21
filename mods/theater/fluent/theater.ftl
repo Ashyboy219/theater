@@ -444,16 +444,16 @@ actor-econ-network =
 ## ============================ 4X: Spectacle units (apex payoff) ============================
 actor-leviathan =
     .name = Leviathan Arsenal Dreadnought
-    .description = The apex super-warship — gargantuan, with the longest-reaching, heaviest naval guns in the game plus anti-air defense, and an enormous health pool. Slow and hugely expensive; limited to 2. The reward for climbing the whole tech ladder: needs a Naval Yard, the Orbital Age, and an Alloy Extractor. Real-world: an 'arsenal ship' — a heavily-armed missile/gun platform the U.S. Navy has studied.
+    .description = The apex super-warship — gargantuan, with the longest-reaching, heaviest naval guns in the game plus anti-air defense, and an enormous health pool. Slow and hugely expensive; limited to 2. The reward for climbing the whole tech ladder: needs a Naval Yard, the Orbital Age, and an Alloy Extractor. Real-world: an 'arsenal ship' — a heavily-armed missile/gun platform the U.S. Navy has studied. Spends 100 alloys, committed on build (no refund if cancelled).
 
 actor-citadel =
     .name = Citadel Mobile Fortress
-    .description = The land apex — a gargantuan tracked super-fortress with a devastating siege cannon, anti-air missiles, and a colossal health pool. Slow, hugely expensive, limited to 2. The land equivalent of the Leviathan: needs a War Factory and the Orbital Age (so the whole tech ladder). Real-world: a land battleship, in the lineage of paper projects like the Landkreuzer P. 1000 Ratte.
+    .description = The land apex — a gargantuan tracked super-fortress with a devastating siege cannon, anti-air missiles, and a colossal health pool. Slow, hugely expensive, limited to 2. The land equivalent of the Leviathan: needs a War Factory and the Orbital Age (so the whole tech ladder). Real-world: a land battleship, in the lineage of paper projects like the Landkreuzer P. 1000 Ratte. Spends 100 alloys, committed on build (no refund if cancelled).
 
 actor-archangel =
     .name = Archangel Heavy Gunship
-    .description = The air apex — a gargantuan flying fortress that loiters and rains a sustained heavy barrage. Huge but slow and exposed: SAMs and AA are its counter, so escort it. Limited to 2. Needs a Helipad and the Orbital Age. Real-world: a heavy gunship in the AC-130 tradition.
+    .description = The air apex — a gargantuan flying fortress that loiters and rains a sustained heavy barrage. Huge but slow and exposed: SAMs and AA are its counter, so escort it. Limited to 2. Needs a Helipad and the Orbital Age. Real-world: a heavy gunship in the AC-130 tradition. Spends 100 alloys, committed on build (no refund if cancelled).
 
 actor-tempest =
     .name = Tempest Rocket Artillery
-    .description = The strategic-bombardment apex — a gargantuan mobile launcher that rains a 12-rocket salvo across most of the map. Devastating area saturation, but a very long reload and far-forward deployment leave it exposed, so screen it. Limited to 2. Needs a War Factory and the Orbital Age. Real-world: a strategic multiple-rocket-launcher scaled up.
+    .description = The strategic-bombardment apex — a gargantuan mobile launcher that rains a 12-rocket salvo across most of the map. Devastating area saturation, but a very long reload and far-forward deployment leave it exposed, so screen it. Limited to 2. Needs a War Factory and the Orbital Age. Real-world: a strategic multiple-rocket-launcher scaled up. Spends 100 alloys, committed on build (no refund if cancelled).
