@@ -207,3 +207,28 @@ dronebody:
 		Filename: bayrak-cameo.png
 	akinci-icon:
 		Filename: akinci-cameo.png
+
+# Ground body: modern road-mobile missile launcher (TEL) — erected canister + multi-axle chassis, rendered
+# 32-facing. Shared by the v2rl-based launchers AGNI/GARUDA/GRAD/DAZHBOG so the in-world unit reads as a
+# modern missile truck, not the stock V2 rocket. The launcher has a loaded (!reloading) and an empty
+# (reloading) body state — reuse one strip for both. Cameos re-homed here (Buildable.Icon resolves under Image).
+telbody:
+	idle:
+		Filename: telbody.png
+		Facings: 32
+		InterpolatedFacings: 64
+	empty-idle:
+		Filename: telbody.png
+		Facings: 32
+		InterpolatedFacings: 64
+	roundel:
+		Filename: roundel.shp
+		Length: 1
+	garuda-icon:
+		Filename: garuda-cameo.png
+	grad-icon:
+		Filename: grad-cameo.png
+	dazhbog-icon:
+		Filename: dazhbog-cameo.png
+	agni-icon:
+		Filename: agni-cameo.png

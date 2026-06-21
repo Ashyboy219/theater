@@ -188,10 +188,16 @@ KUNAI:
 # Subcontinent Federation (India) — supersonic cruise-missile launcher (precision, not the stock SCUD).
 GARUDA:
 	Inherits: V2RL
+	# Battlefield body: spawns as a modern road-mobile missile launcher (telbody), not the stock V2 rocket truck.
 	RenderSprites:
-		Image: v2rl
+		Image: telbody
 	Tooltip:
 		Name: actor-garuda.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 92
@@ -295,9 +301,14 @@ RAPTOR:
 GRAD:
 	Inherits: V2RL
 	RenderSprites:
-		Image: v2rl
+		Image: telbody
 	Tooltip:
 		Name: actor-grad.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 93
@@ -365,9 +376,14 @@ TUNGUSKA:
 DAZHBOG:
 	Inherits: V2RL
 	RenderSprites:
-		Image: v2rl
+		Image: telbody
 	Tooltip:
 		Name: actor-dazhbog.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 93

@@ -160,10 +160,16 @@ AKINCI:
 # raining a heavy conventional warhead from beyond return range. Slow + fragile, must be screened — a real skill check.
 AGNI:
 	Inherits: V2RL
+	# Battlefield body: spawns as a modern road-mobile missile launcher (telbody), not the stock V2 rocket truck.
 	RenderSprites:
-		Image: v2rl
+		Image: telbody
 	Tooltip:
 		Name: actor-agni.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 100
