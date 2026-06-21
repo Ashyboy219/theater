@@ -57,7 +57,7 @@ actor-bastion =
 
 actor-wingloong =
     .name = Wing Loong Swarm Drone
-    .description = China attritable strike drone: cheap and fragile, fires a guided missile and reveals ground. Sent in numbers and expected to die. Build from an Airfield.
+    .description = China attritable strike drone: cheap and fragile, fires a guided missile and reveals ground. Sent in numbers and expected to die. Build from an Airfield. Real-world: based on China's Wing Loong MALE strike/reconnaissance drone.
     .dronehive-name = Drone Swarm
     .dronehive-description = Launch a swarm of strike drones at the target area.
 
@@ -79,7 +79,7 @@ actor-garuda =
 
 actor-bayrak =
     .name = Bayrak UCAV
-    .description = Turkey cheap recon-harasser drone: a huge sight radius and a single light missile; folds to any AA. Build from an Airfield.
+    .description = Turkey cheap recon-harasser drone: a huge sight radius and a single light missile; folds to any AA. Build from an Airfield. Real-world: based on Baykar's Bayraktar TB2, the widely-exported Turkish strike drone.
 
 ## Additional faction uniques
 actor-reaper =
@@ -108,37 +108,37 @@ actor-hayabusa =
     .description = Japan autonomous interceptor drone: pure anti-air, helpless against ground attack. Build from an Airfield.
 actor-akash =
     .name = Akash SAM Battery
-    .description = India long-range SAM battery: the longest-reach air defense in the game, fired in 2-missile salvos. Needs a Radar Dome.
+    .description = India long-range SAM battery: the longest-reach air defense in the game, fired in 2-missile salvos. Needs a Radar Dome. Real-world: based on India's Akash medium-range surface-to-air missile system.
 actor-tejas =
     .name = Tejas Strike Fighter
-    .description = India resilient standoff strike fighter: a hardened airframe firing a 2-missile guided salvo from distance. Build from an Airfield.
+    .description = India resilient standoff strike fighter: a hardened airframe firing a 2-missile guided salvo from distance. Build from an Airfield. Real-world: based on HAL Tejas, India's indigenous light multirole fighter.
 actor-koral =
     .name = Koral EW Van
-    .description = Turkey EW van: a wide missile-jamming umbrella that deflects enemy guided ATGMs/AA/SAMs over the task force. Unarmed — escort it; gun weapons ignore the jamming. Needs a Radar Dome.
+    .description = Turkey EW van: a wide missile-jamming umbrella that deflects enemy guided ATGMs/AA/SAMs over the task force. Unarmed — escort it; gun weapons ignore the jamming. Needs a Radar Dome. Real-world: based on Turkey's KORAL land-based radar electronic-warfare system.
 actor-raptor =
     .name = Raptor Air-Superiority Fighter
     .description = USA air-superiority fighter: pure anti-air that owns the sky for your strike jets — helpless vs ground, killable by SAMs. Build from an Airfield.
 actor-tunguska =
     .name = Tunguska Air-Defense System
-    .description = Russia mobile SPAAG: a long-range SAM plus a 25mm autocannon — the only mobile AA that can also defend itself on the ground. Needs a Radar Dome + War Factory.
+    .description = Russia mobile SPAAG: a long-range SAM plus a 25mm autocannon — the only mobile AA that can also defend itself on the ground. Needs a Radar Dome + War Factory. Real-world: based on Russia's 2K22 Tunguska / Pantsir gun-and-missile air-defense systems.
 actor-burke =
     .name = Burke Aegis Destroyer
-    .description = USA Aegis air-defense destroyer: dominates aircraft and incoming missiles, near-helpless vs ships/subs — screen it. Needs a Naval Yard + Radar Dome.
+    .description = USA Aegis air-defense destroyer: dominates aircraft and incoming missiles, near-helpless vs ships/subs — screen it. Needs a Naval Yard + Radar Dome. Real-world: based on the U.S. Navy's Arleigh Burke-class Aegis guided-missile destroyer.
 actor-akula =
     .name = Akula Attack Submarine
-    .description = Russia heavy attack submarine: a 3-torpedo alpha salvo with a long reload. Surfaces to fire; countered by sonar + depth charges. Build from a Naval Yard.
+    .description = Russia heavy attack submarine: a 3-torpedo alpha salvo with a long reload. Surfaces to fire; countered by sonar + depth charges. Build from a Naval Yard. Real-world: based on the Russian Akula-class (Project 971) nuclear attack submarine.
 actor-houbei =
     .name = Houbei Missile Boat
-    .description = China fast missile boat: anti-ship missiles, no sub or air defense — alpha-strike and flee. Cheap; swarm the littoral. Build from a Naval Yard.
+    .description = China fast missile boat: anti-ship missiles, no sub or air defense — alpha-strike and flee. Cheap; swarm the littoral. Build from a Naval Yard. Real-world: based on China's Type 022 Houbei, a stealthy catamaran missile fast-attack craft.
 actor-barbaros =
     .name = Barbaros USV Patrol Drone
-    .description = Turkey USV recon drone-boat: fast and far-seeing, detects subs and stealth; weak guns. Build from a Naval Yard.
+    .description = Turkey USV recon drone-boat: fast and far-seeing, detects subs and stealth; weak guns. Build from a Naval Yard. Real-world: evokes Turkey's growing fleet of armed unmanned surface vessels (USVs).
 actor-astute =
     .name = Astute Attack Submarine
-    .description = UK intelligence submarine: the best sonar in the game plus a quiet precision torpedo — hunts subs and scouts unseen. Build from a Naval Yard.
+    .description = UK intelligence submarine: the best sonar in the game plus a quiet precision torpedo — hunts subs and scouts unseen. Build from a Naval Yard. Real-world: based on the Royal Navy's Astute-class nuclear attack submarine, known for its quiet sonar.
 actor-kolkata =
     .name = Kolkata Missile Destroyer
-    .description = India standoff missile destroyer: long-reach anti-ship missiles and deep sensors. Needs a Naval Yard + Radar Dome.
+    .description = India standoff missile destroyer: long-reach anti-ship missiles and deep sensors. Needs a Naval Yard + Radar Dome. Real-world: based on the Indian Navy's Kolkata-class guided-missile destroyer.
 
 ## Late-game flagships + tech tier
 actor-techcenter =
@@ -333,7 +333,7 @@ actor-jtac =
 
 actor-bmpt =
     .name = BMPT Terminator
-    .description = Russia — heavy tank-support: twin autocannons shred infantry and light vehicles, plus an anti-tank missile. No transport; escort for the armored fist.
+    .description = Russia — heavy tank-support: twin autocannons shred infantry and light vehicles, plus an anti-tank missile. No transport; escort for the armored fist. Real-world: based on Russia's BMPT 'Terminator' tank-support fighting vehicle.
 
 actor-loiter =
     .name = Loitering-Munition Truck
@@ -349,7 +349,7 @@ actor-jackal =
 
 actor-namica =
     .name = NAMICA Tank-Destroyer
-    .description = India — standoff ATGM carrier: kills armor from range but is helpless against infantry. Screen it.
+    .description = India — standoff ATGM carrier: kills armor from range but is helpless against infantry. Screen it. Real-world: based on India's NAMICA (Nag Missile Carrier) ATGM tank-destroyer.
 
 ## ============================ 4X: Research Lab + tech tree ============================
 actor-rlab =
