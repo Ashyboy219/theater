@@ -145,22 +145,22 @@ actor-techcenter =
     .name = Advanced Command Center
 actor-amx =
     .name = Abrams-X Super-Heavy Tank
-    .description = USA late-game ground anchor: a 90,000-HP twin-gun super-heavy with self-repair and anti-air missiles — the durable spearhead USA's air-first doctrine otherwise lacks. Requires a Tech Center.
+    .description = USA late-game ground anchor: a 90,000-HP twin-gun super-heavy with self-repair and anti-air missiles — the durable spearhead USA's air-first doctrine otherwise lacks. Requires a Tech Center. Real-world: based on General Dynamics' AbramsX, a next-gen Abrams technology demonstrator shown in 2022.
 actor-armata =
     .name = T-14 Armata Heavy Tank
-    .description = Russia siege super-heavy: a 120mm main gun plus a thermobaric fuel-air secondary that levels infantry and fortifications, advancing through defences. Requires a Tech Center.
+    .description = Russia siege super-heavy: a 120mm main gun plus a thermobaric fuel-air secondary that levels infantry and fortifications, advancing through defences. Requires a Tech Center. Real-world: based on Russia's T-14 Armata, whose crew rides in an armored capsule beneath an unmanned turret.
 actor-b21 =
     .name = B-21 Stealth Bomber
-    .description = USA strategic stealth bomber: cloaks when idle, drops a heavy precision bomb stick, then vanishes again. Alert SAMs kill it the instant it bombs. Requires a Tech Center.
+    .description = USA strategic stealth bomber: cloaks when idle, drops a heavy precision bomb stick, then vanishes again. Alert SAMs kill it the instant it bombs. Requires a Tech Center. Real-world: based on the B-21 Raider, the USAF's next-generation stealth bomber, unveiled in 2022.
 actor-gj11 =
     .name = GJ-11 Drone Gunship
-    .description = China heavy attack drone: a survivable Hellfire gunship cheap enough to mass — the late-game drone air-arm. Requires a Tech Center.
+    .description = China heavy attack drone: a survivable Hellfire gunship cheap enough to mass — the late-game drone air-arm. Requires a Tech Center. Real-world: based on the GJ-11 "Sharp Sword", a Chinese flying-wing stealth combat drone.
 actor-akinci =
     .name = Akinci Heavy UCAV
-    .description = Turkey high-end combat drone: fast, far-seeing and precision-armed — strikes ground and scouts the deepest. Cheap and fast to build. Requires a Tech Center.
+    .description = Turkey high-end combat drone: fast, far-seeing and precision-armed — strikes ground and scouts the deepest. Cheap and fast to build. Requires a Tech Center. Real-world: based on Baykar's Bayraktar Akıncı, a Turkish high-altitude long-endurance combat drone.
 actor-agni =
     .name = Agni Ballistic Launcher
-    .description = India road-mobile ballistic launcher: the longest reach in the game, raining a heavy conventional warhead from beyond return range. Slow and fragile — screen it. Requires a Tech Center.
+    .description = India road-mobile ballistic launcher: the longest reach in the game, raining a heavy conventional warhead from beyond return range. Slow and fragile — screen it. Requires a Tech Center. Real-world: based on India's Agni family of medium-to-intercontinental-range ballistic missiles.
 
 ## Dev mode
 checkbox-devunlock =
@@ -412,7 +412,7 @@ actor-age-orbital =
 ## ============================ 4X: Strategic resource / economy ============================
 actor-alloyex =
     .name = Alloy Extractor
-    .description = Strategic resource + economy building. Drips a steady income (build several across your territory — expansion pays) and produces the alloys your apex tier needs: the Orbital Age and the largest late-game platforms require one. Also stores resources. Needs a Refinery.
+    .description = Strategic resource + economy building. Drips a steady income (build several across your territory — expansion pays) and produces the alloys your apex tier needs: the Orbital Age and the largest late-game platforms require one. Also stores resources. Needs a Refinery. Real-world: "alloys" stands in for critical minerals — rare earths like neodymium and dysprosium that modern missiles, jets and radar depend on, with refining highly concentrated in a few countries.
 
 actor-bank =
     .name = Bank
