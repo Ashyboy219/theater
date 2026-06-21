@@ -413,7 +413,8 @@ LeviathanGun:
 		Damage: 7000
 		Falloff: 1000, 500, 250, 90, 30, 0
 	Warhead@3Eff: CreateEffect
-		Explosions: artillery_explosion
+		# Big-ship main gun — a larger impact bloom than a normal artillery shell, to match the hull.
+		Explosions: large_explosion
 		ImpactSounds: kaboom25.aud
 		ValidTargets: Ground, GroundActor, WaterActor, Trees
 
@@ -444,7 +445,8 @@ CitadelCannon:
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Crater
 	Warhead@3Eff: CreateEffect
-		Explosions: artillery_explosion
+		# Siege-cannon impact — the land equivalent of the Leviathan's big bloom.
+		Explosions: large_explosion
 		ImpactSounds: kaboom25.aud
 		ValidTargets: Ground, GroundActor, WaterActor, Trees
 
