@@ -20,6 +20,12 @@ AMX:
 		Description: actor-amx.description
 	Valued:
 		Cost: 2200
+	# Networked active-protection identity (NOT just "more HP" — that separates it from Russia's ARMATA siege
+	# tank): keeps the Mammoth's 120mm + tusk AA, and ADDS missile-jamming so enemy guided missiles (ATGMs,
+	# AA, SAMs) veer off near it — a hard-to-kill anti-armour anchor that also umbrellas friendly aircraft.
+	JamsMissiles:
+		Range: 4c0
+		DeflectionRelationships: Enemy
 
 # B-21 strategic stealth bomber: cloaks when idle, snaps visible when it drops a heavy precision bomb stick,
 # then cloaks again. The apex of USA air-dominance — penetrates defences, but a live SAM kills it the instant it bombs.
@@ -110,6 +116,13 @@ AKINCI:
 		Description: actor-akinci.description
 	Valued:
 		Cost: 1300
+	# Was a pure MIG stat-clone (only cost/vision changed). Give it a dedicated 4-missile precision ATGM
+	# salvo (AkinciATGM) instead of the stock single Maverick — a fan of guided missiles, the standoff-drone
+	# signature, distinct from a manned strike jet. Plus the deepest recon vision below.
+	Armament:
+		Weapon: AkinciATGM
+		LocalOffset: 0,-640,0, 0,640,0
+		LocalYaw: -40, 24
 	RevealsShroud:
 		MinRange: 11c0
 		Range: 16c0

@@ -63,6 +63,18 @@ WINGLOONG:
 		Queue: Aircraft
 		BuildPaletteOrder: 91
 		Prerequisites: tech.continental_bloc, afld
+	# Cheap ATTRITABLE strike DRONE (NOT a YAK strafer clone): cheap + fragile, fires a small guided missile
+	# (HellfireAG) at armour/structures and reveals ground. Sent in numbers, expected to die — China's mass
+	# air identity. (Stock YAK was a 1350-cost 8000-HP hitscan strafer; this is the opposite.)
+	Valued:
+		Cost: 650
+	Health:
+		HP: 4000
+	Armament:
+		Weapon: HellfireAG
+	RevealsShroud:
+		Range: 9c0
+		Type: GroundPosition
 	# TOY — drone hive: while a Wing Loong is alive, call in a small loiter-drone strike. Kept early (the
 	# weaker per-unit version), but de-spammed (longer charge) and unified to the China drone silhouette
 	# (strike.shahed). The heavy LATE swarm is the tech.center ChnDroneSwarm power.
@@ -165,6 +177,12 @@ BAYRAK:
 		Queue: Aircraft
 		BuildPaletteOrder: 92
 		Prerequisites: tech.anatolian_alliance, afld
+	# Cheap fragile RECON drone (NOT a YAK clone): its value is the huge sight below, not firepower — it is
+	# cheap and folds to any AA. Scouts first, plinks soft targets, attritable.
+	Valued:
+		Cost: 700
+	Health:
+		HP: 3500
 	# TOY — cheap loiter recon drone: huge sight radius, sees the battlefield first.
 	RevealsShroud:
 		MinRange: 0
@@ -258,6 +276,12 @@ TUNGUSKA:
 		Cost: 950
 	Armament:
 		Weapon: Nike
+	# DUAL-PURPOSE tracked SPAAG (NOT just another Nike SAM like AKASH/MOBSAM): a real Tunguska also rakes
+	# ground — add a 25mm autocannon so it shreds infantry/light armour while its Nike covers the sky. The
+	# only SAM that can defend itself on the ground; it advances WITH the Russian push, not behind it.
+	Armament@GUN:
+		Weapon: 25mm
+		LocalOffset: 0,0,256
 	RevealsShroud:
 		MinRange: 4c0
 		Range: 9c0
@@ -350,11 +374,14 @@ AKASH:
 	# / AA-gun form the short-range layer below). India is the layered-air-defense faction.
 	Health:
 		HP: 60000
+	# LONGEST-reach AA in the game, fired as a 2-missile salvo (AkashSAM) — out-ranges every mobile SAM
+	# (TUNGUSKA's Nike, MOBSAM's RedEye), leaning into its immobility as a static apex layer. NOT the same
+	# Nike as the mobile SAMs: India's layered air defence has a distinct top tier.
 	Armament:
-		Weapon: Nike
+		Weapon: AkashSAM
 	RevealsShroud:
 		MinRange: 5c0
-		Range: 9c0
+		Range: 11c0
 
 # Subcontinent Federation (India) — multirole strike fighter (upper air layer).
 TEJAS:

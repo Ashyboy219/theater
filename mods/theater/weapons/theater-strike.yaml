@@ -229,3 +229,21 @@ HeavyTorp:
 	BurstDelays: 6
 	Warhead@1Dam: SpreadDamage
 		Damage: 26000
+
+# AKINCI (Turkey UCAV) — a 4-missile precision ATGM salvo (vs the stock MIG's 2-burst Maverick): a fan of
+# smoke-trailing guided missiles, lower per-hit but more of them, the standoff-drone signature.
+AkinciATGM:
+	Inherits: Maverick
+	Range: 9c0
+	Burst: 4
+	BurstDelays: 5
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000
+
+# AKASH (India static SAM battery) — longest-reach AA in the game, fired as a 2-missile salvo from the tower.
+# Out-ranges every mobile SAM (TUNGUSKA Nike / MOBSAM RedEye) = the apex static layer of India's air defence.
+AkashSAM:
+	Inherits: Nike
+	Range: 9c512
+	Burst: 2
+	BurstDelays: 8
