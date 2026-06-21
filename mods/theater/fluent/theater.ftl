@@ -49,11 +49,11 @@ faction-anatolian_alliance =
 ## (which production building / tech tier) so the tech path reads off the tooltip.
 actor-specter =
     .name = Specter Stealth Fighter
-    .description = USA stealth strike jet: cloaks when idle, snaps visible the instant it fires or is hit. Build from an Airfield.
+    .description = USA stealth strike jet: cloaks when idle, snaps visible the instant it fires or is hit. Build from an Airfield. Real-world: inspired by 5th-generation stealth fighters such as the F-22 and F-35.
 
 actor-bastion =
     .name = Bastion EW Command Tank
-    .description = Electronic-warfare tank. Deflects enemy guided missiles (ATGMs, SAMs, AA) near it and blacks out enemy radar. Counter with gun-armed units — autocannons, flak and tank guns fire straight through the jamming. Build from a War Factory.
+    .description = Electronic-warfare tank. Deflects enemy guided missiles (ATGMs, SAMs, AA) near it and blacks out enemy radar. Counter with gun-armed units — autocannons, flak and tank guns fire straight through the jamming. Build from a War Factory. Real-world: evokes Russian ground electronic-warfare systems such as Krasukha.
 
 actor-wingloong =
     .name = Wing Loong Swarm Drone
@@ -63,19 +63,19 @@ actor-wingloong =
 
 actor-loewe =
     .name = Loewe Heavy MBT
-    .description = Germany's most durable tank, with active protection that deflects enemy guided missiles — bring gun-armed units (autocannon, tank guns) to kill it. Build from a War Factory.
+    .description = Germany's most durable tank, with active protection that deflects enemy guided missiles — bring gun-armed units (autocannon, tank guns) to kill it. Build from a War Factory. Real-world: evokes Germany's Leopard 2 main-battle-tank lineage.
 
 actor-pathfinder =
     .name = Pathfinder Team
-    .description = UK elite stealth infiltrator: cloaks, sees far, detects enemy stealth. Build from a Barracks.
+    .description = UK elite stealth infiltrator: cloaks, sees far, detects enemy stealth. Build from a Barracks. Real-world: evokes Britain's Pathfinder Platoon / SAS reconnaissance lineage.
 
 actor-kunai =
     .name = JGSDF Anti-Tank Team
-    .description = Japan dedicated anti-tank team: a Dragon ATGM that kills armor but cannot touch aircraft — screen it from the air. Build from a Barracks.
+    .description = Japan dedicated anti-tank team: a Dragon ATGM that kills armor but cannot touch aircraft — screen it from the air. Build from a Barracks. Real-world: based on JGSDF (Japan Ground Self-Defense Force) anti-tank teams.
 
 actor-garuda =
     .name = Garuda Cruise-Missile Launcher
-    .description = India precision cruise-missile launcher: one fast, accurate, long-range missile. Fragile — screen it. Build from a War Factory.
+    .description = India precision cruise-missile launcher: one fast, accurate, long-range missile. Fragile — screen it. Build from a War Factory. Real-world: evokes the BrahMos, a supersonic cruise missile co-developed by India and Russia.
 
 actor-bayrak =
     .name = Bayrak UCAV
@@ -84,10 +84,10 @@ actor-bayrak =
 ## Additional faction uniques
 actor-reaper =
     .name = Reaper Gunship
-    .description = USA persistent close-air-support gunship: precision Hellfire anti-armor. Killed by SAMs and MANPADS. Build from a Helipad.
+    .description = USA persistent close-air-support gunship: precision Hellfire anti-armor. Killed by SAMs and MANPADS. Build from a Helipad. Real-world: based on the MQ-9 Reaper, a U.S. hunter-killer UAV.
 actor-grad =
     .name = Grad Rocket Battery
-    .description = Russia rocket battery: a 5-rocket salvo that saturates an area, then a long reload. Spread out to survive it. Build from a War Factory.
+    .description = Russia rocket battery: a 5-rocket salvo that saturates an area, then a long reload. Spread out to survive it. Build from a War Factory. Real-world: based on the BM-21 Grad, a Soviet/Russian 122mm multiple-rocket launcher.
 actor-redoubt =
     .name = Redoubt Bunker
     .description = Russia armored bunker: a heavily-armored 25mm transport that leads the push and shields its cargo. Build from a War Factory.
@@ -102,7 +102,7 @@ actor-comms =
     .description = UK mobile sensor van: long-range vision and stealth detection — the eyes of the army (not a jammer). Fragile. Needs a Radar Dome.
 actor-aegis =
     .name = Aegis Point-Defense Turret
-    .description = Japan hardened point-defense turret: shoots down aircraft and deflects incoming missiles. Needs a Radar Dome.
+    .description = Japan hardened point-defense turret: shoots down aircraft and deflects incoming missiles. Needs a Radar Dome. Real-world: based on the Aegis Combat System; the land-based variant is Aegis Ashore.
 actor-hayabusa =
     .name = Hayabusa Interceptor
     .description = Japan autonomous interceptor drone: pure anti-air, helpless against ground attack. Build from an Airfield.
@@ -117,7 +117,7 @@ actor-koral =
     .description = Turkey EW van: a wide missile-jamming umbrella that deflects enemy guided ATGMs/AA/SAMs over the task force. Unarmed — escort it; gun weapons ignore the jamming. Needs a Radar Dome. Real-world: based on Turkey's KORAL land-based radar electronic-warfare system.
 actor-raptor =
     .name = Raptor Air-Superiority Fighter
-    .description = USA air-superiority fighter: pure anti-air that owns the sky for your strike jets — helpless vs ground, killable by SAMs. Build from an Airfield.
+    .description = USA air-superiority fighter: pure anti-air that owns the sky for your strike jets — helpless vs ground, killable by SAMs. Build from an Airfield. Real-world: based on the F-22 Raptor, the U.S. Air Force's stealth air-superiority fighter.
 actor-tunguska =
     .name = Tunguska Air-Defense System
     .description = Russia mobile SPAAG: a long-range SAM plus a 25mm autocannon — the only mobile AA that can also defend itself on the ground. Needs a Radar Dome + War Factory. Real-world: based on Russia's 2K22 Tunguska / Pantsir gun-and-missile air-defense systems.
@@ -275,19 +275,19 @@ actor-dongfeng =
 ## UK Special Operations unit unlock.
 actor-raider =
     .name = SAS Raider
-    .description = Cloaked special-operations team. Slips behind enemy lines to infiltrate and sabotage buildings; breaks cover only when it moves or acts.
+    .description = Cloaked special-operations team. Slips behind enemy lines to infiltrate and sabotage buildings; breaks cover only when it moves or acts. Real-world: evokes Britain's SAS (Special Air Service).
 
 ## Arjun Heavy MBT (India Integrated Battle Groups unlock)
 actor-arjun =
     .name = Arjun Heavy MBT
-    .description = Heavily armored main battle tank with a 120mm gun. Anchors an Integrated Battle Group.
+    .description = Heavily armored main battle tank with a 120mm gun. Anchors an Integrated Battle Group. Real-world: based on the Arjun, India's indigenous main battle tank.
 
 ## ============================ Modern land roster ============================
 
 ## New shared combined-arms roles
 actor-manpads =
     .name = Air-Defense Team
-    .description = Dedicated anti-air infantry (man-portable SAM). Shoots down aircraft but cannot fight on the ground — keep it escorted.
+    .description = Dedicated anti-air infantry (man-portable SAM). Shoots down aircraft but cannot fight on the ground — keep it escorted. Real-world: MANPADS are man-portable air-defense systems — shoulder-fired SAMs like the Stinger or Igla.
 
 actor-scout =
     .name = Scout Team
@@ -325,11 +325,11 @@ actor-spg =
 
 actor-bradley =
     .name = M2 Bradley IFV
-    .description = USA — advanced networked IFV: 25mm autocannon, anti-tank ATGM, carries a squad, extra sight.
+    .description = USA — advanced networked IFV: 25mm autocannon, anti-tank ATGM, carries a squad, extra sight. Real-world: based on the M2 Bradley, the U.S. Army's tracked infantry fighting vehicle.
 
 actor-jtac =
     .name = JTAC Humvee
-    .description = USA — recon + precision strike: wide vision and a Hellfire-class missile to designate and kill priority targets. Fragile.
+    .description = USA — recon + precision strike: wide vision and a Hellfire-class missile to designate and kill priority targets. Fragile. Real-world: a JTAC (Joint Terminal Attack Controller) directs air strikes from the ground.
 
 actor-bmpt =
     .name = BMPT Terminator
@@ -337,15 +337,15 @@ actor-bmpt =
 
 actor-loiter =
     .name = Loitering-Munition Truck
-    .description = China — cheap, fast launcher for a precision kamikaze drone against armor and structures. Field it in numbers; it dies if caught.
+    .description = China — cheap, fast launcher for a precision kamikaze drone against armor and structures. Field it in numbers; it dies if caught. Real-world: based on loitering munitions ('kamikaze drones') like the Switchblade and Lancet.
 
 actor-cobra =
     .name = Cobra Recon-Strike
-    .description = Turkey — fast wheeled scout/harasser: 25mm autocannon and a wide sight radius. Gets eyes and fire forward fast.
+    .description = Turkey — fast wheeled scout/harasser: 25mm autocannon and a wide sight radius. Gets eyes and fire forward fast. Real-world: based on the AH-1 Cobra, a U.S. attack helicopter.
 
 actor-jackal =
     .name = Jackal Recon
-    .description = UK — fast mobile counter-stealth sensor: wide vision and cloak detection on the move. Reveals enemy stealth.
+    .description = UK — fast mobile counter-stealth sensor: wide vision and cloak detection on the move. Reveals enemy stealth. Real-world: based on the Jackal (MWMIK), a British high-mobility patrol vehicle.
 
 actor-namica =
     .name = NAMICA Tank-Destroyer
@@ -441,16 +441,16 @@ actor-econ-network =
 ## ============================ 4X: Spectacle units (apex payoff) ============================
 actor-leviathan =
     .name = Leviathan Arsenal Dreadnought
-    .description = The apex super-warship — gargantuan, with the longest-reaching, heaviest naval guns in the game plus anti-air defense, and an enormous health pool. Slow and hugely expensive; limited to 2. The reward for climbing the whole tech ladder: needs a Naval Yard, the Orbital Age, and an Alloy Extractor.
+    .description = The apex super-warship — gargantuan, with the longest-reaching, heaviest naval guns in the game plus anti-air defense, and an enormous health pool. Slow and hugely expensive; limited to 2. The reward for climbing the whole tech ladder: needs a Naval Yard, the Orbital Age, and an Alloy Extractor. Real-world: an 'arsenal ship' — a heavily-armed missile/gun platform the U.S. Navy has studied.
 
 actor-citadel =
     .name = Citadel Mobile Fortress
-    .description = The land apex — a gargantuan tracked super-fortress with a devastating siege cannon, anti-air missiles, and a colossal health pool. Slow, hugely expensive, limited to 2. The land equivalent of the Leviathan: needs a War Factory and the Orbital Age (so the whole tech ladder).
+    .description = The land apex — a gargantuan tracked super-fortress with a devastating siege cannon, anti-air missiles, and a colossal health pool. Slow, hugely expensive, limited to 2. The land equivalent of the Leviathan: needs a War Factory and the Orbital Age (so the whole tech ladder). Real-world: a land battleship, in the lineage of paper projects like the Landkreuzer P. 1000 Ratte.
 
 actor-archangel =
     .name = Archangel Heavy Gunship
-    .description = The air apex — a gargantuan flying fortress that loiters and rains a sustained heavy barrage. Huge but slow and exposed: SAMs and AA are its counter, so escort it. Limited to 2. Needs a Helipad and the Orbital Age.
+    .description = The air apex — a gargantuan flying fortress that loiters and rains a sustained heavy barrage. Huge but slow and exposed: SAMs and AA are its counter, so escort it. Limited to 2. Needs a Helipad and the Orbital Age. Real-world: a heavy gunship in the AC-130 tradition.
 
 actor-tempest =
     .name = Tempest Rocket Artillery
-    .description = The strategic-bombardment apex — a gargantuan mobile launcher that rains a 12-rocket salvo across most of the map. Devastating area saturation, but a very long reload and far-forward deployment leave it exposed, so screen it. Limited to 2. Needs a War Factory and the Orbital Age.
+    .description = The strategic-bombardment apex — a gargantuan mobile launcher that rains a 12-rocket salvo across most of the map. Devastating area saturation, but a very long reload and far-forward deployment leave it exposed, so screen it. Limited to 2. Needs a War Factory and the Orbital Age. Real-world: a strategic multiple-rocket-launcher scaled up.
