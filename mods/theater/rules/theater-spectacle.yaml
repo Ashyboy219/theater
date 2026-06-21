@@ -116,3 +116,37 @@ ARCHANGEL:
 		Ammo: 40
 	RevealsShroud:
 		Range: 9c0
+
+# TEMPEST — the long-range STRATEGIC BOMBARDMENT apex: a gargantuan rocket-artillery platform (128px / 2x size)
+# that rains a 12-rocket salvo across most of the map (vs the Citadel's direct-fire cannon). The one apex role
+# the sea/land/air combat trio lacks. Inherits V2RL (rocket-launcher base, loaded/empty body states); tempestbody
+# 128px, a colossal long-reload barrage, big HP but slow and far-deployed (its long reload + exposure are the
+# counter). BuildLimit 2, gated behind the land ladder (War Factory + Orbital age).
+TEMPEST:
+	Inherits: V2RL
+	RenderSprites:
+		Image: tempestbody
+	Tooltip:
+		Name: actor-tempest.name
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 63
+		BuildLimit: 2
+		Prerequisites: weap, age.orbital, ~structures.allies
+		Description: actor-tempest.description
+		Icon: tempest-icon
+	Valued:
+		Cost: 5000
+	Health:
+		HP: 200000
+	Mobile:
+		Speed: 24
+		TurnSpeed: 5
+	Armament:
+		Weapon: TempestBarrage
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 7c0
+	Selectable:
+		Bounds: 2560, 2048
+		DecorationBounds: 2560, 2304, 0, -256

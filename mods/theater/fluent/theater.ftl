@@ -421,3 +421,7 @@ actor-citadel =
 actor-archangel =
     .name = Archangel Heavy Gunship
     .description = The air apex — a gargantuan flying fortress that loiters and rains a sustained heavy barrage. Huge but slow and exposed: SAMs and AA are its counter, so escort it. Limited to 2. Needs a Helipad and the Orbital Age.
+
+actor-tempest =
+    .name = Tempest Rocket Artillery
+    .description = The strategic-bombardment apex — a gargantuan mobile launcher that rains a 12-rocket salvo across most of the map. Devastating area saturation, but a very long reload and far-forward deployment leave it exposed, so screen it. Limited to 2. Needs a War Factory and the Orbital Age.

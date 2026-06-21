@@ -499,3 +499,17 @@ archangelbody:
 		Length: 5
 	archangel-icon:
 		Filename: archangel-cameo.png
+
+# P4 SPECTACLE body: the TEMPEST rocket-artillery platform — a gargantuan mobile launcher at DOUBLE size
+# (128px). Single-body, 32-facing. V2RL has a loaded (idle) + reload (empty-idle) state — reuse one strip.
+tempestbody:
+	idle:
+		Filename: tempestbody.png
+		Facings: 32
+		InterpolatedFacings: 64
+	empty-idle:
+		Filename: tempestbody.png
+		Facings: 32
+		InterpolatedFacings: 64
+	tempest-icon:
+		Filename: tempest-cameo.png

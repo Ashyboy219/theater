@@ -478,3 +478,27 @@ ArchangelGun:
 		Explosions: artillery_explosion
 		ImpactSounds: kaboom15.aud
 		ValidTargets: Ground, GroundActor, WaterActor, Trees
+
+# TEMPEST barrage — a colossal 12-rocket strategic salvo at extreme range (across most maps), wide spread for
+# area saturation, very long reload. The apex long-range bombardment weapon (vs the Citadel's direct cannon).
+TempestBarrage:
+	Inherits: SCUD
+	ReloadDelay: 400
+	Range: 28c0
+	MinRange: 8c0
+	Burst: 12
+	BurstDelays: 4
+	Report: missile1.aud
+	Projectile: Bullet
+		Speed: 290
+		Image: V2
+		Shadow: True
+		TrailImage: smokey
+		TrailDelay: 5
+		Inaccuracy: 768
+		LaunchAngle: 64
+	Warhead@1Dam: SpreadDamage
+		Spread: 426
+		Damage: 5000
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		ValidTargets: GroundActor, WaterActor, Trees
