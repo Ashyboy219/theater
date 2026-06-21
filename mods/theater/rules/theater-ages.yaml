@@ -29,7 +29,7 @@ age.information:
 		BuildDurationModifier: 100
 		Prerequisites: rlab
 		Description: actor-age-information.description
-		Icon: icon
+		Icon: age-information-icon
 	Valued:
 		Cost: 1500
 	RenderSprites:
@@ -48,7 +48,7 @@ age.autonomous:
 		BuildDurationModifier: 100
 		Prerequisites: age.information, tech.center
 		Description: actor-age-autonomous.description
-		Icon: icon
+		Icon: age-autonomous-icon
 	Valued:
 		Cost: 2500
 	RenderSprites:
@@ -67,7 +67,7 @@ age.orbital:
 		BuildDurationModifier: 100
 		Prerequisites: age.autonomous, alloys
 		Description: actor-age-orbital.description
-		Icon: icon
+		Icon: age-orbital-icon
 	Valued:
 		Cost: 3500
 	RenderSprites:

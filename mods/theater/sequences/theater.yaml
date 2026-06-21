@@ -107,6 +107,31 @@ dome:
 	# 4X building cameos (rlab uses the dome body; distinct sidebar icon).
 	rlab-icon:
 		Filename: rlab-cameo.png
+	# 4X research / age / economy upgrade icons (all these Command-queue items use the dome body).
+	research-ballistics-icon:
+		Filename: research-ballistics-cameo.png
+	research-armor-icon:
+		Filename: research-armor-cameo.png
+	research-optics-icon:
+		Filename: research-optics-cameo.png
+	research-propulsion-icon:
+		Filename: research-propulsion-cameo.png
+	research-smallarms-icon:
+		Filename: research-smallarms-cameo.png
+	research-logistics-icon:
+		Filename: research-logistics-cameo.png
+	research-mass-icon:
+		Filename: research-mass-cameo.png
+	research-precision-icon:
+		Filename: research-precision-cameo.png
+	age-information-icon:
+		Filename: age-information-cameo.png
+	age-autonomous-icon:
+		Filename: age-autonomous-cameo.png
+	age-orbital-icon:
+		Filename: age-orbital-cameo.png
+	econ-network-icon:
+		Filename: econ-network-cameo.png
 
 # 4X economy-building cameos keyed under the silo body (alloyex/bank reuse it) and the apwr body (fusion).
 silo:

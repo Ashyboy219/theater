@@ -117,7 +117,7 @@ econ.network:
 		BuildDurationModifier: 100
 		Prerequisites: rlab
 		Description: actor-econ-network.description
-		Icon: icon
+		Icon: econ-network-icon
 	Valued:
 		Cost: 1200
 	RenderSprites:

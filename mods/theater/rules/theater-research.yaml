@@ -52,7 +52,7 @@ research.ballistics:
 		BuildDurationModifier: 100
 		Prerequisites: rlab
 		Description: actor-research-ballistics.description
-		Icon: icon
+		Icon: research-ballistics-icon
 	Valued:
 		Cost: 800
 	RenderSprites:
@@ -71,7 +71,7 @@ research.armor:
 		BuildDurationModifier: 100
 		Prerequisites: rlab
 		Description: actor-research-armor.description
-		Icon: icon
+		Icon: research-armor-icon
 	Valued:
 		Cost: 800
 	RenderSprites:
@@ -90,7 +90,7 @@ research.optics:
 		BuildDurationModifier: 100
 		Prerequisites: rlab
 		Description: actor-research-optics.description
-		Icon: icon
+		Icon: research-optics-icon
 	Valued:
 		Cost: 600
 	RenderSprites:
@@ -109,7 +109,7 @@ research.propulsion:
 		BuildDurationModifier: 100
 		Prerequisites: rlab
 		Description: actor-research-propulsion.description
-		Icon: icon
+		Icon: research-propulsion-icon
 	Valued:
 		Cost: 700
 	RenderSprites:
@@ -128,7 +128,7 @@ research.smallarms:
 		BuildDurationModifier: 100
 		Prerequisites: rlab
 		Description: actor-research-smallarms.description
-		Icon: icon
+		Icon: research-smallarms-icon
 	Valued:
 		Cost: 600
 	RenderSprites:
@@ -147,7 +147,7 @@ research.logistics:
 		BuildDurationModifier: 100
 		Prerequisites: rlab
 		Description: actor-research-logistics.description
-		Icon: icon
+		Icon: research-logistics-icon
 	Valued:
 		Cost: 900
 	RenderSprites:
@@ -168,7 +168,7 @@ research.mass:
 		BuildDurationModifier: 100
 		Prerequisites: rlab, ~!research.precision
 		Description: actor-research-mass.description
-		Icon: icon
+		Icon: research-mass-icon
 	Valued:
 		Cost: 1000
 	RenderSprites:
@@ -187,7 +187,7 @@ research.precision:
 		BuildDurationModifier: 100
 		Prerequisites: rlab, ~!research.mass
 		Description: actor-research-precision.description
-		Icon: icon
+		Icon: research-precision-icon
 	Valued:
 		Cost: 1000
 	RenderSprites:
