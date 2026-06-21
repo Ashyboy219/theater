@@ -425,7 +425,7 @@ Container@PLAYER_WIDGETS:
 		Container@SIDEBAR_PRODUCTION:
 			Logic: ClassicProductionLogic
 			X: WINDOW_WIDTH - 250
-			Y: 300
+			Y: 330
 			Width: 238
 			Height: 250
 			Children:
@@ -670,11 +670,12 @@ Container@PLAYER_WIDGETS:
 							ImageCollection: power-icons
 							ImageName: power-normal
 		# THEATER: a dedicated readout for the counted strategic resource (alloys), just below the money bin.
-		# Reuses the money-bin background. Position is conservative; nudge Y in-game if it overlaps.
+		# Reuses the money-bin background. Sits flush below the money bin (Y 272 + 28); the production
+		# palette (SIDEBAR_PRODUCTION) is pushed to Y 330 so this bin no longer covers the build icons.
 		Image@SIDEBAR_ALLOYBIN:
 			Logic: AddFactionSuffixLogic
 			X: WINDOW_WIDTH - 250
-			Y: 302
+			Y: 300
 			Width: 238
 			Height: 28
 			ImageCollection: sidebar
