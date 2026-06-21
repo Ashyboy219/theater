@@ -436,7 +436,7 @@ PIONEER:
 COMMS:
 	Inherits: MRJ
 	RenderSprites:
-		Image: mrj
+		Image: apcbody
 	Tooltip:
 		Name: actor-comms.name
 	Buildable:
@@ -555,7 +555,7 @@ TEJAS:
 KORAL:
 	Inherits: MRJ
 	RenderSprites:
-		Image: mrj
+		Image: apcbody
 	Tooltip:
 		Name: actor-koral.name
 	Buildable:
