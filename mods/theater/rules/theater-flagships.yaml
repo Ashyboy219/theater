@@ -31,8 +31,10 @@ AMX:
 # then cloaks again. The apex of USA air-dominance — penetrates defences, but a live SAM kills it the instant it bombs.
 B21:
 	Inherits: MIG
+	# CUSTOM battlefield body: spawns as a Blender-rendered stealth flying-wing (b21body, 16-facing PngSheet),
+	# NOT the stock MIG jet — the in-world unit finally matches the cameo/concept. (Husk stays the stock wreck.)
 	RenderSprites:
-		Image: mig
+		Image: b21body
 	Tooltip:
 		Name: actor-b21.name
 	Buildable:
@@ -104,8 +106,9 @@ GJ11:
 # drone that strikes ground (precision missiles) AND scouts the deepest. Cheap/fast to build (Turkey air profile) = a drone air force.
 AKINCI:
 	Inherits: MIG
+	# Battlefield body: spawns as a UAV drone (dronebody), not the stock MIG.
 	RenderSprites:
-		Image: mig
+		Image: dronebody
 	Tooltip:
 		Name: actor-akinci.name
 	Buildable:

@@ -5,8 +5,9 @@
 # Federation (USA) — stealth strike jet.
 SPECTER:
 	Inherits: MIG
+	# Battlefield body: spawns as a modern fighter jet (jetbody), not the stock MIG.
 	RenderSprites:
-		Image: mig
+		Image: jetbody
 	Tooltip:
 		Name: actor-specter.name
 	Buildable:
@@ -55,8 +56,11 @@ BASTION:
 # Continental Bloc (China) — cheap mass strike drone.
 WINGLOONG:
 	Inherits: YAK
+	# Battlefield body: spawns as a UAV drone (dronebody), not the stock YAK. Drop the gun muzzle-flash
+	# overlay (the drone body has no muzzle sequence; it fires a guided missile now).
+	-WithMuzzleOverlay:
 	RenderSprites:
-		Image: yak
+		Image: dronebody
 	Tooltip:
 		Name: actor-wingloong.name
 	Buildable:
@@ -169,8 +173,9 @@ GARUDA:
 # Anatolian Alliance (Turkey) — cheap armed loiter drone.
 BAYRAK:
 	Inherits: YAK
+	-WithMuzzleOverlay:
 	RenderSprites:
-		Image: yak
+		Image: dronebody
 	Tooltip:
 		Name: actor-bayrak.name
 	Buildable:
@@ -216,7 +221,7 @@ RAPTOR:
 	Inherits: MIG
 	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
 	RenderSprites:
-		Image: mig
+		Image: jetbody
 	Tooltip:
 		Name: actor-raptor.name
 	Buildable:
@@ -387,7 +392,7 @@ AKASH:
 TEJAS:
 	Inherits: MIG
 	RenderSprites:
-		Image: mig
+		Image: jetbody
 	Tooltip:
 		Name: actor-tejas.name
 	Buildable:

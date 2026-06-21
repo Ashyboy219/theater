@@ -151,3 +151,47 @@ pt:
 1tnk:
 	dongfeng-icon:
 		Filename: dongfeng-cameo.png
+
+# --- Battlefield-identity pass: CUSTOM Blender-rendered unit BODY (full-colour PngSheet, 16 facings).
+# This is a real in-world sprite, not just a cameo: the B-21 spawns as a stealth flying-wing silhouette,
+# NOT the stock MIG jet body. b21body.png carries embedded FrameSize/FrameAmount metadata (16x 64px frames).
+b21body:
+	idle:
+		Filename: b21body.png
+		Facings: 16
+		InterpolatedFacings: 64
+	# keep the cameo reachable under this Image (Buildable.Icon resolves under the actor's RenderSprites.Image)
+	b21-icon:
+		Filename: b21-cameo.png
+
+# Modern fighter-jet body (delta + twin tails) — shared by the manned jets RAPTOR/SPECTER/TEJAS, so they
+# spawn as modern jets instead of the stock MIG. Each keeps its own cameo under this Image.
+jetbody:
+	idle:
+		Filename: jetbody.png
+		Facings: 16
+		InterpolatedFacings: 64
+	specter-icon:
+		Filename: specter-cameo.png
+	raptor-icon:
+		Filename: raptor-cameo.png
+	tejas-icon:
+		Filename: tejas-cameo.png
+
+# UAV drone body (slim fuselage, long straight wings, twin-boom tail) — shared by the fixed-wing drones
+# WINGLOONG/BAYRAK/AKINCI, so they read as drones on the battlefield instead of the stock YAK/MIG.
+dronebody:
+	idle:
+		Filename: dronebody.png
+		Facings: 16
+		InterpolatedFacings: 64
+	# the YAK-based drones' Armament keeps a MuzzleSequence: muzzle, so provide one (stock gunfire SHP).
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	wingloong-icon:
+		Filename: wingloong-cameo.png
+	bayrak-icon:
+		Filename: bayrak-cameo.png
+	akinci-icon:
+		Filename: akinci-cameo.png
