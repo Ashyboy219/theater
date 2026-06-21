@@ -397,6 +397,18 @@ actor-alloyex =
     .name = Alloy Extractor
     .description = Strategic resource + economy building. Drips a steady income (build several across your territory — expansion pays) and produces the alloys your apex tier needs: the Orbital Age and the largest late-game platforms require one. Also stores resources. Needs a Refinery.
 
+actor-bank =
+    .name = Bank
+    .description = Pure economy building — strong passive income, no military function. Stack several to out-economy your opponent, then boost them all with the Economy Network research. The invest-in-economy-vs-army decision. Needs a Refinery.
+
+actor-fusion =
+    .name = Fusion Reactor
+    .description = High-output power plant (3x a standard plant) for the power-hungry late game — one Fusion replaces several power plants. Needs a Radar Dome.
+
+actor-econ-network =
+    .name = Research: Economy Network
+    .description = Boosts the income of ALL your economy buildings (banks and alloy extractors) by 30%. Invest in economy infrastructure, then upgrade it. Researched at the Research Lab.
+
 ## ============================ 4X: Spectacle units (apex payoff) ============================
 actor-leviathan =
     .name = Leviathan Arsenal Dreadnought

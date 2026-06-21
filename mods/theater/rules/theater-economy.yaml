@@ -42,3 +42,81 @@ alloyex:
 	# The strategic-resource token the apex tier gates on.
 	ProvidesPrerequisite@alloys:
 		Prerequisite: alloys
+	# Economy Network upgrade boosts this extractor's income (see econ.network below).
+	GrantConditionOnPrerequisite@econ:
+		Condition: econ-network
+		Prerequisites: econ.network
+	CashTricklerMultiplier@econ:
+		RequiresCondition: econ-network
+		Modifier: 130
+
+# --- Bank: a pure ECONOMY building (no military function) — strong passive income, stackable. The core
+#     "invest in economy vs army" decision: out-economy your opponent by building banks, then upgrade them
+#     with the Economy Network. Inherits the silo (storage + body); custom body is a later art pass.
+bank:
+	Inherits: SILO
+	RenderSprites:
+		Image: silo
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 138
+		Prerequisites: proc, ~structures.allies, ~techlevel.medium
+		Description: actor-bank.description
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: actor-bank.name
+	Health:
+		HP: 40000
+	Power:
+		Amount: -20
+	CashTrickler:
+		Interval: 45
+		Amount: 32
+		ShowTicks: true
+	GrantConditionOnPrerequisite@econ:
+		Condition: econ-network
+		Prerequisites: econ.network
+	CashTricklerMultiplier@econ:
+		RequiresCondition: econ-network
+		Modifier: 130
+
+# --- Fusion Reactor: a high-output power plant for the power-hungry late game (Research Lab, Alloy Extractor,
+#     banks and the spectacle units all add drain). One Fusion replaces several power plants.
+fusion:
+	Inherits: APWR
+	RenderSprites:
+		Image: apwr
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 139
+		Prerequisites: dome, ~structures.allies, ~techlevel.medium
+		Description: actor-fusion.description
+	Valued:
+		Cost: 900
+	Tooltip:
+		Name: actor-fusion.name
+	Power:
+		Amount: 600
+
+# --- Economy Network: a researched upgrade (bought at the Research Lab's Command queue) that boosts the income
+#     of ALL your economy buildings (banks + alloy extractors) by 30% — invest in economy infrastructure, then
+#     upgrade it. A real economy-progression decision, distinct from the military research tree.
+econ.network:
+	Interactable:
+	Tooltip:
+		Name: actor-econ-network.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 56
+		BuildLimit: 1
+		BuildDuration: 450
+		BuildDurationModifier: 100
+		Prerequisites: rlab
+		Description: actor-econ-network.description
+		Icon: icon
+	Valued:
+		Cost: 1200
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:

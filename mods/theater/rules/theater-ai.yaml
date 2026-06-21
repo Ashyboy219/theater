@@ -252,6 +252,9 @@ Player:
 			age.autonomous: 1
 			age.orbital: 1
 			alloyex: 2
+			bank: 3
+			fusion: 2
+			econ.network: 1
 		BuildingLimits:
 			thcom: 1
 			doctrine.usa.air: 1
@@ -279,6 +282,9 @@ Player:
 			age.autonomous: 1
 			age.orbital: 1
 			alloyex: 2
+			bank: 3
+			fusion: 2
+			econ.network: 1
 	BaseBuilderBotModule@normal:
 		BuildingQueues: Building, Command
 		BuildingFractions:
@@ -308,6 +314,9 @@ Player:
 			age.autonomous: 1
 			age.orbital: 1
 			alloyex: 2
+			bank: 3
+			fusion: 2
+			econ.network: 1
 		BuildingLimits:
 			thcom: 1
 			doctrine.usa.air: 1
@@ -335,6 +344,9 @@ Player:
 			age.autonomous: 1
 			age.orbital: 1
 			alloyex: 2
+			bank: 3
+			fusion: 2
+			econ.network: 1
 	BaseBuilderBotModule@turtle:
 		BuildingQueues: Building, Command
 		BuildingFractions:
@@ -364,6 +376,9 @@ Player:
 			age.autonomous: 1
 			age.orbital: 1
 			alloyex: 2
+			bank: 3
+			fusion: 2
+			econ.network: 1
 		BuildingLimits:
 			thcom: 1
 			doctrine.usa.air: 1
@@ -391,6 +406,9 @@ Player:
 			age.autonomous: 1
 			age.orbital: 1
 			alloyex: 2
+			bank: 3
+			fusion: 2
+			econ.network: 1
 	BaseBuilderBotModule@naval:
 		BuildingQueues: Building, Command
 		BuildingFractions:
@@ -420,6 +438,9 @@ Player:
 			age.autonomous: 1
 			age.orbital: 1
 			alloyex: 2
+			bank: 3
+			fusion: 2
+			econ.network: 1
 		BuildingLimits:
 			thcom: 1
 			doctrine.usa.air: 1
@@ -447,6 +468,9 @@ Player:
 			age.autonomous: 1
 			age.orbital: 1
 			alloyex: 2
+			bank: 3
+			fusion: 2
+			econ.network: 1
 
 	# --- Fire the doctrine support powers (merges new decisions into the shared ra SupportPowerBotModule).
 	# Offensive strikes (CAS / barrage / drone-swarm / cruise / recon flyover) target enemy structures;

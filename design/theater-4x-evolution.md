@@ -69,8 +69,10 @@ and meaningful decisions, and it's too short. The fix is **depth + longevity + s
       (naval arsenal dreadnought, 500k HP), CITADEL (land mobile-fortress, 480k HP, siege cannon), ARCHANGEL
       (air heavy gunship, sustained barrage, AA-vulnerable). Technique: 128px / ortho 14 / single-body, all
       weapons baked into the hull. FOLLOW-UP: per-faction spectacle variants.
-- [ ] **P5 — Economy buildings + "things to do"**: civilian/economy structures, upgrades, map objectives,
-      secondary win conditions — more to manage between fights.
+- [x] **P5 — Economy buildings** ✓ (theater-economy.yaml): the Bank (pure income, stackable — invest-in-
+      economy decision), the Fusion Reactor (3x power for the power-hungry late game), and the Economy Network
+      research (CashTricklerMultiplier +30% to all income buildings). Real economy management/decisions.
+      FOLLOW-UP (needs Lua/C#): map objectives + secondary win conditions.
 - [ ] **P6 — Strategic resource (real, C#)**: graduate the proxy to a true second resource + sidebar
       readout, once the data proxy proves the design.
 - [ ] **P7 — Light diplomacy / inter-faction systems** (stretch): alliances, trade, tribute.
