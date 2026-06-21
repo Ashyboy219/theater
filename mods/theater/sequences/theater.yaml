@@ -428,6 +428,11 @@ apcbody:
 		Filename: redoubt-cameo.png
 	ifv-icon:
 		Filename: ifv-cameo.png
+	# Comms + Koral EW vans now use apcbody, so their sidebar cameos must resolve on this image.
+	comms-icon:
+		Filename: comms-cameo.png
+	koral-icon:
+		Filename: koral-cameo.png
 	bradley-icon:
 		Filename: bradley-cameo.png
 	namica-icon:
