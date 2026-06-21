@@ -10,6 +10,12 @@ SPECTER:
 		Image: jetbody
 	Tooltip:
 		Name: actor-specter.name
+	# Player/faction colour: indexed roundel overlay on the `player` palette (the TrueColor body can't remap).
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Buildable:
 		Queue: Aircraft
 		BuildPaletteOrder: 90
@@ -64,6 +70,11 @@ WINGLOONG:
 		Image: dronebody
 	Tooltip:
 		Name: actor-wingloong.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Buildable:
 		Queue: Aircraft
 		BuildPaletteOrder: 91
@@ -199,6 +210,11 @@ BAYRAK:
 		Image: dronebody
 	Tooltip:
 		Name: actor-bayrak.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Buildable:
 		Queue: Aircraft
 		BuildPaletteOrder: 92
@@ -256,6 +272,11 @@ RAPTOR:
 		Image: jetbody
 	Tooltip:
 		Name: actor-raptor.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Buildable:
 		Queue: Aircraft
 		BuildAtProductionType: Plane
@@ -472,6 +493,11 @@ TEJAS:
 		Image: jetbody
 	Tooltip:
 		Name: actor-tejas.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Buildable:
 		Queue: Aircraft
 		BuildPaletteOrder: 94

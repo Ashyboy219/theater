@@ -37,6 +37,11 @@ B21:
 		Image: b21body
 	Tooltip:
 		Name: actor-b21.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Buildable:
 		Queue: Aircraft
 		BuildAtProductionType: Plane
@@ -121,6 +126,11 @@ AKINCI:
 		Image: dronebody
 	Tooltip:
 		Name: actor-akinci.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Buildable:
 		Queue: Aircraft
 		BuildAtProductionType: Plane

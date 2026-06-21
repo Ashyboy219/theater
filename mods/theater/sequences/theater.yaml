@@ -160,6 +160,12 @@ b21body:
 		Filename: b21body.png
 		Facings: 32
 		InterpolatedFacings: 64
+	# Player-colour insignia: an indexed roundel painted in the remap band (index 88). The TrueColor body
+	# itself cannot remap, so this small overlay (drawn on the `player` palette via WithIdleOverlay) carries
+	# the owner's colour. Centred on the hull, orientation-independent (a disc), so it needs no per-facing art.
+	roundel:
+		Filename: roundel.shp
+		Length: 1
 	# keep the cameo reachable under this Image (Buildable.Icon resolves under the actor's RenderSprites.Image)
 	b21-icon:
 		Filename: b21-cameo.png
@@ -171,6 +177,9 @@ jetbody:
 		Filename: jetbody.png
 		Facings: 32
 		InterpolatedFacings: 64
+	roundel:
+		Filename: roundel.shp
+		Length: 1
 	specter-icon:
 		Filename: specter-cameo.png
 	raptor-icon:
@@ -185,6 +194,9 @@ dronebody:
 		Filename: dronebody.png
 		Facings: 32
 		InterpolatedFacings: 64
+	roundel:
+		Filename: roundel.shp
+		Length: 1
 	# the YAK-based drones' Armament keeps a MuzzleSequence: muzzle, so provide one (stock gunfire SHP).
 	muzzle:
 		Filename: gunfire2.shp
