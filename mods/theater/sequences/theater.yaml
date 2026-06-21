@@ -296,3 +296,26 @@ ddbody:
 		Filename: burke-cameo.png
 	kolkata-icon:
 		Filename: kolkata-cameo.png
+
+# Naval body: modern fast attack craft / missile boat (TURRETED) — small planing hull, cabin, mast and aft
+# missile canisters, with a small central gun mount. 32-facing hull + turret. Shared by the pt-based boats
+# HOUBEI/BARBAROS. PT keeps Armament MuzzleSequence: muzzle, so provide one (stock gunfire SHP).
+ptbody:
+	idle:
+		Filename: ptbody.png
+		Facings: 32
+		InterpolatedFacings: 64
+	turret:
+		Filename: ptbody-turret.png
+		Facings: 32
+		InterpolatedFacings: 64
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	roundel:
+		Filename: roundel.shp
+		Length: 1
+	houbei-icon:
+		Filename: houbei-cameo.png
+	barbaros-icon:
+		Filename: barbaros-cameo.png

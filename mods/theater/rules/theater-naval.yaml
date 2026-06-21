@@ -101,8 +101,16 @@ AKULA:
 # littoral with them (coastal missile pressure). Fragile; dies to destroyers/aircraft. Reuses the PT hull.
 HOUBEI:
 	Inherits: PT
+	# Battlefield body: spawns as a modern fast attack craft / missile boat (ptbody), not the stock RA patrol boat.
 	RenderSprites:
-		Image: pt
+		Image: ptbody
+	Turreted:
+		Offset: 0,0,0
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Tooltip:
 		Name: actor-houbei.name
 	Buildable:
@@ -130,7 +138,14 @@ HOUBEI:
 BARBAROS:
 	Inherits: PT
 	RenderSprites:
-		Image: pt
+		Image: ptbody
+	Turreted:
+		Offset: 0,0,0
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Tooltip:
 		Name: actor-barbaros.name
 	Buildable:
