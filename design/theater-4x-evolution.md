@@ -52,8 +52,10 @@ and meaningful decisions, and it's too short. The fix is **depth + longevity + s
   (territory-as-economy thesis) — revive/extend them for the strategic-resource gating.
 
 ## Roadmap (loop pulls the next unchecked slice; keep each a clean, verified commit)
-- [ ] **P1 — Research Lab + first tech tree** (data-only): a Research building hosting a Research queue;
-      ~6–10 researchable unlocks (unit unlocks, weapon/armor upgrades, economy boosts) with branches.
+- [x] **P1 — Research Lab + first tech tree** ✓ (commits 852ee8f, d6f22e6): mid-tier `rlab` feeding the
+      Command queue; 6 accumulating upgrades (ballistics/armor/optics/propulsion/small-arms/logistics) + a
+      mass-vs-precision branch; condition-grants on ^Vehicle/^Infantry; AI builds the lab + researches.
+      Reused the Command queue (no new tab). FOLLOW-UPS: a dedicated Research tab + a distinct rlab body.
 - [ ] **P2 — Ages/eras** (data-only): 3–4 ages, each gating a tech tier + an escalation stat bump and a
       signature unlock; clear UI/tooltip signposting ("Advance to the Information Age").
 - [ ] **P3 — Strategic resource (proxy)** (data-only): a territory/extractor building that slowly grants
