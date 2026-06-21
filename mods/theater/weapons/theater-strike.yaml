@@ -416,3 +416,34 @@ LeviathanGun:
 		Explosions: artillery_explosion
 		ImpactSounds: kaboom25.aud
 		ValidTargets: Ground, GroundActor, WaterActor, Trees
+
+# CITADEL mobile-fortress main gun — a devastating siege cannon: heavy twin-shell salvo, long reach, big
+# splash. The land equivalent of the Leviathan's battery.
+CitadelCannon:
+	Inherits: ^Cannon
+	ReloadDelay: 100
+	Range: 13c0
+	MinRange: 2c0
+	Burst: 2
+	BurstDelays: 6
+	Report: turret1.aud
+	Projectile: Bullet
+		Speed: 510
+		Inaccuracy: 213
+	Warhead@1Dam: SpreadDamage
+		Spread: 597
+		Damage: 9000
+		Falloff: 100, 75, 50, 25, 8, 0
+		Versus:
+			None: 90
+			Wood: 100
+			Light: 90
+			Heavy: 100
+			Concrete: 120
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3Eff: CreateEffect
+		Explosions: artillery_explosion
+		ImpactSounds: kaboom25.aud
+		ValidTargets: Ground, GroundActor, WaterActor, Trees

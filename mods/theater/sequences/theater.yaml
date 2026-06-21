@@ -432,3 +432,17 @@ leviathanbody:
 		Length: 5
 	leviathan-icon:
 		Filename: leviathan-cameo.png
+
+# P4 SPECTACLE body: the CITADEL mobile fortress — a gargantuan tracked land dreadnought at DOUBLE size
+# (128px). Single-body (turret + secondaries baked in), 32-facing. The land "look at this HUGE thing" payoff.
+citadelbody:
+	idle:
+		Filename: citadelbody.png
+		Facings: 32
+		InterpolatedFacings: 64
+	# 4TNK keeps MuzzleSequence: muzzle on its armaments, so provide one (stock gunfire SHP).
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	citadel-icon:
+		Filename: citadel-cameo.png

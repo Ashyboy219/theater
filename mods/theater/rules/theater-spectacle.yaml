@@ -48,3 +48,38 @@ LEVIATHAN:
 	Selectable:
 		Bounds: 3072, 2048
 		DecorationBounds: 3072, 2560, 0, -256
+
+# CITADEL — the LAND apex: a gargantuan tracked mobile fortress (128px / 2x size), the land equivalent of the
+# Leviathan, so land-only games get the same "look at this HUGE thing" payoff. Inherits the 4TNK Mammoth for
+# the tank base; 128px citadelbody (turret baked into the hull, turret sprite dropped), a devastating siege
+# cannon (CitadelCannon) + the Mammoth's anti-air tusk missiles, gargantuan HP, BuildLimit 2. Gated behind the
+# land ladder: War Factory + the Orbital age (which required Research Lab -> ages -> Tech Center -> alloys).
+CITADEL:
+	Inherits: 4TNK
+	RenderSprites:
+		Image: citadelbody
+	-WithSpriteTurret:
+	Tooltip:
+		Name: actor-citadel.name
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 61
+		BuildLimit: 2
+		Prerequisites: weap, age.orbital, ~structures.allies
+		Description: actor-citadel.description
+		Icon: citadel-icon
+	Valued:
+		Cost: 5500
+	Health:
+		HP: 480000
+	Mobile:
+		Speed: 22
+		TurnSpeed: 5
+	Armament@PRIMARY:
+		Weapon: CitadelCannon
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 8c0
+	Selectable:
+		Bounds: 2560, 2048
+		DecorationBounds: 2560, 2304, 0, -256

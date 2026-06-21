@@ -64,11 +64,11 @@ and meaningful decisions, and it's too short. The fix is **depth + longevity + s
       buildable economy building that drips income (CashTrickler, so building several/expanding pays) AND
       provides the `alloys` token gating the apex tier (Orbital age now requires it; P4 spectacle units
       will too). Honest proxy: `alloys` is a boolean prereq + income, not yet a counted currency (P6=C#).
-- [~] **P4 — Spectacle capital units** (art + data): FIRST UNIT SHIPPED — the LEVIATHAN arsenal
+- [~] **P4 — Spectacle capital units** (art + data): TWO UNITS SHIPPED — the LEVIATHAN arsenal
       dreadnought (theater-spectacle.yaml), a 128px (2x-size) Blender mega-ship gated behind the full ladder
       (Naval Yard + Orbital age + alloys), BuildLimit 2, longest-reach naval guns + AA, 500k HP. Technique:
-      render at 128px / ortho 14 / single-body. TODO: more spectacle units (a land mobile-fortress + a
-      super-aircraft; per-faction variants).
+      render at 128px / ortho 14 / single-body. Plus the CITADEL mobile fortress (land apex, inherits 4TNK,
+      siege cannon + AA, 480k HP). TODO: a super-aircraft + per-faction variants.
 - [ ] **P5 — Economy buildings + "things to do"**: civilian/economy structures, upgrades, map objectives,
       secondary win conditions — more to manage between fights.
 - [ ] **P6 — Strategic resource (real, C#)**: graduate the proxy to a true second resource + sidebar

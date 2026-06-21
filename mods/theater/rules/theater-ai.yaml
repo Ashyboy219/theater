@@ -61,6 +61,7 @@ Player:
 			koral: 8
 			amx: 6
 			armata: 6
+			citadel: 2
 			b21: 5
 			gj11: 8
 			akinci: 8
@@ -109,6 +110,7 @@ Player:
 			koral: 8
 			amx: 6
 			armata: 6
+			citadel: 2
 			b21: 5
 			gj11: 8
 			akinci: 8
@@ -157,6 +159,7 @@ Player:
 			koral: 8
 			amx: 6
 			armata: 6
+			citadel: 2
 			b21: 5
 			gj11: 8
 			akinci: 8
@@ -205,6 +208,7 @@ Player:
 			koral: 8
 			amx: 6
 			armata: 6
+			citadel: 2
 			b21: 5
 			gj11: 8
 			akinci: 8
