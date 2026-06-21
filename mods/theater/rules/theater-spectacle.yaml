@@ -83,3 +83,36 @@ CITADEL:
 	Selectable:
 		Bounds: 2560, 2048
 		DecorationBounds: 2560, 2304, 0, -256
+
+# ARCHANGEL — the AIR apex: a gargantuan flying fortress / heavy gunship (128px / 2x size) that loiters and
+# RAINS sustained fire, completing the spectacle trio (sea Leviathan / land Citadel / air Archangel). Inherits
+# the MH60 (hovering gunship base); 128px archangelbody, a devastating sustained barrage (ArchangelGun), big
+# ammo so it loiters, huge HP — though as a slow flyer it is the most exposed of the three (SAMs/AA are its
+# counter). BuildLimit 2, gated behind the air ladder: Helipad + the Orbital age.
+ARCHANGEL:
+	Inherits: MH60
+	RenderSprites:
+		Image: archangelbody
+	Tooltip:
+		Name: actor-archangel.name
+	Buildable:
+		Queue: Aircraft
+		BuildAtProductionType: Helicopter
+		BuildPaletteOrder: 62
+		BuildLimit: 2
+		Prerequisites: hpad, age.orbital, ~structures.allies
+		Description: actor-archangel.description
+		Icon: archangel-icon
+	Valued:
+		Cost: 5000
+	Health:
+		HP: 220000
+	Aircraft:
+		Speed: 70
+		TurnSpeed: 8
+	Armament:
+		Weapon: ArchangelGun
+	AmmoPool:
+		Ammo: 40
+	RevealsShroud:
+		Range: 9c0

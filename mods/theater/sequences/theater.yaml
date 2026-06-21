@@ -446,3 +446,17 @@ citadelbody:
 		Length: 5
 	citadel-icon:
 		Filename: citadel-cameo.png
+
+# P4 SPECTACLE body: the ARCHANGEL heavy gunship — a gargantuan flying fortress at DOUBLE size (128px).
+# Single-body (weapon blisters baked in), 32-facing. The air "look at this HUGE thing" payoff.
+archangelbody:
+	idle:
+		Filename: archangelbody.png
+		Facings: 32
+		InterpolatedFacings: 64
+	# MH60 keeps MuzzleSequence: muzzle, so provide one (stock gunfire SHP).
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	archangel-icon:
+		Filename: archangel-cameo.png

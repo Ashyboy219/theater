@@ -447,3 +447,34 @@ CitadelCannon:
 		Explosions: artillery_explosion
 		ImpactSounds: kaboom25.aud
 		ValidTargets: Ground, GroundActor, WaterActor, Trees
+
+# ARCHANGEL gunship battery — a sustained heavy barrage: a 5-round salvo on a fast cycle, so the flying
+# fortress loiters and RAINS fire on a target area. Devastating sustained DPS; the gunship's signature.
+ArchangelGun:
+	Inherits: ^AntiGroundMissile
+	ReloadDelay: 25
+	Range: 9c0
+	MinRange: 0
+	Burst: 5
+	BurstDelays: 3
+	Projectile: Missile
+		Speed: 298
+		Inaccuracy: 256
+		TrailImage: smokey
+		ContrailLength: 16
+		RangeLimit: 11c0
+	Warhead@1Dam: SpreadDamage
+		Spread: 298
+		Damage: 4000
+		Falloff: 100, 70, 40, 15, 0
+		Versus:
+			None: 70
+			Wood: 90
+			Light: 90
+			Heavy: 80
+			Concrete: 100
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@3Eff: CreateEffect
+		Explosions: artillery_explosion
+		ImpactSounds: kaboom15.aud
+		ValidTargets: Ground, GroundActor, WaterActor, Trees

@@ -405,3 +405,7 @@ actor-leviathan =
 actor-citadel =
     .name = Citadel Mobile Fortress
     .description = The land apex — a gargantuan tracked super-fortress with a devastating siege cannon, anti-air missiles, and a colossal health pool. Slow, hugely expensive, limited to 2. The land equivalent of the Leviathan: needs a War Factory and the Orbital Age (so the whole tech ladder).
+
+actor-archangel =
+    .name = Archangel Heavy Gunship
+    .description = The air apex — a gargantuan flying fortress that loiters and rains a sustained heavy barrage. Huge but slow and exposed: SAMs and AA are its counter, so escort it. Limited to 2. Needs a Helipad and the Orbital Age.
