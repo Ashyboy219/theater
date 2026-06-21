@@ -21,8 +21,17 @@
 # "Aegis picture") on top of the DD's AA + anti-sub kit. Pairs with USA's air arm for sea control. Reuses DD.
 BURKE:
 	Inherits: DD
+	# Battlefield body: spawns as a modern guided-missile destroyer (ddbody), not the stock RA destroyer.
+	# Centre the turret mount so the separately-rendered gun composites over the hull (see ddbody sequence).
 	RenderSprites:
-		Image: dd
+		Image: ddbody
+	Turreted:
+		Offset: 0,0,0
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Tooltip:
 		Name: actor-burke.name
 	Buildable:
@@ -191,7 +200,14 @@ ASTUTE:
 KOLKATA:
 	Inherits: DD
 	RenderSprites:
-		Image: dd
+		Image: ddbody
+	Turreted:
+		Offset: 0,0,0
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
 	Tooltip:
 		Name: actor-kolkata.name
 	Buildable:

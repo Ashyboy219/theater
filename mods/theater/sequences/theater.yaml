@@ -276,3 +276,23 @@ mbtbody:
 		Filename: molot-cameo.png
 	arjun-icon:
 		Filename: arjun-cameo.png
+
+# Naval body: modern guided-missile destroyer (TURRETED) — long hull + superstructure + funnel + mast, with a
+# separate central main-gun mount. 32-facing hull + turret, composited via WithSpriteTurret (Offset overridden
+# to 0,0,0 on the units). Shared by the dd-based destroyers BURKE/KOLKATA.
+ddbody:
+	idle:
+		Filename: ddbody.png
+		Facings: 32
+		InterpolatedFacings: 64
+	turret:
+		Filename: ddbody-turret.png
+		Facings: 32
+		InterpolatedFacings: 64
+	roundel:
+		Filename: roundel.shp
+		Length: 1
+	burke-icon:
+		Filename: burke-cameo.png
+	kolkata-icon:
+		Filename: kolkata-cameo.png
