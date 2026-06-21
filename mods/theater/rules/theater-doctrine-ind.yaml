@@ -134,4 +134,4 @@ ARJUN:
 		BuildPaletteOrder: 95
 		Prerequisites: tech.subcontinent_federation, doctrine.ind.networked, weap
 		Description: actor-arjun.description
-		Icon: loewe-icon
+		Icon: arjun-icon

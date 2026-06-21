@@ -96,7 +96,6 @@ Rules:
 	theater|rules/theater-units.yaml
 	theater|rules/theater-structures.yaml
 	theater|rules/theater-ai.yaml
-	theater|rules/theater-cameos.yaml
 	theater|rules/theater-command.yaml
 	theater|rules/theater-capabilities.yaml
 	theater|rules/theater-doctrine-usa.yaml
@@ -108,6 +107,9 @@ Rules:
 	theater|rules/theater-roster.yaml
 	theater|rules/theater-roster-factions.yaml
 	theater|rules/theater-naval.yaml
+	# Cameo icon assignments load LAST so Buildable.Icon merges onto each unit's complete definition
+	# (keeping its Description reference intact — see the visual-identity pass).
+	theater|rules/theater-cameos.yaml
 
 Sequences:
 	ra|sequences/ships.yaml

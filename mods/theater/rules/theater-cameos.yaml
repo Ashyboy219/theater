@@ -58,3 +58,68 @@ KORAL:
 THCOM:
 	Buildable:
 		Icon: thcom-icon
+
+# --- Visual-identity pass: land variants, shared roster, air, naval, doctrine unlocks ---
+bradley:
+	Buildable:
+		Icon: bradley-icon
+jtac:
+	Buildable:
+		Icon: jtac-icon
+bmpt:
+	Buildable:
+		Icon: bmpt-icon
+loiter:
+	Buildable:
+		Icon: loiter-icon
+cobra:
+	Buildable:
+		Icon: cobra-icon
+jackal:
+	Buildable:
+		Icon: jackal-icon
+namica:
+	Buildable:
+		Icon: namica-icon
+manpads:
+	Buildable:
+		Icon: manpads-icon
+scout:
+	Buildable:
+		Icon: scout-icon
+ifv:
+	Buildable:
+		Icon: ifv-icon
+mobsam:
+	Buildable:
+		Icon: mobsam-icon
+RAPTOR:
+	Buildable:
+		Icon: raptor-icon
+TUNGUSKA:
+	Buildable:
+		Icon: tunguska-icon
+BURKE:
+	Buildable:
+		Icon: burke-icon
+AKULA:
+	Buildable:
+		Icon: akula-icon
+HOUBEI:
+	Buildable:
+		Icon: houbei-icon
+BARBAROS:
+	Buildable:
+		Icon: barbaros-icon
+ASTUTE:
+	Buildable:
+		Icon: astute-icon
+KOLKATA:
+	Buildable:
+		Icon: kolkata-icon
+DONGFENG:
+	Buildable:
+		Icon: dongfeng-icon
+RAIDER:
+	Buildable:
+		Icon: raider-icon

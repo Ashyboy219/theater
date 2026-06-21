@@ -41,6 +41,34 @@ UNITS = {
     "tejas": "a small tailless delta-wing single-engine multirole light fighter jet, light grey, with canards",
     "koral": "a military electronic-warfare van with a tall antenna mast and a dish array on the roof, sand-tan desert camouflage",
     "thcom": "a modern military command-headquarters structure, a low flat-roofed reinforced concrete bunker bristling with rooftop satellite dishes, radar antennas and communication masts, grey",
+    # --- Land variants (per-faction) ---
+    "bradley": "a modern tracked infantry fighting vehicle with a small turret mounting an autocannon and a twin anti-tank missile launcher box, desert-tan",
+    "jtac": "a modern four-wheeled military scout truck with a roof sensor and laser-designator ball and a single guided missile, sand-tan",
+    "bmpt": "a heavy tracked tank-support combat vehicle bristling with twin autocannons and anti-tank missile launchers, olive-drab green",
+    "loiter": "a light fast military pickup truck carrying an angled launch rack of small loitering kamikaze drones on the cargo bed, grey",
+    "cobra": "a fast wheeled armored scout car with a small autocannon turret and a sensor mast, sand-tan desert camouflage",
+    "jackal": "a fast open-topped wheeled patrol vehicle with a roof sensor array and a mounted machine gun, woodland green",
+    "namica": "a tracked tank-destroyer carrying a large elevating box launcher of anti-tank guided missiles, olive green",
+    # --- Shared modern roster ---
+    "manpads": "a single soldier shouldering a portable surface-to-air missile launch tube aimed upward, grey tactical gear and helmet",
+    "scout": "a single reconnaissance soldier with binoculars and a backpack radio antenna, light recon gear, kneeling and observing",
+    "ifv": "a wheeled eight-wheel armored infantry fighting vehicle with a small autocannon turret, NATO grey-green",
+    "mobsam": "a wheeled military vehicle carrying a rotating launcher of four raised surface-to-air missiles, olive green",
+    # --- Air ---
+    "raptor": "a fifth-generation twin-engine air-superiority stealth fighter jet, pale grey, two large canted angular tail fins, sleek aggressive faceted silhouette, slim air-to-air missiles",
+    "tunguska": "a tracked air-defense vehicle with a turret carrying raised surface-to-air missile tubes flanked by twin autocannons, olive-drab green",
+    # --- Naval (faction signature ships) ---
+    "burke": "a modern guided-missile destroyer warship, grey, with a flat helicopter deck at the stern, vertical missile launch cells and a flat-panel phased-array radar superstructure",
+    "akula": "a large nuclear attack submarine, dark grey-black, long smooth teardrop hull with a rounded conning tower and dive planes",
+    "houbei": "a small fast stealthy missile catamaran patrol boat, grey, angular faceted twin hull with boxy anti-ship missile canisters amidships",
+    "barbaros": "a small unmanned surface vessel drone boat, grey, sleek single hull with a tall sensor mast and a small remote gun",
+    "astute": "a sleek nuclear attack submarine, dark grey, smooth rounded teardrop hull with a low streamlined conning tower",
+    "kolkata": "a modern guided-missile destroyer warship, haze grey, with vertical missile cells, a large lattice radar mast and a stern helicopter deck",
+    # --- Doctrine unlocks ---
+    "molot": "a heavy main battle tank with a large angular turret, a long 125mm smoothbore gun, and reactive armor blocks, olive-drab green",
+    "dongfeng": "a cheap mass-produced light tank with a simple boxy welded turret and a medium gun, bare grey primer",
+    "arjun": "a heavy main battle tank with a rounded welded turret and a long gun barrel, desert-tan camouflage",
+    "raider": "a single elite special-forces soldier in dark stealth combat gear with a suppressed carbine and night-vision goggles, crouching",
 }
 
 FORCE = "--force" in sys.argv
@@ -54,7 +82,7 @@ def gen(unit, subject):
     prompt = f"{STYLE} The subject is {subject}."
     print(f"[gen] {unit} ...", flush=True)
     r = subprocess.run(
-        [sys.executable, os.path.join(HERE, "generate_image.py"),
+        [sys.executable, os.path.join(HERE, "gen_image_cs.py"),
          "--out", raw, "--prompt", prompt,
          "--size", "1024x1024", "--quality", "high", "--background", "opaque"],
         capture_output=True, text=True)

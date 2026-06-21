@@ -134,4 +134,4 @@ MOLOT:
 		BuildPaletteOrder: 95
 		Prerequisites: tech.northern_union, doctrine.rus.armor, weap
 		Description: actor-molot.description
-		Icon: loewe-icon
+		Icon: molot-icon

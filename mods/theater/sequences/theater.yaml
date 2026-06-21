@@ -8,6 +8,8 @@ mig:
 		Filename: specter-cameo.png
 	tejas-icon:
 		Filename: tejas-cameo.png
+	raptor-icon:
+		Filename: raptor-cameo.png
 
 ttnk:
 	bastion-icon:
@@ -27,15 +29,21 @@ yak:
 	# BASTION renders on the 3tnk body (grounded heavy tank); reuse its cameo here.
 	bastion-icon:
 		Filename: bastion-cameo.png
+	bmpt-icon:
+		Filename: bmpt-cameo.png
 
-# MOLOT (rus) and ARJUN (ind) render on the 4tnk body but show the heavy-tank cameo.
+# MOLOT (rus) and ARJUN (ind) render on the 4tnk body, each with its own cameo.
 4tnk:
-	loewe-icon:
-		Filename: loewe-cameo.png
+	molot-icon:
+		Filename: molot-cameo.png
+	arjun-icon:
+		Filename: arjun-cameo.png
 
 e6:
 	pathfinder-icon:
 		Filename: pathfinder-cameo.png
+	raider-icon:
+		Filename: raider-cameo.png
 
 shok:
 	kunai-icon:
@@ -56,6 +64,12 @@ mh60:
 apc:
 	redoubt-icon:
 		Filename: redoubt-cameo.png
+	bradley-icon:
+		Filename: bradley-cameo.png
+	namica-icon:
+		Filename: namica-cameo.png
+	ifv-icon:
+		Filename: ifv-cameo.png
 
 mech:
 	pioneer-icon:
@@ -78,3 +92,50 @@ agun:
 dome:
 	thcom-icon:
 		Filename: thcom-cameo.png
+
+# --- Visual-identity pass: cameos for the land/air/naval units added in later passes ---
+jeep:
+	jtac-icon:
+		Filename: jtac-cameo.png
+	loiter-icon:
+		Filename: loiter-cameo.png
+	cobra-icon:
+		Filename: cobra-cameo.png
+	jackal-icon:
+		Filename: jackal-cameo.png
+	mobsam-icon:
+		Filename: mobsam-cameo.png
+
+e3:
+	manpads-icon:
+		Filename: manpads-cameo.png
+
+e1:
+	scout-icon:
+		Filename: scout-cameo.png
+
+2tnk:
+	tunguska-icon:
+		Filename: tunguska-cameo.png
+
+dd:
+	burke-icon:
+		Filename: burke-cameo.png
+	kolkata-icon:
+		Filename: kolkata-cameo.png
+
+ss:
+	akula-icon:
+		Filename: akula-cameo.png
+	astute-icon:
+		Filename: astute-cameo.png
+
+pt:
+	houbei-icon:
+		Filename: houbei-cameo.png
+	barbaros-icon:
+		Filename: barbaros-cameo.png
+
+1tnk:
+	dongfeng-icon:
+		Filename: dongfeng-cameo.png
