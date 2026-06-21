@@ -417,3 +417,18 @@ spaagbody:
 		Length: 1
 	tunguska-icon:
 		Filename: tunguska-cameo.png
+
+# P4 SPECTACLE body: the LEVIATHAN arsenal dreadnought — rendered at DOUBLE size (128px frames, FrameSize
+# 128,128) so it dwarfs every other unit on the battlefield. Single-body (all gun batteries baked into the
+# hull), 32-facing. The "look at this HUGE ship" apex reward.
+leviathanbody:
+	idle:
+		Filename: leviathanbody.png
+		Facings: 32
+		InterpolatedFacings: 64
+	# the cruiser armaments keep MuzzleSequence: muzzle (gun-flash), so provide one (stock gunfire SHP).
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	leviathan-icon:
+		Filename: leviathan-cameo.png

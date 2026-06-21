@@ -397,3 +397,22 @@ TejasStandoff:
 		RangeLimit: 15c0
 	Warhead@1Dam: SpreadDamage
 		Damage: 6000
+
+# ===================== P4 SPECTACLE: Leviathan main battery =====================
+# LEVIATHAN arsenal dreadnought main guns — gargantuan naval artillery: the longest reach and heaviest shells
+# in the game, a 3-gun salvo, slow to reload. The apex bombardment platform.
+LeviathanGun:
+	Inherits: 8Inch
+	ReloadDelay: 180
+	Range: 26c0
+	MinRange: 4c0
+	Burst: 3
+	BurstDelays: 7
+	Warhead@1Dam: SpreadDamage
+		Spread: 512
+		Damage: 7000
+		Falloff: 1000, 500, 250, 90, 30, 0
+	Warhead@3Eff: CreateEffect
+		Explosions: artillery_explosion
+		ImpactSounds: kaboom25.aud
+		ValidTargets: Ground, GroundActor, WaterActor, Trees

@@ -51,6 +51,7 @@ Player:
 			tunguska: 12
 			burke: 8
 			akula: 10
+			leviathan: 2
 			houbei: 10
 			barbaros: 8
 			astute: 10
@@ -98,6 +99,7 @@ Player:
 			tunguska: 12
 			burke: 8
 			akula: 10
+			leviathan: 2
 			houbei: 10
 			barbaros: 8
 			astute: 10
@@ -145,6 +147,7 @@ Player:
 			tunguska: 12
 			burke: 8
 			akula: 10
+			leviathan: 2
 			houbei: 10
 			barbaros: 8
 			astute: 10
@@ -192,6 +195,7 @@ Player:
 			tunguska: 12
 			burke: 8
 			akula: 10
+			leviathan: 2
 			houbei: 10
 			barbaros: 8
 			astute: 10
@@ -529,10 +533,10 @@ Player:
 	# --- Air-squad classification unchanged (no doctrine-unlocked unit is an aircraft). ---
 	SquadManagerBotModule@rush:
 		AirUnitsTypes: mig, yak, heli, hind, mh60, specter, wingloong, bayrak, reaper, hayabusa, tejas, raptor, b21, gj11, akinci
-		NavalUnitsTypes: ss, msub, dd, ca, lst, pt, burke, akula, houbei, barbaros, astute, kolkata
+		NavalUnitsTypes: ss, msub, dd, ca, lst, pt, burke, akula, houbei, barbaros, astute, kolkata, leviathan
 	SquadManagerBotModule@normal:
 		AirUnitsTypes: mig, yak, heli, hind, mh60, specter, wingloong, bayrak, reaper, hayabusa, tejas, raptor, b21, gj11, akinci
-		NavalUnitsTypes: ss, msub, dd, ca, lst, pt, burke, akula, houbei, barbaros, astute, kolkata
+		NavalUnitsTypes: ss, msub, dd, ca, lst, pt, burke, akula, houbei, barbaros, astute, kolkata, leviathan
 	SquadManagerBotModule@turtle:
 		AirUnitsTypes: mig, yak, heli, hind, mh60, specter, wingloong, bayrak, reaper, hayabusa, tejas, raptor, b21, gj11, akinci
-		NavalUnitsTypes: ss, msub, dd, ca, lst, pt, burke, akula, houbei, barbaros, astute, kolkata
+		NavalUnitsTypes: ss, msub, dd, ca, lst, pt, burke, akula, houbei, barbaros, astute, kolkata, leviathan

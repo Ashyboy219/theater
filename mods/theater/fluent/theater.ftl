@@ -396,3 +396,8 @@ actor-age-orbital =
 actor-alloyex =
     .name = Alloy Extractor
     .description = Strategic resource + economy building. Drips a steady income (build several across your territory — expansion pays) and produces the alloys your apex tier needs: the Orbital Age and the largest late-game platforms require one. Also stores resources. Needs a Refinery.
+
+## ============================ 4X: Spectacle units (apex payoff) ============================
+actor-leviathan =
+    .name = Leviathan Arsenal Dreadnought
+    .description = The apex super-warship — gargantuan, with the longest-reaching, heaviest naval guns in the game plus anti-air defense, and an enormous health pool. Slow and hugely expensive; limited to 2. The reward for climbing the whole tech ladder: needs a Naval Yard, the Orbital Age, and an Alloy Extractor.
