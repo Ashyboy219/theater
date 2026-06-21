@@ -56,8 +56,10 @@ and meaningful decisions, and it's too short. The fix is **depth + longevity + s
       Command queue; 6 accumulating upgrades (ballistics/armor/optics/propulsion/small-arms/logistics) + a
       mass-vs-precision branch; condition-grants on ^Vehicle/^Infantry; AI builds the lab + researches.
       Reused the Command queue (no new tab). FOLLOW-UPS: a dedicated Research tab + a distinct rlab body.
-- [ ] **P2 — Ages/eras** (data-only): 3–4 ages, each gating a tech tier + an escalation stat bump and a
-      signature unlock; clear UI/tooltip signposting ("Advance to the Information Age").
+- [x] **P2 — Ages/eras** ✓ (theater-ages.yaml): Modern→Information→Autonomous→Orbital, a buyable gated
+      sequence; cumulative army-wide escalation (tankier/+firepower/+sight) on ^Vehicle/^Infantry/^Ship/
+      ^Plane; `age.<era>` tokens gate future content (Orbital → P4 spectacle units); AI advances ages.
+      FOLLOW-UP: gate some existing/late content on ages once balance-tested.
 - [ ] **P3 — Strategic resource (proxy)** (data-only): a territory/extractor building that slowly grants
       a `alloys` prerequisite; high-tech + spectacle units require it → expansion matters.
 - [ ] **P4 — Spectacle capital units** (art + data): 1 gargantuan flagship per age (huge ship / mobile

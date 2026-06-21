@@ -236,6 +236,9 @@ Player:
 			research.logistics: 1
 			research.mass: 1
 			research.precision: 1
+			age.information: 1
+			age.autonomous: 1
+			age.orbital: 1
 		BuildingLimits:
 			thcom: 1
 			doctrine.usa.air: 1
@@ -259,6 +262,9 @@ Player:
 			research.logistics: 1
 			research.mass: 1
 			research.precision: 1
+			age.information: 1
+			age.autonomous: 1
+			age.orbital: 1
 	BaseBuilderBotModule@normal:
 		BuildingQueues: Building, Command
 		BuildingFractions:
@@ -284,6 +290,9 @@ Player:
 			research.logistics: 1
 			research.mass: 1
 			research.precision: 1
+			age.information: 1
+			age.autonomous: 1
+			age.orbital: 1
 		BuildingLimits:
 			thcom: 1
 			doctrine.usa.air: 1
@@ -307,6 +316,9 @@ Player:
 			research.logistics: 1
 			research.mass: 1
 			research.precision: 1
+			age.information: 1
+			age.autonomous: 1
+			age.orbital: 1
 	BaseBuilderBotModule@turtle:
 		BuildingQueues: Building, Command
 		BuildingFractions:
@@ -332,6 +344,9 @@ Player:
 			research.logistics: 1
 			research.mass: 1
 			research.precision: 1
+			age.information: 1
+			age.autonomous: 1
+			age.orbital: 1
 		BuildingLimits:
 			thcom: 1
 			doctrine.usa.air: 1
@@ -355,6 +370,9 @@ Player:
 			research.logistics: 1
 			research.mass: 1
 			research.precision: 1
+			age.information: 1
+			age.autonomous: 1
+			age.orbital: 1
 	BaseBuilderBotModule@naval:
 		BuildingQueues: Building, Command
 		BuildingFractions:
@@ -380,6 +398,9 @@ Player:
 			research.logistics: 1
 			research.mass: 1
 			research.precision: 1
+			age.information: 1
+			age.autonomous: 1
+			age.orbital: 1
 		BuildingLimits:
 			thcom: 1
 			doctrine.usa.air: 1
@@ -403,6 +424,9 @@ Player:
 			research.logistics: 1
 			research.mass: 1
 			research.precision: 1
+			age.information: 1
+			age.autonomous: 1
+			age.orbital: 1
 
 	# --- Fire the doctrine support powers (merges new decisions into the shared ra SupportPowerBotModule).
 	# Offensive strikes (CAS / barrage / drone-swarm / cruise / recon flyover) target enemy structures;

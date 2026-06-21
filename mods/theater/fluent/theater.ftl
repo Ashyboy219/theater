@@ -380,3 +380,14 @@ actor-research-mass =
 actor-research-precision =
     .name = Research: Precision Manufacturing
     .description = DECISION — locks out Mass Production. Vehicles hit 22% harder but cost 10% more. Win by quality.
+
+## ============================ 4X: Ages / eras (escalation ladder) ============================
+actor-age-information =
+    .name = Advance: Information Age
+    .description = Advance from the Modern age. Your whole military gets tougher (−6% damage taken) and hits harder (+5%). Opens the path to the Autonomous Age. Researched at the Research Lab.
+actor-age-autonomous =
+    .name = Advance: Autonomous Age
+    .description = The drone-and-AI era. A further army-wide boost (tougher, +6% firepower, +5% sight) that STACKS on the Information Age. Needs the Information Age + a Tech Center. Opens the Orbital Age.
+actor-age-orbital =
+    .name = Advance: Orbital Age
+    .description = The apex era. The biggest army-wide escalation yet (−8% damage taken, +8% firepower), stacking on the earlier ages, and the gate for the largest late-game platforms to come. Needs the Autonomous Age.
