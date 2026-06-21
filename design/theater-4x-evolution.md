@@ -64,20 +64,44 @@ and meaningful decisions, and it's too short. The fix is **depth + longevity + s
       buildable economy building that drips income (CashTrickler, so building several/expanding pays) AND
       provides the `alloys` token gating the apex tier (Orbital age now requires it; P4 spectacle units
       will too). Honest proxy: `alloys` is a boolean prereq + income, not yet a counted currency (P6=C#).
-- [x] **P4 — Spectacle capital units** ✓ (theater-spectacle.yaml): the apex TRIO, all 128px (2x-size)
-      Blender mega-models gated behind the full ladder (Orbital age), BuildLimit 2 each — LEVIATHAN
+- [x] **P4 — Spectacle capital units** ✓ (theater-spectacle.yaml): the apex QUARTET, all 128px (2x-size)
+      Blender mega-models gated behind the full ladder (Orbital age + alloys), BuildLimit 2 each — LEVIATHAN
       (naval arsenal dreadnought, 500k HP), CITADEL (land mobile-fortress, 480k HP, siege cannon), ARCHANGEL
-      (air heavy gunship, sustained barrage, AA-vulnerable). Technique: 128px / ortho 14 / single-body, all
-      weapons baked into the hull. FOLLOW-UP: per-faction spectacle variants.
+      (air heavy gunship, sustained barrage, AA-vulnerable), TEMPEST (strategic rocket-artillery, 12-rocket
+      saturation). Technique: 128px / ortho 14 / single-body, all weapons baked into the hull. POLISH (done):
+      a shared TitanBlast death explosion, suppressed mismatched stock husks, and `large_explosion` impact
+      blooms on the two biggest giants' main guns. FOLLOW-UP: per-faction spectacle variants.
 - [x] **P5 — Economy buildings** ✓ (theater-economy.yaml): the Bank (pure income, stackable — invest-in-
       economy decision), the Fusion Reactor (3x power for the power-hungry late game), and the Economy Network
       research (CashTricklerMultiplier +30% to all income buildings). Real economy management/decisions.
       FOLLOW-UP (needs Lua/C#): map objectives + secondary win conditions.
-- [ ] **P6 — Strategic resource (real, C#)**: graduate the proxy to a true second resource + sidebar
-      readout, once the data proxy proves the design.
-- [ ] **P7 — Light diplomacy / inter-faction systems** (stretch): alliances, trade, tribute.
+- [x] **P5.1 — Tier-2 research** ✓ (theater-research.yaml): five advanced techs gated on the Information
+      age (net-centric range, reactive armor, autoloaders, avionics, naval combat) — extends the tree's
+      accumulating spine into the mid-game.
+- [x] **P5.2 — Divergent decision-forks** ✓: beyond Mass-vs-Precision, two new mutually-exclusive research
+      forks so games branch — **War Economy vs Industrial Base** (theater-research-economy.yaml: guns-vs-butter,
+      unit cost vs income-building output) and **Maneuver vs Fortress** (theater-research-posture.yaml:
+      mobility/vision on mobile units vs tougher/longer-range static `^Defense`). Three universal forks +
+      the eight faction doctrines = a healthy decision-space; *hold here* — more forks risk decision-overload.
+- [x] **P5.3 — The Codex (educational layer)** ✓ (design/theater-codex.md + in-game): one of the three
+      founding goals — the real critical-minerals/rare-earths geopolitics behind `alloys`, and the real
+      modern systems ~every unit is based on. Woven into the game via real-world tooltip lines on the
+      flagships, signature naval/air/land units, and the Alloy Extractor. FOLLOW-UP (chrome): a Codex panel.
+- [x] **P5.4 — Strategic-sidebar legibility** ✓: the ~31-item Command queue regrouped into tech-progression
+      order (capabilities → doctrines → research T1 → ages → research T2 → economy), every item iconned.
+- [ ] **P6 — Strategic resource (real, C#)**: graduate the `alloys` proxy to a true *counted* second
+      resource + sidebar readout. Needs C# (a parallel resource trait) + a GUI test — held honestly.
+- [ ] **P7 — Light diplomacy / inter-faction systems** (stretch): alliances, trade, tribute. Needs C#/UI.
+- [ ] **P8 — Map objectives / secondary win conditions** (Lua, per-map): economic/tech victory paths.
+- [ ] **Custom building bodies** (visual, needs in-game tuning): rlab/alloyex/bank/fusion still reuse stock
+      dome/silo/apwr bodies in-world (cameos are bespoke). Footprint alignment can't be verified headlessly.
 - [ ] **Always-available fallback — Visual revamp**: continue modernizing battlefield bodies, cameos,
-      effects, and UI toward the retro-revamped HD feel (infantry bodies, husks, structures, projectiles).
+      effects, and UI toward the retro-revamped HD feel.
+
+> **State (current):** the data-only 4X vision is essentially complete and the original three goals are all
+> met (depth via research/ages/economy/forks; real factions + ~38 custom bodies; the Codex). The genuine
+> remaining frontier is C#/chrome/Lua work (P6–P8 + the Codex panel + building bodies) that needs live GUI
+> testing — not faked. Loop iterations now trend toward refinement/visuals unless a real data slice appears.
 
 ## Guardrails
 - **Keep it fun & playable each step** — every commit must check-yaml clean + boot clean; don't half-land
