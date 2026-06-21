@@ -21,6 +21,9 @@ LEVIATHAN:
 	-WithSpriteTurret@SECONDARY:
 	Tooltip:
 		Name: actor-leviathan.name
+	# Spends 100 banked alloys on build (gated by the alloys.stockpile threshold).
+	ConsumesAlloys:
+		Cost: 100
 	FireWarheadsOnDeath:
 		Weapon: TitanBlast
 		EmptyWeapon: TitanBlast
@@ -29,7 +32,7 @@ LEVIATHAN:
 		BuildAtProductionType: Boat
 		BuildPaletteOrder: 60
 		BuildLimit: 2
-		Prerequisites: ~syrd, age.orbital, ~structures.allies
+		Prerequisites: ~syrd, age.orbital, ~structures.allies, alloys.stockpile
 		Description: actor-leviathan.description
 		Icon: leviathan-icon
 	Valued:
@@ -64,6 +67,9 @@ CITADEL:
 	-WithSpriteTurret:
 	Tooltip:
 		Name: actor-citadel.name
+	# Spends 100 banked alloys on build (gated by the alloys.stockpile threshold).
+	ConsumesAlloys:
+		Cost: 100
 	FireWarheadsOnDeath:
 		Weapon: TitanBlast
 		EmptyWeapon: TitanBlast
@@ -73,7 +79,7 @@ CITADEL:
 		Queue: Vehicle
 		BuildPaletteOrder: 61
 		BuildLimit: 2
-		Prerequisites: weap, age.orbital, ~structures.allies
+		Prerequisites: weap, age.orbital, ~structures.allies, alloys.stockpile
 		Description: actor-citadel.description
 		Icon: citadel-icon
 	Valued:
@@ -103,6 +109,9 @@ ARCHANGEL:
 		Image: archangelbody
 	Tooltip:
 		Name: actor-archangel.name
+	# Spends 100 banked alloys on build (gated by the alloys.stockpile threshold).
+	ConsumesAlloys:
+		Cost: 100
 	FireWarheadsOnDeath:
 		Weapon: TitanBlast
 		EmptyWeapon: TitanBlast
@@ -113,7 +122,7 @@ ARCHANGEL:
 		BuildAtProductionType: Helicopter
 		BuildPaletteOrder: 62
 		BuildLimit: 2
-		Prerequisites: hpad, age.orbital, ~structures.allies
+		Prerequisites: hpad, age.orbital, ~structures.allies, alloys.stockpile
 		Description: actor-archangel.description
 		Icon: archangel-icon
 	Valued:
@@ -141,6 +150,9 @@ TEMPEST:
 		Image: tempestbody
 	Tooltip:
 		Name: actor-tempest.name
+	# Spends 100 banked alloys on build (gated by the alloys.stockpile threshold).
+	ConsumesAlloys:
+		Cost: 100
 	FireWarheadsOnDeath:
 		Weapon: TitanBlast
 		EmptyWeapon: TitanBlast
@@ -148,7 +160,7 @@ TEMPEST:
 		Queue: Vehicle
 		BuildPaletteOrder: 63
 		BuildLimit: 2
-		Prerequisites: weap, age.orbital, ~structures.allies
+		Prerequisites: weap, age.orbital, ~structures.allies, alloys.stockpile
 		Description: actor-tempest.description
 		Icon: tempest-icon
 	Valued:

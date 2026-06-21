@@ -40,9 +40,15 @@ alloyex:
 		Interval: 50
 		Amount: 20
 		ShowTicks: true
-	# The strategic-resource token the apex tier gates on.
+	# The strategic-resource token the apex tier gates on (boolean: "you have an extractor").
 	ProvidesPrerequisite@alloys:
 		Prerequisite: alloys
+	# COUNTED strategic resource: each extractor banks real alloys over time into PlayerAlloys.
+	# The apex tier additionally requires a STOCKPILE of these (alloys.stockpile) and SPENDS them on build.
+	AlloyTrickler:
+		Interval: 50
+		Amount: 10
+		ShowTicks: true
 	# Economy Network upgrade boosts this extractor's income (see econ.network below).
 	GrantConditionOnPrerequisite@econ:
 		Condition: econ-network
@@ -123,3 +129,15 @@ econ.network:
 	RenderSprites:
 		Image: dome
 	ProvidesPrerequisite@self:
+
+# --- Player-side alloy economy (the counted strategic resource) ---------------------------------------
+# PlayerAlloys is the counted pool; AlloyTrickler (on the Alloy Extractor) fills it. The apex tier gates
+# on a STOCKPILE threshold (alloys.stockpile) and ConsumesAlloys spends it on build, so alloys are now a
+# genuine second currency you accumulate and spend — not just a boolean "you own an extractor" token.
+Player:
+	PlayerAlloys:
+		InitialAlloys: 0
+		MaxAlloys: 600
+	ProvidesPrerequisiteOnAlloys@stockpile:
+		Prerequisite: alloys.stockpile
+		Threshold: 100
