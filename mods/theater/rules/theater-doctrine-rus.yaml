@@ -138,3 +138,8 @@ MOLOT:
 		Prerequisites: tech.northern_union, doctrine.rus.armor, weap
 		Description: actor-molot.description
 		Icon: molot-icon
+	# Distinct from ARMATA (close-in thermobaric siege): MOLOT is the long-reach BREAKTHROUGH mammoth — keeps the
+	# 120mm + tusk AA and ADDS a guided ATGM so it cracks armour at standoff and spearheads the Russian advance.
+	Armament@ATGM:
+		Weapon: Dragon
+		LocalOffset: 0,0,200

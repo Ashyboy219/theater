@@ -256,3 +256,144 @@ AkashSAM:
 	Range: 9c512
 	Burst: 2
 	BurstDelays: 8
+
+# ===================== Clone-divergence weapons (give reskins distinct battlefield behaviour) =====================
+
+# B-21 (USA) — a REAL gravity-bomb stick, not an air-launched missile. A short weapon range forces the bomber
+# to overfly, and a 6-bomb Burst walks a carpet across the target as it passes — bombing that reads as bombing.
+B21Bombs:
+	ReloadDelay: 40
+	Range: 2c0
+	Burst: 6
+	BurstDelays: 4
+	ValidTargets: Ground, Water, GroundActor, WaterActor
+	Projectile: GravityBomb
+		Image: PARABOMB
+		OpenSequence: open
+		Velocity: 0, 0, -85
+		Shadow: False
+	Warhead@1Dam: SpreadDamage
+		Spread: 384
+		Damage: 13000
+		Falloff: 100, 70, 40, 15, 0
+		ValidTargets: GroundActor, WaterActor
+		Versus:
+			None: 45
+			Wood: 100
+			Light: 100
+			Heavy: 110
+			Concrete: 130
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+		ValidTargets: Ground, Infantry
+	Warhead@3Eff: CreateEffect
+		Explosions: artillery_explosion
+		ImpactSounds: kaboom25.aud
+		ValidTargets: Ground, GroundActor, WaterActor, Trees
+
+# GARUDA (India) — supersonic precision CRUISE missile: one fast, accurate, long-reach guided missile with high
+# single-target punch. The "surgical standoff" artillery — distinct from GRAD's area salvo and DAZHBOG's cheap mass.
+GarudaCruise:
+	Inherits: Maverick
+	ReloadDelay: 110
+	Range: 12c0
+	MinRange: 4c0
+	Burst: 1
+	Report: missile1.aud
+	Projectile: Missile
+		Speed: 384
+		Inaccuracy: 80
+		TrailImage: smokey
+		ContrailLength: 32
+		RangeLimit: 16c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 9000
+		Versus:
+			None: 40
+			Wood: 100
+			Light: 100
+			Heavy: 130
+			Concrete: 130
+	Warhead@3Eff: CreateEffect
+		Explosions: artillery_explosion
+		ImpactSounds: kaboom25.aud
+		ValidTargets: Ground, GroundActor, WaterActor, Trees
+
+# GRAD (Russia) — multiple-launch rocket SALVO: a wide spread of many small rockets that saturates an area.
+# Long reload punishes a miss; spreads thin vs single targets. Russia's area-suppression artillery.
+GradSalvo:
+	Inherits: SCUD
+	ReloadDelay: 210
+	Range: 11c0
+	MinRange: 3c0
+	Burst: 5
+	BurstDelays: 4
+	Projectile: Bullet
+		Speed: 200
+		Image: V2
+		Shadow: True
+		TrailImage: smokey
+		TrailDelay: 5
+		Inaccuracy: 597
+		LaunchAngle: 60
+	Warhead@1Dam: SpreadDamage
+		Spread: 341
+		Damage: 2800
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		ValidTargets: GroundActor, WaterActor, Trees
+
+# DAZHBOG (China) — cheap printed mass artillery: a short-range 2-rocket burst, low per-shot damage, fast reload.
+# Expendable volume you flood the field with (China cost doctrine). Folds to any push — that is its counter.
+DazhbogRocket:
+	Inherits: SCUD
+	ReloadDelay: 110
+	Range: 7c0
+	MinRange: 2c0
+	Burst: 2
+	BurstDelays: 6
+	Projectile: Bullet
+		Speed: 170
+		Image: V2
+		Shadow: True
+		TrailImage: smokey
+		TrailDelay: 5
+		Inaccuracy: 384
+		LaunchAngle: 64
+	Warhead@1Dam: SpreadDamage
+		Spread: 256
+		Damage: 2400
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		ValidTargets: GroundActor, WaterActor, Trees
+
+# ASTUTE (UK) — a QUIET single precision torpedo: faster cadence + longer reach than the stock 2-tube boat, lower
+# alpha than AKULA's 3-torp salvo. The patient hunter-killer that snipes subs/scouts from sonar range, not an alpha-striker.
+QuietTorp:
+	Inherits: TorpTube
+	ReloadDelay: 70
+	Range: 11c0
+	Burst: 1
+	Projectile: Missile
+		Speed: 95
+		TrailImage: bubbles
+		RangeLimit: 13c0
+	Warhead@1Dam: SpreadDamage
+		Spread: 341
+		Damage: 15000
+
+# TEJAS (India) — standoff air-to-ground salvo: a 2-missile guided strike fired from beyond short-range AA, with a
+# bigger MinRange so it commits from distance. The "resilient standoff" jet, distinct from a stock close-in MIG.
+TejasStandoff:
+	Inherits: Maverick
+	ReloadDelay: 55
+	Range: 11c0
+	MinRange: 4c0
+	Burst: 2
+	BurstDelays: 8
+	Projectile: Missile
+		Speed: 298
+		TrailImage: smokey
+		ContrailLength: 24
+		RangeLimit: 15c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 6000

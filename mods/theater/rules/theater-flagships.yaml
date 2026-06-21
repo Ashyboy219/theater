@@ -45,9 +45,19 @@ B21:
 		Description: actor-b21.description
 	Valued:
 		Cost: 2400
+	# A true late-game flagship bomber: ~3.5x a strike jet's HP so it survives a SAM pass, and slow + wide-turning
+	# so it reads as a big, imposing strategic asset, not a darting fighter. (The b21body sprite also renders larger.)
+	Health:
+		HP: 28000
+	Aircraft:
+		Speed: 130
+		TurnSpeed: 7
+	# Drops a real gravity-bomb CARPET (B21Bombs: a 6-bomb stick), not air-launched missiles — bombing that looks
+	# like bombing. A small magazine (2 full sticks) then it must RTB to rearm: a deliberate strike, not a spammer.
 	Armament:
-		Weapon: HeavyJDAM
-		LocalOffset: 0,-128,0, 0,128,0
+		Weapon: B21Bombs
+	AmmoPool:
+		Ammo: 12
 	Cloak:
 		InitialDelay: 125
 		CloakDelay: 175

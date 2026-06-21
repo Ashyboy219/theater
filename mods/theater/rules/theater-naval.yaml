@@ -162,6 +162,12 @@ ASTUTE:
 	DetectCloaked:
 		Range: 8c0
 		DetectionTypes: Underwater, Cloak
+	# A QUIET hunter-killer, not a stock SS torpedo boat: a single precision torpedo fired on a faster cadence at
+	# longer reach (QuietTorp), lower alpha than AKULA's 3-torp salvo. Pairs with the best sonar above to stalk and
+	# snipe subs/scouts from detection range — UK's patient intelligence sub, distinct from Russia's alpha-striker.
+	Armament:
+		Weapon: QuietTorp
+		LocalOffset: 0,-171,0, 0,171,0
 
 # ============================ India (Subcontinent Federation) — missile destroyer ============================
 # Kolkata-class guided-missile destroyer: a hardened air-defense + anti-ship platform. The India ^Ship range

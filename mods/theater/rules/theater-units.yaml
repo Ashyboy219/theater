@@ -105,7 +105,7 @@ WINGLOONG:
 		UseDirectionalTarget: True
 		DirectionArrowAnimation: paradirection
 
-# Rhine Compact (Germany) — most durable MBT.
+# Rhine Compact (Germany) — most durable MBT, now an ACTIVE-DEFENCE brawler (not just a 3TNK reskin).
 LOEWE:
 	Inherits: 3TNK
 	RenderSprites:
@@ -116,6 +116,12 @@ LOEWE:
 		Queue: Vehicle
 		BuildPaletteOrder: 91
 		Prerequisites: tech.rhine_compact, weap
+	# Germany's identity is "durable but expensive" — justify the cost with a networked active-protection
+	# system (same JamsMissiles trait as AMX/BASTION): enemy guided ATGMs/AA/SAMs veer off near it, so the
+	# Rhine MBT is genuinely hard to kill by missile and must be brought down by massed cannon fire (its counter).
+	JamsMissiles:
+		Range: 4c0
+		DeflectionRelationships: Enemy
 
 # Isles Coalition (UK) — elite infiltration team.
 PATHFINDER:
@@ -157,8 +163,13 @@ KUNAI:
 		Queue: Infantry
 		BuildPaletteOrder: 91
 		Prerequisites: tech.eastern_maritime, tent
+	# A DEDICATED anti-tank team, not the dual-purpose E3 rocket soldier: drop the RedEye AA missiles so it commits
+	# fully to the Dragon ATGM — a pure tank-hunter (the mirror of `manpads`, which kept AA and dropped AT). It can
+	# no longer touch aircraft, so it must be screened from air — that is its counter.
+	-Armament@PRIMARY:
+	-Armament@GARRISONED:
 
-# Subcontinent Federation (India) — supersonic cruise-missile launcher.
+# Subcontinent Federation (India) — supersonic cruise-missile launcher (precision, not the stock SCUD).
 GARUDA:
 	Inherits: V2RL
 	RenderSprites:
@@ -169,6 +180,10 @@ GARUDA:
 		Queue: Vehicle
 		BuildPaletteOrder: 92
 		Prerequisites: tech.subcontinent_federation, weap
+	# India = standoff/precision. One fast, accurate, long-reach guided cruise missile with high single-target
+	# punch — the SURGICAL launcher. Distinct from GRAD's area salvo, DAZHBOG's cheap mass, and AGNI's apex ballistic.
+	Armament:
+		Weapon: GarudaCruise
 
 # Anatolian Alliance (Turkey) — cheap armed loiter drone.
 BAYRAK:
@@ -188,6 +203,10 @@ BAYRAK:
 		Cost: 700
 	Health:
 		HP: 3500
+	# Commit fully to recon-harasser, not strafer: drop the YAK hitscan gun for a single light guided missile
+	# (HellfireAG) so it plinks armour/soft targets from its huge sight but can no longer make strafing runs.
+	Armament:
+		Weapon: HellfireAG
 	# TOY — cheap loiter recon drone: huge sight radius, sees the battlefield first.
 	RevealsShroud:
 		MinRange: 0
@@ -200,7 +219,7 @@ BAYRAK:
 # Bespoke cameos/reskins are a later art pass.
 # ============================================================================
 
-# Federation (USA) — persistent close-air-support gunship.
+# Federation (USA) — persistent close-air-support gunship (precision anti-armour, not the stock chaingun).
 REAPER:
 	Inherits: MH60
 	RenderSprites:
@@ -212,6 +231,11 @@ REAPER:
 		BuildAtProductionType: Helicopter
 		BuildPaletteOrder: 93
 		Prerequisites: tech.federation, hpad
+	# Make it the standing anti-tank gunship it claims: swap the stock MH60 ChainGun for precision HellfireAG so
+	# it kills armour from standoff rather than hosing infantry. The persistent USA CAS asset (counter: SAM/MANPADS).
+	Armament:
+		Weapon: HellfireAG
+		LocalOffset: 85,-213,-85, 85,213,-85
 
 # Federation (USA) — air-superiority fighter (the air-dominance identity). A dedicated air-to-air
 # interceptor — the role NO other faction fields a fighter for (everyone else denies air with ground
@@ -237,7 +261,7 @@ RAPTOR:
 		InitialStance: Defend
 		InitialStanceAI: Defend
 
-# Northern Union (Russia) — salvo rocket battery (mass fires).
+# Northern Union (Russia) — salvo rocket battery (mass area fires, not a single SCUD).
 GRAD:
 	Inherits: V2RL
 	RenderSprites:
@@ -248,8 +272,12 @@ GRAD:
 		Queue: Vehicle
 		BuildPaletteOrder: 93
 		Prerequisites: tech.northern_union, weap
+	# A true MLRS: a 5-rocket salvo with wide spread that SATURATES an area, then a long reload (a missed salvo
+	# is punished). Area-suppression — thin vs single targets, devastating vs clumped infantry/bases. Counter: spread out.
+	Armament:
+		Weapon: GradSalvo
 
-# Northern Union (Russia) — mobile bunker / armoured transport.
+# Northern Union (Russia) — mobile BUNKER: a heavily-armoured assault transport, not a stock M60 APC.
 REDOUBT:
 	Inherits: APC
 	RenderSprites:
@@ -260,6 +288,12 @@ REDOUBT:
 		Queue: Vehicle
 		BuildPaletteOrder: 94
 		Prerequisites: tech.northern_union, weap
+	# A true armoured bunker, distinct from the light autocannon `ifv`: much tankier and up-gunned to a 25mm so it
+	# leads the Russian push and shields its cargo. Still carries infantry — a mobile strongpoint. Counter: AT/artillery.
+	Health:
+		HP: 55000
+	Armament:
+		Weapon: 25mm
 
 # Northern Union (Russia) — heavy mobile air-defense (Tunguska/Pantsir-class SPAAG). A long-range anti-air
 # missile on a tanky tracked chassis (Russia's baseline armor bonus applies), so it umbrellas the slow
@@ -294,7 +328,7 @@ TUNGUSKA:
 		InitialStance: Defend
 		InitialStanceAI: Defend
 
-# Continental Bloc (China) — cheap printed artillery.
+# Continental Bloc (China) — cheap printed mass artillery (expendable volume, not a single SCUD).
 DAZHBOG:
 	Inherits: V2RL
 	RenderSprites:
@@ -305,6 +339,12 @@ DAZHBOG:
 		Queue: Vehicle
 		BuildPaletteOrder: 93
 		Prerequisites: tech.continental_bloc, weap
+	# China's cheap-mass identity: a cheaper, shorter-range 2-rocket burst with low per-shot damage but fast reload —
+	# expendable artillery you flood the field with. Folds to any fast push (glass) — that is the price of the spam.
+	Valued:
+		Cost: 560
+	Armament:
+		Weapon: DazhbogRocket
 
 # Rhine Compact (Germany) — forward combat engineer (capture + field repair).
 PIONEER:
@@ -318,7 +358,7 @@ PIONEER:
 		BuildPaletteOrder: 93
 		Prerequisites: tech.rhine_compact, fix
 
-# Isles Coalition (UK) — mobile EW / radar-jamming cell.
+# Isles Coalition (UK) — mobile SENSOR / intel van (the "eyes", not a jammer — that is Turkey's KORAL).
 COMMS:
 	Inherits: MRJ
 	RenderSprites:
@@ -330,8 +370,20 @@ COMMS:
 		BuildPaletteOrder: 93
 		Prerequisites: tech.isles_coalition, dome
 		Description: actor-comms.description
+	# UK = intel/networked. Strip the inherited radar-JAMMER aura and rebuild this as a forward SENSOR: long-range
+	# vision + stealth detection. It finds the enemy and lights them for the army, distinct from KORAL's EW jamming.
+	-JamsMissiles:
+	-ProximityExternalCondition@JAMMER:
+	-WithRangeCircle@JAMMER:
+	-RenderJammerCircle:
+	RevealsShroud:
+		Range: 12c0
+	DetectCloaked:
+		Range: 7c0
+		DetectionTypes: Cloak
+	RenderDetectionCircle:
 
-# Eastern Maritime (Japan) — point-defence missile turret.
+# Eastern Maritime (Japan) — point-defence missile turret (hardened APS node, not a reskinned SAM).
 AEGIS:
 	Inherits: SAM
 	RenderSprites:
@@ -342,6 +394,14 @@ AEGIS:
 		Queue: Defense
 		BuildPaletteOrder: 93
 		Prerequisites: tech.eastern_maritime, dome
+	# Japan = durable defensive turtle. Harden it well past a stock SAM and add active missile-defence (JamsMissiles)
+	# so it deflects incoming guided munitions while it shoots down aircraft — the apex APS air-defence node.
+	# (India's AKASH owns the longest-RANGE niche; AEGIS owns DURABILITY + projectile defence.)
+	Health:
+		HP: 70000
+	JamsMissiles:
+		Range: 5c0
+		DeflectionRelationships: Enemy
 
 # Eastern Maritime (Japan) — autonomous interceptor drone (anti-air).
 HAYABUSA:
@@ -403,8 +463,12 @@ TEJAS:
 	# strike fighter survives a SAM pass and keeps fighting — the "resilient air power" identity.
 	Health:
 		HP: 11000
+	# Standoff identity (not a stock close-in MIG): a 2-missile guided salvo fired from beyond short-range AA
+	# (bigger MinRange), so TEJAS commits from distance and reinforces India's layered/standoff air doctrine.
+	Armament:
+		Weapon: TejasStandoff
 
-# Anatolian Alliance (Turkey) — electronic-warfare van (blinds enemy radar).
+# Anatolian Alliance (Turkey) — dedicated electronic-warfare van (a WIDE missile-jamming umbrella).
 KORAL:
 	Inherits: MRJ
 	RenderSprites:
@@ -416,3 +480,13 @@ KORAL:
 		BuildPaletteOrder: 93
 		Prerequisites: tech.anatolian_alliance, dome
 		Description: actor-koral.description
+	# Turkey's offensive EW screen: widen the inherited missile-jamming umbrella so enemy guided ATGMs/AA/SAMs
+	# veer off across the whole task force it escorts — the active counter to a missile-heavy army. (COMMS is the
+	# passive UK sensor; KORAL is the protective jammer.) Unarmed and fragile — must travel inside the formation.
+	JamsMissiles:
+		Range: 7c0
+		DeflectionRelationships: Enemy
+	ProximityExternalCondition@JAMMER:
+		Range: 16c0
+	WithRangeCircle@JAMMER:
+		Range: 16c0
