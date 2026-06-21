@@ -72,6 +72,10 @@ FileSystem: ContentInstallerFileSystem
 MapFolders:
 	theater|maps: System
 	~^SupportDir|maps/theater/{DEV_VERSION}: User
+	# NOTE: a blanket `ra|maps: System` would expose the stock RA CAMPAIGN maps, whose `*.noautotarget`
+	# hero actors strip AutoTarget and orphan theater's Fire-Control AutoTargetPriority@CMD* traits
+	# (check-yaml errors — see the AutoTarget refactor TODO). Stock skirmish maps are layered in via
+	# curated copies under theater|maps instead; broad campaign access waits on that refactor.
 
 Rules:
 	ra|rules/misc.yaml

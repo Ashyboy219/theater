@@ -64,17 +64,20 @@ World:
 		Factions: soviet, russia, ukraine, northern_union, continental_bloc, subcontinent_federation, anatolian_alliance
 	StartingUnits@heavysoviet:
 		Factions: soviet, russia, ukraine, northern_union, continental_bloc, subcontinent_federation, anatolian_alliance
-	# Hide the stock RA sub-factions from the lobby selector.
+	# Stock RA sub-factions are RESTORED as playable legacy/bonus factions (manual lobby pick). They keep
+	# their full classic Red Alert rosters (theater layers ON TOP of ra, it does not amputate it). They are
+	# kept OUT of the Random pools above (which roll the contemporary blocs — the main experience), so the
+	# old random-roll faction-resolution crash can't occur; manual selection is safe.
 	Faction@england:
-		Selectable: False
+		Selectable: True
 	Faction@france:
-		Selectable: False
+		Selectable: True
 	Faction@germany:
-		Selectable: False
+		Selectable: True
 	Faction@russia:
-		Selectable: False
+		Selectable: True
 	Faction@ukraine:
-		Selectable: False
+		Selectable: True
 
 # DEV: the tech-tree unlock lobby checkbox lives here (default OFF for normal play); the THEATER test
 # map flips it ON. When enabled it grants the building-name + tech-level prerequisites so a player can
