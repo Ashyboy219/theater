@@ -20,8 +20,12 @@ A single **vehicle** can be affected by, at most:
 | Ages — Information + Autonomous + Orbital | **all 3** cumulative (at the top of the ladder) | `theater-ages.yaml` |
 | War Economy **vs** Industrial Base | **1** (exclusive; cost only) | `theater-research-economy.yaml` |
 | Maneuver **vs** Fortress | **1** (exclusive; Maneuver→vehicles, Fortress→`^Defense`) | `theater-research-posture.yaml` |
+| Command & Control aura | **situational** — +10% firepower only while within 6 cells of your own Theater Command | `theater-command-aura.yaml` |
 
 No individual modifier is larger than **±25%** (e.g. +25% recon, −20% defense damage).
+
+> The strategic resource (**alloys**, P6) is a *counted second currency*, not a stat multiplier — it gates and
+> is spent on the apex tier. It does not enter the multiplier stack below and so does not affect these bounds.
 
 ## Worst-case stacks on a fully-teched vehicle (computed)
 
@@ -29,6 +33,9 @@ No individual modifier is larger than **±25%** (e.g. +25% recon, −20% defense
 - **Max effective HP** (armor build: Russia Armor branch + Armor + Reactive-Armor research + ages): **~2.1×**
 - **Max speed** (Armor branch + Propulsion + Maneuver fork): **~1.3×**
 - A *coherent* armor build reaches **~1.9× firepower × ~2.1× EHP ≈ 4× base combat power.**
+- The **C2 aura** adds a *situational* +10% firepower while near your Theater Command, so a fully-teched
+  vehicle fighting on home ground peaks at **~2.3× firepower** — still bounded, still symmetric, and it
+  costs you the positioning (you only get it defending/rallying at the command post, not on the attack).
 
 ## Why this is sound (not degenerate)
 
