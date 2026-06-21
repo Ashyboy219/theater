@@ -380,6 +380,12 @@ actor-research-mass =
 actor-research-precision =
     .name = Research: Precision Manufacturing
     .description = DECISION — locks out Mass Production. Vehicles hit 22% harder but cost 10% more. Win by quality.
+actor-research-wareconomy =
+    .name = Research: War Economy
+    .description = ECONOMIC DECISION — locks out Industrial Base. All units cost 15% less, but your income buildings produce 20% less. Mortgage the long game for an army right now. Needs the Information Age.
+actor-research-industrial =
+    .name = Research: Industrial Base
+    .description = ECONOMIC DECISION — locks out War Economy. Income buildings produce 30% more, but all units cost 10% more. Out-economy your opponent and afford more over time. Needs the Information Age.
 
 ## Tier 2 — advanced research (unlocked by advancing to the Information Age)
 actor-research-netcentric =

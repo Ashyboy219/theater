@@ -148,6 +148,11 @@ dome:
 		Filename: research-avionics-cameo.png
 	research-navalcombat-icon:
 		Filename: research-navalcombat-cameo.png
+	# Economic-strategy fork (War Economy / Industrial Base).
+	research-wareconomy-icon:
+		Filename: research-wareconomy-cameo.png
+	research-industrial-icon:
+		Filename: research-industrial-cameo.png
 
 # 4X economy-building cameos keyed under the silo body (alloyex/bank reuse it) and the apwr body (fusion).
 silo:

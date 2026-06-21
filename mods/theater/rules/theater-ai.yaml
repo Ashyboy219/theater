@@ -252,6 +252,8 @@ Player:
 			research.logistics: 1
 			research.mass: 1
 			research.precision: 1
+			research.wareconomy: 1
+			research.industrial: 1
 			research.netcentric: 1
 			research.reactivearmor: 1
 			research.autoloaders: 1
@@ -287,6 +289,8 @@ Player:
 			research.logistics: 1
 			research.mass: 1
 			research.precision: 1
+			research.wareconomy: 1
+			research.industrial: 1
 			research.netcentric: 1
 			research.reactivearmor: 1
 			research.autoloaders: 1
@@ -324,6 +328,8 @@ Player:
 			research.logistics: 1
 			research.mass: 1
 			research.precision: 1
+			research.wareconomy: 1
+			research.industrial: 1
 			research.netcentric: 1
 			research.reactivearmor: 1
 			research.autoloaders: 1
@@ -359,6 +365,8 @@ Player:
 			research.logistics: 1
 			research.mass: 1
 			research.precision: 1
+			research.wareconomy: 1
+			research.industrial: 1
 			research.netcentric: 1
 			research.reactivearmor: 1
 			research.autoloaders: 1
@@ -396,6 +404,8 @@ Player:
 			research.logistics: 1
 			research.mass: 1
 			research.precision: 1
+			research.wareconomy: 1
+			research.industrial: 1
 			research.netcentric: 1
 			research.reactivearmor: 1
 			research.autoloaders: 1
@@ -431,6 +441,8 @@ Player:
 			research.logistics: 1
 			research.mass: 1
 			research.precision: 1
+			research.wareconomy: 1
+			research.industrial: 1
 			research.netcentric: 1
 			research.reactivearmor: 1
 			research.autoloaders: 1
@@ -468,6 +480,8 @@ Player:
 			research.logistics: 1
 			research.mass: 1
 			research.precision: 1
+			research.wareconomy: 1
+			research.industrial: 1
 			research.netcentric: 1
 			research.reactivearmor: 1
 			research.autoloaders: 1
@@ -503,6 +517,8 @@ Player:
 			research.logistics: 1
 			research.mass: 1
 			research.precision: 1
+			research.wareconomy: 1
+			research.industrial: 1
 			research.netcentric: 1
 			research.reactivearmor: 1
 			research.autoloaders: 1

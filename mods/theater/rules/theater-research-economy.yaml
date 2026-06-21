@@ -1,0 +1,118 @@
+# ============================================================================
+# THEATER — Economic Strategy: a mutually-EXCLUSIVE research fork (guns vs butter).
+# A second divergent decision (the first is Mass vs Precision in theater-research.yaml),
+# this one economic, so two games branch differently. Sold from the Theater Command's
+# "Command" queue, gated on the Research Lab + Information age (a mid-game commitment).
+# Buying one provides research.<branch> and lists ~!research.<other>, so picking one
+# VANISHES the other — exactly one economic doctrine per match.
+#
+#   War Economy   — convert your economy into army NOW: -15% unit cost, but your income
+#                   buildings produce -20% (you mortgage the long game for immediate mass).
+#   Industrial Base — out-economy them: +30% income-building output, but +10% unit cost
+#                   (you bet on affording more over time, not cheaper now).
+#
+# All deterministic, integer-only. ProductionCostMultiplier reads Prerequisites directly;
+# the CashTrickler change uses the proven GrantConditionOnPrerequisite -> RequiresCondition
+# pattern (mirrors econ.network in theater-economy.yaml). Stacks multiplicatively with
+# logistics/mass/precision research, the national profile, and econ.network.
+# ============================================================================
+
+research.wareconomy:
+	Interactable:
+	Tooltip:
+		Name: actor-research-wareconomy.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 55
+		BuildLimit: 1
+		BuildDuration: 500
+		BuildDurationModifier: 100
+		Prerequisites: rlab, age.information, ~!research.industrial
+		Description: actor-research-wareconomy.description
+		Icon: research-wareconomy-icon
+	Valued:
+		Cost: 1200
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:
+
+research.industrial:
+	Interactable:
+	Tooltip:
+		Name: actor-research-industrial.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 56
+		BuildLimit: 1
+		BuildDuration: 500
+		BuildDurationModifier: 100
+		Prerequisites: rlab, age.information, ~!research.wareconomy
+		Description: actor-research-industrial.description
+		Icon: research-industrial-icon
+	Valued:
+		Cost: 1200
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:
+
+# --- Army cost effects (read Prerequisites directly, no condition needed) on every combat template. ---
+^Vehicle:
+	ProductionCostMultiplier@res-wareconomy:
+		Prerequisites: research.wareconomy
+		Multiplier: 85
+	ProductionCostMultiplier@res-industrial:
+		Prerequisites: research.industrial
+		Multiplier: 110
+
+^Infantry:
+	ProductionCostMultiplier@res-wareconomy:
+		Prerequisites: research.wareconomy
+		Multiplier: 85
+	ProductionCostMultiplier@res-industrial:
+		Prerequisites: research.industrial
+		Multiplier: 110
+
+^Ship:
+	ProductionCostMultiplier@res-wareconomy:
+		Prerequisites: research.wareconomy
+		Multiplier: 85
+	ProductionCostMultiplier@res-industrial:
+		Prerequisites: research.industrial
+		Multiplier: 110
+
+^Plane:
+	ProductionCostMultiplier@res-wareconomy:
+		Prerequisites: research.wareconomy
+		Multiplier: 85
+	ProductionCostMultiplier@res-industrial:
+		Prerequisites: research.industrial
+		Multiplier: 110
+
+# --- Income-building effects (condition-gated, mirrors econ.network) on the Alloy Extractor + Bank. ---
+alloyex:
+	GrantConditionOnPrerequisite@res-wareconomy:
+		Condition: res-wareconomy
+		Prerequisites: research.wareconomy
+	CashTricklerMultiplier@res-wareconomy:
+		RequiresCondition: res-wareconomy
+		Modifier: 80
+	GrantConditionOnPrerequisite@res-industrial:
+		Condition: res-industrial
+		Prerequisites: research.industrial
+	CashTricklerMultiplier@res-industrial:
+		RequiresCondition: res-industrial
+		Modifier: 130
+
+bank:
+	GrantConditionOnPrerequisite@res-wareconomy:
+		Condition: res-wareconomy
+		Prerequisites: research.wareconomy
+	CashTricklerMultiplier@res-wareconomy:
+		RequiresCondition: res-wareconomy
+		Modifier: 80
+	GrantConditionOnPrerequisite@res-industrial:
+		Condition: res-industrial
+		Prerequisites: research.industrial
+	CashTricklerMultiplier@res-industrial:
+		RequiresCondition: res-industrial
+		Modifier: 130

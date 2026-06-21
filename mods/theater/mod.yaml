@@ -113,6 +113,7 @@ Rules:
 	theater|rules/theater-naval.yaml
 	theater|rules/theater-tech.yaml
 	theater|rules/theater-research.yaml
+	theater|rules/theater-research-economy.yaml
 	theater|rules/theater-ages.yaml
 	theater|rules/theater-economy.yaml
 	theater|rules/theater-spectacle.yaml
