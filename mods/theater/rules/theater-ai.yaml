@@ -227,6 +227,15 @@ Player:
 			doctrine.uk.intel: 1
 			doctrine.ind.missile: 1
 			doctrine.ind.networked: 1
+			rlab: 1
+			research.ballistics: 1
+			research.armor: 1
+			research.optics: 1
+			research.propulsion: 1
+			research.smallarms: 1
+			research.logistics: 1
+			research.mass: 1
+			research.precision: 1
 		BuildingLimits:
 			thcom: 1
 			doctrine.usa.air: 1
@@ -241,6 +250,15 @@ Player:
 			doctrine.uk.intel: 1
 			doctrine.ind.missile: 1
 			doctrine.ind.networked: 1
+			rlab: 1
+			research.ballistics: 1
+			research.armor: 1
+			research.optics: 1
+			research.propulsion: 1
+			research.smallarms: 1
+			research.logistics: 1
+			research.mass: 1
+			research.precision: 1
 	BaseBuilderBotModule@normal:
 		BuildingQueues: Building, Command
 		BuildingFractions:
@@ -257,6 +275,15 @@ Player:
 			doctrine.uk.intel: 1
 			doctrine.ind.missile: 1
 			doctrine.ind.networked: 1
+			rlab: 1
+			research.ballistics: 1
+			research.armor: 1
+			research.optics: 1
+			research.propulsion: 1
+			research.smallarms: 1
+			research.logistics: 1
+			research.mass: 1
+			research.precision: 1
 		BuildingLimits:
 			thcom: 1
 			doctrine.usa.air: 1
@@ -271,6 +298,15 @@ Player:
 			doctrine.uk.intel: 1
 			doctrine.ind.missile: 1
 			doctrine.ind.networked: 1
+			rlab: 1
+			research.ballistics: 1
+			research.armor: 1
+			research.optics: 1
+			research.propulsion: 1
+			research.smallarms: 1
+			research.logistics: 1
+			research.mass: 1
+			research.precision: 1
 	BaseBuilderBotModule@turtle:
 		BuildingQueues: Building, Command
 		BuildingFractions:
@@ -287,6 +323,15 @@ Player:
 			doctrine.uk.intel: 1
 			doctrine.ind.missile: 1
 			doctrine.ind.networked: 1
+			rlab: 1
+			research.ballistics: 1
+			research.armor: 1
+			research.optics: 1
+			research.propulsion: 1
+			research.smallarms: 1
+			research.logistics: 1
+			research.mass: 1
+			research.precision: 1
 		BuildingLimits:
 			thcom: 1
 			doctrine.usa.air: 1
@@ -301,6 +346,15 @@ Player:
 			doctrine.uk.intel: 1
 			doctrine.ind.missile: 1
 			doctrine.ind.networked: 1
+			rlab: 1
+			research.ballistics: 1
+			research.armor: 1
+			research.optics: 1
+			research.propulsion: 1
+			research.smallarms: 1
+			research.logistics: 1
+			research.mass: 1
+			research.precision: 1
 	BaseBuilderBotModule@naval:
 		BuildingQueues: Building, Command
 		BuildingFractions:
@@ -317,6 +371,15 @@ Player:
 			doctrine.uk.intel: 1
 			doctrine.ind.missile: 1
 			doctrine.ind.networked: 1
+			rlab: 1
+			research.ballistics: 1
+			research.armor: 1
+			research.optics: 1
+			research.propulsion: 1
+			research.smallarms: 1
+			research.logistics: 1
+			research.mass: 1
+			research.precision: 1
 		BuildingLimits:
 			thcom: 1
 			doctrine.usa.air: 1
@@ -331,6 +394,15 @@ Player:
 			doctrine.uk.intel: 1
 			doctrine.ind.missile: 1
 			doctrine.ind.networked: 1
+			rlab: 1
+			research.ballistics: 1
+			research.armor: 1
+			research.optics: 1
+			research.propulsion: 1
+			research.smallarms: 1
+			research.logistics: 1
+			research.mass: 1
+			research.precision: 1
 
 	# --- Fire the doctrine support powers (merges new decisions into the shared ra SupportPowerBotModule).
 	# Offensive strikes (CAS / barrage / drone-swarm / cruise / recon flyover) target enemy structures;
