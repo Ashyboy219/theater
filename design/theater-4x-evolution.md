@@ -94,8 +94,15 @@ and meaningful decisions, and it's too short. The fix is **depth + longevity + s
       (banks it), ProvidesPrerequisiteOnAlloys (gates the apex tier on a stockpile via the tech tree, no
       ProductionQueue surgery), ConsumesAlloys (spends on build), IngameAlloyCounterLogic (sidebar readout).
       The Alloy Extractor now banks counted alloys; apex units require a 100-alloy stockpile AND spend 100.
-      Inert for other mods. Build/check-yaml/boot clean. FOLLOW-UP (live look): nudge the readout bar's Y and
-      balance the trickle/cost numbers in a playtest.
+      Inert for other mods. Build/check-yaml/boot clean; PlayerAlloys unit-tested (8 cases). FOLLOW-UPS (need
+      a live playtest, held honestly):
+        - nudge the readout bar's Y if it overlaps; balance the trickle/cost numbers.
+        - KNOWN LIMITATION: alloys are deducted at build *completion* (ConsumesAlloys on AddedToWorld) while the
+          stockpile gate is checked at *order* time, so queuing several apex units of different types on one
+          stockpile's worth can under-charge the later ones (bounded by BuildLimit 2/type). The correct fix is
+          to deduct at order-acceptance inside ProductionQueue with symmetric refunds on cancel — deferred
+          because that touches shared engine code and its refund/UX correctness needs in-game testing, not a
+          headless guess.
 - [ ] **P7 — Light diplomacy / inter-faction systems** (stretch): alliances, trade, tribute. Needs C#/UI.
 - [ ] **P8 — Map objectives / secondary win conditions** (Lua, per-map): economic/tech victory paths.
 - [ ] **Custom building bodies** (visual, needs in-game tuning): rlab/alloyex/bank/fusion still reuse stock
