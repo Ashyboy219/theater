@@ -158,7 +158,7 @@ pt:
 b21body:
 	idle:
 		Filename: b21body.png
-		Facings: 16
+		Facings: 32
 		InterpolatedFacings: 64
 	# keep the cameo reachable under this Image (Buildable.Icon resolves under the actor's RenderSprites.Image)
 	b21-icon:
@@ -169,7 +169,7 @@ b21body:
 jetbody:
 	idle:
 		Filename: jetbody.png
-		Facings: 16
+		Facings: 32
 		InterpolatedFacings: 64
 	specter-icon:
 		Filename: specter-cameo.png
@@ -183,7 +183,7 @@ jetbody:
 dronebody:
 	idle:
 		Filename: dronebody.png
-		Facings: 16
+		Facings: 32
 		InterpolatedFacings: 64
 	# the YAK-based drones' Armament keeps a MuzzleSequence: muzzle, so provide one (stock gunfire SHP).
 	muzzle:
