@@ -60,6 +60,7 @@ The mod lives entirely under [`mods/theater/`](mods/theater) and mounts the stoc
 
 ## Design & docs
 
+- [`design/theater-how-to-play.md`](design/theater-how-to-play.md) — **How to Play**: a short, practical guide to the 4X layer — the strategic tab, the cash+alloys economy, climbing to the apex units, and the key decisions that make games diverge.
 - [`design/theater-codex.md`](design/theater-codex.md) — **the Codex**: the real contemporary military systems and critical-minerals geopolitics the game is modeled on (THEATER's educational goal).
 - [`design/theater-4x-evolution.md`](design/theater-4x-evolution.md) — the 4X north-star roadmap (what's done, what's next).
 - [`design/theater-balance-notes.md`](design/theater-balance-notes.md) — how the layered stat-multiplier systems (doctrines, research, ages, forks) compose, with worst-case stacks and tuning guidance.
