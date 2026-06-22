@@ -1,20 +1,14 @@
-# THEATER — 4X P2: AGES / ERAS (the escalation + longevity ladder).
+# THEATER — 4X: AGES / ERAS (the horizontal tech-tree SPINE).
 #
-# You start in the MODERN age. Researched at the Research Lab (Command queue), you ADVANCE through three
-# eras — Information → Autonomous → Orbital — each gated on the previous, each a real cost+time investment.
-# Advancing does two things:
-#   1. ESCALATION — a cumulative army-wide power bump (your WHOLE military gets tankier / hits harder / sees
-#      further as the game goes on), so late-game armies feel meaningfully bigger. Bumps STACK because each
-#      age requires the previous, so reaching Orbital means Information + Autonomous + Orbital are all active.
-#   2. GATING — each age provides an `age.<era>` token that higher-tier content hangs off (the gargantuan
-#      spectacle units in P4 require Orbital; future advanced research requires Information/Autonomous).
+# You start in the MODERN age (the Research Lab). Researched at the Research Lab (Command queue), you ADVANCE
+# through three eras — Information -> Autonomous -> Orbital — each gated on the previous, each a real cost+time
+# investment. Advancing is now PURE GATING: each age provides an `age.<era>` token that UNLOCKS new content
+# further down the tech tree (new buildable units, structures and support powers — see theater-techtree.yaml
+# and the re-gated content). Ages NO LONGER apply any army-wide stat modifier — the reward for climbing the
+# ladder is NEW THINGS TO BUILD, never bigger numbers on the units you already have.
 #
-# This is the primary lever for "longer, deeper games": the tech path is now Production → Radar → Research
-# Lab → Information → (Tech Center) → Autonomous → Orbital, a real ladder of decisions and investments.
-#
-# Data-only: same buy-once Command-queue pattern as research/doctrines + condition-grants ON THE TEMPLATES
-# (^Vehicle/^Infantry/^Ship/^Plane, NOT Player). No new C#. Bought from the Command queue (gated, so only the
-# next available age shows). A dedicated Ages/Research tab + custom art are later polish.
+# The spine: Production -> Radar -> Research Lab -> Information -> (Tech Center) -> Autonomous -> Orbital.
+# Data-only buy-once Command-queue actors, shown left-to-right in the F8 tech-tree flowchart.
 
 # =================================== The age advances (Command queue) ===================================
 age.information:
@@ -73,125 +67,3 @@ age.orbital:
 	RenderSprites:
 		Image: dome
 	ProvidesPrerequisite@self:
-
-# =================================== Escalation (cumulative, on every combat template) ===================================
-# Each age grants its own condition; the multipliers stack as you climb the ladder. Modest per-age so it
-# escalates without breaking balance (DamageMultiplier <100 = tankier; FirepowerMultiplier >100 = hits harder).
-^Vehicle:
-	GrantConditionOnPrerequisite@age-info:
-		Condition: age-info
-		Prerequisites: age.information
-	DamageMultiplier@age-info:
-		RequiresCondition: age-info
-		Modifier: 94
-	FirepowerMultiplier@age-info:
-		RequiresCondition: age-info
-		Modifier: 105
-	GrantConditionOnPrerequisite@age-auto:
-		Condition: age-auto
-		Prerequisites: age.autonomous
-	DamageMultiplier@age-auto:
-		RequiresCondition: age-auto
-		Modifier: 94
-	FirepowerMultiplier@age-auto:
-		RequiresCondition: age-auto
-		Modifier: 106
-	RevealsShroudMultiplier@age-auto:
-		RequiresCondition: age-auto
-		Modifier: 105
-	GrantConditionOnPrerequisite@age-orbital:
-		Condition: age-orbital
-		Prerequisites: age.orbital
-	DamageMultiplier@age-orbital:
-		RequiresCondition: age-orbital
-		Modifier: 92
-	FirepowerMultiplier@age-orbital:
-		RequiresCondition: age-orbital
-		Modifier: 108
-
-^Infantry:
-	GrantConditionOnPrerequisite@age-info:
-		Condition: age-info
-		Prerequisites: age.information
-	DamageMultiplier@age-info:
-		RequiresCondition: age-info
-		Modifier: 94
-	FirepowerMultiplier@age-info:
-		RequiresCondition: age-info
-		Modifier: 105
-	GrantConditionOnPrerequisite@age-auto:
-		Condition: age-auto
-		Prerequisites: age.autonomous
-	DamageMultiplier@age-auto:
-		RequiresCondition: age-auto
-		Modifier: 94
-	FirepowerMultiplier@age-auto:
-		RequiresCondition: age-auto
-		Modifier: 106
-	GrantConditionOnPrerequisite@age-orbital:
-		Condition: age-orbital
-		Prerequisites: age.orbital
-	DamageMultiplier@age-orbital:
-		RequiresCondition: age-orbital
-		Modifier: 92
-	FirepowerMultiplier@age-orbital:
-		RequiresCondition: age-orbital
-		Modifier: 108
-
-^Ship:
-	GrantConditionOnPrerequisite@age-info:
-		Condition: age-info
-		Prerequisites: age.information
-	DamageMultiplier@age-info:
-		RequiresCondition: age-info
-		Modifier: 94
-	FirepowerMultiplier@age-info:
-		RequiresCondition: age-info
-		Modifier: 105
-	GrantConditionOnPrerequisite@age-auto:
-		Condition: age-auto
-		Prerequisites: age.autonomous
-	DamageMultiplier@age-auto:
-		RequiresCondition: age-auto
-		Modifier: 94
-	FirepowerMultiplier@age-auto:
-		RequiresCondition: age-auto
-		Modifier: 106
-	GrantConditionOnPrerequisite@age-orbital:
-		Condition: age-orbital
-		Prerequisites: age.orbital
-	DamageMultiplier@age-orbital:
-		RequiresCondition: age-orbital
-		Modifier: 92
-	FirepowerMultiplier@age-orbital:
-		RequiresCondition: age-orbital
-		Modifier: 108
-
-^Plane:
-	GrantConditionOnPrerequisite@age-info:
-		Condition: age-info
-		Prerequisites: age.information
-	DamageMultiplier@age-info:
-		RequiresCondition: age-info
-		Modifier: 94
-	FirepowerMultiplier@age-info:
-		RequiresCondition: age-info
-		Modifier: 105
-	GrantConditionOnPrerequisite@age-auto:
-		Condition: age-auto
-		Prerequisites: age.autonomous
-	DamageMultiplier@age-auto:
-		RequiresCondition: age-auto
-		Modifier: 94
-	FirepowerMultiplier@age-auto:
-		RequiresCondition: age-auto
-		Modifier: 106
-	GrantConditionOnPrerequisite@age-orbital:
-		Condition: age-orbital
-		Prerequisites: age.orbital
-	DamageMultiplier@age-orbital:
-		RequiresCondition: age-orbital
-		Modifier: 92
-	FirepowerMultiplier@age-orbital:
-		RequiresCondition: age-orbital
-		Modifier: 108

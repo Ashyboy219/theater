@@ -194,6 +194,43 @@ actor-thcom =
     .missile-description = Call in a precision long-range cruise-missile strike on any visible target area.
     .orbital-name = Orbital Lance
     .orbital-description = The Space Program capstone: drop a devastating kinetic strike from orbit onto any visible target. Unlocked by Orbital Command.
+    .treerecon-name = Satellite Sweep
+    .treerecon-description = A reconnaissance-satellite pass reveals the whole map for a window. Unlocked by the Recon Satellites tech node.
+    .treeair-name = Precision Air Wing
+    .treeair-description = Vector a pair of strike jets for a surgical JDAM run on the target area. Unlocked by the Precision Air Wing tech node.
+    .treemass-name = Mass Fires: Drone Swarm
+    .treemass-description = Saturate a target area with a swarm of loiter-munition drones. The Mass Fires fork (excludes Precision Fires).
+    .treeprecision-name = Precision Fires: Cruise Strike
+    .treeprecision-description = Call in a single heavy cruise missile on any visible target. The Precision Fires fork (excludes Mass Fires).
+    .treedrone-name = Autonomous Strike Net
+    .treedrone-description = Launch a precision multi-jet sortie on the target area. Unlocked by the Autonomous Strike Net tech node.
+    .treemaneuver-name = Rapid Deploy
+    .treemaneuver-description = Airdrop a light insertion squad onto any visible ground — fast and frequent. The Maneuver fork (excludes Fortress).
+    .treefortress-name = Defensive Barrage
+    .treefortress-description = Carpet a target area with bombers to break an assault on your lines. The Fortress fork (excludes Maneuver).
+
+## Tech-tree unlock nodes (bought from the Command queue / shown in the F8 flowchart). Each UNLOCKS new content.
+hotkey-description-toggletechtree = Toggle Tech Tree
+
+actor-node-airdefense =
+    .name = Tech: Integrated Air Defense
+    .description = Unlocks the Mobile SAM for your whole army — shoot-and-scoot mobile anti-air. Researched at the Research Lab.
+
+actor-node-recon =
+    .name = Tech: Recon Satellites
+    .description = Unlocks the Satellite Sweep power on your Theater Command — a periodic full-map reveal. Researched at the Research Lab.
+
+actor-node-airpower =
+    .name = Tech: Precision Air Wing
+    .description = Unlocks the Precision Air Wing power — a fast 2-jet surgical strike. Needs the Information Age.
+
+actor-node-heavydefense =
+    .name = Tech: Hardened Infrastructure
+    .description = Unlocks the Fusion Reactor — a high-output power plant for the power-hungry late game. Needs the Information Age.
+
+actor-node-dronebay =
+    .name = Tech: Autonomous Strike Net
+    .description = Unlocks the Autonomous Strike Net power — a long-charge precision sortie. Needs the Autonomous Age.
 
 ## Command capabilities — bought from the Theater Command's Command queue (a sidebar tab).
 button-production-types-command-tooltip = Command Capabilities
@@ -363,24 +400,6 @@ actor-rlab =
     .name = Research Lab
     .description = Unlocks the research tech tree in the Command tab — accumulating army-wide upgrades (ballistics, armor, optics, propulsion, logistics) plus a mass-vs-precision decision. Build one to start researching. Needs a Radar Dome.
 
-actor-research-ballistics =
-    .name = Research: Ballistics
-    .description = +15% firepower for all your vehicles. Researched once; lasts the match.
-actor-research-armor =
-    .name = Research: Composite Armor
-    .description = Your vehicles take 12% less damage. Researched once; lasts the match.
-actor-research-optics =
-    .name = Research: Optics
-    .description = +20% sight range for vehicles and infantry — see further, react sooner.
-actor-research-propulsion =
-    .name = Research: Propulsion
-    .description = +12% movement speed for all your vehicles.
-actor-research-smallarms =
-    .name = Research: Small Arms
-    .description = +15% firepower for all your infantry.
-actor-research-logistics =
-    .name = Research: Logistics
-    .description = Your vehicles cost 12% less to build — a leaner war economy.
 actor-research-mass =
     .name = Research: Mass Production
     .description = DECISION — locks out Precision Manufacturing. Vehicles cost 15% less to build but are frailer (+10% damage taken). Win by quantity.
@@ -401,22 +420,6 @@ actor-research-fortress =
     .description = POSTURE DECISION — locks out Maneuver Doctrine. Every static defense takes 20% less damage and reaches 12% farther. Turn your base into a kill-zone. Needs the Information Age.
 
 ## Tier 2 — advanced research (unlocked by advancing to the Information Age)
-actor-research-netcentric =
-    .name = Research: Network-Centric Warfare
-    .description = +10% weapon range for all your vehicles. Requires the Information Age.
-actor-research-reactivearmor =
-    .name = Research: Reactive Armor
-    .description = Your vehicles take a further 10% less damage (stacks with Composite Armor). Requires the Information Age.
-actor-research-autoloaders =
-    .name = Research: Autoloaders
-    .description = Your vehicles reload 15% faster — higher rate of fire. Requires the Information Age.
-actor-research-avionics =
-    .name = Research: Advanced Avionics
-    .description = Your aircraft hit 15% harder and fly 10% faster. Requires the Information Age.
-actor-research-navalcombat =
-    .name = Research: Integrated Naval Systems
-    .description = Your ships hit 15% harder and take 10% less damage. Requires the Information Age.
-
 ## ============================ 4X: Ages / eras (escalation ladder) ============================
 actor-age-information =
     .name = Advance: Information Age
@@ -473,3 +476,28 @@ actor-archangel =
 actor-tempest =
     .name = Tempest Rocket Artillery
     .description = The strategic-bombardment apex — a gargantuan mobile launcher that rains a 12-rocket salvo across most of the map. Devastating area saturation, but a very long reload and far-forward deployment leave it exposed, so screen it. Limited to 2. Needs a War Factory and the Orbital Age. Real-world: a strategic multiple-rocket-launcher scaled up. Spends 100 alloys, committed on build (no refund if cancelled).
+
+## THEATER tech-tree flowchart labels (F8 panel).
+techtree-title = THEATER TECH TREE  —  upgrades UNLOCK new units, structures & powers
+techtree-hint = F8 to close
+
+techtree-node-rlab = Research Lab
+techtree-node-airdef = Air Defense
+techtree-node-recon = Recon Sweep
+techtree-node-info = INFORMATION
+techtree-node-airpower = Precision Air
+techtree-node-fusion = Fusion Reactor
+techtree-node-mass = Mass Fires
+techtree-node-precision = Precision Fires
+techtree-node-techc = TECH CENTER
+techtree-node-wareco = War Economy
+techtree-node-industrial = Industrial Base
+techtree-node-auto = AUTONOMOUS
+techtree-node-dronebay = Strike Net
+techtree-node-maneuver = Maneuver
+techtree-node-fortress = Fortress
+techtree-node-orbital = ORBITAL
+techtree-node-apexland = Apex: Land
+techtree-node-apexair = Apex: Air
+techtree-node-apexsea = Apex: Sea
+techtree-node-orbstrike = Orbital Lance

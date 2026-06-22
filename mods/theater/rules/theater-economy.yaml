@@ -78,7 +78,8 @@ bank:
 	Buildable:
 		Queue: Building
 		BuildPaletteOrder: 138
-		Prerequisites: proc, ~structures.allies, ~techlevel.medium
+		# Unlocked by the tech tree's War Economy fork (theater-research-economy.yaml).
+		Prerequisites: proc, ~structures.allies, ~techlevel.medium, research.wareconomy
 		Description: actor-bank.description
 		Icon: bank-icon
 	Valued:
@@ -114,7 +115,8 @@ fusion:
 	Buildable:
 		Queue: Building
 		BuildPaletteOrder: 139
-		Prerequisites: dome, ~structures.allies, ~techlevel.medium
+		# Unlocked by the tech tree's Hardened Infrastructure node (theater-techtree.yaml).
+		Prerequisites: dome, ~structures.allies, ~techlevel.medium, node.heavydefense
 		Description: actor-fusion.description
 		Icon: fusion-icon
 	Valued:
@@ -137,7 +139,8 @@ econ.network:
 		BuildLimit: 1
 		BuildDuration: 450
 		BuildDurationModifier: 100
-		Prerequisites: rlab
+		# Unlocked by the tech tree's Industrial Base fork (theater-research-economy.yaml).
+		Prerequisites: rlab, research.industrial
 		Description: actor-econ-network.description
 		Icon: econ-network-icon
 	Valued:

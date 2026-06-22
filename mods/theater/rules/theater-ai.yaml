@@ -244,23 +244,17 @@ Player:
 			doctrine.ind.missile: 1
 			doctrine.ind.networked: 1
 			rlab: 1
-			research.ballistics: 1
-			research.armor: 1
-			research.optics: 1
-			research.propulsion: 1
-			research.smallarms: 1
-			research.logistics: 1
+			node.airdefense: 1
+			node.recon: 1
+			node.airpower: 1
+			node.heavydefense: 1
+			node.dronebay: 1
 			research.mass: 1
 			research.precision: 1
 			research.wareconomy: 1
 			research.industrial: 1
 			research.maneuver: 1
 			research.fortress: 1
-			research.netcentric: 1
-			research.reactivearmor: 1
-			research.autoloaders: 1
-			research.avionics: 1
-			research.navalcombat: 1
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
@@ -286,23 +280,17 @@ Player:
 			doctrine.ind.missile: 1
 			doctrine.ind.networked: 1
 			rlab: 1
-			research.ballistics: 1
-			research.armor: 1
-			research.optics: 1
-			research.propulsion: 1
-			research.smallarms: 1
-			research.logistics: 1
+			node.airdefense: 1
+			node.recon: 1
+			node.airpower: 1
+			node.heavydefense: 1
+			node.dronebay: 1
 			research.mass: 1
 			research.precision: 1
 			research.wareconomy: 1
 			research.industrial: 1
 			research.maneuver: 1
 			research.fortress: 1
-			research.netcentric: 1
-			research.reactivearmor: 1
-			research.autoloaders: 1
-			research.avionics: 1
-			research.navalcombat: 1
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
@@ -330,23 +318,17 @@ Player:
 			doctrine.ind.missile: 1
 			doctrine.ind.networked: 1
 			rlab: 1
-			research.ballistics: 1
-			research.armor: 1
-			research.optics: 1
-			research.propulsion: 1
-			research.smallarms: 1
-			research.logistics: 1
+			node.airdefense: 1
+			node.recon: 1
+			node.airpower: 1
+			node.heavydefense: 1
+			node.dronebay: 1
 			research.mass: 1
 			research.precision: 1
 			research.wareconomy: 1
 			research.industrial: 1
 			research.maneuver: 1
 			research.fortress: 1
-			research.netcentric: 1
-			research.reactivearmor: 1
-			research.autoloaders: 1
-			research.avionics: 1
-			research.navalcombat: 1
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
@@ -372,23 +354,17 @@ Player:
 			doctrine.ind.missile: 1
 			doctrine.ind.networked: 1
 			rlab: 1
-			research.ballistics: 1
-			research.armor: 1
-			research.optics: 1
-			research.propulsion: 1
-			research.smallarms: 1
-			research.logistics: 1
+			node.airdefense: 1
+			node.recon: 1
+			node.airpower: 1
+			node.heavydefense: 1
+			node.dronebay: 1
 			research.mass: 1
 			research.precision: 1
 			research.wareconomy: 1
 			research.industrial: 1
 			research.maneuver: 1
 			research.fortress: 1
-			research.netcentric: 1
-			research.reactivearmor: 1
-			research.autoloaders: 1
-			research.avionics: 1
-			research.navalcombat: 1
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
@@ -416,23 +392,17 @@ Player:
 			doctrine.ind.missile: 1
 			doctrine.ind.networked: 1
 			rlab: 1
-			research.ballistics: 1
-			research.armor: 1
-			research.optics: 1
-			research.propulsion: 1
-			research.smallarms: 1
-			research.logistics: 1
+			node.airdefense: 1
+			node.recon: 1
+			node.airpower: 1
+			node.heavydefense: 1
+			node.dronebay: 1
 			research.mass: 1
 			research.precision: 1
 			research.wareconomy: 1
 			research.industrial: 1
 			research.maneuver: 1
 			research.fortress: 1
-			research.netcentric: 1
-			research.reactivearmor: 1
-			research.autoloaders: 1
-			research.avionics: 1
-			research.navalcombat: 1
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
@@ -458,23 +428,17 @@ Player:
 			doctrine.ind.missile: 1
 			doctrine.ind.networked: 1
 			rlab: 1
-			research.ballistics: 1
-			research.armor: 1
-			research.optics: 1
-			research.propulsion: 1
-			research.smallarms: 1
-			research.logistics: 1
+			node.airdefense: 1
+			node.recon: 1
+			node.airpower: 1
+			node.heavydefense: 1
+			node.dronebay: 1
 			research.mass: 1
 			research.precision: 1
 			research.wareconomy: 1
 			research.industrial: 1
 			research.maneuver: 1
 			research.fortress: 1
-			research.netcentric: 1
-			research.reactivearmor: 1
-			research.autoloaders: 1
-			research.avionics: 1
-			research.navalcombat: 1
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
@@ -502,23 +466,17 @@ Player:
 			doctrine.ind.missile: 1
 			doctrine.ind.networked: 1
 			rlab: 1
-			research.ballistics: 1
-			research.armor: 1
-			research.optics: 1
-			research.propulsion: 1
-			research.smallarms: 1
-			research.logistics: 1
+			node.airdefense: 1
+			node.recon: 1
+			node.airpower: 1
+			node.heavydefense: 1
+			node.dronebay: 1
 			research.mass: 1
 			research.precision: 1
 			research.wareconomy: 1
 			research.industrial: 1
 			research.maneuver: 1
 			research.fortress: 1
-			research.netcentric: 1
-			research.reactivearmor: 1
-			research.autoloaders: 1
-			research.avionics: 1
-			research.navalcombat: 1
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
@@ -544,23 +502,17 @@ Player:
 			doctrine.ind.missile: 1
 			doctrine.ind.networked: 1
 			rlab: 1
-			research.ballistics: 1
-			research.armor: 1
-			research.optics: 1
-			research.propulsion: 1
-			research.smallarms: 1
-			research.logistics: 1
+			node.airdefense: 1
+			node.recon: 1
+			node.airpower: 1
+			node.heavydefense: 1
+			node.dronebay: 1
 			research.mass: 1
 			research.precision: 1
 			research.wareconomy: 1
 			research.industrial: 1
 			research.maneuver: 1
 			research.fortress: 1
-			research.netcentric: 1
-			research.reactivearmor: 1
-			research.autoloaders: 1
-			research.avionics: 1
-			research.navalcombat: 1
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
@@ -671,6 +623,68 @@ Player:
 					Attractiveness: 1
 					TargetMetric: None
 					CheckRadius: 5c0
+			# --- Tech-tree support powers (the AI buys the nodes above; these let it FIRE them). Offensive
+			#     strikes hit the densest enemy structure cluster; the maneuver drop lands near the enemy. ---
+			tree-air:
+				OrderName: TreePrecisionStrike
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			tree-mass:
+				OrderName: TreeMassSwarm
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			tree-precision:
+				OrderName: TreeCruiseStrike
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			tree-drone:
+				OrderName: TreeAutonomousStrike
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			tree-fortress:
+				OrderName: TreeFortressBarrage
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			tree-maneuver:
+				OrderName: TreeManeuverDrop
+				MinimumAttractiveness: 5
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 8c0
+				Consideration@2:
+					Against: Enemy
+					Types: Water
+					Attractiveness: -5
+					TargetMetric: None
+					CheckRadius: 8c0
 
 	# --- Air-squad classification unchanged (no doctrine-unlocked unit is an aircraft). ---
 	SquadManagerBotModule@rush:

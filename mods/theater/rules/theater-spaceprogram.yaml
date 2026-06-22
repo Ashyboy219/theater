@@ -129,35 +129,6 @@ THCOM:
 		DirectionArrowAnimation: paradirection
 		SupportPowerPaletteOrder: 63
 
-# --- Orbital Command capstone: a permanent orbital-surveillance net — +25% vision army-wide while held. ---
-^Vehicle:
-	GrantConditionOnPrerequisite@space-orbital:
-		Condition: space-orbital
-		Prerequisites: space.orbital
-	RevealsShroudMultiplier@space-orbital:
-		RequiresCondition: space-orbital
-		Modifier: 125
-
-^Infantry:
-	GrantConditionOnPrerequisite@space-orbital:
-		Condition: space-orbital
-		Prerequisites: space.orbital
-	RevealsShroudMultiplier@space-orbital:
-		RequiresCondition: space-orbital
-		Modifier: 125
-
-^Ship:
-	GrantConditionOnPrerequisite@space-orbital:
-		Condition: space-orbital
-		Prerequisites: space.orbital
-	RevealsShroudMultiplier@space-orbital:
-		RequiresCondition: space-orbital
-		Modifier: 125
-
-^Plane:
-	GrantConditionOnPrerequisite@space-orbital:
-		Condition: space-orbital
-		Prerequisites: space.orbital
-	RevealsShroudMultiplier@space-orbital:
-		RequiresCondition: space-orbital
-		Modifier: 125
+# Orbital Command's payoff is now purely the Satellite Sweep (GpsPower@spacesat) + the Orbital Lance strike
+# (AirstrikePower@orbitalstrike) above — both POWERS, no army-wide stat modifier. The old +25%-vision
+# RevealsShroudMultiplier on every combat template was removed (upgrades unlock things, not buff numbers).

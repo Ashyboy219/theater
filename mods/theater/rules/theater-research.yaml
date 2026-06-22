@@ -1,27 +1,18 @@
-# THEATER — 4X P1: RESEARCH LAB + the first branching tech tree.
+# THEATER — 4X: RESEARCH LAB + the tech-tree's FIRES fork.
 #
-# A mid-tier Research Lab (rlab) that feeds the existing Command queue (the sidebar tab THCOM also opens)
-# and gates a set of ACCUMULATING research upgrades — bought one at a time, like Civ techs, each taking real
-# time — plus one branching DECISION (mass vs precision). This is the first economy/depth layer: research is
-# a mid-game progression that makes games longer and adds choices ON TOP OF the doctrine fork.
-#
-# Reuses two PROVEN patterns, so no new C# and no new sidebar tab:
-#   1. Buy-once Command-queue actors (theater-capabilities.yaml): non-occupying, BuildLimit:1,
-#      ProvidesPrerequisite@self (token = actor name), Icon: icon, RenderSprites Image: dome.
-#   2. Doctrine condition-grants (theater-doctrine-*.yaml): GrantConditionOnPrerequisite ON THE UNIT
-#      TEMPLATE (^Vehicle/^Infantry, NOT Player) + a RequiresCondition *Multiplier. ProductionCostMultiplier
-#      reads Prerequisites directly (no condition). All integer, deterministic.
-#
-# NOTE (later art pass): rlab reuses the radar-dome body for now (like THCOM); a distinct Research Lab body
-# is a visual-revamp item. The mechanics are the P1 deliverable.
+# The mid-tier Research Lab (rlab) feeds the Command queue (the F8 tech-tree flowchart) and provides the
+# `rlab` token every tree node hangs off. Research now UNLOCKS NEW THINGS — never stat modifiers. The old
+# accumulating ballistics/armor/optics/... buffs are GONE; the only nodes that live here are the FIRES fork
+# (Mass vs Precision), repurposed into a content choice: each branch unlocks a distinct support power on the
+# Theater Command (see theater-techtree.yaml), and picking one removes the other.
 
 # =================================== The Research Lab building ===================================
-# Mid-tier (needs a Radar Dome first), feeds the Command queue, and provides the `rlab` token that unlocks
-# every research item below. Build one to start researching.
+# Mid-tier (needs a Radar Dome first), feeds the Command queue, provides the `rlab` token. Build one to open
+# the tech tree.
 rlab:
 	Inherits: DOME
 	# Bespoke research-complex body instead of the radar dome (DOME already uses WithSpriteBody, so the
-	# image swap + rlabbody sequences below are all that's needed). 2x3 footprint, rendered at matching scale.
+	# image swap + rlabbody sequences are all that's needed). 2x3 footprint, rendered at matching scale.
 	RenderSprites:
 		Image: rlabbody
 	Buildable:
@@ -38,126 +29,10 @@ rlab:
 		Produces: Command
 	ProvidesPrerequisite@self:
 
-# =================================== The research items (Command queue) ===================================
-# Each is gated on `rlab`, takes ~real time (BuildDuration), and provides its own token (research.<x>) that
-# the ^Vehicle/^Infantry multipliers below key off. Accumulating — research as many as you can afford.
-
-research.ballistics:
-	Interactable:
-	Tooltip:
-		Name: actor-research-ballistics.name
-	Buildable:
-		Queue: Command
-		BuildPaletteOrder: 30
-		BuildLimit: 1
-		BuildDuration: 400
-		BuildDurationModifier: 100
-		Prerequisites: rlab
-		Description: actor-research-ballistics.description
-		Icon: research-ballistics-icon
-	Valued:
-		Cost: 800
-	RenderSprites:
-		Image: dome
-	ProvidesPrerequisite@self:
-
-research.armor:
-	Interactable:
-	Tooltip:
-		Name: actor-research-armor.name
-	Buildable:
-		Queue: Command
-		BuildPaletteOrder: 31
-		BuildLimit: 1
-		BuildDuration: 400
-		BuildDurationModifier: 100
-		Prerequisites: rlab
-		Description: actor-research-armor.description
-		Icon: research-armor-icon
-	Valued:
-		Cost: 800
-	RenderSprites:
-		Image: dome
-	ProvidesPrerequisite@self:
-
-research.optics:
-	Interactable:
-	Tooltip:
-		Name: actor-research-optics.name
-	Buildable:
-		Queue: Command
-		BuildPaletteOrder: 32
-		BuildLimit: 1
-		BuildDuration: 300
-		BuildDurationModifier: 100
-		Prerequisites: rlab
-		Description: actor-research-optics.description
-		Icon: research-optics-icon
-	Valued:
-		Cost: 600
-	RenderSprites:
-		Image: dome
-	ProvidesPrerequisite@self:
-
-research.propulsion:
-	Interactable:
-	Tooltip:
-		Name: actor-research-propulsion.name
-	Buildable:
-		Queue: Command
-		BuildPaletteOrder: 33
-		BuildLimit: 1
-		BuildDuration: 350
-		BuildDurationModifier: 100
-		Prerequisites: rlab
-		Description: actor-research-propulsion.description
-		Icon: research-propulsion-icon
-	Valued:
-		Cost: 700
-	RenderSprites:
-		Image: dome
-	ProvidesPrerequisite@self:
-
-research.smallarms:
-	Interactable:
-	Tooltip:
-		Name: actor-research-smallarms.name
-	Buildable:
-		Queue: Command
-		BuildPaletteOrder: 34
-		BuildLimit: 1
-		BuildDuration: 300
-		BuildDurationModifier: 100
-		Prerequisites: rlab
-		Description: actor-research-smallarms.description
-		Icon: research-smallarms-icon
-	Valued:
-		Cost: 600
-	RenderSprites:
-		Image: dome
-	ProvidesPrerequisite@self:
-
-research.logistics:
-	Interactable:
-	Tooltip:
-		Name: actor-research-logistics.name
-	Buildable:
-		Queue: Command
-		BuildPaletteOrder: 35
-		BuildLimit: 1
-		BuildDuration: 450
-		BuildDurationModifier: 100
-		Prerequisites: rlab
-		Description: actor-research-logistics.description
-		Icon: research-logistics-icon
-	Valued:
-		Cost: 900
-	RenderSprites:
-		Image: dome
-	ProvidesPrerequisite@self:
-
-# --- The DECISION: a mutually-exclusive quantity-vs-quality fork (each lists ~!the-other, so buying one
-#     removes the other from the queue). The first real research choice that splits two games apart.
+# =================================== FORK A — FIRES (Mass vs Precision) ===================================
+# A mutually-exclusive content choice off the Information age. Each unlocks a distinct THCOM support power
+# (theater-techtree.yaml): Mass = a 5-drone saturation swarm; Precision = a single heavy cruise strike.
+# Buying one lists ~!the-other, so exactly one fires-doctrine power per match. NO stat numbers either way.
 research.mass:
 	Interactable:
 	Tooltip:
@@ -168,7 +43,7 @@ research.mass:
 		BuildLimit: 1
 		BuildDuration: 500
 		BuildDurationModifier: 100
-		Prerequisites: rlab, ~!research.precision
+		Prerequisites: rlab, age.information, ~!research.precision
 		Description: actor-research-mass.description
 		Icon: research-mass-icon
 	Valued:
@@ -187,7 +62,7 @@ research.precision:
 		BuildLimit: 1
 		BuildDuration: 500
 		BuildDurationModifier: 100
-		Prerequisites: rlab, ~!research.mass
+		Prerequisites: rlab, age.information, ~!research.mass
 		Description: actor-research-precision.description
 		Icon: research-precision-icon
 	Valued:
@@ -195,213 +70,3 @@ research.precision:
 	RenderSprites:
 		Image: dome
 	ProvidesPrerequisite@self:
-
-# =================================== TIER 2: Advanced Research (gated on the Information age) ===================================
-# A deeper tech tier that only opens once you ADVANCE to the Information age — so climbing the era ladder
-# unlocks more of the research tree (research <-> ages integration). New effect types beyond Tier 1: range,
-# rate-of-fire, and domain-specific air/naval boosts. Same buy-once Command-queue + template-condition pattern.
-
-research.netcentric:
-	Interactable:
-	Tooltip:
-		Name: actor-research-netcentric.name
-	Buildable:
-		Queue: Command
-		BuildPaletteOrder: 50
-		BuildLimit: 1
-		BuildDuration: 550
-		BuildDurationModifier: 100
-		Prerequisites: rlab, age.information
-		Description: actor-research-netcentric.description
-		Icon: research-netcentric-icon
-	Valued:
-		Cost: 1200
-	RenderSprites:
-		Image: dome
-	ProvidesPrerequisite@self:
-
-research.reactivearmor:
-	Interactable:
-	Tooltip:
-		Name: actor-research-reactivearmor.name
-	Buildable:
-		Queue: Command
-		BuildPaletteOrder: 51
-		BuildLimit: 1
-		BuildDuration: 550
-		BuildDurationModifier: 100
-		Prerequisites: rlab, age.information
-		Description: actor-research-reactivearmor.description
-		Icon: research-reactivearmor-icon
-	Valued:
-		Cost: 1200
-	RenderSprites:
-		Image: dome
-	ProvidesPrerequisite@self:
-
-research.autoloaders:
-	Interactable:
-	Tooltip:
-		Name: actor-research-autoloaders.name
-	Buildable:
-		Queue: Command
-		BuildPaletteOrder: 52
-		BuildLimit: 1
-		BuildDuration: 550
-		BuildDurationModifier: 100
-		Prerequisites: rlab, age.information
-		Description: actor-research-autoloaders.description
-		Icon: research-autoloaders-icon
-	Valued:
-		Cost: 1300
-	RenderSprites:
-		Image: dome
-	ProvidesPrerequisite@self:
-
-research.avionics:
-	Interactable:
-	Tooltip:
-		Name: actor-research-avionics.name
-	Buildable:
-		Queue: Command
-		BuildPaletteOrder: 53
-		BuildLimit: 1
-		BuildDuration: 500
-		BuildDurationModifier: 100
-		Prerequisites: rlab, age.information
-		Description: actor-research-avionics.description
-		Icon: research-avionics-icon
-	Valued:
-		Cost: 1100
-	RenderSprites:
-		Image: dome
-	ProvidesPrerequisite@self:
-
-research.navalcombat:
-	Interactable:
-	Tooltip:
-		Name: actor-research-navalcombat.name
-	Buildable:
-		Queue: Command
-		BuildPaletteOrder: 54
-		BuildLimit: 1
-		BuildDuration: 500
-		BuildDurationModifier: 100
-		Prerequisites: rlab, age.information
-		Description: actor-research-navalcombat.description
-		Icon: research-navalcombat-icon
-	Valued:
-		Cost: 1100
-	RenderSprites:
-		Image: dome
-	ProvidesPrerequisite@self:
-
-# =================================== Effects (condition-grants on the templates) ===================================
-# Grant a condition on the TEMPLATE when its research token exists, then a RequiresCondition multiplier reads
-# it (the proven doctrine pattern). ProductionCostMultiplier reads Prerequisites directly. All stack with
-# doctrines/national profiles multiplicatively.
-^Vehicle:
-	GrantConditionOnPrerequisite@res-ballistics:
-		Condition: res-ballistics
-		Prerequisites: research.ballistics
-	FirepowerMultiplier@res-ballistics:
-		RequiresCondition: res-ballistics
-		Modifier: 115
-	GrantConditionOnPrerequisite@res-armor:
-		Condition: res-armor
-		Prerequisites: research.armor
-	DamageMultiplier@res-armor:
-		RequiresCondition: res-armor
-		Modifier: 88
-	GrantConditionOnPrerequisite@res-optics:
-		Condition: res-optics
-		Prerequisites: research.optics
-	RevealsShroudMultiplier@res-optics:
-		RequiresCondition: res-optics
-		Modifier: 120
-	GrantConditionOnPrerequisite@res-propulsion:
-		Condition: res-propulsion
-		Prerequisites: research.propulsion
-	SpeedMultiplier@res-propulsion:
-		RequiresCondition: res-propulsion
-		Modifier: 112
-	# logistics: cheaper vehicles (cost reads Prerequisites directly, no condition needed)
-	ProductionCostMultiplier@res-logistics:
-		Prerequisites: research.logistics
-		Multiplier: 88
-	# DECISION — mass: even cheaper, but frailer
-	ProductionCostMultiplier@res-mass:
-		Prerequisites: research.mass
-		Multiplier: 85
-	GrantConditionOnPrerequisite@res-mass:
-		Condition: res-mass
-		Prerequisites: research.mass
-	DamageMultiplier@res-mass:
-		RequiresCondition: res-mass
-		Modifier: 110
-	# DECISION — precision: stronger, but pricier
-	GrantConditionOnPrerequisite@res-precision:
-		Condition: res-precision
-		Prerequisites: research.precision
-	FirepowerMultiplier@res-precision:
-		RequiresCondition: res-precision
-		Modifier: 122
-	ProductionCostMultiplier@res-precision:
-		Prerequisites: research.precision
-		Multiplier: 110
-	# --- TIER 2 (Information-age advanced research) ---
-	GrantConditionOnPrerequisite@res-netcentric:
-		Condition: res-netcentric
-		Prerequisites: research.netcentric
-	RangeMultiplier@res-netcentric:
-		RequiresCondition: res-netcentric
-		Modifier: 110
-	GrantConditionOnPrerequisite@res-reactivearmor:
-		Condition: res-reactivearmor
-		Prerequisites: research.reactivearmor
-	DamageMultiplier@res-reactivearmor:
-		RequiresCondition: res-reactivearmor
-		Modifier: 90
-	GrantConditionOnPrerequisite@res-autoloaders:
-		Condition: res-autoloaders
-		Prerequisites: research.autoloaders
-	ReloadDelayMultiplier@res-autoloaders:
-		RequiresCondition: res-autoloaders
-		Modifier: 85
-
-^Infantry:
-	GrantConditionOnPrerequisite@res-optics:
-		Condition: res-optics
-		Prerequisites: research.optics
-	RevealsShroudMultiplier@res-optics:
-		RequiresCondition: res-optics
-		Modifier: 120
-	GrantConditionOnPrerequisite@res-smallarms:
-		Condition: res-smallarms
-		Prerequisites: research.smallarms
-	FirepowerMultiplier@res-smallarms:
-		RequiresCondition: res-smallarms
-		Modifier: 115
-
-# TIER 2 air / naval domain research (Information-age gated).
-^Plane:
-	GrantConditionOnPrerequisite@res-avionics:
-		Condition: res-avionics
-		Prerequisites: research.avionics
-	FirepowerMultiplier@res-avionics:
-		RequiresCondition: res-avionics
-		Modifier: 115
-	SpeedMultiplier@res-avionics:
-		RequiresCondition: res-avionics
-		Modifier: 110
-
-^Ship:
-	GrantConditionOnPrerequisite@res-navalcombat:
-		Condition: res-navalcombat
-		Prerequisites: research.navalcombat
-	FirepowerMultiplier@res-navalcombat:
-		RequiresCondition: res-navalcombat
-		Modifier: 115
-	DamageMultiplier@res-navalcombat:
-		RequiresCondition: res-navalcombat
-		Modifier: 90

@@ -1,0 +1,4 @@
+ToggleTechTree: F8
+	Description: hotkey-description-toggletechtree
+	Types: World
+	Contexts: player

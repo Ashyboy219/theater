@@ -109,7 +109,8 @@ mobsam:
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 131
-		Prerequisites: dome, ~vehicles.allies, ~techlevel.medium
+		# Unlocked by the tech tree's Integrated Air Defense node (theater-techtree.yaml).
+		Prerequisites: dome, ~vehicles.allies, ~techlevel.medium, node.airdefense
 		Description: actor-mobsam.description
 	Armament:
 		Weapon: RedEye

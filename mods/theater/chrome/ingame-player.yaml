@@ -5,6 +5,451 @@ Container@PLAYER_WIDGETS:
 		LogicKeyListener@PLAYER_KEYHANDLER:
 			Logic: RemoveFromControlGroupHotkeyLogic
 				RemoveFromControlGroupKey: RemoveFromControlGroup
+		LogicKeyListener@TECHTREE_KEYHANDLER:
+			Logic: TechTreeToggleHotkeyLogic
+				ToggleTechTreeKey: ToggleTechTree
+		Background@TECHTREE_PANEL:
+			Visible: false
+			Background: dialog
+			Width: 760
+			Height: 460
+			X: (WINDOW_WIDTH - WIDTH) / 2
+			Y: (WINDOW_HEIGHT - HEIGHT) / 2
+			Children:
+				Label@TECHTREE_TITLE:
+					X: 0
+					Y: 12
+					Width: 760
+					Height: 24
+					Align: Center
+					Font: Bold
+					Contrast: true
+					Text: techtree-title
+				# --- connector lines first (so node boxes sit on top) ---
+				ColorBlock@LINE_SPINE_0:
+					X: 148
+					Y: 223
+					Width: 14
+					Height: 2
+					Color: FFFFFF55
+				ColorBlock@LINE_SPINE_1:
+					X: 294
+					Y: 223
+					Width: 14
+					Height: 2
+					Color: FFFFFF55
+				ColorBlock@LINE_SPINE_2:
+					X: 440
+					Y: 223
+					Width: 14
+					Height: 2
+					Color: FFFFFF55
+				ColorBlock@LINE_SPINE_3:
+					X: 586
+					Y: 223
+					Width: 14
+					Height: 2
+					Color: FFFFFF55
+				ColorBlock@LINE_airdef:
+					X: 81
+					Y: 60
+					Width: 2
+					Height: 164
+					Color: FFFFFF55
+				ColorBlock@LINE_recon:
+					X: 81
+					Y: 224
+					Width: 2
+					Height: 164
+					Color: FFFFFF55
+				ColorBlock@LINE_airpower:
+					X: 227
+					Y: 60
+					Width: 2
+					Height: 164
+					Color: FFFFFF55
+				ColorBlock@LINE_fusion:
+					X: 227
+					Y: 224
+					Width: 2
+					Height: 164
+					Color: FFFFFF55
+				ColorBlock@LINE_mass:
+					X: 227
+					Y: 142
+					Width: 2
+					Height: 82
+					Color: FFFFFF55
+				ColorBlock@LINE_precision:
+					X: 227
+					Y: 224
+					Width: 2
+					Height: 82
+					Color: FFFFFF55
+				ColorBlock@LINE_wareco:
+					X: 373
+					Y: 142
+					Width: 2
+					Height: 82
+					Color: FFFFFF55
+				ColorBlock@LINE_industrial:
+					X: 373
+					Y: 224
+					Width: 2
+					Height: 82
+					Color: FFFFFF55
+				ColorBlock@LINE_dronebay:
+					X: 519
+					Y: 60
+					Width: 2
+					Height: 164
+					Color: FFFFFF55
+				ColorBlock@LINE_maneuver:
+					X: 519
+					Y: 142
+					Width: 2
+					Height: 82
+					Color: FFFFFF55
+				ColorBlock@LINE_fortress:
+					X: 519
+					Y: 224
+					Width: 2
+					Height: 82
+					Color: FFFFFF55
+				ColorBlock@LINE_apexland:
+					X: 665
+					Y: 60
+					Width: 2
+					Height: 164
+					Color: FFFFFF55
+				ColorBlock@LINE_apexair:
+					X: 665
+					Y: 142
+					Width: 2
+					Height: 82
+					Color: FFFFFF55
+				ColorBlock@LINE_apexsea:
+					X: 665
+					Y: 224
+					Width: 2
+					Height: 82
+					Color: FFFFFF55
+				ColorBlock@LINE_orbstrike:
+					X: 665
+					Y: 224
+					Width: 2
+					Height: 164
+					Color: FFFFFF55
+				# --- node boxes ---
+				ColorBlock@N_rlab:
+					X: 16
+					Y: 206
+					Width: 132
+					Height: 36
+					Color: 2E5C8AE0
+				Label@L_rlab:
+					X: 16
+					Y: 215
+					Width: 132
+					Height: 18
+					Align: Center
+					Font: TinyBold
+					Contrast: true
+					Text: techtree-node-rlab
+				ColorBlock@N_airdef:
+					X: 16
+					Y: 42
+					Width: 132
+					Height: 36
+					Color: 4A4A4AD0
+				Label@L_airdef:
+					X: 16
+					Y: 51
+					Width: 132
+					Height: 18
+					Align: Center
+					Font: TinyBold
+					Contrast: true
+					Text: techtree-node-airdef
+				ColorBlock@N_recon:
+					X: 16
+					Y: 370
+					Width: 132
+					Height: 36
+					Color: 4A4A4AD0
+				Label@L_recon:
+					X: 16
+					Y: 379
+					Width: 132
+					Height: 18
+					Align: Center
+					Font: TinyBold
+					Contrast: true
+					Text: techtree-node-recon
+				ColorBlock@N_info:
+					X: 162
+					Y: 206
+					Width: 132
+					Height: 36
+					Color: 2E5C8AE0
+				Label@L_info:
+					X: 162
+					Y: 215
+					Width: 132
+					Height: 18
+					Align: Center
+					Font: TinyBold
+					Contrast: true
+					Text: techtree-node-info
+				ColorBlock@N_airpower:
+					X: 162
+					Y: 42
+					Width: 132
+					Height: 36
+					Color: 4A4A4AD0
+				Label@L_airpower:
+					X: 162
+					Y: 51
+					Width: 132
+					Height: 18
+					Align: Center
+					Font: TinyBold
+					Contrast: true
+					Text: techtree-node-airpower
+				ColorBlock@N_fusion:
+					X: 162
+					Y: 370
+					Width: 132
+					Height: 36
+					Color: 4A4A4AD0
+				Label@L_fusion:
+					X: 162
+					Y: 379
+					Width: 132
+					Height: 18
+					Align: Center
+					Font: TinyBold
+					Contrast: true
+					Text: techtree-node-fusion
+				ColorBlock@N_mass:
+					X: 162
+					Y: 124
+					Width: 132
+					Height: 36
+					Color: 4A4A4AD0
+				Label@L_mass:
+					X: 162
+					Y: 133
+					Width: 132
+					Height: 18
+					Align: Center
+					Font: TinyBold
+					Contrast: true
+					Text: techtree-node-mass
+				ColorBlock@N_precision:
+					X: 162
+					Y: 288
+					Width: 132
+					Height: 36
+					Color: 4A4A4AD0
+				Label@L_precision:
+					X: 162
+					Y: 297
+					Width: 132
+					Height: 18
+					Align: Center
+					Font: TinyBold
+					Contrast: true
+					Text: techtree-node-precision
+				ColorBlock@N_techc:
+					X: 308
+					Y: 206
+					Width: 132
+					Height: 36
+					Color: 2E5C8AE0
+				Label@L_techc:
+					X: 308
+					Y: 215
+					Width: 132
+					Height: 18
+					Align: Center
+					Font: TinyBold
+					Contrast: true
+					Text: techtree-node-techc
+				ColorBlock@N_wareco:
+					X: 308
+					Y: 124
+					Width: 132
+					Height: 36
+					Color: 4A4A4AD0
+				Label@L_wareco:
+					X: 308
+					Y: 133
+					Width: 132
+					Height: 18
+					Align: Center
+					Font: TinyBold
+					Contrast: true
+					Text: techtree-node-wareco
+				ColorBlock@N_industrial:
+					X: 308
+					Y: 288
+					Width: 132
+					Height: 36
+					Color: 4A4A4AD0
+				Label@L_industrial:
+					X: 308
+					Y: 297
+					Width: 132
+					Height: 18
+					Align: Center
+					Font: TinyBold
+					Contrast: true
+					Text: techtree-node-industrial
+				ColorBlock@N_auto:
+					X: 454
+					Y: 206
+					Width: 132
+					Height: 36
+					Color: 2E5C8AE0
+				Label@L_auto:
+					X: 454
+					Y: 215
+					Width: 132
+					Height: 18
+					Align: Center
+					Font: TinyBold
+					Contrast: true
+					Text: techtree-node-auto
+				ColorBlock@N_dronebay:
+					X: 454
+					Y: 42
+					Width: 132
+					Height: 36
+					Color: 4A4A4AD0
+				Label@L_dronebay:
+					X: 454
+					Y: 51
+					Width: 132
+					Height: 18
+					Align: Center
+					Font: TinyBold
+					Contrast: true
+					Text: techtree-node-dronebay
+				ColorBlock@N_maneuver:
+					X: 454
+					Y: 124
+					Width: 132
+					Height: 36
+					Color: 4A4A4AD0
+				Label@L_maneuver:
+					X: 454
+					Y: 133
+					Width: 132
+					Height: 18
+					Align: Center
+					Font: TinyBold
+					Contrast: true
+					Text: techtree-node-maneuver
+				ColorBlock@N_fortress:
+					X: 454
+					Y: 288
+					Width: 132
+					Height: 36
+					Color: 4A4A4AD0
+				Label@L_fortress:
+					X: 454
+					Y: 297
+					Width: 132
+					Height: 18
+					Align: Center
+					Font: TinyBold
+					Contrast: true
+					Text: techtree-node-fortress
+				ColorBlock@N_orbital:
+					X: 600
+					Y: 206
+					Width: 132
+					Height: 36
+					Color: 2E5C8AE0
+				Label@L_orbital:
+					X: 600
+					Y: 215
+					Width: 132
+					Height: 18
+					Align: Center
+					Font: TinyBold
+					Contrast: true
+					Text: techtree-node-orbital
+				ColorBlock@N_apexland:
+					X: 600
+					Y: 42
+					Width: 132
+					Height: 36
+					Color: 4A4A4AD0
+				Label@L_apexland:
+					X: 600
+					Y: 51
+					Width: 132
+					Height: 18
+					Align: Center
+					Font: TinyBold
+					Contrast: true
+					Text: techtree-node-apexland
+				ColorBlock@N_apexair:
+					X: 600
+					Y: 124
+					Width: 132
+					Height: 36
+					Color: 4A4A4AD0
+				Label@L_apexair:
+					X: 600
+					Y: 133
+					Width: 132
+					Height: 18
+					Align: Center
+					Font: TinyBold
+					Contrast: true
+					Text: techtree-node-apexair
+				ColorBlock@N_apexsea:
+					X: 600
+					Y: 288
+					Width: 132
+					Height: 36
+					Color: 4A4A4AD0
+				Label@L_apexsea:
+					X: 600
+					Y: 297
+					Width: 132
+					Height: 18
+					Align: Center
+					Font: TinyBold
+					Contrast: true
+					Text: techtree-node-apexsea
+				ColorBlock@N_orbstrike:
+					X: 600
+					Y: 370
+					Width: 132
+					Height: 36
+					Color: 4A4A4AD0
+				Label@L_orbstrike:
+					X: 600
+					Y: 379
+					Width: 132
+					Height: 18
+					Align: Center
+					Font: TinyBold
+					Contrast: true
+					Text: techtree-node-orbstrike
+				Label@TECHTREE_HINT:
+					X: 0
+					Y: 434
+					Width: 760
+					Height: 18
+					Align: Center
+					Font: TinyBold
+					Contrast: true
+					Text: techtree-hint
 		ControlGroups@CONTROLGROUPS:
 			SelectGroupKeyPrefix: ControlGroupSelect
 			CreateGroupKeyPrefix: ControlGroupCreate

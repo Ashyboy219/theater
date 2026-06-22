@@ -122,7 +122,7 @@ Rules:
 	theater|rules/theater-flagships.yaml
 	theater|rules/theater-livingworld.yaml
 	theater|rules/theater-spaceprogram.yaml
-	theater|rules/theater-escalation.yaml
+	theater|rules/theater-techtree.yaml
 	# Cameo icon assignments load LAST so Buildable.Icon merges onto each unit's complete definition
 	# (keeping its Description reference intact — see the visual-identity pass).
 	theater|rules/theater-cameos.yaml
@@ -250,6 +250,7 @@ Hotkeys:
 	common|hotkeys/chat.yaml
 	common|hotkeys/editor.yaml
 	common|hotkeys/control-groups.yaml
+	theater|hotkeys/techtree.yaml
 	ra|hotkeys.yaml
 
 LoadScreen: LogoStripeLoadScreen

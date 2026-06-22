@@ -1,20 +1,11 @@
 # ============================================================================
-# THEATER — Economic Strategy: a mutually-EXCLUSIVE research fork (guns vs butter).
-# A second divergent decision (the first is Mass vs Precision in theater-research.yaml),
-# this one economic, so two games branch differently. Sold from the Theater Command's
-# "Command" queue, gated on the Research Lab + Information age (a mid-game commitment).
-# Buying one provides research.<branch> and lists ~!research.<other>, so picking one
-# VANISHES the other — exactly one economic doctrine per match.
+# THEATER — Tech tree FORK B: ECONOMY (off the Tech Center, tier 2).
+# A mutually-exclusive content choice. Buying one provides research.<branch> and lists ~!research.<other>,
+# so picking one VANISHES the other — exactly one economic path per match. NO stat modifiers: each branch
+# simply UNLOCKS a different economy structure/upgrade (see the re-gates in theater-economy.yaml).
 #
-#   War Economy   — convert your economy into army NOW: -15% unit cost, but your income
-#                   buildings produce -20% (you mortgage the long game for immediate mass).
-#   Industrial Base — out-economy them: +30% income-building output, but +10% unit cost
-#                   (you bet on affording more over time, not cheaper now).
-#
-# All deterministic, integer-only. ProductionCostMultiplier reads Prerequisites directly;
-# the CashTrickler change uses the proven GrantConditionOnPrerequisite -> RequiresCondition
-# pattern (mirrors econ.network in theater-economy.yaml). Stacks multiplicatively with
-# logistics/mass/precision research, the national profile, and econ.network.
+#   War Economy    — unlocks the Bank (a stackable passive-income building).
+#   Industrial Base — unlocks the Economy Network upgrade (boosts your income buildings).
 # ============================================================================
 
 research.wareconomy:
@@ -27,7 +18,7 @@ research.wareconomy:
 		BuildLimit: 1
 		BuildDuration: 500
 		BuildDurationModifier: 100
-		Prerequisites: rlab, age.information, ~!research.industrial
+		Prerequisites: rlab, age.information, tech.center, ~!research.industrial
 		Description: actor-research-wareconomy.description
 		Icon: research-wareconomy-icon
 	Valued:
@@ -46,7 +37,7 @@ research.industrial:
 		BuildLimit: 1
 		BuildDuration: 500
 		BuildDurationModifier: 100
-		Prerequisites: rlab, age.information, ~!research.wareconomy
+		Prerequisites: rlab, age.information, tech.center, ~!research.wareconomy
 		Description: actor-research-industrial.description
 		Icon: research-industrial-icon
 	Valued:
@@ -54,65 +45,3 @@ research.industrial:
 	RenderSprites:
 		Image: dome
 	ProvidesPrerequisite@self:
-
-# --- Army cost effects (read Prerequisites directly, no condition needed) on every combat template. ---
-^Vehicle:
-	ProductionCostMultiplier@res-wareconomy:
-		Prerequisites: research.wareconomy
-		Multiplier: 85
-	ProductionCostMultiplier@res-industrial:
-		Prerequisites: research.industrial
-		Multiplier: 110
-
-^Infantry:
-	ProductionCostMultiplier@res-wareconomy:
-		Prerequisites: research.wareconomy
-		Multiplier: 85
-	ProductionCostMultiplier@res-industrial:
-		Prerequisites: research.industrial
-		Multiplier: 110
-
-^Ship:
-	ProductionCostMultiplier@res-wareconomy:
-		Prerequisites: research.wareconomy
-		Multiplier: 85
-	ProductionCostMultiplier@res-industrial:
-		Prerequisites: research.industrial
-		Multiplier: 110
-
-^Plane:
-	ProductionCostMultiplier@res-wareconomy:
-		Prerequisites: research.wareconomy
-		Multiplier: 85
-	ProductionCostMultiplier@res-industrial:
-		Prerequisites: research.industrial
-		Multiplier: 110
-
-# --- Income-building effects (condition-gated, mirrors econ.network) on the Alloy Extractor + Bank. ---
-alloyex:
-	GrantConditionOnPrerequisite@res-wareconomy:
-		Condition: res-wareconomy
-		Prerequisites: research.wareconomy
-	CashTricklerMultiplier@res-wareconomy:
-		RequiresCondition: res-wareconomy
-		Modifier: 80
-	GrantConditionOnPrerequisite@res-industrial:
-		Condition: res-industrial
-		Prerequisites: research.industrial
-	CashTricklerMultiplier@res-industrial:
-		RequiresCondition: res-industrial
-		Modifier: 130
-
-bank:
-	GrantConditionOnPrerequisite@res-wareconomy:
-		Condition: res-wareconomy
-		Prerequisites: research.wareconomy
-	CashTricklerMultiplier@res-wareconomy:
-		RequiresCondition: res-wareconomy
-		Modifier: 80
-	GrantConditionOnPrerequisite@res-industrial:
-		Condition: res-industrial
-		Prerequisites: research.industrial
-	CashTricklerMultiplier@res-industrial:
-		RequiresCondition: res-industrial
-		Modifier: 130
