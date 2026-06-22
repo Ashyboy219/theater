@@ -215,6 +215,21 @@ rlabbody:
 	rlab-icon:
 		Filename: rlab-cameo.png
 
+# Bespoke Fusion Reactor building body (3x3, glowing tokamak core). Reuses the power-plant bib.
+fusionbody:
+	idle:
+		Filename: fusionbody.png
+	make:
+		Filename: fusionbody.png
+	bib:
+		Filename: bib2.tem
+		TilesetFilenames:
+			SNOW: bib2.sno
+			DESERT: bib2.des
+		Length: *
+	fusion-icon:
+		Filename: fusion-cameo.png
+
 apwr:
 	fusion-icon:
 		Filename: fusion-cameo.png

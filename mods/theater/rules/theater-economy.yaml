@@ -104,8 +104,10 @@ bank:
 #     banks and the spectacle units all add drain). One Fusion replaces several power plants.
 fusion:
 	Inherits: APWR
+	# Bespoke fusion-reactor body instead of the stock power plant (APWR already uses WithSpriteBody, so
+	# the image swap + fusionbody sequences are all that's needed). 3x3 footprint, matching render scale.
 	RenderSprites:
-		Image: apwr
+		Image: fusionbody
 	Buildable:
 		Queue: Building
 		BuildPaletteOrder: 139
