@@ -28,3 +28,11 @@ World:
 Player:
 	ProvidesPrerequisiteOnEra:
 		Prerequisites: era.1, era.2, era.3, era.4
+	# Make the living world MATTER: civilians wandering within 6 cells of your buildings are a tax base,
+	# paying a little cash every ~10s (capped). So holding populated ground is worth something, and because
+	# the population grows over the eras, that populated ground is worth more as the match goes on.
+	CivilianTaxBase:
+		Interval: 250
+		Radius: 6c0
+		CashPerCivilian: 5
+		MaxCivilians: 20
