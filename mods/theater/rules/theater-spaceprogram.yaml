@@ -67,6 +67,15 @@ space.orbital:
 		Image: dome
 	ProvidesPrerequisite@self:
 
+# --- Science victory: replace the stock conquest-only win with one that ALSO wins by completing the Space
+#     Program (the OrbitalPrerequisite) and holding a launch site (Theater Command) for the countdown. The
+#     conquest win is folded into the same objective, so normal matches still end exactly as before. ---
+Player:
+	-ConquestVictoryConditions:
+	SpaceVictoryConditions:
+		OrbitalPrerequisite: space.orbital
+		HoldDuration: 7500
+
 # --- Orbital Lance delivery: a single high-altitude inbound carrying the OrbitalLance kinetic strike
 #     (theater-strike.yaml). Clones the verified strike.brahmos (BADR.Bomber single-warhead delivery). ---
 strike.orbital:

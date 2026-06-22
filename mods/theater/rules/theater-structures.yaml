@@ -47,3 +47,6 @@ THCOM:
 	# Produces only non-occupying capability actors, so no exit/placement is needed.
 	Production:
 		Produces: Command
+	# Launch site for the science victory: the Space-Program countdown only runs while a Theater Command
+	# stands, so the enemy can stall a science win by destroying it (see SpaceVictoryConditions).
+	SpaceVictoryLaunchSite:
