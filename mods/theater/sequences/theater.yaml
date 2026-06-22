@@ -237,6 +237,22 @@ fusionbody:
 	fusion-icon:
 		Filename: fusion-cameo.png
 
+# Bespoke Theater Command building body (forward command post — control tower, comms dish, antenna masts).
+# DOME-based (2x2 + bib), so reuses the dome's bib3; the image swap + these sequences are all that's needed.
+thcombody:
+	idle:
+		Filename: thcombody.png
+	make:
+		Filename: thcombody.png
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+	thcom-icon:
+		Filename: thcom-cameo.png
+
 apwr:
 	fusion-icon:
 		Filename: fusion-cameo.png

@@ -8,13 +8,16 @@
 
 THCOM:
 	Inherits: DOME
+	# Bespoke forward-command-post body instead of the radar dome (DOME already uses WithSpriteBody, so the
+	# image swap + thcombody sequences are all that's needed). 2x2 footprint, rendered at matching DOME scale.
 	RenderSprites:
-		Image: dome
+		Image: thcombody
 	Buildable:
 		Queue: Building
 		BuildPaletteOrder: 92
 		Prerequisites: fact, ~techlevel.medium
 		Description: actor-thcom.description
+		Icon: thcom-icon
 	Tooltip:
 		Name: actor-thcom.name
 	ParatroopersPower@coord:
