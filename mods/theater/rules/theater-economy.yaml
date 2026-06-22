@@ -59,11 +59,17 @@ alloyex:
 
 # --- Bank: a pure ECONOMY building (no military function) — strong passive income, stackable. The core
 #     "invest in economy vs army" decision: out-economy your opponent by building banks, then upgrade them
-#     with the Economy Network. Inherits the silo (storage + body); custom body is a later art pass.
+#     with the Economy Network. Inherits the silo for storage + footprint, but now wears a BESPOKE building
+#     body (a columned institution) instead of the silo tank, so it no longer looks like a resource silo.
 bank:
 	Inherits: SILO
 	RenderSprites:
-		Image: silo
+		Image: bankbody
+	# SILO strips WithSpriteBody and renders a fill-level silo body; restore a plain static body on the
+	# custom bank sprite and drop the silo-specific fill body + storage pips.
+	WithSpriteBody:
+	-WithResourceLevelSpriteBody:
+	-WithResourceStoragePipsDecoration:
 	Buildable:
 		Queue: Building
 		BuildPaletteOrder: 138

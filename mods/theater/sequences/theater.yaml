@@ -166,6 +166,24 @@ silo:
 	bank-icon:
 		Filename: bank-cameo.png
 
+# Bespoke Bank building body (single-frame Blender render). idle = the static building; make reuses it
+# (instant build-up); bank-icon re-homed here since the bank's RenderSprites Image is now bankbody.
+bankbody:
+	idle:
+		Filename: bankbody.png
+	make:
+		Filename: bankbody.png
+	# Reuse the silo's minibib (1x1 foundation patch) so the bank still grounds onto the terrain.
+	bib:
+		TilesetFilenames:
+			SNOW: mbSILO.sno
+			INTERIOR: mbSILO.int
+			TEMPERAT: mbSILO.tem
+			DESERT: mbSILO.des
+		Length: *
+	bank-icon:
+		Filename: bank-cameo.png
+
 apwr:
 	fusion-icon:
 		Filename: fusion-cameo.png
