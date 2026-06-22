@@ -264,6 +264,9 @@ Player:
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
+			space.launch: 1
+			space.satellites: 1
+			space.orbital: 1
 			alloyex: 3
 			bank: 3
 			fusion: 2
@@ -303,6 +306,9 @@ Player:
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
+			space.launch: 1
+			space.satellites: 1
+			space.orbital: 1
 			alloyex: 3
 			bank: 3
 			fusion: 2
@@ -344,6 +350,9 @@ Player:
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
+			space.launch: 1
+			space.satellites: 1
+			space.orbital: 1
 			alloyex: 3
 			bank: 3
 			fusion: 2
@@ -383,6 +392,9 @@ Player:
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
+			space.launch: 1
+			space.satellites: 1
+			space.orbital: 1
 			alloyex: 3
 			bank: 3
 			fusion: 2
@@ -424,6 +436,9 @@ Player:
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
+			space.launch: 1
+			space.satellites: 1
+			space.orbital: 1
 			alloyex: 3
 			bank: 3
 			fusion: 2
@@ -463,6 +478,9 @@ Player:
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
+			space.launch: 1
+			space.satellites: 1
+			space.orbital: 1
 			alloyex: 3
 			bank: 3
 			fusion: 2
@@ -504,6 +522,9 @@ Player:
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
+			space.launch: 1
+			space.satellites: 1
+			space.orbital: 1
 			alloyex: 3
 			bank: 3
 			fusion: 2
@@ -543,6 +564,9 @@ Player:
 			age.information: 1
 			age.autonomous: 1
 			age.orbital: 1
+			space.launch: 1
+			space.satellites: 1
+			space.orbital: 1
 			alloyex: 3
 			bank: 3
 			fusion: 2

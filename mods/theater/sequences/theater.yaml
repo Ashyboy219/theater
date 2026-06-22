@@ -158,6 +158,13 @@ dome:
 		Filename: research-maneuver-cameo.png
 	research-fortress-icon:
 		Filename: research-fortress-cameo.png
+	# Space Program investment track (Launch / Satellites / Orbital).
+	space-launch-icon:
+		Filename: space-launch-cameo.png
+	space-satellites-icon:
+		Filename: space-satellites-cameo.png
+	space-orbital-icon:
+		Filename: space-orbital-cameo.png
 
 # 4X economy-building cameos keyed under the silo body (alloyex/bank reuse it) and the apwr body (fusion).
 silo:

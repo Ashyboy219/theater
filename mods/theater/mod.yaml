@@ -121,6 +121,7 @@ Rules:
 	theater|rules/theater-spectacle.yaml
 	theater|rules/theater-flagships.yaml
 	theater|rules/theater-livingworld.yaml
+	theater|rules/theater-spaceprogram.yaml
 	# Cameo icon assignments load LAST so Buildable.Icon merges onto each unit's complete definition
 	# (keeping its Description reference intact — see the visual-identity pass).
 	theater|rules/theater-cameos.yaml

@@ -180,6 +180,8 @@ actor-thcom =
     .usaair-description = Vector a strike jet along a chosen heading for a precision bomb run on the target area.
     .usanet-name = Common Operating Picture
     .usanet-description = Fuse the sensor network into a satellite sweep, revealing the battlefield for a short window.
+    .spacesat-name = Satellite Sweep
+    .spacesat-description = Your reconnaissance satellites pass overhead, revealing the whole map for a window. Unlocked by the Space Program.
     .rusbarrage-name = Saturation Barrage
     .rusbarrage-description = Call a timed off-map rocket-artillery strike onto a target area.
     .chnswarm-name = Drone Swarm Strike
@@ -440,6 +442,17 @@ actor-fusion =
 actor-econ-network =
     .name = Research: Economy Network
     .description = Boosts the income of ALL your economy buildings (banks and alloy extractors) by 30%. Invest in economy infrastructure, then upgrade it. Researched at the Research Lab.
+
+## Space Program — a late-game intel investment track (needs a Tech Center)
+actor-space-launch =
+    .name = Space Program: Launch Complex
+    .description = STAGE 1 of the Space Program. The entry investment — establishes your launch capability and unlocks Recon Satellites. Needs a Tech Center.
+actor-space-satellites =
+    .name = Space Program: Recon Satellites
+    .description = STAGE 2. Puts a satellite constellation in orbit, unlocking a Satellite Sweep power on your Theater Command that reveals the whole map for a window. Needs the Launch Complex.
+actor-space-orbital =
+    .name = Space Program: Orbital Command
+    .description = STAGE 3 (capstone). A permanent orbital-surveillance network — your whole army sees 25% farther for the rest of the match. Eyes everywhere. Needs Recon Satellites.
 
 ## ============================ 4X: Spectacle units (apex payoff) ============================
 actor-leviathan =

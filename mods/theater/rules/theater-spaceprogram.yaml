@@ -1,0 +1,116 @@
+# ============================================================================
+# THEATER — Space Program: a late-game INVESTMENT TRACK (the "invest in a space program" pillar of the
+# Civilization-but-realtime vision). Three buy-once stages in the Theater Command's Command queue, each
+# gating the next, escalating from a launch site to orbital dominance. The payoff is INTEL/eyes-in-the-sky
+# (not raw firepower), so it deepens the strategy without power-creeping the combat stack:
+#   1. Launch Complex   — the entry investment; unlocks the program.
+#   2. Recon Satellites — a periodic satellite sweep that reveals the map (GpsPower on the Theater Command).
+#   3. Orbital Command  — capstone: a permanent orbital-surveillance net (+25% army-wide vision).
+# Reuses the proven buy-once Command-queue + condition-grant patterns. All data-only, deterministic.
+# Gated on tech.center so it's a genuine late-game commitment. (A future pass can add a space "victory".)
+# ============================================================================
+
+space.launch:
+	Interactable:
+	Tooltip:
+		Name: actor-space-launch.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 80
+		BuildLimit: 1
+		BuildDuration: 600
+		BuildDurationModifier: 100
+		Prerequisites: tech.center
+		Description: actor-space-launch.description
+		Icon: space-launch-icon
+	Valued:
+		Cost: 1500
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:
+
+space.satellites:
+	Interactable:
+	Tooltip:
+		Name: actor-space-satellites.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 81
+		BuildLimit: 1
+		BuildDuration: 700
+		BuildDurationModifier: 100
+		Prerequisites: space.launch
+		Description: actor-space-satellites.description
+		Icon: space-satellites-icon
+	Valued:
+		Cost: 2000
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:
+
+space.orbital:
+	Interactable:
+	Tooltip:
+		Name: actor-space-orbital.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 82
+		BuildLimit: 1
+		BuildDuration: 800
+		BuildDurationModifier: 100
+		Prerequisites: space.satellites
+		Description: actor-space-orbital.description
+		Icon: space-orbital-icon
+	Valued:
+		Cost: 2500
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:
+
+# --- Recon Satellites: a satellite sweep that reveals the map, added to the Theater Command (gated on the
+#     satellites stage). Clones the verified USA-doctrine GpsPower. ---
+THCOM:
+	GpsPower@spacesat:
+		Prerequisites: space.satellites
+		Icon: gps
+		ChargeInterval: 7500
+		Name: actor-thcom.spacesat-name
+		Description: actor-thcom.spacesat-description
+		RevealDelay: 375
+		LaunchSpeechNotification: SatelliteLaunched
+		LaunchTextNotification: notification-satellite-launched
+		DisplayTimerRelationships: Ally, Neutral, Enemy
+		SupportPowerPaletteOrder: 62
+
+# --- Orbital Command capstone: a permanent orbital-surveillance net — +25% vision army-wide while held. ---
+^Vehicle:
+	GrantConditionOnPrerequisite@space-orbital:
+		Condition: space-orbital
+		Prerequisites: space.orbital
+	RevealsShroudMultiplier@space-orbital:
+		RequiresCondition: space-orbital
+		Modifier: 125
+
+^Infantry:
+	GrantConditionOnPrerequisite@space-orbital:
+		Condition: space-orbital
+		Prerequisites: space.orbital
+	RevealsShroudMultiplier@space-orbital:
+		RequiresCondition: space-orbital
+		Modifier: 125
+
+^Ship:
+	GrantConditionOnPrerequisite@space-orbital:
+		Condition: space-orbital
+		Prerequisites: space.orbital
+	RevealsShroudMultiplier@space-orbital:
+		RequiresCondition: space-orbital
+		Modifier: 125
+
+^Plane:
+	GrantConditionOnPrerequisite@space-orbital:
+		Condition: space-orbital
+		Prerequisites: space.orbital
+	RevealsShroudMultiplier@space-orbital:
+		RequiresCondition: space-orbital
+		Modifier: 125
