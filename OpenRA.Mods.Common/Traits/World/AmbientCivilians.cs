@@ -82,6 +82,17 @@ namespace OpenRA.Mods.Common.Traits
 		// so it is safe to call from the unsynced render tick — it never touches the synced spawn bookkeeping.
 		public int Population => civilians.Count(a => a.IsInWorld && !a.IsDead);
 
+		// The target living population at a given era: the baseline plus GrowthPerEra per era, capped by
+		// MaxPopulation (0 = uncapped). Pure (depends only on the trait's Info), so it is unit-testable.
+		public int TargetPopulation(int era)
+		{
+			var target = info.Count + (info.GrowthPerEra > 0 ? info.GrowthPerEra * era : 0);
+			if (info.MaxPopulation > 0)
+				target = Math.Min(target, info.MaxPopulation);
+
+			return target;
+		}
+
 		void INotifyCreated.Created(Actor self)
 		{
 			// Optional: drives population growth. If absent, the population is seeded once and never grows.
@@ -104,9 +115,7 @@ namespace OpenRA.Mods.Common.Traits
 			lastEra = era;
 
 			// The target swells with each era; war casualties below it are replenished at the next era boundary.
-			var target = info.Count + (info.GrowthPerEra > 0 ? info.GrowthPerEra * era : 0);
-			if (info.MaxPopulation > 0)
-				target = Math.Min(target, info.MaxPopulation);
+			var target = TargetPopulation(era);
 
 			// Forget civilians that have died or left the world so the deficit reflects the living population.
 			civilians.RemoveAll(a => a.IsDead || !a.IsInWorld);
