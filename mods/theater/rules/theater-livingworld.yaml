@@ -22,6 +22,9 @@ World:
 		# real population centres — and each is a place worth holding for the CivilianTaxBase income below.
 		Settlements: 6
 		SettlementRadius: 7
+		# Anchor each town with a capturable Hospital (stock neutral tech building) — a Civ-style "city-state":
+		# capture it for healing + vision, making the towns real objectives. Spawned only where its 2x2 fits.
+		SettlementStructure: hosp
 	# Global real-time timeline — the world advances through escalating eras as the match runs, shown in a
 	# HUD readout. "Civilization but real-time": a shared sense of time moving forward (distinct from the
 	# player-bought ages). ~25 ticks/sec, so the defaults below land eras roughly every 6 minutes.

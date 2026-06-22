@@ -49,6 +49,11 @@ namespace OpenRA.Mods.Common.Traits
 		[Desc("Radius in cells around each settlement centre within which its civilians spawn.")]
 		public readonly int SettlementRadius = 6;
 
+		[ActorReference]
+		[Desc("Optional capturable structure to anchor each settlement — a town centre / 'city-state' objective,",
+			"spawned neutral if its footprint fits there. Empty = no town centre, just the civilian cluster.")]
+		public readonly string SettlementStructure = "";
+
 		[Desc("Maximum attempts to find a valid spawn cell per civilian before giving up on that one.")]
 		public readonly int MaxTries = 50;
 
@@ -131,16 +136,30 @@ namespace OpenRA.Mods.Common.Traits
 			if (settlements.Count > 0 || info.Settlements <= 0)
 				return;
 
+			// Optional capturable town centre that anchors each settlement — a "city-state" worth fighting for.
+			ActorInfo centreInfo = null;
+			BuildingInfo centreBuilding = null;
+			if (!string.IsNullOrEmpty(info.SettlementStructure)
+				&& world.Map.Rules.Actors.TryGetValue(info.SettlementStructure.ToLowerInvariant(), out centreInfo))
+				centreBuilding = centreInfo.TraitInfoOrDefault<BuildingInfo>();
+
+			var owner = world.WorldActor.Owner;
+
 			for (var i = 0; i < info.Settlements; i++)
 			{
 				for (var n = 0; n < info.MaxTries; n++)
 				{
 					var p = world.Map.ChooseRandomCell(world.SharedRandom);
-					if (info.ValidTerrain.Contains(world.Map.GetTerrainInfo(p).Type))
-					{
-						settlements.Add(p);
-						break;
-					}
+					if (!info.ValidTerrain.Contains(world.Map.GetTerrainInfo(p).Type))
+						continue;
+
+					settlements.Add(p);
+
+					// Plant the town centre here if one is configured and its footprint actually fits.
+					if (centreBuilding != null && world.CanPlaceBuilding(p, centreInfo, centreBuilding, null))
+						world.CreateActor(info.SettlementStructure, [new OwnerInit(owner), new LocationInit(p)]);
+
+					break;
 				}
 			}
 		}
