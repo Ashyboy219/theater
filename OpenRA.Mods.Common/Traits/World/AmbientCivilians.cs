@@ -9,6 +9,7 @@
  */
 #endregion
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using OpenRA.Traits;
@@ -16,17 +17,27 @@ using OpenRA.Traits;
 namespace OpenRA.Mods.Common.Traits
 {
 	[TraitLocation(SystemActors.World)]
-	[Desc("Populates the map with ambient, wandering civilians at game start for a \"living world\" feel.",
+	[Desc("Populates the map with ambient, wandering civilians for a \"living world\" feel, and grows the",
+		"population as the GameTimeline advances through its eras — \"Civilization but real-time\": the world",
+		"fills with more life as time moves forward, and war casualties are replenished up to the target.",
 		"Deterministic: uses only the synced world RNG and spawns via a frame-end task, so it is desync-safe.",
 		"The spawned civilian actor types should carry a Wanders trait so they actually move around.")]
 	public class AmbientCiviliansInfo : TraitInfo
 	{
 		[ActorReference]
 		[Desc("Civilian actor types to spawn (one is chosen at random per civilian).")]
-		public readonly string[] Types = System.Array.Empty<string>();
+		public readonly string[] Types = [];
 
-		[Desc("How many civilians to spawn at game start.")]
+		[Desc("Baseline population — the target number of living civilians from game start.")]
 		public readonly int Count = 0;
+
+		[Desc("How much the target population grows for each era the world's GameTimeline advances,",
+			"so the map gets busier as the match goes on. 0 keeps the population flat. Requires a GameTimeline",
+			"on the world; with none, the population is simply seeded once at Count (the classic behaviour).")]
+		public readonly int GrowthPerEra = 0;
+
+		[Desc("Hard cap on the target population regardless of era. 0 means no cap.")]
+		public readonly int MaxPopulation = 0;
 
 		[Desc("Terrain types civilians may spawn on.")]
 		public readonly HashSet<string> ValidTerrain = ["Clear", "Road", "Rough", "Beach"];
@@ -37,24 +48,50 @@ namespace OpenRA.Mods.Common.Traits
 		public override object Create(ActorInitializer init) { return new AmbientCivilians(this); }
 	}
 
-	public class AmbientCivilians : ITick
+	public class AmbientCivilians : INotifyCreated, ITick
 	{
 		readonly AmbientCiviliansInfo info;
-		bool spawned;
+		readonly List<Actor> civilians = [];
+
+		GameTimeline timeline;
+		int lastEra = -1;
 
 		public AmbientCivilians(AmbientCiviliansInfo info)
 		{
 			this.info = info;
 		}
 
+		void INotifyCreated.Created(Actor self)
+		{
+			// Optional: drives population growth. If absent, the population is seeded once and never grows.
+			// `self` IS the world actor (this trait lives on SystemActors.World, as does GameTimeline), so we
+			// query it directly — self.World.WorldActor isn't assigned yet while the world actor is initialising.
+			timeline = self.TraitOrDefault<GameTimeline>();
+		}
+
 		void ITick.Tick(Actor self)
 		{
-			if (spawned)
+			if (info.Types.Length == 0 || info.Count <= 0)
 				return;
 
-			spawned = true;
+			// Only re-evaluate the population when the world reaches a new era (and once at the very start,
+			// since lastEra begins at -1). Between eras the existing wandering civilians just live their lives.
+			var era = timeline?.CurrentEra ?? 0;
+			if (era == lastEra)
+				return;
 
-			if (info.Count <= 0 || info.Types.Length == 0)
+			lastEra = era;
+
+			// The target swells with each era; war casualties below it are replenished at the next era boundary.
+			var target = info.Count + (info.GrowthPerEra > 0 ? info.GrowthPerEra * era : 0);
+			if (info.MaxPopulation > 0)
+				target = Math.Min(target, info.MaxPopulation);
+
+			// Forget civilians that have died or left the world so the deficit reflects the living population.
+			civilians.RemoveAll(a => a.IsDead || !a.IsInWorld);
+
+			var deficit = target - civilians.Count;
+			if (deficit <= 0)
 				return;
 
 			// Spawn from a frame-end task so we don't mutate the actor collection mid-tick. All randomness
@@ -62,14 +99,14 @@ namespace OpenRA.Mods.Common.Traits
 			self.World.AddFrameEndTask(w =>
 			{
 				var owner = w.WorldActor.Owner;
-				for (var i = 0; i < info.Count; i++)
+				for (var i = 0; i < deficit; i++)
 				{
 					var cell = ChooseCell(w);
 					if (cell == null)
 						continue;
 
 					var type = info.Types[w.SharedRandom.Next(info.Types.Length)];
-					w.CreateActor(type, [new OwnerInit(owner), new LocationInit(cell.Value)]);
+					civilians.Add(w.CreateActor(type, [new OwnerInit(owner), new LocationInit(cell.Value)]));
 				}
 			});
 		}
