@@ -108,6 +108,9 @@ fusion:
 	# the image swap + fusionbody sequences are all that's needed). 3x3 footprint, matching render scale.
 	RenderSprites:
 		Image: fusionbody
+	# The bespoke body has no `dead` frames (unlike stock apwr), so drop the inherited death animation —
+	# otherwise it references undefined sequences when a reactor is destroyed. Standard explosion effects remain.
+	-WithDeathAnimation:
 	Buildable:
 		Queue: Building
 		BuildPaletteOrder: 139
