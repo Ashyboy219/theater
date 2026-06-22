@@ -173,7 +173,7 @@ checkbox-devunlock =
 ## Structures
 actor-thcom =
     .name = Theater Command
-    .description = Forward planning HQ. Provides radar, hosts the Command queue, and calls in a combined-arms paradrop. Projects a Command & Control aura: your vehicles and infantry near it hit 10% harder — worth defending and a prime target for the enemy.
+    .description = Forward planning HQ. Provides radar, hosts the Command queue, calls in a combined-arms paradrop, and (with the Space Program) fires the Orbital Lance. It is also your science-victory LAUNCH SITE — the win countdown only runs while one stands. Projects a Command & Control aura: nearby vehicles and infantry hit 10% harder. Defend it; it is the prime target for the enemy — destroy theirs to stall a science win.
     .para-name = Combined Paradrop
     .para-description = Drop a mixed rifle-and-rocket infantry squad onto any visible ground.
     .usaair-name = Sweep & Strike
@@ -445,16 +445,17 @@ actor-econ-network =
     .name = Research: Economy Network
     .description = Boosts the income of ALL your economy buildings (banks and alloy extractors) by 30%. Invest in economy infrastructure, then upgrade it. Researched at the Research Lab.
 
-## Space Program — a late-game intel investment track (needs a Tech Center)
+## Space Program — a late-game investment track that pays off in intel, firepower, AND an alternate win.
+## Its stages unlock over real time (gated by the world eras), so it unfolds across a long game.
 actor-space-launch =
     .name = Space Program: Launch Complex
-    .description = STAGE 1 of the Space Program. The entry investment — establishes your launch capability and unlocks Recon Satellites. Needs a Tech Center.
+    .description = STAGE 1 of the Space Program — the first step on the road to a SCIENCE VICTORY. Establishes your launch capability and unlocks Recon Satellites. Needs a Tech Center (and the Escalation era).
 actor-space-satellites =
     .name = Space Program: Recon Satellites
-    .description = STAGE 2. Puts a satellite constellation in orbit, unlocking a Satellite Sweep power on your Theater Command that reveals the whole map for a window. Needs the Launch Complex.
+    .description = STAGE 2. Puts a satellite constellation in orbit, unlocking a Satellite Sweep power on your Theater Command that reveals the whole map for a window. Needs the Launch Complex (and the Open Conflict era).
 actor-space-orbital =
     .name = Space Program: Orbital Command
-    .description = STAGE 3 (capstone). A permanent orbital-surveillance network — your whole army sees 25% farther for the rest of the match. Eyes everywhere. Needs Recon Satellites.
+    .description = STAGE 3 (capstone). Three payoffs: a permanent orbital-surveillance net (your whole army sees 25% farther), the ORBITAL LANCE on your Theater Command (a devastating kinetic strike from orbit), and a SCIENCE VICTORY — once you complete the program, hold a Theater Command for 5 minutes and you WIN without conquest. Needs Recon Satellites (and the Total War era).
 
 ## ============================ 4X: Spectacle units (apex payoff) ============================
 actor-leviathan =
