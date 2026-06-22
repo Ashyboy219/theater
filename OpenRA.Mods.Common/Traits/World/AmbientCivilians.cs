@@ -61,6 +61,10 @@ namespace OpenRA.Mods.Common.Traits
 			this.info = info;
 		}
 
+		// Live count of the civilians this trait is keeping alive, for a HUD readout. Read-only (no mutation),
+		// so it is safe to call from the unsynced render tick — it never touches the synced spawn bookkeeping.
+		public int Population => civilians.Count(a => a.IsInWorld && !a.IsDead);
+
 		void INotifyCreated.Created(Actor self)
 		{
 			// Optional: drives population growth. If absent, the population is seeded once and never grows.
