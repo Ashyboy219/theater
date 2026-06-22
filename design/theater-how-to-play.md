@@ -12,6 +12,11 @@ its tooltip; for the real-world systems behind them, see the [Codex](theater-cod
    a Command & Control aura (your nearby units hit harder).
 4. Build a **Research Lab (RLAB)** → unlocks the **research tree** and **age advancement** in that same tab.
 5. Climb: **research upgrades → advance ages → build Alloy Extractors → bank alloys → field apex units.**
+6. **Two ways to win:** crush the enemy (conquest), **or** invest in the **Space Program** and complete it to
+   win by **science** — without destroying their base.
+
+The map is **alive**: civilian **towns** grow over time, holding populated ground feeds your economy, and a
+global **world clock** escalates the war the longer it runs. THEATER is "Civilization, but real-time."
 
 ## The strategic tab (your "Command" queue)
 
@@ -47,14 +52,56 @@ double-size, faction-gated, BuildLimit 2 each: the **Leviathan** (naval dreadnou
 fortress), **Archangel** (heavy gunship), and **Tempest** (rocket artillery). They are the "look at this HUGE
 thing" reward for climbing the whole ladder.
 
+## The living world (territory & towns)
+
+The map isn't empty scenery — it's populated, and the population *matters*:
+
+- **Civilians live in towns.** The map seeds a handful of **settlements** — clusters of civilians who wander
+  and flee from danger. The world's **population grows over time** (shown on the world clock as `Pop N`), so
+  the map gets busier as the match goes on.
+- **Populated ground is income.** Civilians within a few cells of *your* buildings form a **tax base** — a
+  steady trickle of cash. The more populated the ground you hold, the more it pays — and because the
+  population grows over the eras, that ground is worth more later.
+- **Towns are objectives.** Each town is anchored by a capturable **Hospital** (a neutral "city-state").
+  Capture it with an engineer for healing + vision — and, because it's now *your* building, the town's
+  civilians start paying *you*. There's a real reason to push into the map, not just deathball the enemy base.
+
+## The world timeline & escalation
+
+Separate from the *ages you buy*, there's a **global world clock** that advances on its own:
+
+- The war moves through eras — **Mobilization → Escalation → Open Conflict → Total War → Final Hour** — shown
+  top-center with a running timer and the world population.
+- Each era, **combat gets deadlier**: every side's mobile units gain a small, *symmetric* firepower bump
+  (it's the same for everyone, so it's a pace knob, not an advantage). Late-game battles resolve faster — the
+  longer a game drags, the more decisive each fight becomes. Don't expect to turtle forever.
+
+## The Space Program — and winning by science
+
+A late-game **investment track**, bought in the Command queue (gated by the world eras, so it unfolds over
+real time):
+
+1. **Launch Complex** → enters the program.
+2. **Recon Satellites** → a periodic satellite sweep that reveals the whole map.
+3. **Orbital Command** → a permanent army-wide vision boost **and** unlocks the **Orbital Lance** on your
+   Theater Command: a devastating kinetic strike dropped from orbit onto any target — the capstone payoff.
+
+**Science victory:** completing the Space Program (Orbital Command) and **holding a Theater Command alive for
+5 minutes** wins the game *without* conquest. The launch is **broadcast to everyone** with a countdown, so
+opponents know to race in and destroy your Theater Command to stall it (the timer resets if they do). It's a
+real, contestable alternative to fighting it out — invest in tech and survive the launch, or out-fight them.
+
 ## Key decisions that make games diverge
 
+- **Conquest or science?** Fight to destroy the enemy, or invest in the Space Program and win by surviving
+  the launch. Committing to science means a long, defended build — and a target on your Theater Command.
 - Your **faction** and its **doctrine fork** — national identity.
 - **Mass vs Precision** — quantity or quality.
 - **War Economy vs Industrial Base** — guns now, or out-economy later.
 - **Maneuver vs Fortress** — mobile aggression, or an entrenched kill-zone.
 - **How fast to climb ages** vs spend on army now — tempo.
 - **Where to fight** — near your THCOM for the C2 bonus (defend), or push out (you give it up).
+- **Which towns to hold** — populated ground pays, and town hospitals are healing + income objectives.
 
 Two games with different choices play very differently — that's the point.
 
@@ -65,3 +112,8 @@ Two games with different choices play very differently — that's the point.
   aura. Defend it; hunt the enemy's.
 - The **ages** buff *everyone* who advances — falling behind on age is falling behind on raw power.
 - Research forks are **permanent** — commit to a coherent build rather than splitting.
+- Park your base near a **town** — its civilians pay you tax, and a captured **hospital** heals your army.
+- Watch the system chat for an **orbital launch warning** — if an enemy is going for the science win, rush
+  their **Theater Command** and the countdown resets. Likewise, defend yours while *you* launch.
+- The longer a game runs, the **deadlier** combat gets (era escalation) — don't count on out-lasting a
+  stalemate; later fights are more decisive.
