@@ -50,9 +50,13 @@ namespace OpenRA.Mods.Common.Traits
 		public readonly int SettlementRadius = 6;
 
 		[ActorReference]
-		[Desc("Optional capturable structure to anchor each settlement — a town centre / 'city-state' objective,",
+		[Desc("Optional capturable structure to anchor a settlement — a town centre / 'city-state' objective,",
 			"spawned neutral if its footprint fits there. Empty = no town centre, just the civilian cluster.")]
 		public readonly string SettlementStructure = "";
+
+		[Desc("How many settlements get a SettlementStructure (town centre). 0 = all of them. Set lower than",
+			"Settlements to make the capturable centres rarer, contested objectives and to vary the towns.")]
+		public readonly int SettlementStructureCount = 0;
 
 		[Desc("Maximum attempts to find a valid spawn cell per civilian before giving up on that one.")]
 		public readonly int MaxTries = 50;
@@ -144,6 +148,8 @@ namespace OpenRA.Mods.Common.Traits
 				centreBuilding = centreInfo.TraitInfoOrDefault<BuildingInfo>();
 
 			var owner = world.WorldActor.Owner;
+			var centresPlaced = 0;
+			var maxCentres = info.SettlementStructureCount > 0 ? info.SettlementStructureCount : info.Settlements;
 
 			for (var i = 0; i < info.Settlements; i++)
 			{
@@ -155,9 +161,14 @@ namespace OpenRA.Mods.Common.Traits
 
 					settlements.Add(p);
 
-					// Plant the town centre here if one is configured and its footprint actually fits.
-					if (centreBuilding != null && world.CanPlaceBuilding(p, centreInfo, centreBuilding, null))
+					// Plant a town centre at this settlement if one is configured, we are still under the cap,
+					// and its footprint actually fits. Settlements past the cap are people-only.
+					if (centreBuilding != null && centresPlaced < maxCentres
+						&& world.CanPlaceBuilding(p, centreInfo, centreBuilding, null))
+					{
 						world.CreateActor(info.SettlementStructure, [new OwnerInit(owner), new LocationInit(p)]);
+						centresPlaced++;
+					}
 
 					break;
 				}
