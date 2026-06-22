@@ -661,6 +661,16 @@ Player:
 					Attractiveness: -5
 					TargetMetric: None
 					CheckRadius: 8c0
+			# Space Program capstone — the AI drops the Orbital Lance on the densest enemy structure cluster.
+			space-orbital-strike:
+				OrderName: OrbitalStrike
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
 
 	# --- Air-squad classification unchanged (no doctrine-unlocked unit is an aircraft). ---
 	SquadManagerBotModule@rush:

@@ -67,8 +67,20 @@ space.orbital:
 		Image: dome
 	ProvidesPrerequisite@self:
 
-# --- Recon Satellites: a satellite sweep that reveals the map, added to the Theater Command (gated on the
-#     satellites stage). Clones the verified USA-doctrine GpsPower. ---
+# --- Orbital Lance delivery: a single high-altitude inbound carrying the OrbitalLance kinetic strike
+#     (theater-strike.yaml). Clones the verified strike.brahmos (BADR.Bomber single-warhead delivery). ---
+strike.orbital:
+	Inherits: BADR.Bomber
+	RenderSprites:
+		Image: mig
+	AmmoPool:
+		Ammo: 1
+	Armament:
+		Weapon: OrbitalLance
+
+# --- The Theater Command hosts the two space-program support powers: Satellites = eyes (recon sweep),
+#     Orbital Command = the capstone STRIKE. So the space race finally pays off in raw power, not just intel,
+#     but only at the very top of the longest tech path in the game (and on a long charge). ---
 THCOM:
 	GpsPower@spacesat:
 		Prerequisites: space.satellites
@@ -81,6 +93,32 @@ THCOM:
 		LaunchTextNotification: notification-satellite-launched
 		DisplayTimerRelationships: Ally, Neutral, Enemy
 		SupportPowerPaletteOrder: 62
+	# Orbital Lance — the Space Program capstone. A single devastating kinetic strike dropped from orbit on
+	# any visible target. Gated on the Orbital Command stage; long charge; telegraphed (beacon + camera), so
+	# it is decisive but counterable. The payoff for completing the whole space track.
+	AirstrikePower@orbitalstrike:
+		OrderName: OrbitalStrike
+		Prerequisites: space.orbital
+		Icon: parabombs
+		ChargeInterval: 9000
+		Name: actor-thcom.orbital-name
+		Description: actor-thcom.orbital-description
+		SelectTargetSpeechNotification: SelectTarget
+		SelectTargetTextNotification: notification-select-target
+		UnitType: strike.orbital
+		SquadSize: 1
+		SquadOffset: 1792,1792,0
+		QuantizedFacings: 8
+		CameraActor: camera
+		CameraRemoveDelay: 150
+		DisplayBeacon: true
+		BeaconPoster: pbmbicon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		SupportPowerPaletteOrder: 63
 
 # --- Orbital Command capstone: a permanent orbital-surveillance net — +25% vision army-wide while held. ---
 ^Vehicle:

@@ -192,6 +192,8 @@ actor-thcom =
     .uk-intel-description = Fly a reconnaissance aircraft across the target lane, revealing it.
     .missile-name = Cruise-Missile Strike
     .missile-description = Call in a precision long-range cruise-missile strike on any visible target area.
+    .orbital-name = Orbital Lance
+    .orbital-description = The Space Program capstone: drop a devastating kinetic strike from orbit onto any visible target. Unlocked by Orbital Command.
 
 ## Command capabilities — bought from the Theater Command's Command queue (a sidebar tab).
 button-production-types-command-tooltip = Command Capabilities
