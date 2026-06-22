@@ -68,6 +68,7 @@ namespace OpenRA.Mods.Common.Traits
 
 		TechTree techTree;
 		int objectiveID = -1;
+		bool launching;
 
 		public SpaceVictoryConditions(Actor self, SpaceVictoryConditionsInfo svcInfo)
 		{
@@ -129,13 +130,41 @@ namespace OpenRA.Mods.Common.Traits
 
 			// The science-victory countdown — the same objective is also completed by holding a finished
 			// Space Program for HoldDuration, giving the 4X investment a real, alternative path to victory.
+			// It is broadcast to everyone so the science win is a tense, COUNTERABLE race: opponents are told
+			// to go destroy the launching player's Theater Command before the timer runs out.
 			if (Holding)
 			{
+				if (!launching)
+				{
+					launching = true;
+					Broadcast($"WARNING: {player.ResolvedPlayerName} has begun an orbital launch — destroy their Theater Command to stop it!");
+				}
+
+				if (TicksLeft == 1500)
+					Broadcast($"{player.ResolvedPlayerName}'s orbital launch: 1 minute to victory!");
+				else if (TicksLeft == 250)
+					Broadcast($"{player.ResolvedPlayerName}'s orbital launch: 10 seconds!");
+
 				if (--TicksLeft <= 0)
 					mo.MarkCompleted(player, objectiveID);
 			}
-			else if (info.ResetOnHoldLost)
-				TicksLeft = info.HoldDuration;
+			else
+			{
+				if (launching)
+				{
+					launching = false;
+					Broadcast($"{player.ResolvedPlayerName}'s orbital launch has been stalled.");
+				}
+
+				if (info.ResetOnHoldLost)
+					TicksLeft = info.HoldDuration;
+			}
+		}
+
+		void Broadcast(string text)
+		{
+			if (!info.SuppressNotifications)
+				TextNotificationsManager.AddSystemLine(text);
 		}
 
 		void INotifyTimeLimit.NotifyTimerExpired(Actor self)
