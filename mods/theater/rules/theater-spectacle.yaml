@@ -107,6 +107,11 @@ ARCHANGEL:
 	Inherits: MH60
 	RenderSprites:
 		Image: archangelbody
+	# archangelbody is a baked 128px gunship body with no stock `rotor`/`slow-rotor` sequence, so MH60's rotor
+	# overlays CRASH the moment it is built (the overlay animation is created regardless of its airborne
+	# condition). Drop them — a tiny stock rotor would be misplaced/wrong-scale on a 2x body anyway.
+	-WithIdleOverlay@ROTORAIR:
+	-WithIdleOverlay@ROTORGROUND:
 	Tooltip:
 		Name: actor-archangel.name
 	# Spends 100 banked alloys on build (gated by the alloys.stockpile threshold).
