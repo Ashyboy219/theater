@@ -67,6 +67,7 @@ namespace OpenRA.Mods.Common.Traits
 		public int TicksLeft;
 
 		TechTree techTree;
+		Player[] otherPlayers;
 		int objectiveID = -1;
 		bool launching;
 
@@ -110,23 +111,28 @@ namespace OpenRA.Mods.Common.Traits
 				mo.MarkFailed(player, objectiveID);
 
 			// Conquest win/loss, identical to ConquestVictoryConditions: win when every enemy is out, lose if one
-			// of them has already won. Players/relationships are fixed at game start so this stays consistent.
-			var allOthersLost = true;
-			var anyOtherWon = false;
-			foreach (var other in self.World.Players)
+			// of them has already won. Players/relationships are fixed at game start so we cache the opponents.
+			otherPlayers ??= self.World.Players.Where(p => !p.NonCombatant && !p.IsAlliedWith(player)).ToArray();
+
+			// GUARD (this is the bit StrategicVictoryConditions omits but ConquestVictoryConditions has): with no
+			// opponents at all — a solo/sandbox game — an empty loop would leave allOthersLost == true and instantly
+			// "win" on tick 1. Only run the conquest check when there is actually someone to defeat.
+			if (otherPlayers.Length > 0)
 			{
-				if (other.NonCombatant || other.IsAlliedWith(player))
-					continue;
+				var allOthersLost = true;
+				var anyOtherWon = false;
+				foreach (var other in otherPlayers)
+				{
+					allOthersLost = allOthersLost && other.WinState == WinState.Lost;
+					anyOtherWon = anyOtherWon || other.WinState == WinState.Won;
+				}
 
-				allOthersLost = allOthersLost && other.WinState == WinState.Lost;
-				anyOtherWon = anyOtherWon || other.WinState == WinState.Won;
+				if (allOthersLost)
+					mo.MarkCompleted(player, objectiveID);
+
+				if (anyOtherWon)
+					mo.MarkFailed(player, objectiveID);
 			}
-
-			if (allOthersLost)
-				mo.MarkCompleted(player, objectiveID);
-
-			if (anyOtherWon)
-				mo.MarkFailed(player, objectiveID);
 
 			// The science-victory countdown — the same objective is also completed by holding a finished
 			// Space Program for HoldDuration, giving the 4X investment a real, alternative path to victory.
