@@ -1,0 +1,123 @@
+# ============================================================================
+# THEATER — Total War escalation: the global era timeline made FELT on the battlefield.
+#
+# As the world's GameTimeline advances (theater-livingworld.yaml), combat grows steadily more
+# lethal — +4% firepower per era for every side's MOBILE combat units, cumulatively, so by the
+# "Final Hour" everyone hits ~+17% harder. It matches the era names (Escalation → Total War →
+# Final Hour) and gives "time as things move forward" real teeth: late battles resolve faster.
+#
+# DESIGN INTENT:
+#   - SYMMETRIC. Every player (and the AI) gets the same bonus, so this is a PACE knob, not a
+#     balance lever — it never advantages one faction. It stacks on top of the asymmetric
+#     doctrine firepower, but because it is the same for both sides it cancels in any duel.
+#   - OFFENCE ONLY. It is granted on ^Vehicle/^Infantry/^Plane/^Ship, NOT on ^Defense — so the
+#     escalating lethality tips late-game toward attackers breaking sieges rather than toward
+#     turtles entrenching. A deliberate anti-stalemate bias as the clock runs out.
+#   - DATA-ONLY + DETERMINISTIC. Reuses the proven condition-grant pattern (GrantConditionOnPrerequisite
+#     on the era.N tokens from ProvidesPrerequisiteOnEra + RequiresCondition FirepowerMultiplier).
+#     No new C#; the era timeline is tick-counted, so every client escalates identically.
+# ============================================================================
+
+^Vehicle:
+	GrantConditionOnPrerequisite@esc1:
+		Condition: escalation-1
+		Prerequisites: era.1
+	GrantConditionOnPrerequisite@esc2:
+		Condition: escalation-2
+		Prerequisites: era.2
+	GrantConditionOnPrerequisite@esc3:
+		Condition: escalation-3
+		Prerequisites: era.3
+	GrantConditionOnPrerequisite@esc4:
+		Condition: escalation-4
+		Prerequisites: era.4
+	FirepowerMultiplier@esc1:
+		RequiresCondition: escalation-1
+		Modifier: 104
+	FirepowerMultiplier@esc2:
+		RequiresCondition: escalation-2
+		Modifier: 104
+	FirepowerMultiplier@esc3:
+		RequiresCondition: escalation-3
+		Modifier: 104
+	FirepowerMultiplier@esc4:
+		RequiresCondition: escalation-4
+		Modifier: 104
+
+^Infantry:
+	GrantConditionOnPrerequisite@esc1:
+		Condition: escalation-1
+		Prerequisites: era.1
+	GrantConditionOnPrerequisite@esc2:
+		Condition: escalation-2
+		Prerequisites: era.2
+	GrantConditionOnPrerequisite@esc3:
+		Condition: escalation-3
+		Prerequisites: era.3
+	GrantConditionOnPrerequisite@esc4:
+		Condition: escalation-4
+		Prerequisites: era.4
+	FirepowerMultiplier@esc1:
+		RequiresCondition: escalation-1
+		Modifier: 104
+	FirepowerMultiplier@esc2:
+		RequiresCondition: escalation-2
+		Modifier: 104
+	FirepowerMultiplier@esc3:
+		RequiresCondition: escalation-3
+		Modifier: 104
+	FirepowerMultiplier@esc4:
+		RequiresCondition: escalation-4
+		Modifier: 104
+
+^Plane:
+	GrantConditionOnPrerequisite@esc1:
+		Condition: escalation-1
+		Prerequisites: era.1
+	GrantConditionOnPrerequisite@esc2:
+		Condition: escalation-2
+		Prerequisites: era.2
+	GrantConditionOnPrerequisite@esc3:
+		Condition: escalation-3
+		Prerequisites: era.3
+	GrantConditionOnPrerequisite@esc4:
+		Condition: escalation-4
+		Prerequisites: era.4
+	FirepowerMultiplier@esc1:
+		RequiresCondition: escalation-1
+		Modifier: 104
+	FirepowerMultiplier@esc2:
+		RequiresCondition: escalation-2
+		Modifier: 104
+	FirepowerMultiplier@esc3:
+		RequiresCondition: escalation-3
+		Modifier: 104
+	FirepowerMultiplier@esc4:
+		RequiresCondition: escalation-4
+		Modifier: 104
+
+^Ship:
+	GrantConditionOnPrerequisite@esc1:
+		Condition: escalation-1
+		Prerequisites: era.1
+	GrantConditionOnPrerequisite@esc2:
+		Condition: escalation-2
+		Prerequisites: era.2
+	GrantConditionOnPrerequisite@esc3:
+		Condition: escalation-3
+		Prerequisites: era.3
+	GrantConditionOnPrerequisite@esc4:
+		Condition: escalation-4
+		Prerequisites: era.4
+	FirepowerMultiplier@esc1:
+		RequiresCondition: escalation-1
+		Modifier: 104
+	FirepowerMultiplier@esc2:
+		RequiresCondition: escalation-2
+		Modifier: 104
+	FirepowerMultiplier@esc3:
+		RequiresCondition: escalation-3
+		Modifier: 104
+	FirepowerMultiplier@esc4:
+		RequiresCondition: escalation-4
+		Modifier: 104
