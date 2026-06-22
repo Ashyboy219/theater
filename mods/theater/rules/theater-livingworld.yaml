@@ -17,3 +17,9 @@ World:
 	# HUD readout. "Civilization but real-time": a shared sense of time moving forward (distinct from the
 	# player-bought ages). ~25 ticks/sec, so the defaults below land eras roughly every 6 minutes.
 	GameTimeline:
+
+# Turn the timeline into a real gate: as the world reaches each era, grant an era.N prerequisite so content
+# can be paced by real time. The Space Program is gated on these (see theater-spaceprogram.yaml).
+Player:
+	ProvidesPrerequisiteOnEra:
+		Prerequisites: era.1, era.2, era.3, era.4

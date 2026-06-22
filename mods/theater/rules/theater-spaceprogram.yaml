@@ -20,7 +20,7 @@ space.launch:
 		BuildLimit: 1
 		BuildDuration: 600
 		BuildDurationModifier: 100
-		Prerequisites: tech.center
+		Prerequisites: tech.center, era.1
 		Description: actor-space-launch.description
 		Icon: space-launch-icon
 	Valued:
@@ -39,7 +39,7 @@ space.satellites:
 		BuildLimit: 1
 		BuildDuration: 700
 		BuildDurationModifier: 100
-		Prerequisites: space.launch
+		Prerequisites: space.launch, era.2
 		Description: actor-space-satellites.description
 		Icon: space-satellites-icon
 	Valued:
@@ -58,7 +58,7 @@ space.orbital:
 		BuildLimit: 1
 		BuildDuration: 800
 		BuildDurationModifier: 100
-		Prerequisites: space.satellites
+		Prerequisites: space.satellites, era.3
 		Description: actor-space-orbital.description
 		Icon: space-orbital-icon
 	Valued:
