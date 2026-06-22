@@ -12,6 +12,17 @@ Container@PLAYER_WIDGETS:
 			CombineWithGroupKeyPrefix: ControlGroupCombineWith
 			JumpToGroupKeyPrefix: ControlGroupJumpTo
 		LogicTicker@SIDEBAR_TICKER:
+		# THEATER: global era/timeline readout (top-centre). Text-only (no background image) for safety;
+		# nudge X/Y in-game if it overlaps anything.
+		Label@ERA:
+			Logic: IngameEraDisplayLogic
+			X: (WINDOW_WIDTH - WIDTH) / 2
+			Y: 6
+			Width: 240
+			Height: 18
+			Align: Center
+			Font: Bold
+			Contrast: true
 		Container@SUPPORT_POWERS:
 			Logic: SupportPowerBinLogic
 			X: 10
