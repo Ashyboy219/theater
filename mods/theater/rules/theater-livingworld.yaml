@@ -1,0 +1,15 @@
+# ============================================================================
+# THEATER — Living World layer. The start of the "Civilization but real-time" vision:
+# a populated, living map. This pass adds ambient CITIZENS who wander and flee on
+# their own (stock ^CivInfantry already carries Wanders + ScaredyCat), spawned at
+# game start by the new AmbientCivilians world trait (deterministic, synced-RNG only).
+#
+# Future passes will extend this file with time/era progression and the space-program
+# investment track.
+# ============================================================================
+
+World:
+	AmbientCivilians:
+		# Stock RA civilians — they already wander (^CivInfantry: Wanders) and panic near danger.
+		Types: C1, C2, C3, C4, C5, C6, C7, C8, C9
+		Count: 16
