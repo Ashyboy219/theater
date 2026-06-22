@@ -200,6 +200,21 @@ alloyexbody:
 	alloyex-icon:
 		Filename: alloyex-cameo.png
 
+# Bespoke Research Lab building body (2x3 modern research complex). Reuses the dome's 3-wide bib.
+rlabbody:
+	idle:
+		Filename: rlabbody.png
+	make:
+		Filename: rlabbody.png
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+	rlab-icon:
+		Filename: rlab-cameo.png
+
 apwr:
 	fusion-icon:
 		Filename: fusion-cameo.png

@@ -20,8 +20,10 @@
 # every research item below. Build one to start researching.
 rlab:
 	Inherits: DOME
+	# Bespoke research-complex body instead of the radar dome (DOME already uses WithSpriteBody, so the
+	# image swap + rlabbody sequences below are all that's needed). 2x3 footprint, rendered at matching scale.
 	RenderSprites:
-		Image: dome
+		Image: rlabbody
 	Buildable:
 		Queue: Building
 		BuildPaletteOrder: 136
