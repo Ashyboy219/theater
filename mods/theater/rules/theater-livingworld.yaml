@@ -18,6 +18,10 @@ World:
 		Count: 16
 		GrowthPerEra: 8
 		MaxPopulation: 56
+		# Cluster the population into ~6 towns (radius 7 cells) instead of scattering it, so the world has
+		# real population centres — and each is a place worth holding for the CivilianTaxBase income below.
+		Settlements: 6
+		SettlementRadius: 7
 	# Global real-time timeline — the world advances through escalating eras as the match runs, shown in a
 	# HUD readout. "Civilization but real-time": a shared sense of time moving forward (distinct from the
 	# player-bought ages). ~25 ticks/sec, so the defaults below land eras roughly every 6 minutes.

@@ -42,6 +42,13 @@ namespace OpenRA.Mods.Common.Traits
 		[Desc("Terrain types civilians may spawn on.")]
 		public readonly HashSet<string> ValidTerrain = ["Clear", "Road", "Rough", "Beach"];
 
+		[Desc("Number of population centres (settlements) to cluster civilians around, so the world has towns",
+			"rather than a uniform scatter. 0 spreads civilians randomly across the whole map (classic behaviour).")]
+		public readonly int Settlements = 0;
+
+		[Desc("Radius in cells around each settlement centre within which its civilians spawn.")]
+		public readonly int SettlementRadius = 6;
+
 		[Desc("Maximum attempts to find a valid spawn cell per civilian before giving up on that one.")]
 		public readonly int MaxTries = 50;
 
@@ -52,6 +59,7 @@ namespace OpenRA.Mods.Common.Traits
 	{
 		readonly AmbientCiviliansInfo info;
 		readonly List<Actor> civilians = [];
+		readonly List<CPos> settlements = [];
 
 		GameTimeline timeline;
 		int lastEra = -1;
@@ -115,11 +123,48 @@ namespace OpenRA.Mods.Common.Traits
 			});
 		}
 
+		// Pick the settlement centres once, deterministically (synced RNG), the first time we spawn. The same
+		// towns persist for the whole match, so each population wave grows the existing centres rather than
+		// scattering new dots — giving the living world a real geography of population.
+		void EnsureSettlements(World world)
+		{
+			if (settlements.Count > 0 || info.Settlements <= 0)
+				return;
+
+			for (var i = 0; i < info.Settlements; i++)
+			{
+				for (var n = 0; n < info.MaxTries; n++)
+				{
+					var p = world.Map.ChooseRandomCell(world.SharedRandom);
+					if (info.ValidTerrain.Contains(world.Map.GetTerrainInfo(p).Type))
+					{
+						settlements.Add(p);
+						break;
+					}
+				}
+			}
+		}
+
 		CPos? ChooseCell(World world)
 		{
+			EnsureSettlements(world);
+
 			for (var n = 0; n < info.MaxTries; n++)
 			{
-				var p = world.Map.ChooseRandomCell(world.SharedRandom);
+				CPos p;
+				if (settlements.Count > 0)
+				{
+					// Cluster around a random settlement centre instead of the whole map.
+					var centre = settlements[world.SharedRandom.Next(settlements.Count)];
+					var r = info.SettlementRadius;
+					p = centre + new CVec(world.SharedRandom.Next(-r, r + 1), world.SharedRandom.Next(-r, r + 1));
+					if (!world.Map.Contains(p))
+						continue;
+				}
+				else
+				{
+					p = world.Map.ChooseRandomCell(world.SharedRandom);
+				}
 
 				if (!info.ValidTerrain.Contains(world.Map.GetTerrainInfo(p).Type))
 					continue;
