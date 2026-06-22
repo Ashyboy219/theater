@@ -184,6 +184,22 @@ bankbody:
 	bank-icon:
 		Filename: bank-cameo.png
 
+# Bespoke Alloy Extractor building body (industrial extractor — tanks + tower).
+alloyexbody:
+	idle:
+		Filename: alloyexbody.png
+	make:
+		Filename: alloyexbody.png
+	bib:
+		TilesetFilenames:
+			SNOW: mbSILO.sno
+			INTERIOR: mbSILO.int
+			TEMPERAT: mbSILO.tem
+			DESERT: mbSILO.des
+		Length: *
+	alloyex-icon:
+		Filename: alloyex-cameo.png
+
 apwr:
 	fusion-icon:
 		Filename: fusion-cameo.png

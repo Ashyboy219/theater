@@ -20,7 +20,12 @@
 alloyex:
 	Inherits: SILO
 	RenderSprites:
-		Image: silo
+		Image: alloyexbody
+	# Bespoke industrial-extractor body instead of the silo tank (restore a plain body, drop the silo
+	# fill-body + storage pips). Still stores resources, just doesn't look like a generic silo.
+	WithSpriteBody:
+	-WithResourceLevelSpriteBody:
+	-WithResourceStoragePipsDecoration:
 	Buildable:
 		Queue: Building
 		BuildPaletteOrder: 137
