@@ -152,3 +152,14 @@ SILO:
 ATEK:
 	RenderSprites:
 		Image: atekbody
+
+# --- Base allied DEFENSES (now AI-built after the Defense-queue fix) ---
+# Pillbox — a modern octagonal concrete pillbox with a domed cap, an embrasure band, a gun barrel and a
+# sandbag ring. 1x1; reuses mbPBOX bib + pboxicon. Fixed bunker (logical Turreted, no turret sprite); keep
+# the muzzle. Heavy Pillbox — a larger reinforced bunker (cupola, multi-port, heavy gun, hesco). No bib.
+PBOX:
+	RenderSprites:
+		Image: pboxbody
+HBOX:
+	RenderSprites:
+		Image: hboxbody

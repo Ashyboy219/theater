@@ -527,6 +527,39 @@ atekbody:
 	icon:
 		Filename: atekicon.shp
 
+# Core base-building reskins: modern allied DEFENSE bodies (pillbox + heavy pillbox), replacing stock RA.
+pboxbody:
+	idle:
+		Filename: pboxbody.png
+	damaged-idle:
+		Filename: pboxbody.png
+	make:
+		Filename: pboxbody.png
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	bib:
+		TilesetFilenames:
+			SNOW: mbPBOX.sno
+			INTERIOR: mbPBOX.int
+			TEMPERAT: mbPBOX.tem
+			DESERT: mbPBOX.des
+		Length: *
+	icon:
+		Filename: pboxicon.shp
+hboxbody:
+	idle:
+		Filename: hboxbody.png
+	damaged-idle:
+		Filename: hboxbody.png
+	make:
+		Filename: hboxbody.png
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	icon:
+		Filename: hboxicon.shp
+
 apwr:
 	fusion-icon:
 		Filename: fusion-cameo.png
