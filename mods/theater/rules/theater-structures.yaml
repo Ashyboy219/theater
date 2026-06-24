@@ -90,3 +90,12 @@ PROC:
 		Image: procbody
 	-WithIdleOverlay@TOP:
 	-WithDeathAnimation:
+
+# War Factory — a modern vehicle-assembly plant: a tall assembly hall with a sawtooth-skylight roof, a big
+# bay door (hazard header) and a finished tank rolling out the front. 3x3; reuses bib2 + weapicon. Strip
+# WithProductionDoorOverlay (the stock build-top door animation is baked into the static body — leaving the
+# trait would reference an undefined build-top sequence). WEAP has no WithDeathAnimation. Exit/RallyPoint kept.
+WEAP:
+	RenderSprites:
+		Image: weapbody
+	-WithProductionDoorOverlay:

@@ -368,6 +368,25 @@ procbody:
 	icon:
 		Filename: procicon.shp
 
+# Core base-building reskin: modern WAR FACTORY body (vehicle-assembly hall + bay door + tank rolling out),
+# replacing the stock RA war factory. 3x3: reuse bib2 + weapicon. The stock build-top door animation is baked
+# into the static body and WithProductionDoorOverlay removed.
+weapbody:
+	idle:
+		Filename: weapbody.png
+	damaged-idle:
+		Filename: weapbody.png
+	make:
+		Filename: weapbody.png
+	bib:
+		Filename: bib2.tem
+		TilesetFilenames:
+			SNOW: bib2.sno
+			DESERT: bib2.des
+		Length: *
+	icon:
+		Filename: weapicon.shp
+
 apwr:
 	fusion-icon:
 		Filename: fusion-cameo.png
