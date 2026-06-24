@@ -808,6 +808,14 @@ explosion:
 		Filename: expl-building.png
 		Length: 18
 		Offset: 0,-9
+	# Nuclear detonation (MSLO atom bomb -> Atomic warhead CreateEffect: nuke): a dramatic mushroom cloud —
+	# blinding white flash -> billowing fireball cap rising on a stem -> dissipating smoke. Slower Tick so the
+	# marquee superweapon payoff lingers. 22 frames @ 84px (a big blast); Offset lifts it onto the impact.
+	nuke:
+		Filename: expl-nuke.png
+		Length: 22
+		Tick: 70
+		Offset: 0,-20
 
 apwr:
 	fusion-icon:
