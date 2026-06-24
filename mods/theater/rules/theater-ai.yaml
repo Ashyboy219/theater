@@ -727,3 +727,8 @@ Player:
 	SquadManagerBotModule@turtle:
 		AirUnitsTypes: mig, yak, heli, hind, mh60, specter, wingloong, bayrak, reaper, hayabusa, tejas, raptor, b21, gj11, akinci, archangel
 		NavalUnitsTypes: ss, msub, dd, ca, lst, pt, burke, akula, houbei, barbaros, astute, kolkata, leviathan
+	# The naval personality has its own stock SquadManager — restate the theater unit classification on it
+	# too, else the naval AI uses the stock lists and misclassifies every theater air/naval unit.
+	SquadManagerBotModule@naval:
+		AirUnitsTypes: mig, yak, heli, hind, mh60, specter, wingloong, bayrak, reaper, hayabusa, tejas, raptor, b21, gj11, akinci, archangel
+		NavalUnitsTypes: ss, msub, dd, ca, lst, pt, burke, akula, houbei, barbaros, astute, kolkata, leviathan
