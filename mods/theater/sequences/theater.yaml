@@ -857,6 +857,21 @@ explosion:
 	flak_explosion_ground:
 		Filename: flakburst.png
 		Length: 10
+	# Small-arms IMPACTS (fire on every bullet hit): a tan dust kick-up + spark on ground (piff/piffs), a tiny
+	# white spray + ripple on water (water_piff/water_piffs) — matching the modern splashes/explosions. Completes
+	# the effect set; tiny (16px) but very frequent.
+	piff:
+		Filename: dustpuff.png
+		Length: 7
+	piffs:
+		Filename: dustpuff.png
+		Length: 7
+	water_piff:
+		Filename: waterpiff.png
+		Length: 7
+	water_piffs:
+		Filename: waterpiff.png
+		Length: 7
 
 # Modern MCV body: a heavy mobile command/construction vehicle (8-wheeled, forward cab, folded yellow
 # tower-crane mast tying it to the FACT construction yard). Overrides the stock RA mcv idle — the MCV is
