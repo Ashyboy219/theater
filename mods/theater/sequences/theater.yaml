@@ -817,6 +817,16 @@ explosion:
 		Tick: 70
 		Offset: 0,-20
 
+# Modern MCV body: a heavy mobile command/construction vehicle (8-wheeled, forward cab, folded yellow
+# tower-crane mast tying it to the FACT construction yard). Overrides the stock RA mcv idle — the MCV is
+# iconic (every game starts with one, and it's buildable to expand). 32-facing turntable; the MCV has no
+# other body sequences (just idle + the sidebar icon, which is left stock for now).
+mcv:
+	idle:
+		Filename: mcvbody.png
+		Facings: 32
+		InterpolatedFacings: 64
+
 apwr:
 	fusion-icon:
 		Filename: fusion-cameo.png
