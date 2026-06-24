@@ -744,6 +744,15 @@ missile:
 		Facings: 32
 		ZOffset: 1023
 
+# Modern rocket-artillery projectile: overrides the stock RA `v2` rocket globally — fired by the v2rl-based
+# rocket units and the ballistic strike weapons (theater-strike.yaml: Image: V2). A tactical/MLRS rocket
+# (olive body, ogive nose, grid fins, exhaust) — fatter/longer than the AA missile, so they read distinctly.
+v2:
+	idle:
+		Filename: v2body.png
+		Facings: 32
+		ZOffset: 1023
+
 apwr:
 	fusion-icon:
 		Filename: fusion-cameo.png
