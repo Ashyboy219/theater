@@ -843,6 +843,20 @@ explosion:
 	large_splash:
 		Filename: splash-large.png
 		Length: 16
+	# Air-combat explosions (ZOffset 511 = air height): aircraft hits reuse the HD ground explosion; AA flak
+	# bursts use a dedicated flak burst (bright detonation flash -> dark cordite puff + frag specks), so air
+	# combat matches the modern ground VFX instead of the stock pixel flak/veh-hit.
+	med_explosion_air:
+		Filename: expl-med.png
+		Length: 14
+		ZOffset: 511
+	small_explosion_air:
+		Filename: flakburst.png
+		Length: 10
+		ZOffset: 511
+	flak_explosion_ground:
+		Filename: flakburst.png
+		Length: 10
 
 # Modern MCV body: a heavy mobile command/construction vehicle (8-wheeled, forward cab, folded yellow
 # tower-crane mast tying it to the FACT construction yard). Overrides the stock RA mcv idle — the MCV is
