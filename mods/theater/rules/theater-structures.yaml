@@ -129,3 +129,10 @@ APWR:
 FIX:
 	RenderSprites:
 		Image: fixbody
+
+# Naval Yard — a modern shipyard: twin yellow portal gantry cranes straddling a slipway with a ship hull
+# under construction, an admin/control tower with radar, dock platform + bollards. 3x3, on water (no bib);
+# reuses syrdicon. No death/overlay traits; the four ship-exit cells are untouched.
+SYRD:
+	RenderSprites:
+		Image: syrdbody

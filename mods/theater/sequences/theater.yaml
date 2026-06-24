@@ -471,6 +471,18 @@ fixbody:
 	icon:
 		Filename: fixicon.shp
 
+# Core base-building reskin: modern NAVAL YARD body (gantry cranes + slipway + ship hull + admin tower),
+# replacing the stock RA naval yard. 3x3 on water (no bib): reuse syrdicon.
+syrdbody:
+	idle:
+		Filename: syrdbody.png
+	damaged-idle:
+		Filename: syrdbody.png
+	make:
+		Filename: syrdbody.png
+	icon:
+		Filename: syrdicon.shp
+
 apwr:
 	fusion-icon:
 		Filename: fusion-cameo.png
