@@ -38,6 +38,21 @@ yak:
 
 # MOLOT (rus) and ARJUN (ind) render on the 4tnk body, each with its own cameo.
 4tnk:
+	# Modern MAMMOTH/heavy-tank body (base 4TNK = the Tech-Lab-unlocked heavy tank). Big wide hull + large
+	# turret with TWIN main guns + side missile pods (the Mammoth's signature), 2-pass turntable, replacing
+	# stock 4tnk. (The faction MBTs MOLOT/ARJUN/AMX/ARMATA inherit 4TNK but override to mbtbody, so this only
+	# affects the base Mammoth.) Muzzle reuses the modern flash. The cameos below stay (faction MBT icons).
+	idle:
+		Filename: mammothbody.png
+		Facings: 32
+		InterpolatedFacings: 64
+	turret:
+		Filename: mammothbody-turret.png
+		Facings: 32
+		InterpolatedFacings: 64
+	muzzle:
+		Filename: muzzleflash.png
+		Length: 5
 	molot-icon:
 		Filename: molot-cameo.png
 	arjun-icon:
