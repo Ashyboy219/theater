@@ -147,8 +147,10 @@ THCOM:
 # the ArmyCommand fire-control focus works on it too.
 DONGFENG:
 	Inherits: 1TNK
+	# Bespoke cheap light-tank body instead of the stock RA light tank. Hull + turret rendered from the
+	# same origin/camera, so they composite at 1TNK's default turret position with no offset override.
 	RenderSprites:
-		Image: 1tnk
+		Image: dongfengbody
 	Tooltip:
 		Name: actor-dongfeng.name
 		GenericName: actor-dongfeng.generic-name

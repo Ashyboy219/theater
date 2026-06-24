@@ -479,6 +479,24 @@ ptbody:
 	barbaros-icon:
 		Filename: barbaros-cameo.png
 
+# Ground body: cheap mass-produced LIGHT tank (China DONGFENG) — small boxy welded turret + medium gun,
+# grey-green primer. 32-facing hull + turret, rendered from the same origin so WithSpriteTurret (Offset
+# 0,0,0) composites them. 1TNK keeps MuzzleSequence: muzzle; cameo re-homed here (was under 1tnk).
+dongfengbody:
+	idle:
+		Filename: dongfengbody.png
+		Facings: 32
+		InterpolatedFacings: 64
+	turret:
+		Filename: dongfengbody-turret.png
+		Facings: 32
+		InterpolatedFacings: 64
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	dongfeng-icon:
+		Filename: dongfeng-cameo.png
+
 # Ground body: modern MEDIUM tank (TURRETED) — sleeker hull with side skirts and a low, flat sloped turret, so
 # it reads distinctly from the heavy mbtbody. 32-facing hull + turret, centred turret (3TNK default Offset).
 # Shared by the 3tnk-based command/medium tanks BASTION/LOEWE/BMPT. 3TNK keeps MuzzleSequence: muzzle.
