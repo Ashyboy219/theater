@@ -878,6 +878,20 @@ pt:
 		Filename: barbaros-cameo.png
 
 1tnk:
+	# Modern LIGHT TANK body (1TNK = the shared "Light Tank" every faction builds early). Compact tracked
+	# hull + small autocannon turret (2-pass turntable), replacing the stock RA 1tnk. Muzzle reuses the modern
+	# flash. (dongfeng-icon below is just a cameo under this collection — DONGFENG renders its own dongfengbody.)
+	idle:
+		Filename: ltankbody.png
+		Facings: 32
+		InterpolatedFacings: 64
+	turret:
+		Filename: ltankbody-turret.png
+		Facings: 32
+		InterpolatedFacings: 64
+	muzzle:
+		Filename: muzzleflash.png
+		Length: 5
 	dongfeng-icon:
 		Filename: dongfeng-cameo.png
 
