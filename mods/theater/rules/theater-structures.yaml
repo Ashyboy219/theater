@@ -114,3 +114,11 @@ DOME:
 HPAD:
 	RenderSprites:
 		Image: hpadbody
+
+# Advanced Power — a modern renewable plant: a wind turbine (vertical anchor), rows of solar panels, and
+# battery-storage containers + an inverter substation. Distinct from POWR (gas) and the FUSION reactor.
+# 3x3; reuses bib2 + apwricon. -WithDeathAnimation (single-frame body has no dead frames).
+APWR:
+	RenderSprites:
+		Image: apwrbody
+	-WithDeathAnimation:
