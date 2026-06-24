@@ -874,6 +874,18 @@ e1:
 	tunguska-icon:
 		Filename: tunguska-cameo.png
 
+# Modern SELF-PROPELLED GUN body (ARTY = the shared "SPG" — a fixed-gun artillery vehicle, no rotating
+# turret). Tracked casemate hull + long elevated howitzer (muzzle brake) + recoil spade. Single 32-facing
+# turntable, overrides the stock RA arty idle; muzzle reuses the modern flash.
+arty:
+	idle:
+		Filename: spgbody.png
+		Facings: 32
+		InterpolatedFacings: 64
+	muzzle:
+		Filename: muzzleflash.png
+		Length: 5
+
 dd:
 	burke-icon:
 		Filename: burke-cameo.png
