@@ -687,6 +687,18 @@ oilbbody:
 			DESERT: bib3.des
 		Length: *
 
+# Civilian town-building reskins: a modern APARTMENT block + OFFICE tower, shared across the 2x2 V-types.
+vaptbody:
+	idle:
+		Filename: vaptbody.png
+	damaged-idle:
+		Filename: vaptbody.png
+vofficebody:
+	idle:
+		Filename: vofficebody.png
+	damaged-idle:
+		Filename: vofficebody.png
+
 apwr:
 	fusion-icon:
 		Filename: fusion-cameo.png

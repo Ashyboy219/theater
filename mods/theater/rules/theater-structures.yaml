@@ -214,3 +214,31 @@ HOSP:
 OILB:
 	RenderSprites:
 		Image: oilbbody
+
+# --- Civilian town buildings (decoration on town maps) — modern apartment + office blocks replacing the
+# stock RA village houses, so the living world's towns read as contemporary. The eight 2x2 V-types split
+# across two shared bodies for variety. Civ buildings have no death/make animation, so just an image swap. ---
+V01:
+	RenderSprites:
+		Image: vaptbody
+V02:
+	RenderSprites:
+		Image: vaptbody
+V03:
+	RenderSprites:
+		Image: vaptbody
+V04:
+	RenderSprites:
+		Image: vofficebody
+V20:
+	RenderSprites:
+		Image: vaptbody
+V21:
+	RenderSprites:
+		Image: vofficebody
+V24:
+	RenderSprites:
+		Image: vofficebody
+V25:
+	RenderSprites:
+		Image: vofficebody
