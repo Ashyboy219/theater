@@ -122,3 +122,10 @@ APWR:
 	RenderSprites:
 		Image: apwrbody
 	-WithDeathAnimation:
+
+# Service Depot — a modern vehicle repair depot: an overhead yellow gantry crane over a marked repair bay,
+# a workshop with a roll-up door, tool chests and a generator. 3x3 (cross footprint); reuses the mbFIX bib +
+# fixicon. The stock active/damaged-active repair animations map to the static body; Reservable/RepairsUnits kept.
+FIX:
+	RenderSprites:
+		Image: fixbody

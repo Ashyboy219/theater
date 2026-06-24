@@ -448,6 +448,29 @@ apwrbody:
 	icon:
 		Filename: apwricon.shp
 
+# Core base-building reskin: modern SERVICE DEPOT body (gantry crane + repair bay + workshop), replacing
+# the stock RA repair depot. 3x3 cross footprint: reuse the mbFIX bib + fixicon. active maps to the body.
+fixbody:
+	idle:
+		Filename: fixbody.png
+	damaged-idle:
+		Filename: fixbody.png
+	active:
+		Filename: fixbody.png
+	damaged-active:
+		Filename: fixbody.png
+	make:
+		Filename: fixbody.png
+	bib:
+		TilesetFilenames:
+			SNOW: mbFIX.sno
+			INTERIOR: mbFIX.int
+			TEMPERAT: mbFIX.tem
+			DESERT: mbFIX.des
+		Length: *
+	icon:
+		Filename: fixicon.shp
+
 apwr:
 	fusion-icon:
 		Filename: fusion-cameo.png
