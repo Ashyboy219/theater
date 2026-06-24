@@ -266,7 +266,7 @@ akashbody:
 		Length: *
 	# AGUN's Armament keeps MuzzleSequence: muzzle (lint-checked even though WithMuzzleOverlay is stripped).
 	muzzle:
-		Filename: gunfire2.shp
+		Filename: muzzleflash.png
 		Length: 5
 	akash-icon:
 		Filename: akash-cameo.png
@@ -286,7 +286,7 @@ aegisbody:
 		Length: *
 	# SAM's Armament keeps MuzzleSequence: muzzle (lint-checked even though WithMuzzleOverlay is stripped).
 	muzzle:
-		Filename: gunfire2.shp
+		Filename: muzzleflash.png
 		Length: 5
 	aegis-icon:
 		Filename: aegis-cameo.png
@@ -536,7 +536,7 @@ pboxbody:
 	make:
 		Filename: pboxbody.png
 	muzzle:
-		Filename: gunfire2.shp
+		Filename: muzzleflash.png
 		Length: 5
 	bib:
 		TilesetFilenames:
@@ -555,7 +555,7 @@ hboxbody:
 	make:
 		Filename: hboxbody.png
 	muzzle:
-		Filename: gunfire2.shp
+		Filename: muzzleflash.png
 		Length: 5
 	icon:
 		Filename: hboxicon.shp
@@ -568,7 +568,7 @@ gunbody:
 	make:
 		Filename: gunbody.png
 	muzzle:
-		Filename: gunfire2.shp
+		Filename: muzzleflash.png
 		Length: 5
 	bib:
 		TilesetFilenames:
@@ -587,7 +587,7 @@ agunbody:
 	make:
 		Filename: agunbody.png
 	muzzle:
-		Filename: gunfire2.shp
+		Filename: muzzleflash.png
 		Length: 5
 	bib:
 		TilesetFilenames:
@@ -868,7 +868,7 @@ dronebody:
 		Length: 1
 	# the YAK-based drones' Armament keeps a MuzzleSequence: muzzle, so provide one (stock gunfire SHP).
 	muzzle:
-		Filename: gunfire2.shp
+		Filename: muzzleflash.png
 		Length: 5
 	wingloong-icon:
 		Filename: wingloong-cameo.png
@@ -939,7 +939,7 @@ mbtbody:
 		InterpolatedFacings: 64
 	# 4tnk keeps WithMuzzleOverlay + Armament MuzzleSequence: muzzle, so provide one (stock gunfire SHP).
 	muzzle:
-		Filename: gunfire2.shp
+		Filename: muzzleflash.png
 		Length: 5
 	roundel:
 		Filename: roundel.shp
@@ -986,7 +986,7 @@ ptbody:
 		Facings: 32
 		InterpolatedFacings: 64
 	muzzle:
-		Filename: gunfire2.shp
+		Filename: muzzleflash.png
 		Length: 5
 	roundel:
 		Filename: roundel.shp
@@ -1009,7 +1009,7 @@ dongfengbody:
 		Facings: 32
 		InterpolatedFacings: 64
 	muzzle:
-		Filename: gunfire2.shp
+		Filename: muzzleflash.png
 		Length: 5
 	dongfeng-icon:
 		Filename: dongfeng-cameo.png
@@ -1027,7 +1027,7 @@ tankbody:
 		Facings: 32
 		InterpolatedFacings: 64
 	muzzle:
-		Filename: gunfire2.shp
+		Filename: muzzleflash.png
 		Length: 5
 	roundel:
 		Filename: roundel.shp
@@ -1048,7 +1048,7 @@ apcbody:
 		Facings: 32
 		InterpolatedFacings: 64
 	muzzle:
-		Filename: gunfire2.shp
+		Filename: muzzleflash.png
 		Length: 5
 	roundel:
 		Filename: roundel.shp
@@ -1080,7 +1080,7 @@ jeepbody:
 		Facings: 32
 		InterpolatedFacings: 64
 	muzzle:
-		Filename: gunfire2.shp
+		Filename: muzzleflash.png
 		Length: 5
 	roundel:
 		Filename: roundel.shp
@@ -1109,7 +1109,7 @@ spaagbody:
 		Facings: 32
 		InterpolatedFacings: 64
 	muzzle:
-		Filename: gunfire2.shp
+		Filename: muzzleflash.png
 		Length: 5
 	roundel:
 		Filename: roundel.shp
@@ -1127,7 +1127,7 @@ leviathanbody:
 		InterpolatedFacings: 64
 	# the cruiser armaments keep MuzzleSequence: muzzle (gun-flash), so provide one (stock gunfire SHP).
 	muzzle:
-		Filename: gunfire2.shp
+		Filename: muzzleflash.png
 		Length: 5
 	leviathan-icon:
 		Filename: leviathan-cameo.png
@@ -1141,7 +1141,7 @@ citadelbody:
 		InterpolatedFacings: 64
 	# 4TNK keeps MuzzleSequence: muzzle on its armaments, so provide one (stock gunfire SHP).
 	muzzle:
-		Filename: gunfire2.shp
+		Filename: muzzleflash.png
 		Length: 5
 	citadel-icon:
 		Filename: citadel-cameo.png
@@ -1155,7 +1155,7 @@ archangelbody:
 		InterpolatedFacings: 64
 	# MH60 keeps MuzzleSequence: muzzle, so provide one (stock gunfire SHP).
 	muzzle:
-		Filename: gunfire2.shp
+		Filename: muzzleflash.png
 		Length: 5
 	archangel-icon:
 		Filename: archangel-cameo.png
