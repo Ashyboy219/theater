@@ -698,6 +698,16 @@ vofficebody:
 		Filename: vofficebody.png
 	damaged-idle:
 		Filename: vofficebody.png
+vshopbody:
+	idle:
+		Filename: vshopbody.png
+	damaged-idle:
+		Filename: vshopbody.png
+vtownbody:
+	idle:
+		Filename: vtownbody.png
+	damaged-idle:
+		Filename: vtownbody.png
 
 apwr:
 	fusion-icon:

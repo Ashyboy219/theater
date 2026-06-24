@@ -242,3 +242,31 @@ V24:
 V25:
 	RenderSprites:
 		Image: vofficebody
+# 2x1 town buildings -> modern shopfront + townhouse terrace (split for variety).
+V05:
+	RenderSprites:
+		Image: vshopbody
+V06:
+	RenderSprites:
+		Image: vtownbody
+V07:
+	RenderSprites:
+		Image: vshopbody
+V22:
+	RenderSprites:
+		Image: vtownbody
+V26:
+	RenderSprites:
+		Image: vshopbody
+V30:
+	RenderSprites:
+		Image: vtownbody
+V31:
+	RenderSprites:
+		Image: vshopbody
+V32:
+	RenderSprites:
+		Image: vtownbody
+V33:
+	RenderSprites:
+		Image: vtownbody
