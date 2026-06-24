@@ -5,9 +5,12 @@
 # (not raw firepower), so it deepens the strategy without power-creeping the combat stack:
 #   1. Launch Complex   — the entry investment; unlocks the program.
 #   2. Recon Satellites — a periodic satellite sweep that reveals the map (GpsPower on the Theater Command).
-#   3. Orbital Command  — capstone: a permanent orbital-surveillance net (+25% army-wide vision).
+#   3. Orbital Command  — capstone: unlocks the Orbital Lance, a single devastating kinetic strike from orbit
+#                         (AirstrikePower below). Both stages pay off as POWERS, not army-wide stat buffs.
 # Reuses the proven buy-once Command-queue + condition-grant patterns. All data-only, deterministic.
-# Gated on tech.center so it's a genuine late-game commitment. (A future pass can add a space "victory".)
+# Gated on tech.center AND the real-time eras (era.1/2/3 from ProvidesPrerequisiteOnEra) so it's a genuine
+# late-game commitment. Completing the track (space.orbital) + holding a launch site wins a SPACE VICTORY
+# (see SpaceVictoryConditions below) — the conquest win is folded into the same objective.
 # ============================================================================
 
 space.launch:
