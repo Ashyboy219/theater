@@ -525,8 +525,8 @@ AKASH:
 	# SAMs launch upward regardless of bearing, so a fixed launcher reads correctly.
 	RenderSprites:
 		Image: akashbody
-	-WithSpriteTurret:
-	-WithMuzzleOverlay:
+	# (the visible turret + muzzle overlay are now stripped on the base AGUN reskin in theater-structures.yaml;
+	# AKASH inherits AGUN, so re-stripping them here would double-remove. WithSpriteBody is restated for clarity.)
 	WithSpriteBody:
 	Tooltip:
 		Name: actor-akash.name

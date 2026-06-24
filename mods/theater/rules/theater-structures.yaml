@@ -163,3 +163,21 @@ PBOX:
 HBOX:
 	RenderSprites:
 		Image: hboxbody
+
+# Anti-tank Gun — a modern gun emplacement: an armored turret with a long AT barrel on a concrete revetment.
+# AA Gun — a modern AA autocannon: twin barrels on a rotating mount + a tracking radar (distinct from the
+# AKASH SAM). 1x1; reuse mbGUN/mbAGUN bibs + gun/agunicon. Both are turreted with a VISIBLE turret sprite —
+# bake the gun into the static body and strip it (AKASH pattern). AKASH inherits AGUN, so AGUN's strip now
+# covers it (its own -WithSpriteTurret/-WithMuzzleOverlay were removed above to avoid a double-remove).
+GUN:
+	RenderSprites:
+		Image: gunbody
+	-WithSpriteTurret:
+	# GUN also has WithTurretAttackAnimation (recoil), which REQUIRES WithSpriteTurret — strip it too.
+	-WithTurretAttackAnimation:
+	-WithMuzzleOverlay:
+AGUN:
+	RenderSprites:
+		Image: agunbody
+	-WithSpriteTurret:
+	-WithMuzzleOverlay:

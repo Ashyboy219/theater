@@ -559,6 +559,45 @@ hboxbody:
 		Length: 5
 	icon:
 		Filename: hboxicon.shp
+# Modern anti-tank GUN emplacement + AA autocannon (AGUN) bodies — gun baked in, WithSpriteTurret stripped.
+gunbody:
+	idle:
+		Filename: gunbody.png
+	damaged-idle:
+		Filename: gunbody.png
+	make:
+		Filename: gunbody.png
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	bib:
+		TilesetFilenames:
+			SNOW: mbGUN.sno
+			INTERIOR: mbGUN.int
+			TEMPERAT: mbGUN.tem
+			DESERT: mbGUN.des
+		Length: *
+	icon:
+		Filename: gunicon.shp
+agunbody:
+	idle:
+		Filename: agunbody.png
+	damaged-idle:
+		Filename: agunbody.png
+	make:
+		Filename: agunbody.png
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	bib:
+		TilesetFilenames:
+			SNOW: mbAGUN.sno
+			INTERIOR: mbAGUN.int
+			TEMPERAT: mbAGUN.tem
+			DESERT: mbAGUN.des
+		Length: *
+	icon:
+		Filename: agunicon.shp
 
 apwr:
 	fusion-icon:
