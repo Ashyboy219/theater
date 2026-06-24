@@ -31,8 +31,11 @@
 #       im = im.resize((nw,nh), Image.LANCZOS)
 #       cv = Image.new('RGBA',(canvas,canvas),(0,0,0,0)); cv.paste(im,(cx-nw//2, baseline-nh), im)
 #       cv.save(out)
-#   ground('/tmp/bank_raw.png',    'mods/theater/bits/bankbody.png',    base_w=36, baseline=47)
-#   ground('/tmp/alloyex_raw.png', 'mods/theater/bits/alloyexbody.png', base_w=42, baseline=48)
+#   # base_w/baseline/cx per body match each existing sprite's footprint + grounding (drop-in):
+#   ground('/tmp/bank_raw.png',    'mods/theater/bits/bankbody.png',    base_w=36, baseline=47)            # 1x1, 64 canvas
+#   ground('/tmp/alloyex_raw.png', 'mods/theater/bits/alloyexbody.png', base_w=42, baseline=48)            # 1x1, 64 canvas
+#   ground('/tmp/fusion_raw.png',  'mods/theater/bits/fusionbody.png',  base_w=76, baseline=112, canvas=160, cx=80)  # 3x3
+#   ground('/tmp/rlab_raw.png',    'mods/theater/bits/rlabbody.png',    base_w=54, baseline=96,  canvas=128, cx=64)  # 2x3
 #   PY
 # The sequence YAML (mods/theater/sequences/theater.yaml) already keys idle/make -> <body>.png as a
 # single frame (no FrameSize/Facings), so the grounded PNG is a drop-in.
@@ -42,14 +45,18 @@ import bpy, math, bmesh
 RES = 512
 
 
-def node_mat(name, rgb, rough=0.6, metal=0.0):
-    """Principled-BSDF material — required for EEVEE-Next colour at render time."""
+def node_mat(name, rgb, rough=0.6, metal=0.0, emit=None, estr=0.0):
+    """Principled-BSDF material — required for EEVEE-Next colour at render time.
+    Pass emit=(r,g,b)+estr for an emissive glow (reactor core, lab windows)."""
     m = bpy.data.materials.get(name) or bpy.data.materials.new(name)
     m.use_nodes = True
     b = next(n for n in m.node_tree.nodes if n.type == 'BSDF_PRINCIPLED')
     b.inputs['Base Color'].default_value = (*rgb, 1.0)
     b.inputs['Roughness'].default_value = rough
     b.inputs['Metallic'].default_value = metal
+    if emit is not None:
+        b.inputs['Emission Color'].default_value = (*emit, 1.0)
+        b.inputs['Emission Strength'].default_value = estr
     return m
 
 
@@ -91,9 +98,10 @@ def ensure_rig():
 _made = []
 
 
-def _box(loc, sc, mat):
+def _box(loc, sc, mat, rot=(0, 0, 0)):
     bpy.ops.mesh.primitive_cube_add(size=1, location=loc)
     o = bpy.context.active_object; o.name = 'GEN_box'; o.scale = sc
+    o.rotation_euler = tuple(math.radians(a) for a in rot)
     o.data.materials.clear(); o.data.materials.append(mat); _made.append(o); return o
 
 
@@ -104,9 +112,22 @@ def _cyl(loc, r, h, mat, v=20, rot=(0, 0, 0)):
     o.data.materials.clear(); o.data.materials.append(mat); _made.append(o); return o
 
 
-def _cone(loc, r, h, mat, v=20):
-    bpy.ops.mesh.primitive_cone_add(vertices=v, radius1=r, radius2=0, depth=h, location=loc)
+def _cone(loc, r, h, mat, v=20, r2=0.0, rot=(0, 0, 0)):
+    bpy.ops.mesh.primitive_cone_add(vertices=v, radius1=r, radius2=r2, depth=h, location=loc)
     o = bpy.context.active_object; o.name = 'GEN_cone'
+    o.rotation_euler = tuple(math.radians(a) for a in rot)
+    o.data.materials.clear(); o.data.materials.append(mat); _made.append(o); return o
+
+
+def _sphere(loc, r, mat, sx=1.0, sy=1.0, sz=1.0, seg=24, ring=12):
+    bpy.ops.mesh.primitive_uv_sphere_add(radius=r, location=loc, segments=seg, ring_count=ring)
+    o = bpy.context.active_object; o.name = 'GEN_sph'; o.scale = (sx, sy, sz)
+    o.data.materials.clear(); o.data.materials.append(mat); _made.append(o); return o
+
+
+def _torus(loc, major, minor, mat):
+    bpy.ops.mesh.primitive_torus_add(location=loc, major_radius=major, minor_radius=minor)
+    o = bpy.context.active_object; o.name = 'GEN_tor'
     o.data.materials.clear(); o.data.materials.append(mat); _made.append(o); return o
 
 
@@ -176,7 +197,61 @@ def build_alloyex():
     return 14.0
 
 
-BODIES = {'bank': build_bank, 'alloyex': build_alloyex}
+def build_fusion():
+    """Advanced reactor (3x3): domed concrete containment, emissive cyan tokamak ring + turbine
+    windows, two flanking cooling towers, turbine hall. Reads as 'power' at a glance."""
+    concrete = node_mat('GEN_concrete', (0.50, 0.50, 0.48), 0.85)
+    concrete_d = node_mat('GEN_concrete_d', (0.34, 0.34, 0.32), 0.85)
+    steel = node_mat('GEN_steel', (0.40, 0.42, 0.45), 0.5, 0.3)
+    glow = node_mat('GEN_glow', (0.10, 0.55, 0.75), 0.3, 0.0, emit=(0.15, 0.85, 1.0), estr=6.0)
+    dark = node_mat('GEN_dark', (0.14, 0.15, 0.17), 0.4)
+    _box((0, 0.3, 0.2), (13.5, 9.0, 0.4), concrete_d)
+    _cyl((0, 1.6, 2.7), 3.1, 5.0, concrete, 28)
+    _sphere((0, 1.6, 5.2), 3.1, concrete, sz=0.62, seg=32, ring=10)        # dome
+    _torus((0, 1.6, 2.9), 3.25, 0.28, glow)                                # glowing tokamak ring
+    _sphere((0, 1.6, 6.4), 0.7, glow, seg=16, ring=8)                      # core cap accent
+    for x in (-5.0, 5.0):
+        _cone((x, -2.0, 2.6), 2.0, 5.2, concrete, 28, r2=1.35)             # cooling tower
+        _cyl((x, -2.0, 5.25), 1.4, 0.25, concrete_d, 28)
+    _box((0, -3.6, 1.3), (6.4, 1.6, 2.6), steel)                           # turbine hall
+    _box((0, -4.42, 1.35), (6.0, 0.15, 1.2), glow)                         # window strip
+    _box((-3.4, -3.6, 0.8), (1.0, 1.0, 1.6), dark)
+    _box((3.4, -3.6, 0.8), (1.0, 1.0, 1.6), dark)
+    _cyl((-2.6, 1.6, 2.0), 0.3, 3.0, steel, rot=(0, 90, 0))
+    return 17.0
+
+
+def build_rlab():
+    """Modern research complex (2x3): white multi-storey block with blue glass window bands, a big
+    rooftop parabolic dish (the 'research' read), an annex wing, and a comms mast."""
+    white = node_mat('GEN_white', (0.68, 0.69, 0.70), 0.55)
+    white_d = node_mat('GEN_white_d', (0.50, 0.51, 0.52), 0.6)
+    steel = node_mat('GEN_steel2', (0.40, 0.42, 0.45), 0.4, 0.4)
+    glass = node_mat('GEN_glass', (0.13, 0.24, 0.40), 0.12, 0.2)
+    glow = node_mat('GEN_glow2', (0.10, 0.45, 0.65), 0.2, 0.0, emit=(0.15, 0.70, 0.95), estr=3.0)
+    dishw = node_mat('GEN_dishw', (0.80, 0.81, 0.82), 0.5)
+    dishd = node_mat('GEN_dishd', (0.30, 0.32, 0.35), 0.4)
+    _box((0, 0.4, 0.15), (9.0, 7.0, 0.3), steel)
+    _box((-1.2, 1.0, 2.7), (4.8, 4.4, 5.2), white)
+    _box((-1.2, 1.0, 5.35), (4.9, 4.5, 0.4), white_d)
+    for z in (1.5, 2.9, 4.3):
+        _box((-1.2, -1.25, z), (4.2, 0.12, 0.62), glass)
+    _box((-1.2, -1.25, 2.9), (0.8, 0.16, 0.5), glow)
+    _box((3.1, 0.4, 1.9), (2.6, 3.8, 3.6), white)
+    for z in (1.4, 2.6):
+        _box((3.1, -1.55, z), (2.0, 0.12, 0.5), glass)
+    _box((-1.2, -2.4, 1.2), (3.4, 1.4, 2.2), glass)
+    _box((-1.2, -2.4, 2.45), (3.6, 1.6, 0.22), white_d)
+    _cyl((-1.2, 1.6, 5.9), 0.4, 0.8, steel)                       # dish mount
+    _cyl((-1.2, 1.0, 6.9), 1.7, 0.18, dishw, 24, rot=(-58, 0, 0))  # dish face
+    _cyl((-1.2, 0.78, 7.05), 1.25, 0.12, dishd, 24, rot=(-58, 0, 0))  # concave hint
+    _cyl((-1.2, 0.2, 7.5), 0.07, 1.6, steel, rot=(-58, 0, 0))     # feed arm
+    _box((-1.2, -0.05, 8.1), (0.18, 0.18, 0.18), steel)           # feed
+    _cyl((3.1, 1.6, 4.4), 0.07, 2.2, steel)                       # comms mast
+    return 14.0
+
+
+BODIES = {'bank': build_bank, 'alloyex': build_alloyex, 'fusion': build_fusion, 'rlab': build_rlab}
 
 
 def render_body(name, builder, cam):
