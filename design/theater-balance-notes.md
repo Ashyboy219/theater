@@ -12,7 +12,7 @@
 | Layer | How many apply | Effect | File |
 |---|---|---|---|
 | National profile (`doc-<faction>`) | exactly **1** (your faction, always on) | a 2–3-axis profile, each within **±20%** (Firepower / Damage-taken / Speed / Range / Vision / Inaccuracy) | `theater-doctrines.yaml` |
-| Faction doctrine branch (`doc-<f>-<branch>`) | at most **1** (the two branches are mutually exclusive) | a small per-branch multiplier set, **85–118** (~±18%) | `theater-doctrine-*.yaml` (usa/rus/chn/uk/ind; tur is content-only) |
+| Faction doctrine branch (`doc-<f>-<branch>`) | at most **1** (the two branches are mutually exclusive) | a per-branch multiplier set, **most axes ±12–18%** but a few reach **±22–25%** (e.g. `RevealsShroudMultiplier 125`, `DamageMultiplier 122–124`) and `InaccuracyMultiplier 70` = **+30% accuracy** | `theater-doctrine-*.yaml` (**all 6** factions: usa/rus/chn/uk/ind **and tur**) |
 | Command & Control aura | **situational** — `FirepowerMultiplier@c2: 110` (+10%) on `^Vehicle`/`^Infantry` only while within range of your own Theater Command | `theater-command-aura.yaml` |
 | Economy Network | **income only** — `CashTricklerMultiplier@econ: 130` (+30%) on banks/extractors; NOT combat | `theater-economy.yaml` |
 
@@ -51,6 +51,25 @@ Only the national profile (×1) and one doctrine branch (×1) co-apply, plus the
 4. **Tradeoffs are real.** Glass-cannon profiles take more damage (`DamageMultiplier > 100`); toughness
    profiles give up firepower/speed. No single faction maxes every axis.
 
+## Faction-doctrine parity audit (2026-06-24)
+
+Audited all 6 factions' two mutually-exclusive doctrine branches. **Every branch is a genuine trade-off
+(an upside paired with a real downside) and the two branches per faction are distinct playstyles — none is
+strictly-better, so the pick is a real decision. No pure power-up branch exists.**
+
+| Faction | Branch A (upside / downside) | Branch B (upside / downside) |
+|---|---|---|
+| **USA** | air: cheaper+faster production / squishier | networked: +range, **+30% accuracy** (Inacc 70), +vision / **+12% cost** |
+| **RUS** | armor: tankier (Dmg 90), +18% speed / −15% vision, +15% cost | arty: +18% range, +12% fire / **squishier (Dmg 122)** |
+| **CHN** | air: unlocks air content / squishier (Dmg 110) | industrial: −12% cost+time / −8% fire, +8% dmg-taken |
+| **UK** | specops: elite infantry (fire +12) / weaker+pricier vehicles | intel: +10% range, +15% vision / **squishier (Dmg 124)** |
+| **IND** | missile: +12% range+fire / slow reload (+22%), squishier | networked: tankier (Dmg 85), +10% speed / −10% range, +10% cost |
+| **TUR** | recon: **+25% vision** (Reveal 125) / −10% fire | rapid: +15% speed / +12% dmg-taken |
+
+Cross-faction magnitudes are comparable (no faction's trade-offs dominate). The two "cheap-mass production"
+branches (chn.industrial, usa.air) are the closest pair; chn's adds a firepower downside, usa's only
+squishiness — within tuning tolerance, watch in playtest. **No balance bug; no code change.**
+
 ## Tuning guidance
 
 - The broadest combat lever is now the **national profiles** (`theater-doctrines.yaml`) — they hit every unit
@@ -70,6 +89,8 @@ Only the national profile (×1) and one doctrine branch (×1) co-apply, plus the
 - The re-bodied static air-defenses (AKASH/AEGIS): firing behaviour now that the *visible* turret is gone
   (logical Turreted/AttackTurreted retained); and turret-on-hull alignment on the DONGFENG.
 
-*Method: enumerated every `*Multiplier`/`*Multiplier@suffix` trait across `mods/theater/rules/` (2026-06-23).
-Only the faction-profile, faction-doctrine, C2-aura, and econ-network files contain any; the research/age/
-fork/escalation files contain none. Test suite: 487 pass / 0 fail. check-yaml: 0 errors.*
+*Method: enumerated every `*Multiplier`/`*Multiplier@suffix` trait across `mods/theater/rules/` (2026-06-23),
+then audited each faction's doctrine branches for parity (2026-06-24 — corrected this note: tur is NOT
+content-only, and a few doctrine axes exceed the ±18% originally stated). Only the faction-profile,
+faction-doctrine, C2-aura, and econ-network files contain any; the research/age/fork/escalation files
+contain none. Test suite: 487 pass / 0 fail. check-yaml: 0 errors.*
