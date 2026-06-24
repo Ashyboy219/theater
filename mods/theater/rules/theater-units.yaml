@@ -513,8 +513,14 @@ HAYABUSA:
 # Subcontinent Federation (India) — layered SAM battery.
 AKASH:
 	Inherits: AGUN
+	# Static SAM battery — bespoke fixed-launcher body instead of the stock RA AA-gun turret. Keep the
+	# logical Turreted/AttackTurreted (aiming) but drop the VISIBLE rotating turret + muzzle flash;
+	# SAMs launch upward regardless of bearing, so a fixed launcher reads correctly.
 	RenderSprites:
-		Image: agun
+		Image: akashbody
+	-WithSpriteTurret:
+	-WithMuzzleOverlay:
+	WithSpriteBody:
 	Tooltip:
 		Name: actor-akash.name
 	Buildable:

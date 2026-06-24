@@ -253,6 +253,28 @@ thcombody:
 	thcom-icon:
 		Filename: thcom-cameo.png
 
+# Bespoke AKASH SAM-battery body (India air defense) — static fixed launcher with 4 raised missile tubes
+# + radar panel, replacing the stock AA-gun turret. 1x1 defense: reuse the silo minibib. make = idle
+# (instant build-up); akash-icon re-homed here (was under agun).
+akashbody:
+	idle:
+		Filename: akashbody.png
+	make:
+		Filename: akashbody.png
+	bib:
+		TilesetFilenames:
+			SNOW: mbSILO.sno
+			INTERIOR: mbSILO.int
+			TEMPERAT: mbSILO.tem
+			DESERT: mbSILO.des
+		Length: *
+	# AGUN's Armament keeps MuzzleSequence: muzzle (lint-checked even though WithMuzzleOverlay is stripped).
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	akash-icon:
+		Filename: akash-cameo.png
+
 apwr:
 	fusion-icon:
 		Filename: fusion-cameo.png
