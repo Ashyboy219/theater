@@ -80,3 +80,13 @@ FACT:
 	RenderSprites:
 		Image: factbody
 	-WithDeathAnimation:
+
+# Refinery — a modern mineral-processing plant: distillation columns with platform rings, storage tanks,
+# a glowing flare stack, a central processing block and an intake hopper at the harvester dock. 3x4; reuses
+# bib2 + procicon. Strip WithIdleOverlay@TOP (the stock animated top is baked into the static body — else it
+# references an undefined idle-top sequence) and -WithDeathAnimation (no dead frames). DockOffset unchanged.
+PROC:
+	RenderSprites:
+		Image: procbody
+	-WithIdleOverlay@TOP:
+	-WithDeathAnimation:
