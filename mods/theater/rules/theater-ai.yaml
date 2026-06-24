@@ -229,6 +229,7 @@ Player:
 	# the core base/army, mid-game.
 	BaseBuilderBotModule@rush:
 		BuildingQueues: Building, Defense, Command
+		DefenseTypes: hbox,pbox,gun,ftur,tsla,agun,sam,akash,aegis
 		BuildingFractions:
 			thcom: 2
 			doctrine.usa.air: 1
@@ -307,6 +308,7 @@ Player:
 			econ.network: 1
 	BaseBuilderBotModule@normal:
 		BuildingQueues: Building, Defense, Command
+		DefenseTypes: hbox,pbox,gun,ftur,tsla,agun,sam,akash,aegis
 		BuildingFractions:
 			thcom: 2
 			doctrine.usa.air: 1
@@ -385,6 +387,7 @@ Player:
 			econ.network: 1
 	BaseBuilderBotModule@turtle:
 		BuildingQueues: Building, Defense, Command
+		DefenseTypes: hbox,pbox,gun,ftur,tsla,agun,sam,akash,aegis
 		BuildingFractions:
 			thcom: 2
 			doctrine.usa.air: 1
@@ -463,6 +466,7 @@ Player:
 			econ.network: 1
 	BaseBuilderBotModule@naval:
 		BuildingQueues: Building, Defense, Command
+		DefenseTypes: hbox,pbox,gun,ftur,tsla,agun,sam,akash,aegis
 		BuildingFractions:
 			thcom: 2
 			doctrine.usa.air: 1
