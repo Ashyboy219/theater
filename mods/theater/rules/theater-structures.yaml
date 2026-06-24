@@ -189,3 +189,13 @@ AGUN:
 MSLO:
 	RenderSprites:
 		Image: mslobody
+
+# Gap Generator — a modern EW/cloaking station: a building with a glowing field-emitter dome + antenna array.
+# 1x1; reuses mbGAP bib + gapicon. Chronosphere — a glowing chrono-portal ring (concentric energy rings +
+# purple core) on a mount beside a control building. 2x2; reuses mbPDOX bib + pdoxicon; active maps to body.
+GAP:
+	RenderSprites:
+		Image: gapbody
+PDOX:
+	RenderSprites:
+		Image: pdoxbody

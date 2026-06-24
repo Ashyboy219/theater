@@ -614,6 +614,43 @@ mslobody:
 		Filename: mslobody.png
 	icon:
 		Filename: msloicon2.shp
+# Modern GAP generator (field-emitter dome) + CHRONOSPHERE (glowing chrono-portal ring) bodies.
+gapbody:
+	idle:
+		Filename: gapbody.png
+	damaged-idle:
+		Filename: gapbody.png
+	make:
+		Filename: gapbody.png
+	bib:
+		TilesetFilenames:
+			SNOW: mbGAP.sno
+			INTERIOR: mbGAP.int
+			TEMPERAT: mbGAP.tem
+			DESERT: mbGAP.des
+		Length: *
+	icon:
+		Filename: gapicon.shp
+pdoxbody:
+	idle:
+		Filename: pdoxbody.png
+	damaged-idle:
+		Filename: pdoxbody.png
+	active:
+		Filename: pdoxbody.png
+	damaged-active:
+		Filename: pdoxbody.png
+	make:
+		Filename: pdoxbody.png
+	bib:
+		TilesetFilenames:
+			SNOW: mbPDOX.sno
+			INTERIOR: mbPDOX.int
+			TEMPERAT: mbPDOX.tem
+			DESERT: mbPDOX.des
+		Length: *
+	icon:
+		Filename: pdoxicon.shp
 
 apwr:
 	fusion-icon:
