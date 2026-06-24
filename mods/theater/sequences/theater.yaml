@@ -507,6 +507,26 @@ silobody:
 	icon:
 		Filename: siloicon.shp
 
+# Core base-building reskin: modern advanced TECH CENTER body (dark-glass tower + glowing data bands +
+# uplink dish), replacing the stock RA tech center. 2x3: reuse bib3 + atekicon. active maps to the body.
+atekbody:
+	idle:
+		Filename: atekbody.png
+	damaged-idle:
+		Filename: atekbody.png
+	make:
+		Filename: atekbody.png
+	active:
+		Filename: atekbody.png
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+	icon:
+		Filename: atekicon.shp
+
 apwr:
 	fusion-icon:
 		Filename: fusion-cameo.png
