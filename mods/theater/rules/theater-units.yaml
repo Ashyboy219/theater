@@ -190,6 +190,7 @@ KUNAI:
 		BuildPaletteOrder: 91
 		Prerequisites: tech.eastern_maritime, tent
 		Description: actor-kunai.description
+		Icon: kunai-icon
 	# A DEDICATED anti-tank team, not the dual-purpose E3 rocket soldier: drop the RedEye AA missiles so it commits
 	# fully to the Dragon ATGM — a pure tank-hunter (the mirror of `manpads`, which kept AA and dropped AT). It can
 	# no longer touch aircraft, so it must be screened from air — that is its counter.

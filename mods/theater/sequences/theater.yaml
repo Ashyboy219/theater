@@ -53,10 +53,6 @@ e6:
 	raider-icon:
 		Filename: raider-cameo.png
 
-shok:
-	kunai-icon:
-		Filename: kunai-cameo.png
-
 v2rl:
 	garuda-icon:
 		Filename: garuda-cameo.png
@@ -315,6 +311,9 @@ jeep:
 e3:
 	manpads-icon:
 		Filename: manpads-cameo.png
+	# KUNAI (anti-tank team) renders on the e3 body, so its cameo resolves here (was orphaned under shok).
+	kunai-icon:
+		Filename: kunai-cameo.png
 
 e1:
 	scout-icon:
