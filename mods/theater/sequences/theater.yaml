@@ -652,6 +652,25 @@ pdoxbody:
 	icon:
 		Filename: pdoxicon.shp
 
+# Neutral-structure reskin: modern HOSPITAL body (white block + red crosses + medevac helipad + ambulance),
+# replacing the stock RA hospital the living world places in settlements. 2x2: reuse mbHOSP bib + hospicon.
+hospbody:
+	idle:
+		Filename: hospbody.png
+	damaged-idle:
+		Filename: hospbody.png
+	make:
+		Filename: hospbody.png
+	bib:
+		TilesetFilenames:
+			SNOW: mbHOSP.sno
+			INTERIOR: mbHOSP.int
+			TEMPERAT: mbHOSP.tem
+			DESERT: mbHOSP.des
+		Length: *
+	icon:
+		Filename: hospicon.shp
+
 apwr:
 	fusion-icon:
 		Filename: fusion-cameo.png

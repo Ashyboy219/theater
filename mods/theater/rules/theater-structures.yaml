@@ -199,3 +199,12 @@ GAP:
 PDOX:
 	RenderSprites:
 		Image: pdoxbody
+
+# --- Neutral/map structures the living world surfaces (capturable, seen in every settlement town) ---
+# Hospital — a modern medical center: a white multi-storey block with blue glass, big red crosses, a rooftop
+# medevac helipad, an ambulance bay and a parked ambulance. 2x2 capturable tech building (civilian.yaml);
+# reuses mbHOSP bib + hospicon. -WithDeathAnimation (single-frame body has no dead frames).
+HOSP:
+	RenderSprites:
+		Image: hospbody
+	-WithDeathAnimation:
