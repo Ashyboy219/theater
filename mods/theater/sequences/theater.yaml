@@ -910,6 +910,16 @@ harvbody:
 		Facings: 32
 		InterpolatedFacings: 64
 
+# Modern concrete BLAST WALL (BRIK = the buildable concrete wall): grey T-wall / jersey-barrier slabs with a
+# hazard stripe (a modern checkpoint/blast barrier) instead of the stock RA concrete wall. WithWallSpriteBody
+# fetches a frame by neighbour adjacency (16 frames per damage state: idle 0-15 / scratched 16-31 / damaged
+# 32-47); the sheet is 48 IDENTICAL frames, so every adjacency AND damage state shows the barrier (robust — no
+# wrong connections). Override only Defaults.Filename; stock Start/Length and the icon (brikicon) are kept.
+# (SBAG sandbag wall is left stock — sandbags are era-neutral and don't read as dated at 1-cell scale.)
+brik:
+	Defaults:
+		Filename: twallbody.png
+
 dd:
 	burke-icon:
 		Filename: burke-cameo.png
