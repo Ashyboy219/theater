@@ -327,6 +327,28 @@ tentbody:
 	icon:
 		Filename: tenticon.shp
 
+# Core base-building reskin: modern CONSTRUCTION YARD body (HQ + assembly bay + yellow tower crane),
+# replacing the stock RA conyard. 3x4: reuse bib2 + facticon. build/damaged-build map to the static body.
+factbody:
+	idle:
+		Filename: factbody.png
+	make:
+		Filename: factbody.png
+	build:
+		Filename: factbody.png
+	damaged-idle:
+		Filename: factbody.png
+	damaged-build:
+		Filename: factbody.png
+	bib:
+		Filename: bib2.tem
+		TilesetFilenames:
+			SNOW: bib2.sno
+			DESERT: bib2.des
+		Length: *
+	icon:
+		Filename: facticon.shp
+
 apwr:
 	fusion-icon:
 		Filename: fusion-cameo.png

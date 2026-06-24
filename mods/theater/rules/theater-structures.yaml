@@ -71,3 +71,12 @@ POWR:
 TENT:
 	RenderSprites:
 		Image: tentbody
+
+# Construction Yard — a modern command HQ + assembly yard with a yellow tower crane (the unmistakable
+# "construction" read), glass HQ block and a vehicle assembly bay. 3x4 (biggest building); reuses bib2 +
+# facticon. The stock `build`/`damaged-build` crane animations map to the static body (lost, acceptable for
+# now); -WithDeathAnimation since the single-frame body has no `dead` frames.
+FACT:
+	RenderSprites:
+		Image: factbody
+	-WithDeathAnimation:
