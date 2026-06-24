@@ -99,3 +99,11 @@ WEAP:
 	RenderSprites:
 		Image: weapbody
 	-WithProductionDoorOverlay:
+
+# Radar Dome — a modern radar station: a white radome (golf-ball radar dome) on a control building, a
+# glowing AESA phased-array panel, and antenna masts. 2x3; reuses bib3 + domeicon. Simple (no death anim /
+# no dish-rotation overlay on the stock DOME). NOTE: this only changes the DOME *building*; the non-placed
+# upgrade actors (econ.network/space.*/research.*/age.*) keep RenderSprites.Image: dome for their cameos.
+DOME:
+	RenderSprites:
+		Image: domebody

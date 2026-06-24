@@ -390,6 +390,24 @@ weapbody:
 	icon:
 		Filename: weapicon.shp
 
+# Core base-building reskin: modern RADAR STATION body (white radome + control building + AESA panel),
+# replacing the stock RA radar dome. 2x3: reuse bib3 + domeicon. (Separate image from the `dome` cameo block.)
+domebody:
+	idle:
+		Filename: domebody.png
+	damaged-idle:
+		Filename: domebody.png
+	make:
+		Filename: domebody.png
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+	icon:
+		Filename: domeicon.shp
+
 apwr:
 	fusion-icon:
 		Filename: fusion-cameo.png
