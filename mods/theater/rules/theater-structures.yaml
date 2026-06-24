@@ -328,3 +328,7 @@ V35:
 V36:
 	RenderSprites:
 		Image: vhouse2body
+# 5x2 large civilian building -> a modern commercial/distribution complex (solar roof, sign, loading docks).
+V37:
+	RenderSprites:
+		Image: vbigbody

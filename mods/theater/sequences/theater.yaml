@@ -728,6 +728,11 @@ vhouse2body:
 		Filename: vhouse2body.png
 	damaged-idle:
 		Filename: vhouse2body.png
+vbigbody:
+	idle:
+		Filename: vbigbody.png
+	damaged-idle:
+		Filename: vbigbody.png
 
 apwr:
 	fusion-icon:
