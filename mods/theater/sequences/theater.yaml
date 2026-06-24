@@ -599,6 +599,22 @@ agunbody:
 	icon:
 		Filename: agunicon.shp
 
+# Modern MISSILE SILO body (ICBM silo + control bunker), replacing the stock RA missile silo. 2x1, no bib:
+# reuse msloicon2. active/damaged-active map to the static body.
+mslobody:
+	idle:
+		Filename: mslobody.png
+	damaged-idle:
+		Filename: mslobody.png
+	make:
+		Filename: mslobody.png
+	active:
+		Filename: mslobody.png
+	damaged-active:
+		Filename: mslobody.png
+	icon:
+		Filename: msloicon2.shp
+
 apwr:
 	fusion-icon:
 		Filename: fusion-cameo.png

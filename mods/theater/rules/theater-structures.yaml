@@ -181,3 +181,11 @@ AGUN:
 		Image: agunbody
 	-WithSpriteTurret:
 	-WithMuzzleOverlay:
+
+# --- Superweapons ---
+# Missile Silo — a modern ICBM silo: a reinforced hazard-ringed silo collar with a white/red missile rising,
+# a sliding blast-door lid, and a control bunker with comms. 2x1; reuses msloicon2 (no bib). The stock
+# active/damaged-active launch animation maps to the static body.
+MSLO:
+	RenderSprites:
+		Image: mslobody
