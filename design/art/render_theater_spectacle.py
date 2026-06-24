@@ -62,6 +62,14 @@ def _cyl(loc, r, h, mat, v=16, rot=(0, 0, 0)):
     o.data.materials.clear(); o.data.materials.append(mat); _made.append(o); return o
 
 
+def _pyr(loc, r, depth, mat):
+    """4-sided pyramid with its tip pointing +Y (aircraft nose cone)."""
+    bpy.ops.mesh.primitive_cone_add(vertices=4, radius1=r, radius2=0, depth=depth, location=loc)
+    o = bpy.context.active_object; o.name = 'GEN_p'
+    o.rotation_euler = (math.radians(-90), math.radians(45), 0)
+    o.data.materials.clear(); o.data.materials.append(mat); _made.append(o); return o
+
+
 def _hull_poly(verts2d, ztop, depth, mat):
     """Extrude a 2D outline (XY) down by `depth` — used for the ship hull (pointed bow at +Y)."""
     me = bpy.data.meshes.new('GEN_hullm'); ob = bpy.data.objects.new('GEN_hull', me)
@@ -140,7 +148,68 @@ def build_leviathan():
     return 18.5
 
 
-BODIES = {'citadel': build_citadel, 'leviathan': build_leviathan}   # archangel/tempest added as reworked
+def build_archangel():
+    """Apex heavy gunship flying-fortress: broad raised fuselage + nose cone (front=+Y), wide wing with
+    four engine nacelles, side gun blisters with cannons, twin canted tail fins, wingtip missile pods,
+    cyan cockpit + red chin sensor. Dark gunmetal. ortho 14 -> ~88px broadside."""
+    body = node_mat('GEN_body', (0.22, 0.23, 0.26), 0.55, 0.1)
+    body_d = node_mat('GEN_body_d', (0.14, 0.15, 0.17), 0.6)
+    metal = node_mat('GEN_metal', (0.30, 0.31, 0.33), 0.4, 0.4)
+    gun = node_mat('GEN_gun', (0.11, 0.12, 0.14), 0.4, 0.5)
+    red = node_mat('GEN_red', (0.7, 0.12, 0.10), 0.3, 0.0, emit=(1.0, 0.12, 0.05), estr=5.0)
+    cyan = node_mat('GEN_cyan', (0.1, 0.5, 0.7), 0.3, 0.0, emit=(0.2, 0.85, 1.0), estr=4.0)
+    _box((0, 0.2, 0.55), (1.8, 7.2, 1.0), body)                            # fuselage
+    _pyr((0, 4.2, 0.55), 0.9, 2.0, body_d)                                 # nose -> +Y
+    _box((0, 1.4, 0.95), (1.0, 1.6, 0.5), metal)                           # cockpit hump
+    _box((0, 1.7, 1.0), (0.6, 0.5, 0.28), cyan)                            # cockpit glass
+    _box((0, 3.0, 0.4), (0.3, 0.5, 0.3), red)                              # chin sensor/gun
+    _box((0, -0.2, 0.5), (11.0, 2.4, 0.32), body)                          # wing
+    for x in (-3.4, -1.7, 1.7, 3.4):
+        _cyl((x, 0.1, 0.18), 0.5, 1.9, body_d, rot=(90, 0, 0))             # engine nacelles
+        _cyl((x, 1.15, 0.18), 0.42, 0.3, gun, rot=(90, 0, 0))
+    for x in (-1.4, 1.4):
+        _box((x, -1.6, 0.45), (0.9, 1.4, 0.7), body_d)                     # gun blister
+        _cyl((x, -2.6, 0.35), 0.14, 1.8, gun, rot=(75, 0, 0))             # cannon
+    _box((0, -3.2, 0.55), (1.2, 1.8, 0.7), body_d)
+    _box((-0.7, -3.6, 1.2), (0.12, 1.0, 1.0), body, rot=(0, 24, 0))        # twin tails
+    _box((0.7, -3.6, 1.2), (0.12, 1.0, 1.0), body, rot=(0, -24, 0))
+    _box((0, -3.9, 0.6), (2.6, 0.7, 0.16), body)                          # tailplane
+    for x in (-5.2, 5.2):
+        _cyl((x, 0.2, 0.5), 0.18, 1.4, gun, rot=(90, 0, 0))               # wingtip pods
+    return 14.0
+
+
+def build_tempest():
+    """Apex rocket-artillery (MLRS): 8-wheel sand chassis, armored cab (front=+Y), an elevated launcher
+    pod tilted up-and-back with a 4x2 grid of rocket tubes (amber muzzle glow), hydraulic arms, rear
+    stabiliser. Sand/tan (distinct from the green Citadel). ortho 14 -> ~81px broadside."""
+    tan = node_mat('GEN_tan', (0.55, 0.50, 0.36), 0.7)
+    tan_d = node_mat('GEN_tan_d', (0.39, 0.35, 0.25), 0.7)
+    wheel = node_mat('GEN_wheel', (0.09, 0.09, 0.10), 0.7)
+    metal = node_mat('GEN_metal', (0.28, 0.28, 0.29), 0.5, 0.4)
+    tube = node_mat('GEN_tube', (0.13, 0.13, 0.14), 0.4, 0.5)
+    amber = node_mat('GEN_amber', (0.7, 0.35, 0.04), 0.3, 0.0, emit=(1.0, 0.5, 0.05), estr=5.0)
+    _box((0, -0.2, 1.15), (3.0, 7.4, 1.3), tan)                            # chassis
+    _box((0, -0.2, 1.95), (3.2, 6.8, 0.4), tan_d)                          # deck
+    for y in (2.5, 1.1, -1.1, -2.5):
+        for x in (-1.6, 1.6):
+            _cyl((x, y, 0.6), 0.62, 0.5, wheel, rot=(0, 90, 0))            # 8x8 wheels
+    _box((0, 3.0, 2.0), (2.6, 1.6, 1.5), tan)                              # cab
+    _box((0, 3.85, 2.1), (2.2, 0.3, 1.0), tube)                            # windscreen
+    _box((0, -1.2, 2.3), (2.2, 1.4, 0.6), metal)                           # turntable
+    _box((0, -1.9, 3.5), (2.8, 3.0, 1.7), tan_d, rot=(-32, 0, 0))          # launcher pod
+    for tx in (-0.85, -0.28, 0.28, 0.85):
+        for tz in (0, 1):
+            _cyl((tx, -3.4, 4.3 + tz * 0.95), 0.22, 2.0, tube, rot=(58, 0, 0))         # rocket tubes
+            _cyl((tx, -3.45, 4.32 + tz * 0.95), 0.13, 0.4, amber, rot=(58, 0, 0))      # muzzle glow
+    for x in (-1.0, 1.0):
+        _cyl((x, -0.4, 2.7), 0.12, 1.8, metal, rot=(40, 0, 0))            # hydraulic arms
+    _box((0, -3.7, 1.0), (2.4, 0.5, 0.8), tan_d)                          # rear stabiliser
+    return 14.0
+
+
+BODIES = {'citadel': build_citadel, 'leviathan': build_leviathan,
+          'archangel': build_archangel, 'tempest': build_tempest}   # full P4 apex set
 
 
 def turntable_cam(ortho):
