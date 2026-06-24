@@ -291,6 +291,24 @@ aegisbody:
 	aegis-icon:
 		Filename: aegis-cameo.png
 
+# Core base-building reskin: modern combined-cycle POWER PLANT body (turbine hall + stacks + transformers),
+# replacing the stock RA power plant. 2x3: reuse the stock bib3 + powricon. make/damaged-idle = the static body.
+powrbody:
+	idle:
+		Filename: powrbody.png
+	damaged-idle:
+		Filename: powrbody.png
+	make:
+		Filename: powrbody.png
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+	icon:
+		Filename: powricon.shp
+
 apwr:
 	fusion-icon:
 		Filename: fusion-cameo.png

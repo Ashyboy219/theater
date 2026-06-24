@@ -50,3 +50,17 @@ THCOM:
 	# Launch site for the science victory: the Space-Program countdown only runs while a Theater Command
 	# stands, so the enemy can stall a science win by destroying it (see SpaceVictoryConditions).
 	SpaceVictoryLaunchSite:
+
+# ============================================================================
+# CORE BASE-BUILDING RESKINS — bespoke modern bodies replacing the stock Red Alert art, so the whole
+# base (not just the new 4X structures) reads as contemporary. Same proven pattern as the 4X buildings:
+# swap RenderSprites.Image to a custom body + provide its sequences; strip the inherited death animation
+# (the single-frame custom bodies have no `dead` frames — standard explosion effects still play).
+# ============================================================================
+
+# Power Plant — a modern combined-cycle gas station (turbine hall + twin stacks + transformer yard),
+# distinct from the FUSION reactor's domed-containment look. 2x3 footprint; reuses the stock bib3 + icon.
+POWR:
+	RenderSprites:
+		Image: powrbody
+	-WithDeathAnimation:
