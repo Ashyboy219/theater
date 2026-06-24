@@ -26,7 +26,7 @@
 # so the rebuilt body is a drop-in (same in-world size). Sequence (mods/theater/sequences/theater.yaml)
 # already declares Facings:32 + InterpolatedFacings:64 + a `muzzle` strip, so the strip is a drop-in.
 
-import bpy, math, os
+import bpy, math, os, bmesh
 
 N = 32
 F = 128
@@ -62,6 +62,19 @@ def _cyl(loc, r, h, mat, v=16, rot=(0, 0, 0)):
     o.data.materials.clear(); o.data.materials.append(mat); _made.append(o); return o
 
 
+def _hull_poly(verts2d, ztop, depth, mat):
+    """Extrude a 2D outline (XY) down by `depth` — used for the ship hull (pointed bow at +Y)."""
+    me = bpy.data.meshes.new('GEN_hullm'); ob = bpy.data.objects.new('GEN_hull', me)
+    bpy.context.scene.collection.objects.link(ob)
+    bm = bmesh.new()
+    vs = [bm.verts.new((x, y, ztop)) for (x, y) in verts2d]
+    f = bm.faces.new(vs)
+    r = bmesh.ops.extrude_face_region(bm, geom=[f])
+    bmesh.ops.translate(bm, vec=(0, 0, -depth), verts=[e for e in r['geom'] if isinstance(e, bmesh.types.BMVert)])
+    bm.to_mesh(me); bm.free()
+    ob.data.materials.append(mat); _made.append(ob); return ob
+
+
 def build_citadel():
     """Apex super-heavy land dreadnought: long tracked hull, sloped glacis, massive central turret with
     TWIN main guns (front=+Y), side sponsons, AA cupola and a glowing forward sensor. Dark military green."""
@@ -95,7 +108,39 @@ def build_citadel():
     return 12.5  # ortho_scale (matches existing broadside size)
 
 
-BODIES = {'citadel': build_citadel}   # leviathan/archangel/tempest added as they are reworked
+def build_leviathan():
+    """Apex naval arsenal dreadnought: bmesh ship hull (pointed bow +Y), twin-barrel main turrets fore
+    and aft, amidships VLS cells with glowing hatches, central bridge island, funnel, radar mast with a
+    phased-array panel + amber sensor, CIWS mounts. Haze-grey. ortho 18.5 -> ~76px broadside (drop-in)."""
+    hull = node_mat('GEN_hull', (0.30, 0.33, 0.37), 0.6, 0.2)
+    deck = node_mat('GEN_deck', (0.20, 0.22, 0.25), 0.7)
+    sup = node_mat('GEN_sup', (0.42, 0.44, 0.47), 0.5)
+    gun = node_mat('GEN_gun', (0.17, 0.18, 0.20), 0.4, 0.5)
+    glow = node_mat('GEN_glow', (0.1, 0.5, 0.7), 0.3, 0.0, emit=(0.15, 0.8, 1.0), estr=5.0)
+    amber = node_mat('GEN_amber', (0.7, 0.4, 0.05), 0.3, 0.0, emit=(1.0, 0.55, 0.05), estr=4.0)
+    _hull_poly([(0, 5.6), (1.25, 3.8), (1.45, -3.8), (0, -4.7), (-1.45, -3.8), (-1.25, 3.8)], 1.1, 1.4, hull)
+    _box((0, 0.4, 1.18), (2.3, 8.6, 0.12), deck)
+    _box((0, 3.0, 1.5), (1.6, 1.4, 0.7), sup)                               # fwd turret
+    _cyl((-0.3, 4.6, 1.6), 0.16, 2.6, gun, rot=(90, 0, 0)); _cyl((0.3, 4.6, 1.6), 0.16, 2.6, gun, rot=(90, 0, 0))
+    _box((0, -2.6, 1.5), (1.6, 1.4, 0.7), sup)                              # aft turret
+    _cyl((-0.3, -1.2, 1.6), 0.16, 2.6, gun, rot=(90, 0, 0)); _cyl((0.3, -1.2, 1.6), 0.16, 2.6, gun, rot=(90, 0, 0))
+    for gy in (1.4, 0.6):                                                   # VLS cells
+        for gx in (-0.5, 0.0, 0.5):
+            _box((gx, gy, 1.32), (0.3, 0.3, 0.18), gun)
+            _box((gx, gy, 1.42), (0.18, 0.18, 0.06), glow)
+    _box((0, -0.3, 2.2), (1.5, 2.0, 1.6), sup)                             # bridge island
+    _box((0, -0.3, 3.1), (1.0, 1.2, 0.8), sup)
+    _box((0.0, -0.3, 3.0), (0.5, 0.06, 0.5), glow)                         # bridge windows
+    _box((0, -1.4, 2.5), (0.7, 0.8, 1.2), deck)                            # funnel
+    _cyl((0, -0.3, 4.2), 0.07, 2.2, gun)                                   # mast
+    _box((0, -0.6, 4.9), (0.9, 0.12, 0.7), sup)                            # phased-array panel
+    _box((0, -0.45, 5.2), (0.3, 0.1, 0.18), amber)
+    for x in (-1.1, 1.1):                                                  # CIWS
+        _cyl((x, 0.4, 1.5), 0.22, 0.5, sup); _cyl((x, 0.9, 1.55), 0.06, 0.7, gun, rot=(70, 0, 0))
+    return 18.5
+
+
+BODIES = {'citadel': build_citadel, 'leviathan': build_leviathan}   # archangel/tempest added as reworked
 
 
 def turntable_cam(ortho):
