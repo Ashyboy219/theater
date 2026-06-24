@@ -270,3 +270,61 @@ V32:
 V33:
 	RenderSprites:
 		Image: vtownbody
+# 1x1 town buildings -> small modern house / kiosk / garage / 2-storey (split for variety).
+V08:
+	RenderSprites:
+		Image: vhousebody
+V09:
+	RenderSprites:
+		Image: vhousebody
+V10:
+	RenderSprites:
+		Image: vhousebody
+V11:
+	RenderSprites:
+		Image: vhousebody
+V12:
+	RenderSprites:
+		Image: vhousebody
+V13:
+	RenderSprites:
+		Image: vkioskbody
+V14:
+	RenderSprites:
+		Image: vkioskbody
+V15:
+	RenderSprites:
+		Image: vkioskbody
+V16:
+	RenderSprites:
+		Image: vkioskbody
+V17:
+	RenderSprites:
+		Image: vkioskbody
+V18:
+	RenderSprites:
+		Image: vgaragebody
+V19:
+	RenderSprites:
+		Image: vgaragebody
+V23:
+	RenderSprites:
+		Image: vgaragebody
+V27:
+	RenderSprites:
+		Image: vgaragebody
+V28:
+	RenderSprites:
+		Image: vgaragebody
+V29:
+	RenderSprites:
+		Image: vhouse2body
+V34:
+	RenderSprites:
+		Image: vhouse2body
+V35:
+	RenderSprites:
+		Image: vhouse2body
+V36:
+	RenderSprites:
+		Image: vhouse2body

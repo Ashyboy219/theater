@@ -708,6 +708,26 @@ vtownbody:
 		Filename: vtownbody.png
 	damaged-idle:
 		Filename: vtownbody.png
+vhousebody:
+	idle:
+		Filename: vhousebody.png
+	damaged-idle:
+		Filename: vhousebody.png
+vkioskbody:
+	idle:
+		Filename: vkioskbody.png
+	damaged-idle:
+		Filename: vkioskbody.png
+vgaragebody:
+	idle:
+		Filename: vgaragebody.png
+	damaged-idle:
+		Filename: vgaragebody.png
+vhouse2body:
+	idle:
+		Filename: vhouse2body.png
+	damaged-idle:
+		Filename: vhouse2body.png
 
 apwr:
 	fusion-icon:
