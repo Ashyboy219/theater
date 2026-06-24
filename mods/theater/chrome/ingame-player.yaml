@@ -441,6 +441,67 @@ Container@PLAYER_WIDGETS:
 					Font: TinyBold
 					Contrast: true
 					Text: techtree-node-orbstrike
+				# --- colour legend (matches the node category colours) ---
+				ColorBlock@LEG_S1:
+					X: 86
+					Y: 416
+					Width: 12
+					Height: 12
+					Color: 2E5C8AE0
+				Label@LEG_L1:
+					X: 102
+					Y: 413
+					Width: 90
+					Height: 16
+					Align: Left
+					Font: TinyBold
+					Contrast: true
+					Text: techtree-legend-spine
+				ColorBlock@LEG_S2:
+					X: 246
+					Y: 416
+					Width: 12
+					Height: 12
+					Color: 2C6E64E0
+				Label@LEG_L2:
+					X: 262
+					Y: 413
+					Width: 90
+					Height: 16
+					Align: Left
+					Font: TinyBold
+					Contrast: true
+					Text: techtree-legend-unlock
+				ColorBlock@LEG_S3:
+					X: 378
+					Y: 416
+					Width: 12
+					Height: 12
+					Color: 8A6E2AE0
+				Label@LEG_L3:
+					X: 394
+					Y: 413
+					Width: 130
+					Height: 16
+					Align: Left
+					Font: TinyBold
+					Contrast: true
+					Text: techtree-legend-fork
+				ColorBlock@LEG_S4:
+					X: 574
+					Y: 416
+					Width: 12
+					Height: 12
+					Color: 9A3A30E0
+				Label@LEG_L4:
+					X: 590
+					Y: 413
+					Width: 90
+					Height: 16
+					Align: Left
+					Font: TinyBold
+					Contrast: true
+					Text: techtree-legend-apex
 				Label@TECHTREE_HINT:
 					X: 0
 					Y: 434

@@ -480,6 +480,10 @@ actor-tempest =
 ## THEATER tech-tree flowchart labels (F8 panel).
 techtree-title = THEATER TECH TREE  —  upgrades UNLOCK new units, structures & powers
 techtree-hint = F8 to close
+techtree-legend-spine = Age spine
+techtree-legend-unlock = Unlock
+techtree-legend-fork = Fork — pick one
+techtree-legend-apex = Apex tier
 
 techtree-node-rlab = Research Lab
 techtree-node-airdef = Air Defense
