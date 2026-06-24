@@ -136,3 +136,11 @@ FIX:
 SYRD:
 	RenderSprites:
 		Image: syrdbody
+
+# Resource Silo — a modern bulk-storage facility: three slim conical-roofed silos with hazard bands and a
+# conveyor loader. 1x1; reuses the mbSILO bib + siloicon. Keep WithResourceLevelSpriteBody (its `stages`
+# sequence maps to the static body) — do NOT strip it here, since bank/alloyex inherit SILO and already
+# strip it (stripping on the base too would be a double-remove). Distinct from the alloy-extractor body.
+SILO:
+	RenderSprites:
+		Image: silobody

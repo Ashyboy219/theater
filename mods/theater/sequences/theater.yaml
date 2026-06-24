@@ -483,6 +483,30 @@ syrdbody:
 	icon:
 		Filename: syrdicon.shp
 
+# Core base-building reskin: modern bulk-storage SILO body (slim silo cluster + conveyor), replacing the
+# stock RA resource silo. 1x1: reuse the mbSILO bib + siloicon. WithResourceLevelSpriteBody's `stages` (and
+# damaged-stages) map to the static body — single frame, so it renders the same regardless of fill level.
+silobody:
+	idle:
+		Filename: silobody.png
+	damaged-idle:
+		Filename: silobody.png
+	make:
+		Filename: silobody.png
+	stages:
+		Filename: silobody.png
+	damaged-stages:
+		Filename: silobody.png
+	bib:
+		TilesetFilenames:
+			SNOW: mbSILO.sno
+			INTERIOR: mbSILO.int
+			TEMPERAT: mbSILO.tem
+			DESERT: mbSILO.des
+		Length: *
+	icon:
+		Filename: siloicon.shp
+
 apwr:
 	fusion-icon:
 		Filename: fusion-cameo.png
