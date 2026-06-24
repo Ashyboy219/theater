@@ -408,6 +408,28 @@ domebody:
 	icon:
 		Filename: domeicon.shp
 
+# Core base-building reskin: modern HELIPAD body (tarmac pad + H marking + hangar + fuel + windsock),
+# replacing the stock RA helipad. 2x3: reuse bib3 + hpadicon. active/damaged-active map to the static body.
+hpadbody:
+	idle:
+		Filename: hpadbody.png
+	damaged-idle:
+		Filename: hpadbody.png
+	active:
+		Filename: hpadbody.png
+	damaged-active:
+		Filename: hpadbody.png
+	make:
+		Filename: hpadbody.png
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+	icon:
+		Filename: hpadicon.shp
+
 apwr:
 	fusion-icon:
 		Filename: fusion-cameo.png

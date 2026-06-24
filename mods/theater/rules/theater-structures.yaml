@@ -107,3 +107,10 @@ WEAP:
 DOME:
 	RenderSprites:
 		Image: domebody
+
+# Helipad — a modern helipad: a tarmac landing pad with a painted H + circle, a hangar with a control
+# room, a fuel tank, a windsock and approach lights. 2x3; reuses bib3 + hpadicon. The stock `active`
+# animation maps to the static body; Reservable/dock offset (where the chopper sits) is untouched.
+HPAD:
+	RenderSprites:
+		Image: hpadbody
