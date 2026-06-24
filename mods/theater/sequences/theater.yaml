@@ -767,6 +767,22 @@ parabomb:
 		Length: 5
 		ZOffset: 1023
 
+# Modern HD impact EXPLOSIONS: override the three common vehicle/unit-hit sequences in the stock `explosion`
+# collection (small/med/large) — a billowing fireball (white-hot core -> orange) churning into grey smoke,
+# with debris specks. Drawn procedurally (PIL/numpy, per-frame turbulence so it reads as organic fire, not a
+# blob pattern). The other explosion sub-sequences (napalm/building/splashes) keep the stock art for now.
+explosion:
+	small_explosion:
+		Filename: expl-small.png
+		Length: 12
+	med_explosion:
+		Filename: expl-med.png
+		Length: 14
+	large_explosion:
+		Filename: expl-large.png
+		Length: 16
+		Offset: -2,0
+
 apwr:
 	fusion-icon:
 		Filename: fusion-cameo.png
