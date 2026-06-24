@@ -309,6 +309,24 @@ powrbody:
 	icon:
 		Filename: powricon.shp
 
+# Core base-building reskin: modern military BARRACKS compound (barrack blocks + guard tower + flag),
+# replacing the stock RA tent. 2x3: reuse the stock bib3 + tenticon.
+tentbody:
+	idle:
+		Filename: tentbody.png
+	damaged-idle:
+		Filename: tentbody.png
+	make:
+		Filename: tentbody.png
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+	icon:
+		Filename: tenticon.shp
+
 apwr:
 	fusion-icon:
 		Filename: fusion-cameo.png
