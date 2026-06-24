@@ -856,6 +856,21 @@ e1:
 		Filename: scout-cameo.png
 
 2tnk:
+	# Modern MAIN BATTLE TANK body (2TNK = the shared "MBT" every faction builds mid-game). Large tracked hull
+	# + big angular turret with a long main gun (2-pass turntable), replacing stock RA 2tnk. Named genmbtbody to
+	# stay distinct from the faction mbtbody (MOLOT/ARJUN). Muzzle reuses the modern flash. (tunguska-icon below
+	# is a cameo under this collection — its actor renders its own body.)
+	idle:
+		Filename: genmbtbody.png
+		Facings: 32
+		InterpolatedFacings: 64
+	turret:
+		Filename: genmbtbody-turret.png
+		Facings: 32
+		InterpolatedFacings: 64
+	muzzle:
+		Filename: muzzleflash.png
+		Length: 5
 	tunguska-icon:
 		Filename: tunguska-cameo.png
 
