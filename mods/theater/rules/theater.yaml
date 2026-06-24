@@ -79,6 +79,15 @@ FACT:
 HARV:
 	GivesBounty:
 		Percentage: 25
+	# Modern ore-hauler body (the harvester is on screen most of the match). WithHarvesterSpriteBody switches
+	# body image by fullness; point all three states at the single modern body (load is still shown by the
+	# resource pips). Strip the two purely-cosmetic animation traits — harvest/dock LOGIC is unaffected, only
+	# the scoop/unload anims (which a single static body can't supply) are dropped. RenderSprites.Image stays
+	# `harv` so the sidebar cameo still resolves to harvicon.
+	WithHarvesterSpriteBody:
+		ImageByFullness: harvbody, harvbody, harvbody
+	-WithHarvestAnimation:
+	-WithDockingAnimation:
 
 # --- Tech Lab unlock: while you hold a Tech Lab (theater.techlab), the Mammoth Tank is buildable
 #     from your War Factory, regardless of faction. Lose the lab and you lose the unlock.

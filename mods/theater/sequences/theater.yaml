@@ -886,6 +886,15 @@ arty:
 		Filename: muzzleflash.png
 		Length: 5
 
+# Modern HARVESTER body — a heavy ore hauler (large ore bin, operator cab, yellow front intake/collector).
+# Used via WithHarvesterSpriteBody.ImageByFullness for all fullness states. Only `idle` is needed (the harvest
+# and dock animation traits are stripped in rules — see theater.yaml HARV).
+harvbody:
+	idle:
+		Filename: harvbody.png
+		Facings: 32
+		InterpolatedFacings: 64
+
 dd:
 	burke-icon:
 		Filename: burke-cameo.png
