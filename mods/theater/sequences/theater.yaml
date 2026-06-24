@@ -753,6 +753,20 @@ v2:
 		Facings: 32
 		ZOffset: 1023
 
+# Modern parachute-retarded BOMB: overrides the stock RA `parabomb` globally (airstrike/paradrop bombs,
+# theater-strike.yaml GravityBomb Image: PARABOMB). A modern olive bomb under a round canopy on suspension
+# cords. Same frame layout as stock: `open` = the 8-frame canopy-deploy, `idle` = the 5-frame descent.
+parabomb:
+	Defaults:
+		Filename: parabombbody.png
+	open:
+		Length: 8
+		ZOffset: 1023
+	idle:
+		Start: 8
+		Length: 5
+		ZOffset: 1023
+
 apwr:
 	fusion-icon:
 		Filename: fusion-cameo.png
