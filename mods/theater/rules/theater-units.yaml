@@ -262,8 +262,13 @@ BAYRAK:
 # Federation (USA) — persistent close-air-support gunship (precision anti-armour, not the stock chaingun).
 REAPER:
 	Inherits: MH60
+	# MQ-9 surveillance/strike drone — render as the fixed-wing UAV body, not the MH60 helicopter.
 	RenderSprites:
-		Image: mh60
+		Image: dronebody
+	# dronebody has no rotor sequence; MH60's rotor overlays build their animation at creation
+	# regardless of condition, so strip them (the Archangel crash class).
+	-WithIdleOverlay@ROTORAIR:
+	-WithIdleOverlay@ROTORGROUND:
 	Tooltip:
 		Name: actor-reaper.name
 	Buildable:
@@ -487,8 +492,9 @@ AEGIS:
 HAYABUSA:
 	Inherits: YAK
 	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	# Autonomous interceptor drone — render as the UAV body, not the stock YAK fighter.
 	RenderSprites:
-		Image: yak
+		Image: dronebody
 	Tooltip:
 		Name: actor-hayabusa.name
 	Buildable:

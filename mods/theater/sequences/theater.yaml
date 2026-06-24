@@ -359,6 +359,13 @@ dronebody:
 		Filename: bayrak-cameo.png
 	akinci-icon:
 		Filename: akinci-cameo.png
+	# REAPER/GJ11/HAYABUSA re-homed onto dronebody (were on mh60/yak); their cameos resolve here now.
+	reaper-icon:
+		Filename: reaper-cameo.png
+	gj11-icon:
+		Filename: gj11-cameo.png
+	hayabusa-icon:
+		Filename: hayabusa-cameo.png
 
 # Ground body: modern road-mobile missile launcher (TEL) — erected canister + multi-axle chassis, rendered
 # 32-facing. Shared by the v2rl-based launchers AGNI/GARUDA/GRAD/DAZHBOG so the in-world unit reads as a

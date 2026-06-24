@@ -111,8 +111,12 @@ ARMATA:
 # late air. Cheap enough (China cost profile) to field several — the late drone air-arm graduates from the loiter toys.
 GJ11:
 	Inherits: MH60
+	# Stealth UCAV — render as the fixed-wing UAV body, not the MH60 helicopter.
 	RenderSprites:
-		Image: mh60
+		Image: dronebody
+	# dronebody has no rotor sequence; strip MH60's rotor overlays (the Archangel crash class).
+	-WithIdleOverlay@ROTORAIR:
+	-WithIdleOverlay@ROTORGROUND:
 	Tooltip:
 		Name: actor-gj11.name
 	Buildable:
