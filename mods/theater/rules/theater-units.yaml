@@ -470,8 +470,14 @@ COMMS:
 # Eastern Maritime (Japan) — point-defence missile turret (hardened APS node, not a reskinned SAM).
 AEGIS:
 	Inherits: SAM
+	# Static point-defense battery — bespoke fixed interceptor body instead of the stock RA SAM turret.
+	# Keep the logical Turreted/AttackTurreted (aiming) but drop the VISIBLE rotating turret + muzzle;
+	# vertical-launch interceptors fire upward regardless of bearing, so a fixed emplacement reads right.
 	RenderSprites:
-		Image: sam
+		Image: aegisbody
+	-WithSpriteTurret:
+	-WithMuzzleOverlay:
+	WithSpriteBody:
 	Tooltip:
 		Name: actor-aegis.name
 	Buildable:

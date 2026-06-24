@@ -275,6 +275,26 @@ akashbody:
 	akash-icon:
 		Filename: akash-cameo.png
 
+# Bespoke AEGIS point-defense body (Japan air defense) — static interceptor-tube cluster + AESA radar,
+# replacing the stock SAM turret. 2x1 defense: reuse the 2-wide power-plant bib (bib2). make = idle.
+aegisbody:
+	idle:
+		Filename: aegisbody.png
+	make:
+		Filename: aegisbody.png
+	bib:
+		Filename: bib2.tem
+		TilesetFilenames:
+			SNOW: bib2.sno
+			DESERT: bib2.des
+		Length: *
+	# SAM's Armament keeps MuzzleSequence: muzzle (lint-checked even though WithMuzzleOverlay is stripped).
+	muzzle:
+		Filename: gunfire2.shp
+		Length: 5
+	aegis-icon:
+		Filename: aegis-cameo.png
+
 apwr:
 	fusion-icon:
 		Filename: fusion-cameo.png
