@@ -1,62 +1,75 @@
-# THEATER — Balance Notes: the multiplier-stacking model
+# THEATER — Balance Notes: the post-redesign model
 
-THEATER layers several systems that all apply *multiplicative* stat modifiers to the same units —
-national faction profiles, mid-game faction doctrine branches, the research tree, age/era advancement,
-and the three universal decision-forks. Because they multiply, it's worth writing down how they compose
-and confirming the worst-case stacks don't produce a degenerate "max-everything" unit. This is the
-reference for anyone tuning or extending the systems.
+> **Updated 2026-06-23** to match the tech-tree redesign (commit f5f9462cc0). The research tree, the
+> three ages, escalation, and the universal decision-forks **no longer apply stat multipliers** — they
+> were converted to *content unlocks* (they enable new units / structures / support powers, and the
+> ages are pure prerequisite gates). The only systems that still multiply unit stats are the **national
+> faction profile** and the **faction doctrine branch** (plus the situational **C2 aura**). This roughly
+> **halved** the worst-case stat stack (≈4× → ≈2×). The older "every layer multiplies" model is gone.
 
-## What stacks (and what's mutually exclusive)
+## What actually multiplies stats now (verified against the rule files)
 
-A single **vehicle** can be affected by, at most:
+| Layer | How many apply | Effect | File |
+|---|---|---|---|
+| National profile (`doc-<faction>`) | exactly **1** (your faction, always on) | a 2–3-axis profile, each within **±20%** (Firepower / Damage-taken / Speed / Range / Vision / Inaccuracy) | `theater-doctrines.yaml` |
+| Faction doctrine branch (`doc-<f>-<branch>`) | at most **1** (the two branches are mutually exclusive) | a small per-branch multiplier set, **85–118** (~±18%) | `theater-doctrine-*.yaml` (usa/rus/chn/uk/ind; tur is content-only) |
+| Command & Control aura | **situational** — `FirepowerMultiplier@c2: 110` (+10%) on `^Vehicle`/`^Infantry` only while within range of your own Theater Command | `theater-command-aura.yaml` |
+| Economy Network | **income only** — `CashTricklerMultiplier@econ: 130` (+30%) on banks/extractors; NOT combat | `theater-economy.yaml` |
 
-| Layer | How many apply | File |
-|---|---|---|
-| National profile (`doc-<faction>`) | exactly **1** (your faction, always on) | `theater-doctrines.yaml` |
-| Faction doctrine branch (`doc-<f>-<branch>`) | at most **1** (your faction, and the two branches are mutually exclusive) | `theater-doctrine-*.yaml` |
-| Research Tier 1 — ballistics/armor/optics/propulsion/logistics | **all** (they accumulate) | `theater-research.yaml` |
-| Mass **vs** Precision | **1** (exclusive) | `theater-research.yaml` |
-| Research Tier 2 — net-centric/reactive-armor/autoloaders | **all** (accumulate) | `theater-research.yaml` |
-| Ages — Information + Autonomous + Orbital | **all 3** cumulative (at the top of the ladder) | `theater-ages.yaml` |
-| War Economy **vs** Industrial Base | **1** (exclusive; cost only) | `theater-research-economy.yaml` |
-| Maneuver **vs** Fortress | **1** (exclusive; Maneuver→vehicles, Fortress→`^Defense`) | `theater-research-posture.yaml` |
-| Command & Control aura | **situational** — +10% firepower only while within 6 cells of your own Theater Command | `theater-command-aura.yaml` |
+Everything else is now **content, not numbers**:
 
-No individual modifier is larger than **±25%** (e.g. +25% recon, −20% defense damage).
+| Former multiplier layer | What it does now |
+|---|---|
+| Research tiers (ballistics/armor/optics/…) | **deleted** — replaced by tech-tree nodes that *unlock* units/structures/powers |
+| Mass vs Precision / War Economy vs Industrial / Maneuver vs Fortress | **content forks** — each unlocks a distinct power/structure; mutually exclusive; **no stat numbers** |
+| Ages (Information / Autonomous / Orbital) | **pure prerequisite gates** — they unlock the next tier of content; no per-age stat bump |
+| Total-War escalation | **deleted entirely** |
 
-> The strategic resource (**alloys**, P6) is a *counted second currency*, not a stat multiplier — it gates and
-> is spent on the apex tier. It does not enter the multiplier stack below and so does not affect these bounds.
+> The strategic resource (**alloys**) is a *counted second currency*, not a multiplier — it gates and is
+> spent on the apex tier. It does not enter the stack below.
 
-## Worst-case stacks on a fully-teched vehicle (computed)
+## Worst-case combat stack on a fully-teched vehicle (recomputed)
 
-- **Max firepower** (glass-cannon, e.g. Russia Artillery branch + Precision + Ballistics + all ages): **~2.1×**
-- **Max effective HP** (armor build: Russia Armor branch + Armor + Reactive-Armor research + ages): **~2.1×**
-- **Max speed** (Armor branch + Propulsion + Maneuver fork): **~1.3×**
-- A *coherent* armor build reaches **~1.9× firepower × ~2.1× EHP ≈ 4× base combat power.**
-- The **C2 aura** adds a *situational* +10% firepower while near your Theater Command, so a fully-teched
-  vehicle fighting on home ground peaks at **~2.3× firepower** — still bounded, still symmetric, and it
-  costs you the positioning (you only get it defending/rallying at the command post, not on the attack).
+Only the national profile (×1) and one doctrine branch (×1) co-apply, plus the situational aura:
+
+- **Max firepower:** national `FirepowerMultiplier` (≤112) × doctrine-branch firepower (≤~118) × C2 aura (110)
+  ≈ **~1.45× firepower** on home ground (≈ **1.32×** away from the command post).
+- **Max effective HP:** national `DamageMultiplier` (≥82 = takes less) × doctrine `DamageMultiplier` (≥85)
+  ≈ **~1.43× EHP**.
+- A *coherent* build commits to one profile, so a single unit rarely gets both maxima at once; realistic
+  peak combat power is **~1.5–2.1×** base (situational), **down from the old ~4×**.
 
 ## Why this is sound (not degenerate)
 
-1. **Mutual exclusivity prevents max-everything.** The highest firepower comes from the *Artillery* branch +
-   *Precision* research; the highest toughness comes from the *Armor* branch + *Armor* research. The branches
-   are mutually exclusive, so **no single unit gets both maxima** — you commit to a profile.
-2. **It's symmetric escalation.** The ~4× ceiling requires the entire faction tree + all three ages + the
-   right forks. Both players can reach it; it is the intended "longer, escalating game" curve, not an
-   asymmetric exploit.
-3. **The age bump is earned, not free.** Each age is a real cost+time+prerequisite gate; the cumulative
-   ~1.2× firepower / ~1.23× EHP it grants is the reward for advancing, available to anyone who invests.
-4. **Tradeoffs are real.** Frailty stacks too (e.g. UK Intel national + Intel branch + Mass research ≈ 1.5×
-   damage taken before ages pull it back to ~1.24×) — glass-cannon builds are genuinely fragile, by choice.
+1. **Escalation is now mostly horizontal (content), not vertical (stats).** Advancing the tree unlocks new
+   *options*, so the power curve comes from *what* you can field, not flat stat creep on what you already have.
+2. **Only faction identity multiplies, and it's bounded + symmetric.** Each profile is ±~20% on a couple of
+   axes, the doctrine branches are mutually exclusive (you commit to a profile, you don't stack both), and
+   both players can reach the same ceiling.
+3. **The C2 aura costs positioning.** +10% firepower only while hugging your Theater Command — a defensive/
+   rallying bonus, not free attack power.
+4. **Tradeoffs are real.** Glass-cannon profiles take more damage (`DamageMultiplier > 100`); toughness
+   profiles give up firepower/speed. No single faction maxes every axis.
 
 ## Tuning guidance
 
-- Keep new per-source modifiers within roughly **±25%** so the multiplicative stack stays bounded.
-- New *accumulating* upgrades compound with everything — prefer **mutually-exclusive forks** (`~!other`) for
-  anything strong, so it's a decision rather than a flat power creep.
-- If the endgame ever feels too swingy, the **ages** are the broadest lever (they hit every unit); dial the
-  age firepower/damage modifiers before touching per-unit research.
+- The broadest combat lever is now the **national profiles** (`theater-doctrines.yaml`) — they hit every unit
+  of a faction. The ages are no longer a stat lever (they gate content), so don't reach for them to tune power.
+- Keep any *new* per-source modifier within roughly **±20%** so the (now much shorter) multiplicative stack
+  stays bounded.
+- Anything strong should be a **content unlock or a mutually-exclusive fork**, not an accumulating multiplier —
+  that's the redesign's whole point (a decision, not power creep).
+- The **C2 aura** Range/Modifier and the **bank/alloy-extractor income rates** are the most playtest-sensitive
+  numbers (passive economy strength and home-ground firepower); tune those from real games, not on paper.
 
-*Method: extracted every `*Multiplier` on `^Vehicle` across the rule files and multiplied the largest
-co-applicable set per axis (respecting exclusivity). No degenerate combination was found.*
+## Items still requiring a GUI playtest (headless-unverifiable)
+
+- Faction firepower/EHP feel at the new ~2× ceiling — is the escalation now too *flat* (boring) or right?
+- Bank / Alloy Extractor passive income strength (build-and-forget economy) vs harvesting.
+- Apex units (BuildLimit 2, 5000–6000 cr + 100 alloys): 200k–500k HP — godlike-but-limited, or too tanky?
+- The re-bodied static air-defenses (AKASH/AEGIS): firing behaviour now that the *visible* turret is gone
+  (logical Turreted/AttackTurreted retained); and turret-on-hull alignment on the DONGFENG.
+
+*Method: enumerated every `*Multiplier`/`*Multiplier@suffix` trait across `mods/theater/rules/` (2026-06-23).
+Only the faction-profile, faction-doctrine, C2-aura, and econ-network files contain any; the research/age/
+fork/escalation files contain none. Test suite: 487 pass / 0 fail. check-yaml: 0 errors.*
