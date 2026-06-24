@@ -264,6 +264,8 @@ Player:
 			alloyex: 3
 			bank: 3
 			fusion: 2
+			akash: 2
+			aegis: 2
 			econ.network: 1
 		BuildingLimits:
 			thcom: 1
@@ -300,6 +302,8 @@ Player:
 			alloyex: 3
 			bank: 3
 			fusion: 2
+			akash: 2
+			aegis: 2
 			econ.network: 1
 	BaseBuilderBotModule@normal:
 		BuildingQueues: Building, Command
@@ -338,6 +342,8 @@ Player:
 			alloyex: 3
 			bank: 3
 			fusion: 2
+			akash: 2
+			aegis: 2
 			econ.network: 1
 		BuildingLimits:
 			thcom: 1
@@ -374,6 +380,8 @@ Player:
 			alloyex: 3
 			bank: 3
 			fusion: 2
+			akash: 2
+			aegis: 2
 			econ.network: 1
 	BaseBuilderBotModule@turtle:
 		BuildingQueues: Building, Command
@@ -412,6 +420,8 @@ Player:
 			alloyex: 3
 			bank: 3
 			fusion: 2
+			akash: 2
+			aegis: 2
 			econ.network: 1
 		BuildingLimits:
 			thcom: 1
@@ -448,6 +458,8 @@ Player:
 			alloyex: 3
 			bank: 3
 			fusion: 2
+			akash: 2
+			aegis: 2
 			econ.network: 1
 	BaseBuilderBotModule@naval:
 		BuildingQueues: Building, Command
@@ -486,6 +498,8 @@ Player:
 			alloyex: 3
 			bank: 3
 			fusion: 2
+			akash: 2
+			aegis: 2
 			econ.network: 1
 		BuildingLimits:
 			thcom: 1
@@ -522,6 +536,8 @@ Player:
 			alloyex: 3
 			bank: 3
 			fusion: 2
+			akash: 2
+			aegis: 2
 			econ.network: 1
 
 	# --- Fire the doctrine support powers (merges new decisions into the shared ra SupportPowerBotModule).
