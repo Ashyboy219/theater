@@ -734,6 +734,16 @@ vbigbody:
 	damaged-idle:
 		Filename: vbigbody.png
 
+# --- Modern PROJECTILE: overrides the stock RA `missile` sprite globally (theater.yaml is mounted last), so
+# every missile fired in the game — AA, anti-tank, and the strike weapons (theater-strike.yaml: Image: MISSILE)
+# — is now a contemporary missile (grey body, pointed nose, tail fins, exhaust flame) instead of the 1950s
+# RA missile. 32-facing turntable, same Facings/ZOffset layout as the stock sequence so aiming is unchanged.
+missile:
+	idle:
+		Filename: missilebody.png
+		Facings: 32
+		ZOffset: 1023
+
 apwr:
 	fusion-icon:
 		Filename: fusion-cameo.png
