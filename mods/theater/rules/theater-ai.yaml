@@ -686,6 +686,21 @@ Player:
 					Attractiveness: 1
 					TargetMetric: None
 					CheckRadius: 5c0
+			theater-paradrop:
+				OrderName: TheaterParadrop
+				MinimumAttractiveness: 4
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 7c0
+				Consideration@2:
+					Against: Enemy
+					Types: Water
+					Attractiveness: -5
+					TargetMetric: None
+					CheckRadius: 7c0
 			tree-maneuver:
 				OrderName: TreeManeuverDrop
 				MinimumAttractiveness: 5
