@@ -208,3 +208,9 @@ HOSP:
 	RenderSprites:
 		Image: hospbody
 	-WithDeathAnimation:
+
+# Oil Derrick — a modern oil/gas extraction site: a pumpjack ("nodding donkey"), a storage tank with a
+# flare stack, a wellhead manifold and pipework. 2x2 capturable tech building (civilian.yaml); reuses bib3.
+OILB:
+	RenderSprites:
+		Image: oilbbody

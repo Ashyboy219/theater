@@ -671,6 +671,22 @@ hospbody:
 	icon:
 		Filename: hospicon.shp
 
+# Neutral-structure reskin: modern OIL DERRICK body (pumpjack + storage tank + flare + wellhead), replacing
+# the stock RA oil derrick (capturable for income). 2x2: reuse bib3.
+oilbbody:
+	idle:
+		Filename: oilbbody.png
+	damaged-idle:
+		Filename: oilbbody.png
+	make:
+		Filename: oilbbody.png
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+
 apwr:
 	fusion-icon:
 		Filename: fusion-cameo.png
