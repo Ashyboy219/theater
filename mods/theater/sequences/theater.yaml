@@ -782,6 +782,32 @@ explosion:
 		Filename: expl-large.png
 		Length: 16
 		Offset: -2,0
+	# Artillery/shell impact (the most-referenced explosion) + self-destruct: a smoky ground burst.
+	artillery_explosion:
+		Filename: expl-arty.png
+		Length: 14
+	self_destruct:
+		Filename: expl-arty.png
+		Length: 14
+	# Napalm/incendiary fire (lingering red-orange flames, sooty smoke) + its size + flipped-building variants.
+	napalm:
+		Filename: expl-napalm.png
+		Length: 16
+	small_napalm:
+		Filename: expl-napalm-s.png
+		Length: 12
+	large_napalm:
+		Filename: expl-napalm-l.png
+		Length: 16
+	building_napalm:
+		Filename: expl-napalm.png
+		Length: 16
+		FlipX: true
+	# Building death blast: bigger fireball + heavy dark smoke + lots of debris.
+	building:
+		Filename: expl-building.png
+		Length: 18
+		Offset: 0,-9
 
 apwr:
 	fusion-icon:
