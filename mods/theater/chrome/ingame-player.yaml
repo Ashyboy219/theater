@@ -161,7 +161,7 @@ Container@PLAYER_WIDGETS:
 					Y: 42
 					Width: 132
 					Height: 36
-					Color: 4A4A4AD0
+					Color: 2C6E64E0
 				Label@L_airdef:
 					X: 16
 					Y: 51
@@ -176,7 +176,7 @@ Container@PLAYER_WIDGETS:
 					Y: 370
 					Width: 132
 					Height: 36
-					Color: 4A4A4AD0
+					Color: 2C6E64E0
 				Label@L_recon:
 					X: 16
 					Y: 379
@@ -206,7 +206,7 @@ Container@PLAYER_WIDGETS:
 					Y: 42
 					Width: 132
 					Height: 36
-					Color: 4A4A4AD0
+					Color: 2C6E64E0
 				Label@L_airpower:
 					X: 162
 					Y: 51
@@ -221,7 +221,7 @@ Container@PLAYER_WIDGETS:
 					Y: 370
 					Width: 132
 					Height: 36
-					Color: 4A4A4AD0
+					Color: 2C6E64E0
 				Label@L_fusion:
 					X: 162
 					Y: 379
@@ -236,7 +236,7 @@ Container@PLAYER_WIDGETS:
 					Y: 124
 					Width: 132
 					Height: 36
-					Color: 4A4A4AD0
+					Color: 8A6E2AE0
 				Label@L_mass:
 					X: 162
 					Y: 133
@@ -251,7 +251,7 @@ Container@PLAYER_WIDGETS:
 					Y: 288
 					Width: 132
 					Height: 36
-					Color: 4A4A4AD0
+					Color: 8A6E2AE0
 				Label@L_precision:
 					X: 162
 					Y: 297
@@ -281,7 +281,7 @@ Container@PLAYER_WIDGETS:
 					Y: 124
 					Width: 132
 					Height: 36
-					Color: 4A4A4AD0
+					Color: 8A6E2AE0
 				Label@L_wareco:
 					X: 308
 					Y: 133
@@ -296,7 +296,7 @@ Container@PLAYER_WIDGETS:
 					Y: 288
 					Width: 132
 					Height: 36
-					Color: 4A4A4AD0
+					Color: 8A6E2AE0
 				Label@L_industrial:
 					X: 308
 					Y: 297
@@ -326,7 +326,7 @@ Container@PLAYER_WIDGETS:
 					Y: 42
 					Width: 132
 					Height: 36
-					Color: 4A4A4AD0
+					Color: 2C6E64E0
 				Label@L_dronebay:
 					X: 454
 					Y: 51
@@ -341,7 +341,7 @@ Container@PLAYER_WIDGETS:
 					Y: 124
 					Width: 132
 					Height: 36
-					Color: 4A4A4AD0
+					Color: 8A6E2AE0
 				Label@L_maneuver:
 					X: 454
 					Y: 133
@@ -356,7 +356,7 @@ Container@PLAYER_WIDGETS:
 					Y: 288
 					Width: 132
 					Height: 36
-					Color: 4A4A4AD0
+					Color: 8A6E2AE0
 				Label@L_fortress:
 					X: 454
 					Y: 297
@@ -386,7 +386,7 @@ Container@PLAYER_WIDGETS:
 					Y: 42
 					Width: 132
 					Height: 36
-					Color: 4A4A4AD0
+					Color: 9A3A30E0
 				Label@L_apexland:
 					X: 600
 					Y: 51
@@ -401,7 +401,7 @@ Container@PLAYER_WIDGETS:
 					Y: 124
 					Width: 132
 					Height: 36
-					Color: 4A4A4AD0
+					Color: 9A3A30E0
 				Label@L_apexair:
 					X: 600
 					Y: 133
@@ -416,7 +416,7 @@ Container@PLAYER_WIDGETS:
 					Y: 288
 					Width: 132
 					Height: 36
-					Color: 4A4A4AD0
+					Color: 9A3A30E0
 				Label@L_apexsea:
 					X: 600
 					Y: 297
@@ -431,7 +431,7 @@ Container@PLAYER_WIDGETS:
 					Y: 370
 					Width: 132
 					Height: 36
-					Color: 4A4A4AD0
+					Color: 9A3A30E0
 				Label@L_orbstrike:
 					X: 600
 					Y: 379
