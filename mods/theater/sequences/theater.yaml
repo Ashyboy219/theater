@@ -376,6 +376,9 @@ weapbody:
 		Filename: weapbody.png
 	damaged-idle:
 		Filename: weapbody.png
+	# WEAP's SequencePlaceBuildingPreview uses the `place` sequence for the placement ghost.
+	place:
+		Filename: weapbody.png
 	make:
 		Filename: weapbody.png
 	bib:
