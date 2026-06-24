@@ -831,6 +831,18 @@ explosion:
 		Length: 22
 		Tick: 70
 		Offset: 0,-20
+	# Water splashes (shell/projectile impacts in water) — an HD white-cyan spray column + expanding foam ring
+	# + droplets, so naval/coastal combat matches the modern land explosions instead of the stock pixel splash.
+	# (The tiny small-arms water_piff/water_piffs stay stock — a full column would be too big for a bullet.)
+	small_splash:
+		Filename: splash-small.png
+		Length: 12
+	med_splash:
+		Filename: splash-med.png
+		Length: 14
+	large_splash:
+		Filename: splash-large.png
+		Length: 16
 
 # Modern MCV body: a heavy mobile command/construction vehicle (8-wheeled, forward cab, folded yellow
 # tower-crane mast tying it to the FACT construction yard). Overrides the stock RA mcv idle — the MCV is
