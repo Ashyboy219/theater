@@ -228,7 +228,7 @@ Player:
 	# (faction-gating + mutual exclusion mean each AI buys just its own one). Low fractions = built after
 	# the core base/army, mid-game.
 	BaseBuilderBotModule@rush:
-		BuildingQueues: Building, Command
+		BuildingQueues: Building, Defense, Command
 		BuildingFractions:
 			thcom: 2
 			doctrine.usa.air: 1
@@ -306,7 +306,7 @@ Player:
 			aegis: 2
 			econ.network: 1
 	BaseBuilderBotModule@normal:
-		BuildingQueues: Building, Command
+		BuildingQueues: Building, Defense, Command
 		BuildingFractions:
 			thcom: 2
 			doctrine.usa.air: 1
@@ -384,7 +384,7 @@ Player:
 			aegis: 2
 			econ.network: 1
 	BaseBuilderBotModule@turtle:
-		BuildingQueues: Building, Command
+		BuildingQueues: Building, Defense, Command
 		BuildingFractions:
 			thcom: 2
 			doctrine.usa.air: 1
@@ -462,7 +462,7 @@ Player:
 			aegis: 2
 			econ.network: 1
 	BaseBuilderBotModule@naval:
-		BuildingQueues: Building, Command
+		BuildingQueues: Building, Defense, Command
 		BuildingFractions:
 			thcom: 2
 			doctrine.usa.air: 1
