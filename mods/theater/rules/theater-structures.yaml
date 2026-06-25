@@ -1,0 +1,334 @@
+# THEATER — shared "advanced coordination" structures.
+#
+# THCOM (Theater Command) is the lightweight command-capability building: a forward command post that
+# gives you radar AND a real VERB — a combined-arms paradrop that coordinates reinforcements from the sky
+# with your ground push. It reskins the radar dome (proven art/footprint) and adds a self-contained
+# support power, so it is capture-safe. In Phase 1 it also hosts the Command production queue (Produces:
+# Command) from which you buy capabilities — Fire Control, Formations, etc.
+
+THCOM:
+	Inherits: DOME
+	# Bespoke forward-command-post body instead of the radar dome (DOME already uses WithSpriteBody, so the
+	# image swap + thcombody sequences are all that's needed). 2x2 footprint, rendered at matching DOME scale.
+	RenderSprites:
+		Image: thcombody
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 92
+		Prerequisites: fact, ~techlevel.medium
+		Description: actor-thcom.description
+		Icon: thcom-icon
+	Tooltip:
+		Name: actor-thcom.name
+	ParatroopersPower@coord:
+		OrderName: TheaterParadrop
+		Icon: paratroopers
+		ChargeInterval: 1500
+		Name: actor-thcom.para-name
+		Description: actor-thcom.para-description
+		DropItems: E1R1,E1R1,E3R1,E3R1,E3R1
+		ReinforcementsArrivedSpeechNotification: ReinforcementsArrived
+		SelectTargetSpeechNotification: SelectTarget
+		ReinforcementsArrivedTextNotification: notification-reinforcements-have-arrived
+		SelectTargetTextNotification: notification-select-target
+		AllowImpassableCells: false
+		QuantizedFacings: 8
+		CameraActor: camera.paradrop
+		DisplayBeacon: true
+		BeaconPoster: pinficon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		SupportPowerPaletteOrder: 50
+	SupportPowerChargeBar:
+	# Hosts the Command capability queue — its sidebar tab is active only while a Theater Command stands.
+	# Produces only non-occupying capability actors, so no exit/placement is needed.
+	Production:
+		Produces: Command
+	# Launch site for the science victory: the Space-Program countdown only runs while a Theater Command
+	# stands, so the enemy can stall a science win by destroying it (see SpaceVictoryConditions).
+	SpaceVictoryLaunchSite:
+
+# ============================================================================
+# CORE BASE-BUILDING RESKINS — bespoke modern bodies replacing the stock Red Alert art, so the whole
+# base (not just the new 4X structures) reads as contemporary. Same proven pattern as the 4X buildings:
+# swap RenderSprites.Image to a custom body + provide its sequences; strip the inherited death animation
+# (the single-frame custom bodies have no `dead` frames — standard explosion effects still play).
+# ============================================================================
+
+# Power Plant — a modern combined-cycle gas station (turbine hall + twin stacks + transformer yard),
+# distinct from the FUSION reactor's domed-containment look. 2x3 footprint; reuses the stock bib3 + icon.
+POWR:
+	RenderSprites:
+		Image: powrbody
+	-WithDeathAnimation:
+
+# Barracks — a modern military compound (two barrack blocks, a guard tower, gatehouse, flag, hesco
+# perimeter) replacing the stock RA infantry tent. 2x3; reuses bib3 + tenticon. No WithDeathAnimation on
+# TENT, so nothing to strip. (TENT is also field-merged in theater-common.yaml for faction prereqs — both merge.)
+TENT:
+	RenderSprites:
+		Image: tentbody
+
+# Construction Yard — a modern command HQ + assembly yard with a yellow tower crane (the unmistakable
+# "construction" read), glass HQ block and a vehicle assembly bay. 3x4 (biggest building); reuses bib2 +
+# facticon. The stock `build`/`damaged-build` crane animations map to the static body (lost, acceptable for
+# now); -WithDeathAnimation since the single-frame body has no `dead` frames.
+FACT:
+	RenderSprites:
+		Image: factbody
+	-WithDeathAnimation:
+
+# Refinery — a modern mineral-processing plant: distillation columns with platform rings, storage tanks,
+# a glowing flare stack, a central processing block and an intake hopper at the harvester dock. 3x4; reuses
+# bib2 + procicon. Strip WithIdleOverlay@TOP (the stock animated top is baked into the static body — else it
+# references an undefined idle-top sequence) and -WithDeathAnimation (no dead frames). DockOffset unchanged.
+PROC:
+	RenderSprites:
+		Image: procbody
+	-WithIdleOverlay@TOP:
+	-WithDeathAnimation:
+
+# War Factory — a modern vehicle-assembly plant: a tall assembly hall with a sawtooth-skylight roof, a big
+# bay door (hazard header) and a finished tank rolling out the front. 3x3; reuses bib2 + weapicon. Strip
+# WithProductionDoorOverlay (the stock build-top door animation is baked into the static body — leaving the
+# trait would reference an undefined build-top sequence). WEAP has no WithDeathAnimation. Exit/RallyPoint kept.
+WEAP:
+	RenderSprites:
+		Image: weapbody
+	-WithProductionDoorOverlay:
+
+# Radar Dome — a modern radar station: a white radome (golf-ball radar dome) on a control building, a
+# glowing AESA phased-array panel, and antenna masts. 2x3; reuses bib3 + domeicon. Simple (no death anim /
+# no dish-rotation overlay on the stock DOME). NOTE: this only changes the DOME *building*; the non-placed
+# upgrade actors (econ.network/space.*/research.*/age.*) keep RenderSprites.Image: dome for their cameos.
+DOME:
+	RenderSprites:
+		Image: domebody
+
+# Helipad — a modern helipad: a tarmac landing pad with a painted H + circle, a hangar with a control
+# room, a fuel tank, a windsock and approach lights. 2x3; reuses bib3 + hpadicon. The stock `active`
+# animation maps to the static body; Reservable/dock offset (where the chopper sits) is untouched.
+HPAD:
+	RenderSprites:
+		Image: hpadbody
+
+# Advanced Power — a modern renewable plant: a wind turbine (vertical anchor), rows of solar panels, and
+# battery-storage containers + an inverter substation. Distinct from POWR (gas) and the FUSION reactor.
+# 3x3; reuses bib2 + apwricon. -WithDeathAnimation (single-frame body has no dead frames).
+APWR:
+	RenderSprites:
+		Image: apwrbody
+	-WithDeathAnimation:
+
+# Service Depot — a modern vehicle repair depot: an overhead yellow gantry crane over a marked repair bay,
+# a workshop with a roll-up door, tool chests and a generator. 3x3 (cross footprint); reuses the mbFIX bib +
+# fixicon. The stock active/damaged-active repair animations map to the static body; Reservable/RepairsUnits kept.
+FIX:
+	RenderSprites:
+		Image: fixbody
+
+# Naval Yard — a modern shipyard: twin yellow portal gantry cranes straddling a slipway with a ship hull
+# under construction, an admin/control tower with radar, dock platform + bollards. 3x3, on water (no bib);
+# reuses syrdicon. No death/overlay traits; the four ship-exit cells are untouched.
+SYRD:
+	RenderSprites:
+		Image: syrdbody
+
+# Resource Silo — a modern bulk-storage facility: three slim conical-roofed silos with hazard bands and a
+# conveyor loader. 1x1; reuses the mbSILO bib + siloicon. Keep WithResourceLevelSpriteBody (its `stages`
+# sequence maps to the static body) — do NOT strip it here, since bank/alloyex inherit SILO and already
+# strip it (stripping on the base too would be a double-remove). Distinct from the alloy-extractor body.
+SILO:
+	RenderSprites:
+		Image: silobody
+
+# Advanced Tech Center — a sleek high-tech facility: a dark-glass tower with glowing data bands, a rooftop
+# satellite uplink dish + antenna array, and a white clean-room annex. Distinct from the lighter Research
+# Lab. 2x3; reuses bib3 + atekicon. The stock `active` (sputdoor) animation maps to the static body.
+# (ATEK is also field-merged in theater-tech.yaml — both merge.)
+ATEK:
+	RenderSprites:
+		Image: atekbody
+
+# --- Base allied DEFENSES (now AI-built after the Defense-queue fix) ---
+# Pillbox — a modern octagonal concrete pillbox with a domed cap, an embrasure band, a gun barrel and a
+# sandbag ring. 1x1; reuses mbPBOX bib + pboxicon. Fixed bunker (logical Turreted, no turret sprite); keep
+# the muzzle. Heavy Pillbox — a larger reinforced bunker (cupola, multi-port, heavy gun, hesco). No bib.
+PBOX:
+	RenderSprites:
+		Image: pboxbody
+HBOX:
+	RenderSprites:
+		Image: hboxbody
+
+# Anti-tank Gun — a modern gun emplacement: an armored turret with a long AT barrel on a concrete revetment.
+# AA Gun — a modern AA autocannon: twin barrels on a rotating mount + a tracking radar (distinct from the
+# AKASH SAM). 1x1; reuse mbGUN/mbAGUN bibs + gun/agunicon. Both are turreted with a VISIBLE turret sprite —
+# bake the gun into the static body and strip it (AKASH pattern). AKASH inherits AGUN, so AGUN's strip now
+# covers it (its own -WithSpriteTurret/-WithMuzzleOverlay were removed above to avoid a double-remove).
+GUN:
+	RenderSprites:
+		Image: gunbody
+	-WithSpriteTurret:
+	# GUN also has WithTurretAttackAnimation (recoil), which REQUIRES WithSpriteTurret — strip it too.
+	-WithTurretAttackAnimation:
+	-WithMuzzleOverlay:
+AGUN:
+	RenderSprites:
+		Image: agunbody
+	-WithSpriteTurret:
+	-WithMuzzleOverlay:
+
+# --- Superweapons ---
+# Missile Silo — a modern ICBM silo: a reinforced hazard-ringed silo collar with a white/red missile rising,
+# a sliding blast-door lid, and a control bunker with comms. 2x1; reuses msloicon2 (no bib). The stock
+# active/damaged-active launch animation maps to the static body.
+MSLO:
+	RenderSprites:
+		Image: mslobody
+
+# Gap Generator — a modern EW/cloaking station: a building with a glowing field-emitter dome + antenna array.
+# 1x1; reuses mbGAP bib + gapicon. Chronosphere — a glowing chrono-portal ring (concentric energy rings +
+# purple core) on a mount beside a control building. 2x2; reuses mbPDOX bib + pdoxicon; active maps to body.
+GAP:
+	RenderSprites:
+		Image: gapbody
+PDOX:
+	RenderSprites:
+		Image: pdoxbody
+
+# --- Neutral/map structures the living world surfaces (capturable, seen in every settlement town) ---
+# Hospital — a modern medical center: a white multi-storey block with blue glass, big red crosses, a rooftop
+# medevac helipad, an ambulance bay and a parked ambulance. 2x2 capturable tech building (civilian.yaml);
+# reuses mbHOSP bib + hospicon. -WithDeathAnimation (single-frame body has no dead frames).
+HOSP:
+	RenderSprites:
+		Image: hospbody
+	-WithDeathAnimation:
+
+# Oil Derrick — a modern oil/gas extraction site: a pumpjack ("nodding donkey"), a storage tank with a
+# flare stack, a wellhead manifold and pipework. 2x2 capturable tech building (civilian.yaml); reuses bib3.
+OILB:
+	RenderSprites:
+		Image: oilbbody
+
+# --- Civilian town buildings (decoration on town maps) — modern apartment + office blocks replacing the
+# stock RA village houses, so the living world's towns read as contemporary. The eight 2x2 V-types split
+# across two shared bodies for variety. Civ buildings have no death/make animation, so just an image swap. ---
+V01:
+	RenderSprites:
+		Image: vaptbody
+V02:
+	RenderSprites:
+		Image: vaptbody
+V03:
+	RenderSprites:
+		Image: vaptbody
+V04:
+	RenderSprites:
+		Image: vofficebody
+V20:
+	RenderSprites:
+		Image: vaptbody
+V21:
+	RenderSprites:
+		Image: vofficebody
+V24:
+	RenderSprites:
+		Image: vofficebody
+V25:
+	RenderSprites:
+		Image: vofficebody
+# 2x1 town buildings -> modern shopfront + townhouse terrace (split for variety).
+V05:
+	RenderSprites:
+		Image: vshopbody
+V06:
+	RenderSprites:
+		Image: vtownbody
+V07:
+	RenderSprites:
+		Image: vshopbody
+V22:
+	RenderSprites:
+		Image: vtownbody
+V26:
+	RenderSprites:
+		Image: vshopbody
+V30:
+	RenderSprites:
+		Image: vtownbody
+V31:
+	RenderSprites:
+		Image: vshopbody
+V32:
+	RenderSprites:
+		Image: vtownbody
+V33:
+	RenderSprites:
+		Image: vtownbody
+# 1x1 town buildings -> small modern house / kiosk / garage / 2-storey (split for variety).
+V08:
+	RenderSprites:
+		Image: vhousebody
+V09:
+	RenderSprites:
+		Image: vhousebody
+V10:
+	RenderSprites:
+		Image: vhousebody
+V11:
+	RenderSprites:
+		Image: vhousebody
+V12:
+	RenderSprites:
+		Image: vhousebody
+V13:
+	RenderSprites:
+		Image: vkioskbody
+V14:
+	RenderSprites:
+		Image: vkioskbody
+V15:
+	RenderSprites:
+		Image: vkioskbody
+V16:
+	RenderSprites:
+		Image: vkioskbody
+V17:
+	RenderSprites:
+		Image: vkioskbody
+V18:
+	RenderSprites:
+		Image: vgaragebody
+V19:
+	RenderSprites:
+		Image: vgaragebody
+V23:
+	RenderSprites:
+		Image: vgaragebody
+V27:
+	RenderSprites:
+		Image: vgaragebody
+V28:
+	RenderSprites:
+		Image: vgaragebody
+V29:
+	RenderSprites:
+		Image: vhouse2body
+V34:
+	RenderSprites:
+		Image: vhouse2body
+V35:
+	RenderSprites:
+		Image: vhouse2body
+V36:
+	RenderSprites:
+		Image: vhouse2body
+# 5x2 large civilian building -> a modern commercial/distribution complex (solar roof, sign, loading docks).
+V37:
+	RenderSprites:
+		Image: vbigbody

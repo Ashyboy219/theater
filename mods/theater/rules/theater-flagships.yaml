@@ -1,0 +1,236 @@
+# THEATER — LATE-GAME FLAGSHIP UNITS (the "wow" payoff) + distinct strike-power delivery planes.
+# Each flagship reuses a stock body (no battlefield art yet — cameos come from the image pipeline), uses a
+# grounded weapon, and gates on `tech.<faction>` + `tech.center` (the Tech Center, theater-tech.yaml) so it
+# is a LATE-TIER REWARD, not a turn-0 toy. This is the escalation the reorientation asks for: super-heavy
+# armour, a stealth bomber, heavy drones, a ballistic launcher — each reinforcing a faction's identity.
+
+# ============================ USA (Federation) ============================
+# ABRAMS-X super-heavy: the durable ground anchor USA's air-fragile doctrine lacks. 90k-HP twin-gun Mammoth
+# body (120mm AP primary + tusk missiles that swat air/infantry) with self-repair. The late USA ground regime change.
+AMX:
+	Inherits: 4TNK
+	# Battlefield body: spawns as a modern main battle tank (mbtbody hull + turret), not the stock 4tnk Mammoth.
+	RenderSprites:
+		Image: mbtbody
+	Tooltip:
+		Name: actor-amx.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 100
+		Prerequisites: tech.federation, tech.center, weap
+		Description: actor-amx.description
+	Valued:
+		Cost: 2200
+	# Networked active-protection identity (NOT just "more HP" — that separates it from Russia's ARMATA siege
+	# tank): keeps the Mammoth's 120mm + tusk AA, and ADDS missile-jamming so enemy guided missiles (ATGMs,
+	# AA, SAMs) veer off near it — a hard-to-kill anti-armour anchor that also umbrellas friendly aircraft.
+	JamsMissiles:
+		Range: 4c0
+		DeflectionRelationships: Enemy
+
+# B-21 strategic stealth bomber: cloaks when idle, snaps visible when it drops a heavy precision bomb stick,
+# then cloaks again. The apex of USA air-dominance — penetrates defences, but a live SAM kills it the instant it bombs.
+B21:
+	Inherits: MIG
+	# CUSTOM battlefield body: spawns as a Blender-rendered stealth flying-wing (b21body, 16-facing PngSheet),
+	# NOT the stock MIG jet — the in-world unit finally matches the cameo/concept. (Husk stays the stock wreck.)
+	RenderSprites:
+		Image: b21body
+	Tooltip:
+		Name: actor-b21.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
+	Buildable:
+		Queue: Aircraft
+		BuildAtProductionType: Plane
+		BuildPaletteOrder: 101
+		Prerequisites: tech.federation, tech.center, afld
+		Description: actor-b21.description
+	Valued:
+		Cost: 2400
+	# A true late-game flagship bomber: ~3.5x a strike jet's HP so it survives a SAM pass, and slow + wide-turning
+	# so it reads as a big, imposing strategic asset, not a darting fighter. (The b21body sprite also renders larger.)
+	Health:
+		HP: 28000
+	Aircraft:
+		Speed: 130
+		TurnSpeed: 7
+	# Drops a real gravity-bomb CARPET (B21Bombs: a 6-bomb stick), not air-launched missiles — bombing that looks
+	# like bombing. A small magazine (2 full sticks) then it must RTB to rearm: a deliberate strike, not a spammer.
+	Armament:
+		Weapon: B21Bombs
+	AmmoPool:
+		Ammo: 12
+	Cloak:
+		InitialDelay: 125
+		CloakDelay: 175
+		UncloakOn: Attack, Damage
+		DetectionTypes: Cloak
+		CloakSound: appear1.aud
+		UncloakSound: appear1.aud
+		PauseOnCondition: cloak-force-disabled
+	GrantConditionOnDamageState@UNCLOAK:
+		Condition: cloak-force-disabled
+		ValidDamageStates: Critical
+
+# ============================ Russia (Northern Union) ============================
+# T-14 ARMATA heavy: the LATE escalation of MOLOT. Mammoth body, 120mm primary + a THERMOBARIC fuel-air
+# secondary that devastates infantry and fortifications — the premier siege-breaker that advances through defences.
+ARMATA:
+	Inherits: 4TNK
+	RenderSprites:
+		Image: mbtbody
+	Tooltip:
+		Name: actor-armata.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 100
+		Prerequisites: tech.northern_union, tech.center, weap
+		Description: actor-armata.description
+	Valued:
+		Cost: 2400
+	Armament@SECONDARY:
+		Weapon: Thermobaric
+		LocalOffset: -85,384,340, -85,-384,340
+
+# ============================ China (Continental Bloc) ============================
+# GJ-11 heavy drone gunship: a survivable, hard-hitting standing attack drone (Hellfire) that anchors China's
+# late air. Cheap enough (China cost profile) to field several — the late drone air-arm graduates from the loiter toys.
+GJ11:
+	Inherits: MH60
+	# Stealth UCAV — render as the fixed-wing UAV body, not the MH60 helicopter.
+	RenderSprites:
+		Image: dronebody
+	# dronebody has no rotor sequence; strip MH60's rotor overlays (the Archangel crash class).
+	-WithIdleOverlay@ROTORAIR:
+	-WithIdleOverlay@ROTORGROUND:
+	Tooltip:
+		Name: actor-gj11.name
+	Buildable:
+		Queue: Aircraft
+		BuildAtProductionType: Helicopter
+		BuildPaletteOrder: 101
+		Prerequisites: tech.continental_bloc, tech.center, hpad
+		Description: actor-gj11.description
+	Valued:
+		Cost: 1100
+	Armament:
+		Weapon: HellfireAG
+		LocalOffset: 85,-213,-85, 85,213,-85
+
+# ============================ Turkey (Anatolian Alliance) ============================
+# AKINCI heavy UCAV: the late graduation of the cheap Bayrak loiter drone — a fast, far-seeing armed combat
+# drone that strikes ground (precision missiles) AND scouts the deepest. Cheap/fast to build (Turkey air profile) = a drone air force.
+AKINCI:
+	Inherits: MIG
+	# Battlefield body: spawns as a UAV drone (dronebody), not the stock MIG.
+	RenderSprites:
+		Image: dronebody
+	Tooltip:
+		Name: actor-akinci.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
+	Buildable:
+		Queue: Aircraft
+		BuildAtProductionType: Plane
+		BuildPaletteOrder: 101
+		Prerequisites: tech.anatolian_alliance, tech.center, afld
+		Description: actor-akinci.description
+	Valued:
+		Cost: 1300
+	# Was a pure MIG stat-clone (only cost/vision changed). Give it a dedicated 4-missile precision ATGM
+	# salvo (AkinciATGM) instead of the stock single Maverick — a fan of guided missiles, the standoff-drone
+	# signature, distinct from a manned strike jet. Plus the deepest recon vision below.
+	# 4 wing hardpoints (a fan of 4 smoke-trailing missiles off the wings) + a larger magazine: AKINCI loiters
+	# deep, empties its ATGM salvo, then must return to rearm — the "drone air force" tempo, not a manned jet.
+	Armament:
+		Weapon: AkinciATGM
+		LocalOffset: 0,-768,0, 0,-384,0, 0,384,0, 0,768,0
+		LocalYaw: -48, -20, 20, 48
+	AmmoPool:
+		Ammo: 12
+	RevealsShroud:
+		MinRange: 11c0
+		Range: 16c0
+		Type: GroundPosition
+
+# ============================ India (Subcontinent Federation) ============================
+# AGNI road-mobile ballistic launcher: the apex of India's standoff identity — the longest reach in the game,
+# raining a heavy conventional warhead from beyond return range. Slow + fragile, must be screened — a real skill check.
+AGNI:
+	Inherits: V2RL
+	# Battlefield body: spawns as a modern road-mobile missile launcher (telbody), not the stock V2 rocket truck.
+	RenderSprites:
+		Image: telbody
+	Tooltip:
+		Name: actor-agni.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 100
+		Prerequisites: tech.subcontinent_federation, tech.center, weap
+		Description: actor-agni.description
+	Valued:
+		Cost: 1600
+	Armament:
+		Weapon: AgniBallistic
+
+# ============================ Strike-power delivery planes (off-map, not buildable) ============================
+# Each faction's airstrike support power flies in a DIFFERENT-looking plane with a DIFFERENT munition, so the
+# strikes no longer all look like the same badr.bomber. Clone the BADR.Bomber AttackBomber scaffold; vary Image,
+# Weapon and Ammo (= drops per pass). Wired from the powers in the doctrine files (UnitType: strike.<x>).
+strike.eagle:
+	Inherits: BADR.Bomber
+	RenderSprites:
+		Image: mig
+	AmmoPool:
+		Ammo: 2
+	Armament:
+		Weapon: JDAM
+
+strike.lancer:
+	Inherits: BADR.Bomber
+	RenderSprites:
+		Image: badr
+	AmmoPool:
+		Ammo: 6
+	Armament:
+		Weapon: AreaCarpet
+
+strike.shahed:
+	Inherits: BADR.Bomber
+	RenderSprites:
+		Image: yak
+	AmmoPool:
+		Ammo: 4
+	Armament:
+		Weapon: LoiterMunition
+
+strike.brahmos:
+	Inherits: BADR.Bomber
+	RenderSprites:
+		Image: mig
+	AmmoPool:
+		Ammo: 1
+	Armament:
+		Weapon: CruiseHeavy

@@ -1,0 +1,161 @@
+# THEATER — 4X P3: STRATEGIC RESOURCE (data proxy) + economy depth.
+#
+# The military economy was a single cash pile from harvesting. This adds a STRATEGIC layer: a buildable
+# Alloy Extractor that (a) DRIPS income over time (CashTrickler) so building several across your territory
+# is economically rewarded — expansion now pays — and (b) provides the `alloys` strategic-resource token that
+# the APEX tier requires (the Orbital age now; the gargantuan spectacle units in P4). You can't reach the top
+# of the tech ladder without committing to strategic-resource infrastructure.
+#
+# This is the DATA PROXY for the strategic resource (design/theater-4x-evolution.md P3): `alloys` is a boolean
+# prerequisite + an income source, not yet a true counted second currency (that's P6, which needs C#). It is
+# honest, additive (the ore economy is untouched), and immediately meaningful. No new C# — reuses the stock
+# CashTrickler trait (the same one oil derricks use) + ProvidesPrerequisite.
+#
+# NOTE (later art pass): reuses the resource-silo body for now; a distinct Alloy Extractor body is a
+# visual-revamp item.
+
+# --- Alloy Extractor: a mid-tier strategic economy building. Drips income, stores resources, and unlocks the
+#     apex tier. Build several (expand) for more income; you need at least one to reach the Orbital age + the
+#     coming spectacle units. Inherits the resource silo (storage + fill-animated body) and adds the trickle.
+alloyex:
+	Inherits: SILO
+	RenderSprites:
+		Image: alloyexbody
+	# Bespoke industrial-extractor body instead of the silo tank (restore a plain body, drop the silo
+	# fill-body + storage pips). Still stores resources, just doesn't look like a generic silo.
+	WithSpriteBody:
+	-WithResourceLevelSpriteBody:
+	-WithResourceStoragePipsDecoration:
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 137
+		Prerequisites: proc, ~structures.allies, ~techlevel.medium
+		Description: actor-alloyex.description
+		Icon: alloyex-icon
+	Valued:
+		Cost: 900
+	Tooltip:
+		Name: actor-alloyex.name
+	Health:
+		HP: 45000
+	Power:
+		Amount: -25
+	# Slow strategic income — rewards building several across your territory (expansion pays).
+	CashTrickler:
+		Interval: 50
+		Amount: 20
+		ShowTicks: true
+	# The strategic-resource token the apex tier gates on (boolean: "you have an extractor").
+	ProvidesPrerequisite@alloys:
+		Prerequisite: alloys
+	# COUNTED strategic resource: each extractor banks real alloys over time into PlayerAlloys.
+	# The apex tier additionally requires a STOCKPILE of these (alloys.stockpile) and SPENDS them on build.
+	AlloyTrickler:
+		Interval: 50
+		Amount: 10
+		ShowTicks: true
+	# Economy Network upgrade boosts this extractor's income (see econ.network below).
+	GrantConditionOnPrerequisite@econ:
+		Condition: econ-network
+		Prerequisites: econ.network
+	CashTricklerMultiplier@econ:
+		RequiresCondition: econ-network
+		Modifier: 130
+
+# --- Bank: a pure ECONOMY building (no military function) — strong passive income, stackable. The core
+#     "invest in economy vs army" decision: out-economy your opponent by building banks, then upgrade them
+#     with the Economy Network. Inherits the silo for storage + footprint, but now wears a BESPOKE building
+#     body (a columned institution) instead of the silo tank, so it no longer looks like a resource silo.
+bank:
+	Inherits: SILO
+	RenderSprites:
+		Image: bankbody
+	# SILO strips WithSpriteBody and renders a fill-level silo body; restore a plain static body on the
+	# custom bank sprite and drop the silo-specific fill body + storage pips.
+	WithSpriteBody:
+	-WithResourceLevelSpriteBody:
+	-WithResourceStoragePipsDecoration:
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 138
+		# Unlocked by the tech tree's War Economy fork (theater-research-economy.yaml).
+		Prerequisites: proc, ~structures.allies, ~techlevel.medium, research.wareconomy
+		Description: actor-bank.description
+		Icon: bank-icon
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: actor-bank.name
+	Health:
+		HP: 40000
+	Power:
+		Amount: -20
+	CashTrickler:
+		Interval: 45
+		Amount: 32
+		ShowTicks: true
+	GrantConditionOnPrerequisite@econ:
+		Condition: econ-network
+		Prerequisites: econ.network
+	CashTricklerMultiplier@econ:
+		RequiresCondition: econ-network
+		Modifier: 130
+
+# --- Fusion Reactor: a high-output power plant for the power-hungry late game (Research Lab, Alloy Extractor,
+#     banks and the spectacle units all add drain). One Fusion replaces several power plants.
+fusion:
+	Inherits: APWR
+	# Bespoke fusion-reactor body instead of the stock power plant (APWR already uses WithSpriteBody, so
+	# the image swap + fusionbody sequences are all that's needed). 3x3 footprint, matching render scale.
+	RenderSprites:
+		Image: fusionbody
+	# (The death animation is already stripped on the base APWR reskin in theater-structures.yaml — fusion
+	# inherits APWR, so a -WithDeathAnimation here would now be a double-remove and error. Standard explosions remain.)
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 139
+		# Unlocked by the tech tree's Hardened Infrastructure node (theater-techtree.yaml).
+		Prerequisites: dome, ~structures.allies, ~techlevel.medium, node.heavydefense
+		Description: actor-fusion.description
+		Icon: fusion-icon
+	Valued:
+		Cost: 900
+	Tooltip:
+		Name: actor-fusion.name
+	Power:
+		Amount: 600
+
+# --- Economy Network: a researched upgrade (bought at the Research Lab's Command queue) that boosts the income
+#     of ALL your economy buildings (banks + alloy extractors) by 30% — invest in economy infrastructure, then
+#     upgrade it. A real economy-progression decision, distinct from the military research tree.
+econ.network:
+	Interactable:
+	Tooltip:
+		Name: actor-econ-network.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 60
+		BuildLimit: 1
+		BuildDuration: 450
+		BuildDurationModifier: 100
+		# Unlocked by the tech tree's Industrial Base fork (theater-research-economy.yaml).
+		Prerequisites: rlab, research.industrial
+		Description: actor-econ-network.description
+		Icon: econ-network-icon
+	Valued:
+		Cost: 1200
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:
+
+# --- Player-side alloy economy (the counted strategic resource) ---------------------------------------
+# PlayerAlloys is the counted pool; AlloyTrickler (on the Alloy Extractor) fills it. The apex tier gates
+# on a STOCKPILE threshold (alloys.stockpile) and ConsumesAlloys spends it on build, so alloys are now a
+# genuine second currency you accumulate and spend — not just a boolean "you own an extractor" token.
+Player:
+	PlayerAlloys:
+		InitialAlloys: 0
+		MaxAlloys: 600
+	ProvidesPrerequisiteOnAlloys@stockpile:
+		Prerequisite: alloys.stockpile
+		Threshold: 100

@@ -1,0 +1,47 @@
+# ============================================================================
+# THEATER — Living World layer. The start of the "Civilization but real-time" vision:
+# a populated, living map. This pass adds ambient CITIZENS who wander and flee on
+# their own (stock ^CivInfantry already carries Wanders + ScaredyCat), spawned at
+# game start by the new AmbientCivilians world trait (deterministic, synced-RNG only).
+#
+# Future passes will extend this file with time/era progression and the space-program
+# investment track.
+# ============================================================================
+
+World:
+	AmbientCivilians:
+		# Stock RA civilians — they already wander (^CivInfantry: Wanders) and panic near danger.
+		Types: C1, C2, C3, C4, C5, C6, C7, C8, C9
+		# Baseline 16, then the world's population swells by 8 at each era boundary (GameTimeline below) and
+		# war casualties are replenished up to the target — so the map gets busier as time moves forward
+		# (Mobilization 16 -> Final Hour 48), capped at 56. "Civilization but real-time": a growing world.
+		Count: 16
+		GrowthPerEra: 8
+		MaxPopulation: 56
+		# Cluster the population into ~6 towns (radius 7 cells) instead of scattering it, so the world has
+		# real population centres — and each is a place worth holding for the CivilianTaxBase income below.
+		Settlements: 6
+		SettlementRadius: 7
+		# Anchor SOME towns with a capturable Hospital (stock neutral tech building) — a Civ-style "city-state":
+		# capture it for healing + vision, making those towns real objectives. Only 4 of the 6 towns get one,
+		# so the centres are rarer/contested and the towns vary (the rest are people-only). Spawned where 2x2 fits.
+		SettlementStructure: hosp
+		SettlementStructureCount: 4
+	# Global real-time timeline — the world advances through escalating eras as the match runs, shown in a
+	# HUD readout. "Civilization but real-time": a shared sense of time moving forward (distinct from the
+	# player-bought ages). ~25 ticks/sec, so the defaults below land eras roughly every 6 minutes.
+	GameTimeline:
+
+# Turn the timeline into a real gate: as the world reaches each era, grant an era.N prerequisite so content
+# can be paced by real time. The Space Program is gated on these (see theater-spaceprogram.yaml).
+Player:
+	ProvidesPrerequisiteOnEra:
+		Prerequisites: era.1, era.2, era.3, era.4
+	# Make the living world MATTER: civilians wandering within 6 cells of your buildings are a tax base,
+	# paying a little cash every ~10s (capped). So holding populated ground is worth something, and because
+	# the population grows over the eras, that populated ground is worth more as the match goes on.
+	CivilianTaxBase:
+		Interval: 250
+		Radius: 6c0
+		CashPerCivilian: 5
+		MaxCivilians: 20

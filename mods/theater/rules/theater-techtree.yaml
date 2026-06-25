@@ -1,0 +1,276 @@
+# ============================================================================
+# THEATER — TECH TREE: unlock nodes + their rewards.
+#
+# The 4X tech tree no longer buffs your army's numbers — every node UNLOCKS A NEW THING. This file holds the
+# generic (all-faction) unlock nodes and the Theater Command support powers they grant. The age spine
+# (theater-ages.yaml) and the three forks (research.mass/precision, research.wareconomy/industrial,
+# research.maneuver/fortress) gate these; re-gated existing content (mobsam, fusion, bank, econ.network,
+# the apex spectacle units, the space program) lives in its own files. Shown left-to-right in the F8 flowchart.
+#
+# Each node is a buy-once Command-queue actor (Interactable + BuildLimit:1 + ProvidesPrerequisite@self). The
+# support powers are byte-for-byte clones of the PROVEN doctrine powers, reusing existing strike planes
+# (strike.eagle/lancer/shahed/brahmos) — no new C#, no new art. Faction doctrine powers are untouched; these
+# new powers use distinct @suffix + OrderName so they never collide with the baseline @coord paradrop.
+# ============================================================================
+
+# =================================== Unlock nodes (buy-once) ===================================
+# Integrated Air Defense (tier 0) -> unlocks the shared Mobile SAM.
+node.airdefense:
+	Interactable:
+	Tooltip:
+		Name: actor-node-airdefense.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 30
+		BuildLimit: 1
+		BuildDuration: 300
+		BuildDurationModifier: 100
+		Prerequisites: rlab
+		Description: actor-node-airdefense.description
+		Icon: research-optics-icon
+	Valued:
+		Cost: 600
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:
+
+# Recon Satellites (tier 0) -> unlocks the Satellite Sweep power (GpsPower@treerecon below).
+node.recon:
+	Interactable:
+	Tooltip:
+		Name: actor-node-recon.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 31
+		BuildLimit: 1
+		BuildDuration: 350
+		BuildDurationModifier: 100
+		Prerequisites: rlab
+		Description: actor-node-recon.description
+		Icon: research-smallarms-icon
+	Valued:
+		Cost: 700
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:
+
+# Precision Air Wing (tier 1) -> unlocks the surgical 2-jet strike power (AirstrikePower@treeair below).
+node.airpower:
+	Interactable:
+	Tooltip:
+		Name: actor-node-airpower.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 32
+		BuildLimit: 1
+		BuildDuration: 500
+		BuildDurationModifier: 100
+		Prerequisites: rlab, age.information
+		Description: actor-node-airpower.description
+		Icon: research-avionics-icon
+	Valued:
+		Cost: 1100
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:
+
+# Hardened Infrastructure (tier 1) -> unlocks the shared Fusion Reactor.
+node.heavydefense:
+	Interactable:
+	Tooltip:
+		Name: actor-node-heavydefense.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 33
+		BuildLimit: 1
+		BuildDuration: 500
+		BuildDurationModifier: 100
+		Prerequisites: rlab, age.information
+		Description: actor-node-heavydefense.description
+		Icon: research-reactivearmor-icon
+	Valued:
+		Cost: 1200
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:
+
+# Autonomous Strike Net (tier 3) -> unlocks a long-charge precision sortie (AirstrikePower@treedrone below).
+node.dronebay:
+	Interactable:
+	Tooltip:
+		Name: actor-node-dronebay.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 34
+		BuildLimit: 1
+		BuildDuration: 600
+		BuildDurationModifier: 100
+		Prerequisites: rlab, age.autonomous
+		Description: actor-node-dronebay.description
+		Icon: research-autoloaders-icon
+	Valued:
+		Cost: 1600
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:
+
+# =================================== The unlocked Theater Command support powers ===================================
+# Field-merged onto THCOM. Each gated on its tree node / fork token, so it only appears once that node is bought.
+THCOM:
+	# node.recon -> Satellite Sweep (clone of the USA networked GpsPower).
+	GpsPower@treerecon:
+		Prerequisites: node.recon
+		Icon: gps
+		ChargeInterval: 4500
+		Name: actor-thcom.treerecon-name
+		Description: actor-thcom.treerecon-description
+		RevealDelay: 375
+		LaunchSpeechNotification: SatelliteLaunched
+		LaunchTextNotification: notification-satellite-launched
+		DisplayTimerRelationships: Ally, Neutral, Enemy
+		SupportPowerPaletteOrder: 64
+	# node.airpower -> Precision Air Wing (clone of the USA precision CAS; fast 2-jet JDAM run).
+	AirstrikePower@treeair:
+		OrderName: TreePrecisionStrike
+		Prerequisites: node.airpower
+		Icon: spyplane
+		ChargeInterval: 4200
+		Name: actor-thcom.treeair-name
+		Description: actor-thcom.treeair-description
+		SelectTargetSpeechNotification: SelectTarget
+		SelectTargetTextNotification: notification-select-target
+		UnitType: strike.eagle
+		SquadSize: 2
+		SquadOffset: 1792,1792,0
+		QuantizedFacings: 8
+		CameraActor: camera
+		CameraRemoveDelay: 150
+		DisplayBeacon: true
+		BeaconPoster: pbmbicon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		SupportPowerPaletteOrder: 65
+	# FORK A1 research.mass -> Mass Fires: a 5-drone saturation swarm (clone of the China drone swarm).
+	AirstrikePower@treemass:
+		OrderName: TreeMassSwarm
+		Prerequisites: research.mass
+		Icon: parabombs
+		ChargeInterval: 7000
+		Name: actor-thcom.treemass-name
+		Description: actor-thcom.treemass-description
+		SelectTargetSpeechNotification: SelectTarget
+		SelectTargetTextNotification: notification-select-target
+		UnitType: strike.shahed
+		SquadSize: 5
+		SquadOffset: 1792,1792,0
+		QuantizedFacings: 8
+		CameraActor: camera
+		CameraRemoveDelay: 150
+		DisplayBeacon: true
+		BeaconPoster: pbmbicon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		SupportPowerPaletteOrder: 66
+	# FORK A2 research.precision -> Precision Fires: a single heavy cruise strike (strike.brahmos, SquadSize 1).
+	AirstrikePower@treeprecision:
+		OrderName: TreeCruiseStrike
+		Prerequisites: research.precision
+		Icon: parabombs
+		ChargeInterval: 9000
+		Name: actor-thcom.treeprecision-name
+		Description: actor-thcom.treeprecision-description
+		SelectTargetSpeechNotification: SelectTarget
+		SelectTargetTextNotification: notification-select-target
+		UnitType: strike.brahmos
+		SquadSize: 1
+		SquadOffset: 1792,1792,0
+		QuantizedFacings: 8
+		CameraActor: camera
+		CameraRemoveDelay: 150
+		DisplayBeacon: true
+		BeaconPoster: pbmbicon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		SupportPowerPaletteOrder: 67
+	# node.dronebay -> Autonomous Strike Net: a 3-jet precision sortie (strike.eagle, longer charge).
+	AirstrikePower@treedrone:
+		OrderName: TreeAutonomousStrike
+		Prerequisites: node.dronebay
+		Icon: parabombs
+		ChargeInterval: 6000
+		Name: actor-thcom.treedrone-name
+		Description: actor-thcom.treedrone-description
+		SelectTargetSpeechNotification: SelectTarget
+		SelectTargetTextNotification: notification-select-target
+		UnitType: strike.eagle
+		SquadSize: 3
+		SquadOffset: 1792,1792,0
+		QuantizedFacings: 8
+		CameraActor: camera
+		CameraRemoveDelay: 150
+		DisplayBeacon: true
+		BeaconPoster: pbmbicon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		SupportPowerPaletteOrder: 68
+	# FORK C1 research.maneuver -> Rapid Deploy: a fast light paradrop (clone of the baseline @coord; distinct
+	# @suffix + OrderName so it never collides with the always-on @coord). Lighter 4-man squad, short charge.
+	ParatroopersPower@treemaneuver:
+		OrderName: TreeManeuverDrop
+		Prerequisites: research.maneuver
+		Icon: paratroopers
+		ChargeInterval: 1500
+		Name: actor-thcom.treemaneuver-name
+		Description: actor-thcom.treemaneuver-description
+		DropItems: E1R1,E1R1,E3R1,E3R1
+		ReinforcementsArrivedSpeechNotification: ReinforcementsArrived
+		SelectTargetSpeechNotification: SelectTarget
+		ReinforcementsArrivedTextNotification: notification-reinforcements-have-arrived
+		SelectTargetTextNotification: notification-select-target
+		AllowImpassableCells: false
+		QuantizedFacings: 8
+		CameraActor: camera.paradrop
+		DisplayBeacon: true
+		BeaconPoster: pinficon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		SupportPowerPaletteOrder: 69
+	# FORK C2 research.fortress -> Defensive Barrage: a 3-bomber carpet to break an assault (strike.lancer).
+	AirstrikePower@treefortress:
+		OrderName: TreeFortressBarrage
+		Prerequisites: research.fortress
+		Icon: parabombs
+		ChargeInterval: 8000
+		Name: actor-thcom.treefortress-name
+		Description: actor-thcom.treefortress-description
+		SelectTargetSpeechNotification: SelectTarget
+		SelectTargetTextNotification: notification-select-target
+		UnitType: strike.lancer
+		SquadSize: 3
+		SquadOffset: 1792,1792,0
+		QuantizedFacings: 8
+		CameraActor: camera
+		CameraRemoveDelay: 150
+		DisplayBeacon: true
+		BeaconPoster: pbmbicon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		SupportPowerPaletteOrder: 70

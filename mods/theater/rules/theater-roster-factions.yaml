@@ -1,0 +1,235 @@
+# THEATER — controlled per-faction LAND VARIANTS (priority factions).
+#
+# 1-2 grounded faction-specific land units each, so army composition feels different BEFORE the doctrine
+# choice. Each reuses a stock body (RenderSprites Image mandatory) + a distinct weapon/role, gated
+# tech.<faction> + weap (war factory). They do NOT duplicate the shared roster, the faction uniques, or
+# the doctrine unlocks — each fills a national-identity gap. No new art, no new C#. Japan/Germany get none
+# this pass (they keep the shared modern roster). All are faction-gated, so each AI only builds its own.
+
+# ============================ USA (Federation) — precision / networked / air-ground ============================
+# USA had NO land unique (both uniques are aircraft), so it gets two.
+
+# M2 Bradley — advanced networked IFV: a 25mm autocannon (infantry/light) AND a Dragon ATGM (armor), plus a
+# squad and extra vision. The versatile fire-support transport — distinct from the plain shared IFV (autocannon
+# only). Countered by focused heavy anti-tank + artillery.
+bradley:
+	Inherits: APC
+	RenderSprites:
+		Image: apcbody
+	Tooltip:
+		Name: actor-bradley.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 95
+		Prerequisites: tech.federation, weap
+		Description: actor-bradley.description
+	Valued:
+		Cost: 1000
+	Armament:
+		Weapon: 25mm
+		LocalOffset: 85,0,171
+		MuzzleSequence: muzzle
+	Armament@ATGM:
+		Weapon: Dragon
+		LocalOffset: 85,0,171
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 8c0
+		RevealGeneratedShroud: False
+
+# JTAC Humvee — recon + precision strike: a wide sight radius and a single Hellfire-class precision missile to
+# designate and kill priority targets. Air-ground coordination on wheels; fragile, an escort/spotter not a brawler.
+jtac:
+	Inherits: JEEP
+	# Battlefield body: spawns as a modern 4x4 tactical vehicle (jeepbody), not the stock JEEP.
+	RenderSprites:
+		Image: jeepbody
+	Turreted:
+		Offset: 0,0,0
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
+	Tooltip:
+		Name: actor-jtac.name
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 96
+		Prerequisites: tech.federation, weap
+		Description: actor-jtac.description
+	Valued:
+		Cost: 700
+	Armament:
+		Weapon: HellfireAG
+		LocalOffset: 128,0,43
+		MuzzleSequence: muzzle
+	RevealsShroud:
+		MinRange: 0
+		Range: 11c0
+		RevealGeneratedShroud: False
+
+# ============================ Russia (Northern Union) — heavy armor support ============================
+# BMPT "Terminator" — tank-support on a heavy chassis: twin 25mm autocannons shred infantry/light AND a Dragon
+# ATGM, NO transport. Escorts the armored fist and clears what the main guns can't. Countered by heavy tank guns
+# + artillery. Distinct from Bastion (EW), Grad (rockets), Redoubt (APC) and the Molot doctrine heavy tank.
+bmpt:
+	Inherits: 3TNK
+	RenderSprites:
+		Image: tankbody
+	Tooltip:
+		Name: actor-bmpt.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 95
+		Prerequisites: tech.northern_union, weap
+		Description: actor-bmpt.description
+	Valued:
+		Cost: 1100
+	Armament:
+		Weapon: 25mm
+		Recoil: 128
+		RecoilRecovery: 38
+		LocalOffset: 768,85,90, 768,-85,90
+		MuzzleSequence: muzzle
+	Armament@ATGM:
+		Weapon: Dragon
+		LocalOffset: 768,0,90
+
+# ============================ China (Continental Bloc) — drone integration / mass ============================
+# Loitering-Munition Truck — a cheap, fast vehicle that fires a precision "kamikaze drone" (Hellfire-class) at
+# armor/structures. Cheap enough to field in numbers (mass identity); fragile, so it dies to a rush or anyone who
+# closes. Distinct from the Dazhbog area rockets and the Wing Loong air drone.
+loiter:
+	Inherits: JEEP
+	RenderSprites:
+		Image: jeepbody
+	Turreted:
+		Offset: 0,0,0
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
+	Tooltip:
+		Name: actor-loiter.name
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 95
+		Prerequisites: tech.continental_bloc, weap
+		Description: actor-loiter.description
+	Valued:
+		Cost: 450
+	Armament:
+		Weapon: HellfireAG
+		LocalOffset: 128,0,43
+		MuzzleSequence: muzzle
+
+# ============================ Turkey (Anatolian Alliance) — rapid-response recon ============================
+# Cobra Recon-Strike — a fast wheeled vehicle with a 25mm autocannon and a wide sight radius: a rapid-response
+# scout/harasser that gets eyes and fire forward quickly. Distinct from the shared Recon Vehicle (faster +
+# autocannon + more sight) and the Bayrak air drone.
+cobra:
+	Inherits: JEEP
+	RenderSprites:
+		Image: jeepbody
+	Turreted:
+		Offset: 0,0,0
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
+	Tooltip:
+		Name: actor-cobra.name
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 95
+		Prerequisites: tech.anatolian_alliance, weap
+		Description: actor-cobra.description
+	Valued:
+		Cost: 600
+	Mobile:
+		Speed: 210
+	Armament:
+		Weapon: 25mm
+		LocalOffset: 128,0,43
+		MuzzleSequence: muzzle
+	RevealsShroud:
+		MinRange: 0
+		Range: 10c0
+		RevealGeneratedShroud: False
+
+# ============================ UK (Isles Coalition) — intelligence / counter-stealth ============================
+# Jackal — a fast elite recon vehicle that is a MOBILE counter-stealth sensor: wide sight + cloak detection
+# (de-cloaks enemy stealth on the move) + an MG. Distinct from the shared Recon Vehicle (adds detection) and the
+# Scout infantry (vehicle, fast, mobile). Reinforces UK's intelligence / counter-stealth identity.
+jackal:
+	Inherits: JEEP
+	RenderSprites:
+		Image: jeepbody
+	Turreted:
+		Offset: 0,0,0
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
+	Tooltip:
+		Name: actor-jackal.name
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 95
+		Prerequisites: tech.isles_coalition, weap
+		Description: actor-jackal.description
+	Valued:
+		Cost: 650
+	Mobile:
+		Speed: 190
+	RevealsShroud:
+		MinRange: 0
+		Range: 10c0
+		RevealGeneratedShroud: False
+	DetectCloaked:
+		Range: 6c0
+		DetectionTypes: Cloak
+	RenderDetectionCircle:
+
+# ============================ India (Subcontinent Federation) — missiles / standoff AT ============================
+# NAMICA — a dedicated ATGM tank-destroyer: a Dragon anti-tank missile on a light tracked chassis, fragile and
+# helpless against infantry, so it kills armor from range but must be screened. Distinct from the infantry AT
+# Team, the shared IFV, and the Arjun doctrine heavy tank. Reinforces India's missile identity.
+namica:
+	Inherits: APC
+	RenderSprites:
+		Image: apcbody
+	Tooltip:
+		Name: actor-namica.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 96
+		Prerequisites: tech.subcontinent_federation, weap
+		Description: actor-namica.description
+	Valued:
+		Cost: 800
+	Health:
+		HP: 18000
+	Armament:
+		Weapon: Dragon
+		LocalOffset: 85,0,171
+		MuzzleSequence: muzzle

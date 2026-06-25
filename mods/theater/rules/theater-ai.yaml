@@ -1,0 +1,738 @@
+# THEATER — teach the skirmish AI to use the faction system: build the uniques, BUY a mid-game doctrine
+# branch (and the units/powers it unlocks), and fire the doctrine support powers.
+#
+# Doctrine stat-modifiers already apply to AI armies automatically (the AI's Construction Yard provides
+# the tech.<faction> token that grants the doctrine condition). The additions below make the AI:
+#   1. PRODUCE the faction uniques + doctrine-unlocked units (UnitBuilderBotModule.UnitsToBuild — a dict
+#      that MERGES; faction-gating means an AI only builds what its own faction unlocks).
+#   2. BUILD a Theater Command and BUY one doctrine branch from the "Command" queue. This mirrors the d2k
+#      AI's upgrade-buying: add "Command" to BaseBuilderBotModule.BuildingQueues and list the items in
+#      BuildingFractions/BuildingLimits. The branches are faction-gated (~tech.<faction>) and mutually
+#      exclusive, so an AI buys exactly ONE — its own faction's first affordable branch. Japan/Germany
+#      have no branches, so they simply build none (still fully functional).
+#   3. FIRE the doctrine support powers (SupportPowerBotModule only acts on powers that have a
+#      SupportPowerDecision for their OrderName — offensive strikes target enemy structures; the airborne
+#      reinforcement drops near the enemy). One shared module covers every AI personality.
+# These all MERGE onto the stock ra AI (mods/ra/rules/ai.yaml); only the deltas are restated here.
+
+Player:
+	# --- Faction uniques + doctrine-unlocked units (merge into each personality's build list). ---
+	UnitBuilderBotModule@rush:
+		UnitsToBuild:
+			specter: 10
+			wingloong: 15
+			bayrak: 15
+			reaper: 10
+			hayabusa: 10
+			tejas: 10
+			bastion: 12
+			loewe: 15
+			garuda: 12
+			grad: 15
+			redoubt: 10
+			dazhbog: 15
+			kunai: 12
+			molot: 14
+			dongfeng: 20
+			arjun: 14
+			raider: 8
+			manpads: 12
+			scout: 6
+			ifv: 12
+			mobsam: 10
+			bradley: 14
+			jtac: 8
+			bmpt: 14
+			loiter: 12
+			cobra: 12
+			jackal: 8
+			namica: 12
+			raptor: 10
+			tunguska: 12
+			burke: 8
+			akula: 10
+			leviathan: 2
+			houbei: 10
+			barbaros: 8
+			astute: 10
+			kolkata: 8
+			pathfinder: 6
+			comms: 8
+			koral: 8
+			amx: 6
+			armata: 6
+			citadel: 2
+			tempest: 2
+			b21: 5
+			archangel: 2
+			gj11: 8
+			akinci: 8
+			agni: 6
+	UnitBuilderBotModule@normal:
+		UnitsToBuild:
+			specter: 10
+			wingloong: 15
+			bayrak: 15
+			reaper: 10
+			hayabusa: 10
+			tejas: 10
+			bastion: 12
+			loewe: 15
+			garuda: 12
+			grad: 15
+			redoubt: 10
+			dazhbog: 15
+			kunai: 12
+			molot: 14
+			dongfeng: 20
+			arjun: 14
+			raider: 8
+			manpads: 12
+			scout: 6
+			ifv: 12
+			mobsam: 10
+			bradley: 14
+			jtac: 8
+			bmpt: 14
+			loiter: 12
+			cobra: 12
+			jackal: 8
+			namica: 12
+			raptor: 10
+			tunguska: 12
+			burke: 8
+			akula: 10
+			leviathan: 2
+			houbei: 10
+			barbaros: 8
+			astute: 10
+			kolkata: 8
+			pathfinder: 6
+			comms: 8
+			koral: 8
+			amx: 6
+			armata: 6
+			citadel: 2
+			tempest: 2
+			b21: 5
+			archangel: 2
+			gj11: 8
+			akinci: 8
+			agni: 6
+	UnitBuilderBotModule@turtle:
+		UnitsToBuild:
+			specter: 10
+			wingloong: 15
+			bayrak: 15
+			reaper: 10
+			hayabusa: 10
+			tejas: 10
+			bastion: 12
+			loewe: 15
+			garuda: 12
+			grad: 15
+			redoubt: 10
+			dazhbog: 15
+			kunai: 12
+			molot: 14
+			dongfeng: 20
+			arjun: 14
+			raider: 8
+			manpads: 12
+			scout: 6
+			ifv: 12
+			mobsam: 10
+			bradley: 14
+			jtac: 8
+			bmpt: 14
+			loiter: 12
+			cobra: 12
+			jackal: 8
+			namica: 12
+			raptor: 10
+			tunguska: 12
+			burke: 8
+			akula: 10
+			leviathan: 2
+			houbei: 10
+			barbaros: 8
+			astute: 10
+			kolkata: 8
+			pathfinder: 6
+			comms: 8
+			koral: 8
+			amx: 6
+			armata: 6
+			citadel: 2
+			tempest: 2
+			b21: 5
+			archangel: 2
+			gj11: 8
+			akinci: 8
+			agni: 6
+	UnitBuilderBotModule@naval:
+		UnitsToBuild:
+			specter: 10
+			wingloong: 15
+			bayrak: 15
+			reaper: 10
+			hayabusa: 10
+			tejas: 10
+			bastion: 12
+			loewe: 15
+			garuda: 12
+			grad: 15
+			redoubt: 10
+			dazhbog: 15
+			kunai: 12
+			molot: 14
+			dongfeng: 20
+			arjun: 14
+			raider: 8
+			manpads: 12
+			scout: 6
+			ifv: 12
+			mobsam: 10
+			bradley: 14
+			jtac: 8
+			bmpt: 14
+			loiter: 12
+			cobra: 12
+			jackal: 8
+			namica: 12
+			raptor: 10
+			tunguska: 12
+			burke: 8
+			akula: 10
+			leviathan: 2
+			houbei: 10
+			barbaros: 8
+			astute: 10
+			kolkata: 8
+			pathfinder: 6
+			comms: 8
+			koral: 8
+			amx: 6
+			armata: 6
+			citadel: 2
+			tempest: 2
+			b21: 5
+			archangel: 2
+			gj11: 8
+			akinci: 8
+			agni: 6
+
+	# --- Build the Theater Command + buy one doctrine branch from the Command queue (per personality). ---
+	# BuildingQueues REPLACES (so restate Building + add Command); BuildingFractions/Limits MERGE (add to
+	# the stock ra building lists). thcom hosts the Command queue; the 12 doctrine.* items are all listed
+	# (faction-gating + mutual exclusion mean each AI buys just its own one). Low fractions = built after
+	# the core base/army, mid-game.
+	BaseBuilderBotModule@rush:
+		BuildingQueues: Building, Defense, Command
+		DefenseTypes: hbox,pbox,gun,ftur,tsla,agun,sam,akash,aegis
+		BuildingFractions:
+			thcom: 2
+			doctrine.usa.air: 1
+			doctrine.usa.networked: 1
+			doctrine.rus.armor: 1
+			doctrine.rus.arty: 1
+			doctrine.chn.air: 1
+			doctrine.chn.industrial: 1
+			doctrine.tur.recon: 1
+			doctrine.tur.rapid: 1
+			doctrine.uk.specops: 1
+			doctrine.uk.intel: 1
+			doctrine.ind.missile: 1
+			doctrine.ind.networked: 1
+			rlab: 1
+			node.airdefense: 1
+			node.recon: 1
+			node.airpower: 1
+			node.heavydefense: 1
+			node.dronebay: 1
+			research.mass: 1
+			research.precision: 1
+			research.wareconomy: 1
+			research.industrial: 1
+			research.maneuver: 1
+			research.fortress: 1
+			age.information: 1
+			age.autonomous: 1
+			age.orbital: 1
+			space.launch: 1
+			space.satellites: 1
+			space.orbital: 1
+			alloyex: 3
+			bank: 3
+			fusion: 2
+			akash: 2
+			aegis: 2
+			econ.network: 1
+		BuildingLimits:
+			thcom: 1
+			doctrine.usa.air: 1
+			doctrine.usa.networked: 1
+			doctrine.rus.armor: 1
+			doctrine.rus.arty: 1
+			doctrine.chn.air: 1
+			doctrine.chn.industrial: 1
+			doctrine.tur.recon: 1
+			doctrine.tur.rapid: 1
+			doctrine.uk.specops: 1
+			doctrine.uk.intel: 1
+			doctrine.ind.missile: 1
+			doctrine.ind.networked: 1
+			rlab: 1
+			node.airdefense: 1
+			node.recon: 1
+			node.airpower: 1
+			node.heavydefense: 1
+			node.dronebay: 1
+			research.mass: 1
+			research.precision: 1
+			research.wareconomy: 1
+			research.industrial: 1
+			research.maneuver: 1
+			research.fortress: 1
+			age.information: 1
+			age.autonomous: 1
+			age.orbital: 1
+			space.launch: 1
+			space.satellites: 1
+			space.orbital: 1
+			alloyex: 3
+			bank: 3
+			fusion: 2
+			akash: 2
+			aegis: 2
+			econ.network: 1
+	BaseBuilderBotModule@normal:
+		BuildingQueues: Building, Defense, Command
+		DefenseTypes: hbox,pbox,gun,ftur,tsla,agun,sam,akash,aegis
+		BuildingFractions:
+			thcom: 2
+			doctrine.usa.air: 1
+			doctrine.usa.networked: 1
+			doctrine.rus.armor: 1
+			doctrine.rus.arty: 1
+			doctrine.chn.air: 1
+			doctrine.chn.industrial: 1
+			doctrine.tur.recon: 1
+			doctrine.tur.rapid: 1
+			doctrine.uk.specops: 1
+			doctrine.uk.intel: 1
+			doctrine.ind.missile: 1
+			doctrine.ind.networked: 1
+			rlab: 1
+			node.airdefense: 1
+			node.recon: 1
+			node.airpower: 1
+			node.heavydefense: 1
+			node.dronebay: 1
+			research.mass: 1
+			research.precision: 1
+			research.wareconomy: 1
+			research.industrial: 1
+			research.maneuver: 1
+			research.fortress: 1
+			age.information: 1
+			age.autonomous: 1
+			age.orbital: 1
+			space.launch: 1
+			space.satellites: 1
+			space.orbital: 1
+			alloyex: 3
+			bank: 3
+			fusion: 2
+			akash: 2
+			aegis: 2
+			econ.network: 1
+		BuildingLimits:
+			thcom: 1
+			doctrine.usa.air: 1
+			doctrine.usa.networked: 1
+			doctrine.rus.armor: 1
+			doctrine.rus.arty: 1
+			doctrine.chn.air: 1
+			doctrine.chn.industrial: 1
+			doctrine.tur.recon: 1
+			doctrine.tur.rapid: 1
+			doctrine.uk.specops: 1
+			doctrine.uk.intel: 1
+			doctrine.ind.missile: 1
+			doctrine.ind.networked: 1
+			rlab: 1
+			node.airdefense: 1
+			node.recon: 1
+			node.airpower: 1
+			node.heavydefense: 1
+			node.dronebay: 1
+			research.mass: 1
+			research.precision: 1
+			research.wareconomy: 1
+			research.industrial: 1
+			research.maneuver: 1
+			research.fortress: 1
+			age.information: 1
+			age.autonomous: 1
+			age.orbital: 1
+			space.launch: 1
+			space.satellites: 1
+			space.orbital: 1
+			alloyex: 3
+			bank: 3
+			fusion: 2
+			akash: 2
+			aegis: 2
+			econ.network: 1
+	BaseBuilderBotModule@turtle:
+		BuildingQueues: Building, Defense, Command
+		DefenseTypes: hbox,pbox,gun,ftur,tsla,agun,sam,akash,aegis
+		BuildingFractions:
+			thcom: 2
+			doctrine.usa.air: 1
+			doctrine.usa.networked: 1
+			doctrine.rus.armor: 1
+			doctrine.rus.arty: 1
+			doctrine.chn.air: 1
+			doctrine.chn.industrial: 1
+			doctrine.tur.recon: 1
+			doctrine.tur.rapid: 1
+			doctrine.uk.specops: 1
+			doctrine.uk.intel: 1
+			doctrine.ind.missile: 1
+			doctrine.ind.networked: 1
+			rlab: 1
+			node.airdefense: 1
+			node.recon: 1
+			node.airpower: 1
+			node.heavydefense: 1
+			node.dronebay: 1
+			research.mass: 1
+			research.precision: 1
+			research.wareconomy: 1
+			research.industrial: 1
+			research.maneuver: 1
+			research.fortress: 1
+			age.information: 1
+			age.autonomous: 1
+			age.orbital: 1
+			space.launch: 1
+			space.satellites: 1
+			space.orbital: 1
+			alloyex: 3
+			bank: 3
+			fusion: 2
+			akash: 2
+			aegis: 2
+			econ.network: 1
+		BuildingLimits:
+			thcom: 1
+			doctrine.usa.air: 1
+			doctrine.usa.networked: 1
+			doctrine.rus.armor: 1
+			doctrine.rus.arty: 1
+			doctrine.chn.air: 1
+			doctrine.chn.industrial: 1
+			doctrine.tur.recon: 1
+			doctrine.tur.rapid: 1
+			doctrine.uk.specops: 1
+			doctrine.uk.intel: 1
+			doctrine.ind.missile: 1
+			doctrine.ind.networked: 1
+			rlab: 1
+			node.airdefense: 1
+			node.recon: 1
+			node.airpower: 1
+			node.heavydefense: 1
+			node.dronebay: 1
+			research.mass: 1
+			research.precision: 1
+			research.wareconomy: 1
+			research.industrial: 1
+			research.maneuver: 1
+			research.fortress: 1
+			age.information: 1
+			age.autonomous: 1
+			age.orbital: 1
+			space.launch: 1
+			space.satellites: 1
+			space.orbital: 1
+			alloyex: 3
+			bank: 3
+			fusion: 2
+			akash: 2
+			aegis: 2
+			econ.network: 1
+	BaseBuilderBotModule@naval:
+		BuildingQueues: Building, Defense, Command
+		DefenseTypes: hbox,pbox,gun,ftur,tsla,agun,sam,akash,aegis
+		BuildingFractions:
+			thcom: 2
+			doctrine.usa.air: 1
+			doctrine.usa.networked: 1
+			doctrine.rus.armor: 1
+			doctrine.rus.arty: 1
+			doctrine.chn.air: 1
+			doctrine.chn.industrial: 1
+			doctrine.tur.recon: 1
+			doctrine.tur.rapid: 1
+			doctrine.uk.specops: 1
+			doctrine.uk.intel: 1
+			doctrine.ind.missile: 1
+			doctrine.ind.networked: 1
+			rlab: 1
+			node.airdefense: 1
+			node.recon: 1
+			node.airpower: 1
+			node.heavydefense: 1
+			node.dronebay: 1
+			research.mass: 1
+			research.precision: 1
+			research.wareconomy: 1
+			research.industrial: 1
+			research.maneuver: 1
+			research.fortress: 1
+			age.information: 1
+			age.autonomous: 1
+			age.orbital: 1
+			space.launch: 1
+			space.satellites: 1
+			space.orbital: 1
+			alloyex: 3
+			bank: 3
+			fusion: 2
+			akash: 2
+			aegis: 2
+			econ.network: 1
+		BuildingLimits:
+			thcom: 1
+			doctrine.usa.air: 1
+			doctrine.usa.networked: 1
+			doctrine.rus.armor: 1
+			doctrine.rus.arty: 1
+			doctrine.chn.air: 1
+			doctrine.chn.industrial: 1
+			doctrine.tur.recon: 1
+			doctrine.tur.rapid: 1
+			doctrine.uk.specops: 1
+			doctrine.uk.intel: 1
+			doctrine.ind.missile: 1
+			doctrine.ind.networked: 1
+			rlab: 1
+			node.airdefense: 1
+			node.recon: 1
+			node.airpower: 1
+			node.heavydefense: 1
+			node.dronebay: 1
+			research.mass: 1
+			research.precision: 1
+			research.wareconomy: 1
+			research.industrial: 1
+			research.maneuver: 1
+			research.fortress: 1
+			age.information: 1
+			age.autonomous: 1
+			age.orbital: 1
+			space.launch: 1
+			space.satellites: 1
+			space.orbital: 1
+			alloyex: 3
+			bank: 3
+			fusion: 2
+			akash: 2
+			aegis: 2
+			econ.network: 1
+
+	# --- Fire the doctrine support powers (merges new decisions into the shared ra SupportPowerBotModule).
+	# Offensive strikes (CAS / barrage / drone-swarm / cruise / recon flyover) target enemy structures;
+	# the airborne reinforcement drops near the enemy. Only the power the AI actually bought is ever ready.
+	SupportPowerBotModule:
+		Decisions:
+			doctrine-strike-usa:
+				OrderName: FederationSweepStrike
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			doctrine-strike-rus:
+				OrderName: NorthernUnionSaturationBarrage
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			doctrine-strike-chn:
+				OrderName: ChnDroneSwarm
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			doctrine-strike-ind:
+				OrderName: SubcontinentCruiseStrike
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			doctrine-recon-uk:
+				OrderName: UkReconOverflight
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			doctrine-recon-tur:
+				OrderName: AnatolianUavSweep
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			doctrine-para-tur:
+				OrderName: AnatolianRapidDeploy
+				MinimumAttractiveness: 5
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 8c0
+				Consideration@2:
+					Against: Enemy
+					Types: Water
+					Attractiveness: -5
+					TargetMetric: None
+					CheckRadius: 8c0
+			doctrine-para-uk:
+				OrderName: UkSpecOpsInsertion
+				MinimumAttractiveness: 5
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 8c0
+				Consideration@2:
+					Against: Enemy
+					Types: Water
+					Attractiveness: -5
+					TargetMetric: None
+					CheckRadius: 8c0
+			# Space Program capstone — the AI drops the Orbital Lance on the densest enemy structure cluster.
+			space-orbital-strike:
+				OrderName: OrbitalStrike
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			# --- Tech-tree support powers (the AI buys the nodes above; these let it FIRE them). Offensive
+			#     strikes hit the densest enemy structure cluster; the maneuver drop lands near the enemy. ---
+			tree-air:
+				OrderName: TreePrecisionStrike
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			tree-mass:
+				OrderName: TreeMassSwarm
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			tree-precision:
+				OrderName: TreeCruiseStrike
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			tree-drone:
+				OrderName: TreeAutonomousStrike
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			tree-fortress:
+				OrderName: TreeFortressBarrage
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			theater-paradrop:
+				OrderName: TheaterParadrop
+				MinimumAttractiveness: 4
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 7c0
+				Consideration@2:
+					Against: Enemy
+					Types: Water
+					Attractiveness: -5
+					TargetMetric: None
+					CheckRadius: 7c0
+			tree-maneuver:
+				OrderName: TreeManeuverDrop
+				MinimumAttractiveness: 5
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 8c0
+				Consideration@2:
+					Against: Enemy
+					Types: Water
+					Attractiveness: -5
+					TargetMetric: None
+					CheckRadius: 8c0
+
+	# --- Air-squad classification unchanged (no doctrine-unlocked unit is an aircraft). ---
+	SquadManagerBotModule@rush:
+		AirUnitsTypes: mig, yak, heli, hind, mh60, specter, wingloong, bayrak, reaper, hayabusa, tejas, raptor, b21, gj11, akinci, archangel
+		NavalUnitsTypes: ss, msub, dd, ca, lst, pt, burke, akula, houbei, barbaros, astute, kolkata, leviathan
+	SquadManagerBotModule@normal:
+		AirUnitsTypes: mig, yak, heli, hind, mh60, specter, wingloong, bayrak, reaper, hayabusa, tejas, raptor, b21, gj11, akinci, archangel
+		NavalUnitsTypes: ss, msub, dd, ca, lst, pt, burke, akula, houbei, barbaros, astute, kolkata, leviathan
+	SquadManagerBotModule@turtle:
+		AirUnitsTypes: mig, yak, heli, hind, mh60, specter, wingloong, bayrak, reaper, hayabusa, tejas, raptor, b21, gj11, akinci, archangel
+		NavalUnitsTypes: ss, msub, dd, ca, lst, pt, burke, akula, houbei, barbaros, astute, kolkata, leviathan
+	# The naval personality has its own stock SquadManager — restate the theater unit classification on it
+	# too, else the naval AI uses the stock lists and misclassifies every theater air/naval unit.
+	SquadManagerBotModule@naval:
+		AirUnitsTypes: mig, yak, heli, hind, mh60, specter, wingloong, bayrak, reaper, hayabusa, tejas, raptor, b21, gj11, akinci, archangel
+		NavalUnitsTypes: ss, msub, dd, ca, lst, pt, burke, akula, houbei, barbaros, astute, kolkata, leviathan

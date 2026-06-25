@@ -1,0 +1,72 @@
+# THEATER — 4X: RESEARCH LAB + the tech-tree's FIRES fork.
+#
+# The mid-tier Research Lab (rlab) feeds the Command queue (the F8 tech-tree flowchart) and provides the
+# `rlab` token every tree node hangs off. Research now UNLOCKS NEW THINGS — never stat modifiers. The old
+# accumulating ballistics/armor/optics/... buffs are GONE; the only nodes that live here are the FIRES fork
+# (Mass vs Precision), repurposed into a content choice: each branch unlocks a distinct support power on the
+# Theater Command (see theater-techtree.yaml), and picking one removes the other.
+
+# =================================== The Research Lab building ===================================
+# Mid-tier (needs a Radar Dome first), feeds the Command queue, provides the `rlab` token. Build one to open
+# the tech tree.
+rlab:
+	Inherits: DOME
+	# Bespoke research-complex body instead of the radar dome (DOME already uses WithSpriteBody, so the
+	# image swap + rlabbody sequences are all that's needed). 2x3 footprint, rendered at matching scale.
+	RenderSprites:
+		Image: rlabbody
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 136
+		Prerequisites: dome, ~structures.allies, ~techlevel.medium
+		Description: actor-rlab.description
+		Icon: rlab-icon
+	Valued:
+		Cost: 1400
+	Tooltip:
+		Name: actor-rlab.name
+	Production:
+		Produces: Command
+	ProvidesPrerequisite@self:
+
+# =================================== FORK A — FIRES (Mass vs Precision) ===================================
+# A mutually-exclusive content choice off the Information age. Each unlocks a distinct THCOM support power
+# (theater-techtree.yaml): Mass = a 5-drone saturation swarm; Precision = a single heavy cruise strike.
+# Buying one lists ~!the-other, so exactly one fires-doctrine power per match. NO stat numbers either way.
+research.mass:
+	Interactable:
+	Tooltip:
+		Name: actor-research-mass.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 36
+		BuildLimit: 1
+		BuildDuration: 500
+		BuildDurationModifier: 100
+		Prerequisites: rlab, age.information, ~!research.precision
+		Description: actor-research-mass.description
+		Icon: research-mass-icon
+	Valued:
+		Cost: 1000
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:
+
+research.precision:
+	Interactable:
+	Tooltip:
+		Name: actor-research-precision.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 37
+		BuildLimit: 1
+		BuildDuration: 500
+		BuildDurationModifier: 100
+		Prerequisites: rlab, age.information, ~!research.mass
+		Description: actor-research-precision.description
+		Icon: research-precision-icon
+	Valued:
+		Cost: 1000
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:

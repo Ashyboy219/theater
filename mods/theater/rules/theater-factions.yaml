@@ -1,0 +1,123 @@
+# THEATER — 8 contemporary country factions, plus the faction-unique unlock wiring.
+# The stock RA sub-factions are hidden from the lobby (not removed, so campaigns still work).
+# Each faction's Construction Yard provides a `tech.<faction>` prerequisite (scoped by Factions:)
+# that gates that faction's unique unit (see theater-units.yaml).
+
+World:
+	# Chat command: /factions (and /faction <name>) prints each bloc's identity + unique unit.
+	TheaterCommands:
+	Faction@federation:
+		Name: faction-federation.name
+		InternalName: federation
+		Side: Allies
+		Description: faction-federation.description
+	Faction@northern_union:
+		Name: faction-northern_union.name
+		InternalName: northern_union
+		Side: Soviet
+		Description: faction-northern_union.description
+	Faction@continental_bloc:
+		Name: faction-continental_bloc.name
+		InternalName: continental_bloc
+		Side: Soviet
+		Description: faction-continental_bloc.description
+	Faction@rhine_compact:
+		Name: faction-rhine_compact.name
+		InternalName: rhine_compact
+		Side: Allies
+		Description: faction-rhine_compact.description
+	Faction@isles_coalition:
+		Name: faction-isles_coalition.name
+		InternalName: isles_coalition
+		Side: Allies
+		Description: faction-isles_coalition.description
+	Faction@eastern_maritime:
+		Name: faction-eastern_maritime.name
+		InternalName: eastern_maritime
+		Side: Allies
+		Description: faction-eastern_maritime.description
+	Faction@subcontinent_federation:
+		Name: faction-subcontinent_federation.name
+		InternalName: subcontinent_federation
+		Side: Soviet
+		Description: faction-subcontinent_federation.description
+	Faction@anatolian_alliance:
+		Name: faction-anatolian_alliance.name
+		InternalName: anatolian_alliance
+		Side: Soviet
+		Description: faction-anatolian_alliance.description
+	# Repoint the Random pools at the contemporary factions (the stock sub-factions they used to roll
+	# are now hidden, so rolling them would crash faction resolution at game start).
+	Faction@randomallies:
+		RandomFactionMembers: federation, rhine_compact, isles_coalition, eastern_maritime
+	Faction@randomsoviet:
+		RandomFactionMembers: northern_union, continental_bloc, subcontinent_federation, anatolian_alliance
+	# Give every contemporary faction starting units (MCV + support) by adding them to the stock
+	# StartingUnits groups, matched by side. (List fields are replaced, so restate stock + new.)
+	StartingUnits@mcvonly:
+		Factions: allies, england, france, germany, soviet, russia, ukraine, federation, northern_union, continental_bloc, rhine_compact, isles_coalition, eastern_maritime, subcontinent_federation, anatolian_alliance
+	StartingUnits@lightallies:
+		Factions: allies, england, france, germany, federation, rhine_compact, isles_coalition, eastern_maritime
+	StartingUnits@heavyallies:
+		Factions: allies, england, france, germany, federation, rhine_compact, isles_coalition, eastern_maritime
+	StartingUnits@lightsoviet:
+		Factions: soviet, russia, ukraine, northern_union, continental_bloc, subcontinent_federation, anatolian_alliance
+	StartingUnits@heavysoviet:
+		Factions: soviet, russia, ukraine, northern_union, continental_bloc, subcontinent_federation, anatolian_alliance
+	# Stock RA sub-factions are RESTORED as playable legacy/bonus factions (manual lobby pick). They keep
+	# their full classic Red Alert rosters (theater layers ON TOP of ra, it does not amputate it). They are
+	# kept OUT of the Random pools above (which roll the contemporary blocs — the main experience), so the
+	# old random-roll faction-resolution crash can't occur; manual selection is safe.
+	Faction@england:
+		Selectable: True
+	Faction@france:
+		Selectable: True
+	Faction@germany:
+		Selectable: True
+	Faction@russia:
+		Selectable: True
+	Faction@ukraine:
+		Selectable: True
+
+# DEV: the tech-tree unlock lobby checkbox lives here (default OFF for normal play); the THEATER test
+# map flips it ON. When enabled it grants the building-name + tech-level prerequisites so a player can
+# build their WHOLE roster with no building-grind — but it grants NO `tech.<faction>` tokens, so each
+# player still only gets their OWN faction's unique unit (their Construction Yard provides that), and
+# the side gating (~structures.allies/soviet, auto from the conyard) keeps the opposite side locked.
+# Net: "unlock my faction's tech tree", NOT "unlock everything".
+Player:
+	LobbyPrerequisiteCheckbox@DEVUNLOCK:
+		ID: devunlock
+		Label: checkbox-devunlock.label
+		Description: checkbox-devunlock.description
+		Enabled: False
+		Visible: True
+		DisplayOrder: 50
+		Prerequisites: afld, atek, barr, dome, fix, ftur, hpad, kenn, pdox, proc, spen, stek, syrd, tent, tsla, weap, techlevel.infonly, techlevel.low, techlevel.medium, techlevel.high, techlevel.unrestricted
+
+# The Construction Yard provides each faction its own tech prerequisite (only for that faction).
+FACT:
+	ProvidesPrerequisite@federation:
+		Prerequisite: tech.federation
+		Factions: federation
+	ProvidesPrerequisite@northern_union:
+		Prerequisite: tech.northern_union
+		Factions: northern_union
+	ProvidesPrerequisite@continental_bloc:
+		Prerequisite: tech.continental_bloc
+		Factions: continental_bloc
+	ProvidesPrerequisite@rhine_compact:
+		Prerequisite: tech.rhine_compact
+		Factions: rhine_compact
+	ProvidesPrerequisite@isles_coalition:
+		Prerequisite: tech.isles_coalition
+		Factions: isles_coalition
+	ProvidesPrerequisite@eastern_maritime:
+		Prerequisite: tech.eastern_maritime
+		Factions: eastern_maritime
+	ProvidesPrerequisite@subcontinent_federation:
+		Prerequisite: tech.subcontinent_federation
+		Factions: subcontinent_federation
+	ProvidesPrerequisite@anatolian_alliance:
+		Prerequisite: tech.anatolian_alliance
+		Factions: anatolian_alliance

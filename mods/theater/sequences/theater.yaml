@@ -1,0 +1,1326 @@
+# THEATER — bespoke sidebar cameos (full-colour PNG, drawn directly via PngSheet).
+# Each icon is a uniquely-named sequence keyed under the actor's inherited RenderSprites.Image, so it
+# never overwrites the stock unit's own `icon`. Buildable.Icon (theater-cameos.yaml) points each unit
+# at its sequence. Filenames resolve in the theater|bits package (mods/theater/bits/).
+
+mig:
+	specter-icon:
+		Filename: specter-cameo.png
+	tejas-icon:
+		Filename: tejas-cameo.png
+	raptor-icon:
+		Filename: raptor-cameo.png
+	b21-icon:
+		Filename: b21-cameo.png
+	akinci-icon:
+		Filename: akinci-cameo.png
+
+ttnk:
+	bastion-icon:
+		Filename: bastion-cameo.png
+
+yak:
+	wingloong-icon:
+		Filename: wingloong-cameo.png
+	bayrak-icon:
+		Filename: bayrak-cameo.png
+	hayabusa-icon:
+		Filename: hayabusa-cameo.png
+
+3tnk:
+	loewe-icon:
+		Filename: loewe-cameo.png
+	# BASTION renders on the 3tnk body (grounded heavy tank); reuse its cameo here.
+	bastion-icon:
+		Filename: bastion-cameo.png
+	bmpt-icon:
+		Filename: bmpt-cameo.png
+
+# MOLOT (rus) and ARJUN (ind) render on the 4tnk body, each with its own cameo.
+4tnk:
+	# Modern MAMMOTH/heavy-tank body (base 4TNK = the Tech-Lab-unlocked heavy tank). Big wide hull + large
+	# turret with TWIN main guns + side missile pods (the Mammoth's signature), 2-pass turntable, replacing
+	# stock 4tnk. (The faction MBTs MOLOT/ARJUN/AMX/ARMATA inherit 4TNK but override to mbtbody, so this only
+	# affects the base Mammoth.) Muzzle reuses the modern flash. The cameos below stay (faction MBT icons).
+	idle:
+		Filename: mammothbody.png
+		Facings: 32
+	turret:
+		Start: 0
+		Filename: mammothbody-turret.png
+		Facings: 32
+	muzzle:
+		Filename: muzzleflash.png
+		Length: 5
+	molot-icon:
+		Filename: molot-cameo.png
+	arjun-icon:
+		Filename: arjun-cameo.png
+	amx-icon:
+		Filename: amx-cameo.png
+	armata-icon:
+		Filename: armata-cameo.png
+
+e6:
+	pathfinder-icon:
+		Filename: pathfinder-cameo.png
+	raider-icon:
+		Filename: raider-cameo.png
+
+v2rl:
+	garuda-icon:
+		Filename: garuda-cameo.png
+	grad-icon:
+		Filename: grad-cameo.png
+	dazhbog-icon:
+		Filename: dazhbog-cameo.png
+	agni-icon:
+		Filename: agni-cameo.png
+
+mh60:
+	reaper-icon:
+		Filename: reaper-cameo.png
+	gj11-icon:
+		Filename: gj11-cameo.png
+
+apc:
+	redoubt-icon:
+		Filename: redoubt-cameo.png
+	bradley-icon:
+		Filename: bradley-cameo.png
+	namica-icon:
+		Filename: namica-cameo.png
+	ifv-icon:
+		Filename: ifv-cameo.png
+
+mech:
+	pioneer-icon:
+		Filename: pioneer-cameo.png
+
+mrj:
+	comms-icon:
+		Filename: comms-cameo.png
+	koral-icon:
+		Filename: koral-cameo.png
+
+sam:
+	aegis-icon:
+		Filename: aegis-cameo.png
+
+agun:
+	akash-icon:
+		Filename: akash-cameo.png
+
+dome:
+	thcom-icon:
+		Filename: thcom-cameo.png
+	# 4X building cameos (rlab uses the dome body; distinct sidebar icon).
+	rlab-icon:
+		Filename: rlab-cameo.png
+	# 4X research / age / economy upgrade icons (all these Command-queue items use the dome body).
+	research-ballistics-icon:
+		Filename: research-ballistics-cameo.png
+	research-armor-icon:
+		Filename: research-armor-cameo.png
+	research-optics-icon:
+		Filename: research-optics-cameo.png
+	research-propulsion-icon:
+		Filename: research-propulsion-cameo.png
+	research-smallarms-icon:
+		Filename: research-smallarms-cameo.png
+	research-logistics-icon:
+		Filename: research-logistics-cameo.png
+	research-mass-icon:
+		Filename: research-mass-cameo.png
+	research-precision-icon:
+		Filename: research-precision-cameo.png
+	age-information-icon:
+		Filename: age-information-cameo.png
+	age-autonomous-icon:
+		Filename: age-autonomous-cameo.png
+	age-orbital-icon:
+		Filename: age-orbital-cameo.png
+	econ-network-icon:
+		Filename: econ-network-cameo.png
+	# Command-capability icons (Fire Control / Formations) — completes the strategic sidebar iconography.
+	cap-firecontrol-icon:
+		Filename: cap-firecontrol-cameo.png
+	cap-formations-icon:
+		Filename: cap-formations-cameo.png
+	# Tier-2 advanced research icons.
+	research-netcentric-icon:
+		Filename: research-netcentric-cameo.png
+	research-reactivearmor-icon:
+		Filename: research-reactivearmor-cameo.png
+	research-autoloaders-icon:
+		Filename: research-autoloaders-cameo.png
+	research-avionics-icon:
+		Filename: research-avionics-cameo.png
+	research-navalcombat-icon:
+		Filename: research-navalcombat-cameo.png
+	# Economic-strategy fork (War Economy / Industrial Base).
+	research-wareconomy-icon:
+		Filename: research-wareconomy-cameo.png
+	research-industrial-icon:
+		Filename: research-industrial-cameo.png
+	# Strategic-posture fork (Maneuver / Fortress).
+	research-maneuver-icon:
+		Filename: research-maneuver-cameo.png
+	research-fortress-icon:
+		Filename: research-fortress-cameo.png
+	# Space Program investment track (Launch / Satellites / Orbital).
+	space-launch-icon:
+		Filename: space-launch-cameo.png
+	space-satellites-icon:
+		Filename: space-satellites-cameo.png
+	space-orbital-icon:
+		Filename: space-orbital-cameo.png
+
+# 4X economy-building cameos keyed under the silo body (alloyex/bank reuse it) and the apwr body (fusion).
+silo:
+	alloyex-icon:
+		Filename: alloyex-cameo.png
+	bank-icon:
+		Filename: bank-cameo.png
+
+# Bespoke Bank building body (single-frame Blender render). idle = the static building; make reuses it
+# (instant build-up); bank-icon re-homed here since the bank's RenderSprites Image is now bankbody.
+bankbody:
+	idle:
+		Filename: bankbody.png
+	make:
+		Filename: bankbody.png
+	# Reuse the silo's minibib (1x1 foundation patch) so the bank still grounds onto the terrain.
+	bib:
+		TilesetFilenames:
+			SNOW: mbSILO.sno
+			INTERIOR: mbSILO.int
+			TEMPERAT: mbSILO.tem
+			DESERT: mbSILO.des
+		Length: *
+	bank-icon:
+		Filename: bank-cameo.png
+
+# Bespoke Alloy Extractor building body (industrial extractor — tanks + tower).
+alloyexbody:
+	idle:
+		Filename: alloyexbody.png
+	make:
+		Filename: alloyexbody.png
+	bib:
+		TilesetFilenames:
+			SNOW: mbSILO.sno
+			INTERIOR: mbSILO.int
+			TEMPERAT: mbSILO.tem
+			DESERT: mbSILO.des
+		Length: *
+	alloyex-icon:
+		Filename: alloyex-cameo.png
+
+# Bespoke Research Lab building body (2x3 modern research complex). Reuses the dome's 3-wide bib.
+rlabbody:
+	idle:
+		Filename: rlabbody.png
+	make:
+		Filename: rlabbody.png
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+	rlab-icon:
+		Filename: rlab-cameo.png
+
+# Bespoke Fusion Reactor building body (3x3, glowing tokamak core). Reuses the power-plant bib.
+fusionbody:
+	idle:
+		Filename: fusionbody.png
+	make:
+		Filename: fusionbody.png
+	bib:
+		Filename: bib2.tem
+		TilesetFilenames:
+			SNOW: bib2.sno
+			DESERT: bib2.des
+		Length: *
+	fusion-icon:
+		Filename: fusion-cameo.png
+
+# Bespoke Theater Command building body (forward command post — control tower, comms dish, antenna masts).
+# DOME-based (2x2 + bib), so reuses the dome's bib3; the image swap + these sequences are all that's needed.
+thcombody:
+	idle:
+		Filename: thcombody.png
+	make:
+		Filename: thcombody.png
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+	thcom-icon:
+		Filename: thcom-cameo.png
+
+# Bespoke AKASH SAM-battery body (India air defense) — static fixed launcher with 4 raised missile tubes
+# + radar panel, replacing the stock AA-gun turret. 1x1 defense: reuse the silo minibib. make = idle
+# (instant build-up); akash-icon re-homed here (was under agun).
+akashbody:
+	idle:
+		Filename: akashbody.png
+	make:
+		Filename: akashbody.png
+	bib:
+		TilesetFilenames:
+			SNOW: mbSILO.sno
+			INTERIOR: mbSILO.int
+			TEMPERAT: mbSILO.tem
+			DESERT: mbSILO.des
+		Length: *
+	# AGUN's Armament keeps MuzzleSequence: muzzle (lint-checked even though WithMuzzleOverlay is stripped).
+	muzzle:
+		Filename: muzzleflash.png
+		Length: 5
+	akash-icon:
+		Filename: akash-cameo.png
+
+# Bespoke AEGIS point-defense body (Japan air defense) — static interceptor-tube cluster + AESA radar,
+# replacing the stock SAM turret. 2x1 defense: reuse the 2-wide power-plant bib (bib2). make = idle.
+aegisbody:
+	idle:
+		Filename: aegisbody.png
+	make:
+		Filename: aegisbody.png
+	bib:
+		Filename: bib2.tem
+		TilesetFilenames:
+			SNOW: bib2.sno
+			DESERT: bib2.des
+		Length: *
+	# SAM's Armament keeps MuzzleSequence: muzzle (lint-checked even though WithMuzzleOverlay is stripped).
+	muzzle:
+		Filename: muzzleflash.png
+		Length: 5
+	aegis-icon:
+		Filename: aegis-cameo.png
+
+# Core base-building reskin: modern combined-cycle POWER PLANT body (turbine hall + stacks + transformers),
+# replacing the stock RA power plant. 2x3: reuse the stock bib3 + powricon. make/damaged-idle = the static body.
+powrbody:
+	idle:
+		Filename: powrbody.png
+	damaged-idle:
+		Filename: powrbody.png
+	make:
+		Filename: powrbody.png
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+	icon:
+		Filename: powricon.shp
+
+# Core base-building reskin: modern military BARRACKS compound (barrack blocks + guard tower + flag),
+# replacing the stock RA tent. 2x3: reuse the stock bib3 + tenticon.
+tentbody:
+	idle:
+		Filename: tentbody.png
+	damaged-idle:
+		Filename: tentbody.png
+	make:
+		Filename: tentbody.png
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+	icon:
+		Filename: tenticon.shp
+
+# Core base-building reskin: modern CONSTRUCTION YARD body (HQ + assembly bay + yellow tower crane),
+# replacing the stock RA conyard. 3x4: reuse bib2 + facticon. build/damaged-build map to the static body.
+factbody:
+	idle:
+		Filename: factbody.png
+	make:
+		Filename: factbody.png
+	build:
+		Filename: factbody.png
+	damaged-idle:
+		Filename: factbody.png
+	damaged-build:
+		Filename: factbody.png
+	bib:
+		Filename: bib2.tem
+		TilesetFilenames:
+			SNOW: bib2.sno
+			DESERT: bib2.des
+		Length: *
+	icon:
+		Filename: facticon.shp
+
+# Core base-building reskin: modern mineral-processing REFINERY body (distillation columns + tanks + flare
+# + intake hopper), replacing the stock RA refinery. 3x4: reuse bib2 + procicon. The stock animated top
+# (WithIdleOverlay@TOP / idle-top) is baked into the static body and the overlay trait removed.
+procbody:
+	idle:
+		Filename: procbody.png
+	damaged-idle:
+		Filename: procbody.png
+	make:
+		Filename: procbody.png
+	bib:
+		Filename: bib2.tem
+		TilesetFilenames:
+			SNOW: bib2.sno
+			DESERT: bib2.des
+		Length: *
+	icon:
+		Filename: procicon.shp
+
+# Core base-building reskin: modern WAR FACTORY body (vehicle-assembly hall + bay door + tank rolling out),
+# replacing the stock RA war factory. 3x3: reuse bib2 + weapicon. The stock build-top door animation is baked
+# into the static body and WithProductionDoorOverlay removed.
+weapbody:
+	idle:
+		Filename: weapbody.png
+	damaged-idle:
+		Filename: weapbody.png
+	# WEAP's SequencePlaceBuildingPreview uses the `place` sequence for the placement ghost.
+	place:
+		Filename: weapbody.png
+	make:
+		Filename: weapbody.png
+	bib:
+		Filename: bib2.tem
+		TilesetFilenames:
+			SNOW: bib2.sno
+			DESERT: bib2.des
+		Length: *
+	icon:
+		Filename: weapicon.shp
+
+# Core base-building reskin: modern RADAR STATION body (white radome + control building + AESA panel),
+# replacing the stock RA radar dome. 2x3: reuse bib3 + domeicon. (Separate image from the `dome` cameo block.)
+domebody:
+	idle:
+		Filename: domebody.png
+	damaged-idle:
+		Filename: domebody.png
+	make:
+		Filename: domebody.png
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+	icon:
+		Filename: domeicon.shp
+
+# Core base-building reskin: modern HELIPAD body (tarmac pad + H marking + hangar + fuel + windsock),
+# replacing the stock RA helipad. 2x3: reuse bib3 + hpadicon. active/damaged-active map to the static body.
+hpadbody:
+	idle:
+		Filename: hpadbody.png
+	damaged-idle:
+		Filename: hpadbody.png
+	active:
+		Filename: hpadbody.png
+	damaged-active:
+		Filename: hpadbody.png
+	make:
+		Filename: hpadbody.png
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+	icon:
+		Filename: hpadicon.shp
+
+# Core base-building reskin: modern ADVANCED-POWER body (wind turbine + solar panels + battery banks),
+# replacing the stock RA advanced power plant. 3x3: reuse bib2 + apwricon.
+apwrbody:
+	idle:
+		Filename: apwrbody.png
+	damaged-idle:
+		Filename: apwrbody.png
+	make:
+		Filename: apwrbody.png
+	bib:
+		Filename: bib2.tem
+		TilesetFilenames:
+			SNOW: bib2.sno
+			DESERT: bib2.des
+		Length: *
+	icon:
+		Filename: apwricon.shp
+
+# Core base-building reskin: modern SERVICE DEPOT body (gantry crane + repair bay + workshop), replacing
+# the stock RA repair depot. 3x3 cross footprint: reuse the mbFIX bib + fixicon. active maps to the body.
+fixbody:
+	idle:
+		Filename: fixbody.png
+	damaged-idle:
+		Filename: fixbody.png
+	active:
+		Filename: fixbody.png
+	damaged-active:
+		Filename: fixbody.png
+	make:
+		Filename: fixbody.png
+	bib:
+		TilesetFilenames:
+			SNOW: mbFIX.sno
+			INTERIOR: mbFIX.int
+			TEMPERAT: mbFIX.tem
+			DESERT: mbFIX.des
+		Length: *
+	icon:
+		Filename: fixicon.shp
+
+# Core base-building reskin: modern NAVAL YARD body (gantry cranes + slipway + ship hull + admin tower),
+# replacing the stock RA naval yard. 3x3 on water (no bib): reuse syrdicon.
+syrdbody:
+	idle:
+		Filename: syrdbody.png
+	damaged-idle:
+		Filename: syrdbody.png
+	make:
+		Filename: syrdbody.png
+	icon:
+		Filename: syrdicon.shp
+
+# Core base-building reskin: modern bulk-storage SILO body (slim silo cluster + conveyor), replacing the
+# stock RA resource silo. 1x1: reuse the mbSILO bib + siloicon. WithResourceLevelSpriteBody's `stages` (and
+# damaged-stages) map to the static body — single frame, so it renders the same regardless of fill level.
+silobody:
+	idle:
+		Filename: silobody.png
+	damaged-idle:
+		Filename: silobody.png
+	make:
+		Filename: silobody.png
+	stages:
+		Filename: silobody.png
+	damaged-stages:
+		Filename: silobody.png
+	bib:
+		TilesetFilenames:
+			SNOW: mbSILO.sno
+			INTERIOR: mbSILO.int
+			TEMPERAT: mbSILO.tem
+			DESERT: mbSILO.des
+		Length: *
+	icon:
+		Filename: siloicon.shp
+
+# Core base-building reskin: modern advanced TECH CENTER body (dark-glass tower + glowing data bands +
+# uplink dish), replacing the stock RA tech center. 2x3: reuse bib3 + atekicon. active maps to the body.
+atekbody:
+	idle:
+		Filename: atekbody.png
+	damaged-idle:
+		Filename: atekbody.png
+	make:
+		Filename: atekbody.png
+	active:
+		Filename: atekbody.png
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+	icon:
+		Filename: atekicon.shp
+
+# Core base-building reskins: modern allied DEFENSE bodies (pillbox + heavy pillbox), replacing stock RA.
+pboxbody:
+	idle:
+		Filename: pboxbody.png
+	damaged-idle:
+		Filename: pboxbody.png
+	make:
+		Filename: pboxbody.png
+	muzzle:
+		Filename: muzzleflash.png
+		Length: 5
+	bib:
+		TilesetFilenames:
+			SNOW: mbPBOX.sno
+			INTERIOR: mbPBOX.int
+			TEMPERAT: mbPBOX.tem
+			DESERT: mbPBOX.des
+		Length: *
+	icon:
+		Filename: pboxicon.shp
+hboxbody:
+	idle:
+		Filename: hboxbody.png
+	damaged-idle:
+		Filename: hboxbody.png
+	make:
+		Filename: hboxbody.png
+	muzzle:
+		Filename: muzzleflash.png
+		Length: 5
+	icon:
+		Filename: hboxicon.shp
+# Modern anti-tank GUN emplacement + AA autocannon (AGUN) bodies — gun baked in, WithSpriteTurret stripped.
+gunbody:
+	idle:
+		Filename: gunbody.png
+	damaged-idle:
+		Filename: gunbody.png
+	make:
+		Filename: gunbody.png
+	muzzle:
+		Filename: muzzleflash.png
+		Length: 5
+	bib:
+		TilesetFilenames:
+			SNOW: mbGUN.sno
+			INTERIOR: mbGUN.int
+			TEMPERAT: mbGUN.tem
+			DESERT: mbGUN.des
+		Length: *
+	icon:
+		Filename: gunicon.shp
+agunbody:
+	idle:
+		Filename: agunbody.png
+	damaged-idle:
+		Filename: agunbody.png
+	make:
+		Filename: agunbody.png
+	muzzle:
+		Filename: muzzleflash.png
+		Length: 5
+	bib:
+		TilesetFilenames:
+			SNOW: mbAGUN.sno
+			INTERIOR: mbAGUN.int
+			TEMPERAT: mbAGUN.tem
+			DESERT: mbAGUN.des
+		Length: *
+	icon:
+		Filename: agunicon.shp
+
+# Modern MISSILE SILO body (ICBM silo + control bunker), replacing the stock RA missile silo. 2x1, no bib:
+# reuse msloicon2. active/damaged-active map to the static body.
+mslobody:
+	idle:
+		Filename: mslobody.png
+	damaged-idle:
+		Filename: mslobody.png
+	make:
+		Filename: mslobody.png
+	active:
+		Filename: mslobody.png
+	damaged-active:
+		Filename: mslobody.png
+	icon:
+		Filename: msloicon2.shp
+# Modern GAP generator (field-emitter dome) + CHRONOSPHERE (glowing chrono-portal ring) bodies.
+gapbody:
+	idle:
+		Filename: gapbody.png
+	damaged-idle:
+		Filename: gapbody.png
+	make:
+		Filename: gapbody.png
+	bib:
+		TilesetFilenames:
+			SNOW: mbGAP.sno
+			INTERIOR: mbGAP.int
+			TEMPERAT: mbGAP.tem
+			DESERT: mbGAP.des
+		Length: *
+	icon:
+		Filename: gapicon.shp
+pdoxbody:
+	idle:
+		Filename: pdoxbody.png
+	damaged-idle:
+		Filename: pdoxbody.png
+	active:
+		Filename: pdoxbody.png
+	damaged-active:
+		Filename: pdoxbody.png
+	make:
+		Filename: pdoxbody.png
+	bib:
+		TilesetFilenames:
+			SNOW: mbPDOX.sno
+			INTERIOR: mbPDOX.int
+			TEMPERAT: mbPDOX.tem
+			DESERT: mbPDOX.des
+		Length: *
+	icon:
+		Filename: pdoxicon.shp
+
+# Neutral-structure reskin: modern HOSPITAL body (white block + red crosses + medevac helipad + ambulance),
+# replacing the stock RA hospital the living world places in settlements. 2x2: reuse mbHOSP bib + hospicon.
+hospbody:
+	idle:
+		Filename: hospbody.png
+	damaged-idle:
+		Filename: hospbody.png
+	make:
+		Filename: hospbody.png
+	bib:
+		TilesetFilenames:
+			SNOW: mbHOSP.sno
+			INTERIOR: mbHOSP.int
+			TEMPERAT: mbHOSP.tem
+			DESERT: mbHOSP.des
+		Length: *
+	icon:
+		Filename: hospicon.shp
+
+# Neutral-structure reskin: modern OIL DERRICK body (pumpjack + storage tank + flare + wellhead), replacing
+# the stock RA oil derrick (capturable for income). 2x2: reuse bib3.
+oilbbody:
+	idle:
+		Filename: oilbbody.png
+	damaged-idle:
+		Filename: oilbbody.png
+	make:
+		Filename: oilbbody.png
+	bib:
+		Filename: bib3.tem
+		TilesetFilenames:
+			SNOW: bib3.sno
+			DESERT: bib3.des
+		Length: *
+
+# Civilian town-building reskins: a modern APARTMENT block + OFFICE tower, shared across the 2x2 V-types.
+vaptbody:
+	idle:
+		Filename: vaptbody.png
+	damaged-idle:
+		Filename: vaptbody.png
+vofficebody:
+	idle:
+		Filename: vofficebody.png
+	damaged-idle:
+		Filename: vofficebody.png
+vshopbody:
+	idle:
+		Filename: vshopbody.png
+	damaged-idle:
+		Filename: vshopbody.png
+vtownbody:
+	idle:
+		Filename: vtownbody.png
+	damaged-idle:
+		Filename: vtownbody.png
+vhousebody:
+	idle:
+		Filename: vhousebody.png
+	damaged-idle:
+		Filename: vhousebody.png
+vkioskbody:
+	idle:
+		Filename: vkioskbody.png
+	damaged-idle:
+		Filename: vkioskbody.png
+vgaragebody:
+	idle:
+		Filename: vgaragebody.png
+	damaged-idle:
+		Filename: vgaragebody.png
+vhouse2body:
+	idle:
+		Filename: vhouse2body.png
+	damaged-idle:
+		Filename: vhouse2body.png
+vbigbody:
+	idle:
+		Filename: vbigbody.png
+	damaged-idle:
+		Filename: vbigbody.png
+
+# --- Modern PROJECTILE: overrides the stock RA `missile` sprite globally (theater.yaml is mounted last), so
+# every missile fired in the game — AA, anti-tank, and the strike weapons (theater-strike.yaml: Image: MISSILE)
+# — is now a contemporary missile (grey body, pointed nose, tail fins, exhaust flame) instead of the 1950s
+# RA missile. 32-facing turntable, same Facings/ZOffset layout as the stock sequence so aiming is unchanged.
+missile:
+	idle:
+		Filename: missilebody.png
+		Facings: 32
+		ZOffset: 1023
+
+# Modern rocket-artillery projectile: overrides the stock RA `v2` rocket globally — fired by the v2rl-based
+# rocket units and the ballistic strike weapons (theater-strike.yaml: Image: V2). A tactical/MLRS rocket
+# (olive body, ogive nose, grid fins, exhaust) — fatter/longer than the AA missile, so they read distinctly.
+v2:
+	idle:
+		Filename: v2body.png
+		Facings: 32
+		ZOffset: 1023
+
+# Modern parachute-retarded BOMB: overrides the stock RA `parabomb` globally (airstrike/paradrop bombs,
+# theater-strike.yaml GravityBomb Image: PARABOMB). A modern olive bomb under a round canopy on suspension
+# cords. Same frame layout as stock: `open` = the 8-frame canopy-deploy, `idle` = the 5-frame descent.
+parabomb:
+	Defaults:
+		Filename: parabombbody.png
+	open:
+		Length: 8
+		ZOffset: 1023
+	idle:
+		Start: 8
+		Length: 5
+		ZOffset: 1023
+
+# Modern HD impact EXPLOSIONS: override the three common vehicle/unit-hit sequences in the stock `explosion`
+# collection (small/med/large) — a billowing fireball (white-hot core -> orange) churning into grey smoke,
+# with debris specks. Drawn procedurally (PIL/numpy, per-frame turbulence so it reads as organic fire, not a
+# blob pattern). The other explosion sub-sequences (napalm/building/splashes) keep the stock art for now.
+explosion:
+	small_explosion:
+		Filename: expl-small.png
+		Length: 12
+	med_explosion:
+		Filename: expl-med.png
+		Length: 14
+	large_explosion:
+		Filename: expl-large.png
+		Length: 16
+		Offset: -2,0
+	# Artillery/shell impact (the most-referenced explosion) + self-destruct: a smoky ground burst.
+	artillery_explosion:
+		Filename: expl-arty.png
+		Length: 14
+	self_destruct:
+		Filename: expl-arty.png
+		Length: 14
+	# Napalm/incendiary fire (lingering red-orange flames, sooty smoke) + its size + flipped-building variants.
+	napalm:
+		Filename: expl-napalm.png
+		Length: 16
+	small_napalm:
+		Filename: expl-napalm-s.png
+		Length: 12
+	large_napalm:
+		Filename: expl-napalm-l.png
+		Length: 16
+	building_napalm:
+		Filename: expl-napalm.png
+		Length: 16
+		FlipX: true
+	# Building death blast: bigger fireball + heavy dark smoke + lots of debris.
+	building:
+		Filename: expl-building.png
+		Length: 18
+		Offset: 0,-9
+	# Nuclear detonation (MSLO atom bomb -> Atomic warhead CreateEffect: nuke): a dramatic mushroom cloud —
+	# blinding white flash -> billowing fireball cap rising on a stem -> dissipating smoke. Slower Tick so the
+	# marquee superweapon payoff lingers. 22 frames @ 84px (a big blast); Offset lifts it onto the impact.
+	nuke:
+		Filename: expl-nuke.png
+		Length: 22
+		Tick: 70
+		Offset: 0,-20
+	# Water splashes (shell/projectile impacts in water) — an HD white-cyan spray column + expanding foam ring
+	# + droplets, so naval/coastal combat matches the modern land explosions instead of the stock pixel splash.
+	# (The tiny small-arms water_piff/water_piffs stay stock — a full column would be too big for a bullet.)
+	small_splash:
+		Filename: splash-small.png
+		Length: 12
+	med_splash:
+		Filename: splash-med.png
+		Length: 14
+	large_splash:
+		Filename: splash-large.png
+		Length: 16
+	# Air-combat explosions (ZOffset 511 = air height): aircraft hits reuse the HD ground explosion; AA flak
+	# bursts use a dedicated flak burst (bright detonation flash -> dark cordite puff + frag specks), so air
+	# combat matches the modern ground VFX instead of the stock pixel flak/veh-hit.
+	med_explosion_air:
+		Filename: expl-med.png
+		Length: 14
+		ZOffset: 511
+	small_explosion_air:
+		Filename: flakburst.png
+		Length: 10
+		ZOffset: 511
+	flak_explosion_ground:
+		Filename: flakburst.png
+		Length: 10
+	# Small-arms IMPACTS (fire on every bullet hit): a tan dust kick-up + spark on ground (piff/piffs), a tiny
+	# white spray + ripple on water (water_piff/water_piffs) — matching the modern splashes/explosions. Completes
+	# the effect set; tiny (16px) but very frequent.
+	piff:
+		Filename: dustpuff.png
+		Length: 7
+	piffs:
+		Filename: dustpuff.png
+		Length: 7
+	water_piff:
+		Filename: waterpiff.png
+		Length: 7
+	water_piffs:
+		Filename: waterpiff.png
+		Length: 7
+
+# Modern MCV body: a heavy mobile command/construction vehicle (8-wheeled, forward cab, folded yellow
+# tower-crane mast tying it to the FACT construction yard). Overrides the stock RA mcv idle — the MCV is
+# iconic (every game starts with one, and it's buildable to expand). 32-facing turntable; the MCV has no
+# other body sequences (just idle + the sidebar icon, which is left stock for now).
+mcv:
+	idle:
+		Filename: mcvbody.png
+		Facings: 32
+
+apwr:
+	fusion-icon:
+		Filename: fusion-cameo.png
+
+# --- Visual-identity pass: cameos for the land/air/naval units added in later passes ---
+jeep:
+	jtac-icon:
+		Filename: jtac-cameo.png
+	loiter-icon:
+		Filename: loiter-cameo.png
+	cobra-icon:
+		Filename: cobra-cameo.png
+	jackal-icon:
+		Filename: jackal-cameo.png
+	mobsam-icon:
+		Filename: mobsam-cameo.png
+
+e3:
+	manpads-icon:
+		Filename: manpads-cameo.png
+	# KUNAI (anti-tank team) renders on the e3 body, so its cameo resolves here (was orphaned under shok).
+	kunai-icon:
+		Filename: kunai-cameo.png
+
+e1:
+	scout-icon:
+		Filename: scout-cameo.png
+
+2tnk:
+	# Modern MAIN BATTLE TANK body (2TNK = the shared "MBT" every faction builds mid-game). Large tracked hull
+	# + big angular turret with a long main gun (2-pass turntable), replacing stock RA 2tnk. Named genmbtbody to
+	# stay distinct from the faction mbtbody (MOLOT/ARJUN). Muzzle reuses the modern flash. (tunguska-icon below
+	# is a cameo under this collection — its actor renders its own body.)
+	idle:
+		Filename: genmbtbody.png
+		Facings: 32
+	turret:
+		Start: 0
+		Filename: genmbtbody-turret.png
+		Facings: 32
+	muzzle:
+		Filename: muzzleflash.png
+		Length: 5
+	tunguska-icon:
+		Filename: tunguska-cameo.png
+
+# Modern SELF-PROPELLED GUN body (ARTY = the shared "SPG" — a fixed-gun artillery vehicle, no rotating
+# turret). Tracked casemate hull + long elevated howitzer (muzzle brake) + recoil spade. Single 32-facing
+# turntable, overrides the stock RA arty idle; muzzle reuses the modern flash.
+arty:
+	idle:
+		Filename: spgbody.png
+		Facings: 32
+	muzzle:
+		Filename: muzzleflash.png
+		Length: 5
+
+# Modern HARVESTER body — a heavy ore hauler (large ore bin, operator cab, yellow front intake/collector).
+# Used via WithHarvesterSpriteBody.ImageByFullness for all fullness states. Only `idle` is needed (the harvest
+# and dock animation traits are stripped in rules — see theater.yaml HARV).
+harvbody:
+	idle:
+		Filename: harvbody.png
+		Facings: 32
+
+# Modern concrete BLAST WALL (BRIK = the buildable concrete wall): grey T-wall / jersey-barrier slabs with a
+# hazard stripe (a modern checkpoint/blast barrier) instead of the stock RA concrete wall. WithWallSpriteBody
+# fetches a frame by neighbour adjacency (16 frames per damage state: idle 0-15 / scratched 16-31 / damaged
+# 32-47); the sheet is 48 IDENTICAL frames, so every adjacency AND damage state shows the barrier (robust — no
+# wrong connections). Override only Defaults.Filename; stock Start/Length and the icon (brikicon) are kept.
+# (SBAG sandbag wall is left stock — sandbags are era-neutral and don't read as dated at 1-cell scale.)
+brik:
+	Defaults:
+		Filename: twallbody.png
+
+dd:
+	burke-icon:
+		Filename: burke-cameo.png
+	kolkata-icon:
+		Filename: kolkata-cameo.png
+
+ss:
+	akula-icon:
+		Filename: akula-cameo.png
+	astute-icon:
+		Filename: astute-cameo.png
+
+pt:
+	houbei-icon:
+		Filename: houbei-cameo.png
+	barbaros-icon:
+		Filename: barbaros-cameo.png
+
+1tnk:
+	# Modern LIGHT TANK body (1TNK = the shared "Light Tank" every faction builds early). Compact tracked
+	# hull + small autocannon turret (2-pass turntable), replacing the stock RA 1tnk. Muzzle reuses the modern
+	# flash. (dongfeng-icon below is just a cameo under this collection — DONGFENG renders its own dongfengbody.)
+	idle:
+		Filename: ltankbody.png
+		Facings: 32
+	turret:
+		Start: 0
+		Filename: ltankbody-turret.png
+		Facings: 32
+	muzzle:
+		Filename: muzzleflash.png
+		Length: 5
+	dongfeng-icon:
+		Filename: dongfeng-cameo.png
+
+# --- Battlefield-identity pass: CUSTOM Blender-rendered unit BODY (full-colour PngSheet, 16 facings).
+# This is a real in-world sprite, not just a cameo: the B-21 spawns as a stealth flying-wing silhouette,
+# NOT the stock MIG jet body. b21body.png carries embedded FrameSize/FrameAmount metadata (16x 64px frames).
+b21body:
+	idle:
+		Filename: b21body.png
+		Facings: 32
+	# Player-colour insignia: an indexed roundel painted in the remap band (index 88). The TrueColor body
+	# itself cannot remap, so this small overlay (drawn on the `player` palette via WithIdleOverlay) carries
+	# the owner's colour. Centred on the hull, orientation-independent (a disc), so it needs no per-facing art.
+	roundel:
+		Filename: roundel.shp
+		Length: 1
+	# keep the cameo reachable under this Image (Buildable.Icon resolves under the actor's RenderSprites.Image)
+	b21-icon:
+		Filename: b21-cameo.png
+
+# Modern fighter-jet body (delta + twin tails) — shared by the manned jets RAPTOR/SPECTER/TEJAS, so they
+# spawn as modern jets instead of the stock MIG. Each keeps its own cameo under this Image.
+jetbody:
+	idle:
+		Filename: jetbody.png
+		Facings: 32
+	roundel:
+		Filename: roundel.shp
+		Length: 1
+	specter-icon:
+		Filename: specter-cameo.png
+	raptor-icon:
+		Filename: raptor-cameo.png
+	tejas-icon:
+		Filename: tejas-cameo.png
+
+# UAV drone body (slim fuselage, long straight wings, twin-boom tail) — shared by the fixed-wing drones
+# WINGLOONG/BAYRAK/AKINCI, so they read as drones on the battlefield instead of the stock YAK/MIG.
+dronebody:
+	idle:
+		Filename: dronebody.png
+		Facings: 32
+	roundel:
+		Filename: roundel.shp
+		Length: 1
+	# the YAK-based drones' Armament keeps a MuzzleSequence: muzzle, so provide one (stock gunfire SHP).
+	muzzle:
+		Filename: muzzleflash.png
+		Length: 5
+	wingloong-icon:
+		Filename: wingloong-cameo.png
+	bayrak-icon:
+		Filename: bayrak-cameo.png
+	akinci-icon:
+		Filename: akinci-cameo.png
+	# REAPER/GJ11/HAYABUSA re-homed onto dronebody (were on mh60/yak); their cameos resolve here now.
+	reaper-icon:
+		Filename: reaper-cameo.png
+	gj11-icon:
+		Filename: gj11-cameo.png
+	hayabusa-icon:
+		Filename: hayabusa-cameo.png
+
+# Ground body: modern road-mobile missile launcher (TEL) — erected canister + multi-axle chassis, rendered
+# 32-facing. Shared by the v2rl-based launchers AGNI/GARUDA/GRAD/DAZHBOG so the in-world unit reads as a
+# modern missile truck, not the stock V2 rocket. The launcher has a loaded (!reloading) and an empty
+# (reloading) body state — reuse one strip for both. Cameos re-homed here (Buildable.Icon resolves under Image).
+telbody:
+	idle:
+		Filename: telbody.png
+		Facings: 32
+	empty-idle:
+		Filename: telbody.png
+		Facings: 32
+	roundel:
+		Filename: roundel.shp
+		Length: 1
+	garuda-icon:
+		Filename: garuda-cameo.png
+	grad-icon:
+		Filename: grad-cameo.png
+	dazhbog-icon:
+		Filename: dazhbog-cameo.png
+	agni-icon:
+		Filename: agni-cameo.png
+
+# Naval body: modern hunter-killer submarine (SSN) — long low pressure hull + conning-tower sail + stern
+# rudder for heading readability, rendered 32-facing. Shared by the ss-based subs AKULA/ASTUTE so the surfaced
+# boat reads as a modern SSN, not the stock RA sub. (Submerged state still uses the engine's stock wake.)
+subbody:
+	idle:
+		Filename: subbody.png
+		Facings: 32
+	roundel:
+		Filename: roundel.shp
+		Length: 1
+	akula-icon:
+		Filename: akula-cameo.png
+	astute-icon:
+		Filename: astute-cameo.png
+
+# Ground body: modern main battle tank (TURRETED) — separate hull + turret sprites, 32-facing each. The hull
+# (idle) and the independently-rotating turret are rendered from the same camera/origin so WithSpriteTurret
+# (Offset 0,0,0) composites them correctly. Shared by the 4tnk-based heavies AMX/ARMATA/MOLOT/ARJUN.
+mbtbody:
+	idle:
+		Filename: mbtbody.png
+		Facings: 32
+	turret:
+		Start: 0
+		Filename: mbtbody-turret.png
+		Facings: 32
+	# 4tnk keeps WithMuzzleOverlay + Armament MuzzleSequence: muzzle, so provide one (stock gunfire SHP).
+	muzzle:
+		Filename: muzzleflash.png
+		Length: 5
+	roundel:
+		Filename: roundel.shp
+		Length: 1
+	amx-icon:
+		Filename: amx-cameo.png
+	armata-icon:
+		Filename: armata-cameo.png
+	molot-icon:
+		Filename: molot-cameo.png
+	arjun-icon:
+		Filename: arjun-cameo.png
+
+# Naval body: modern guided-missile destroyer (TURRETED) — long hull + superstructure + funnel + mast, with a
+# separate central main-gun mount. 32-facing hull + turret, composited via WithSpriteTurret (Offset overridden
+# to 0,0,0 on the units). Shared by the dd-based destroyers BURKE/KOLKATA.
+ddbody:
+	idle:
+		Filename: ddbody.png
+		Facings: 32
+	turret:
+		Start: 0
+		Filename: ddbody-turret.png
+		Facings: 32
+	roundel:
+		Filename: roundel.shp
+		Length: 1
+	burke-icon:
+		Filename: burke-cameo.png
+	kolkata-icon:
+		Filename: kolkata-cameo.png
+
+# Naval body: modern fast attack craft / missile boat (TURRETED) — small planing hull, cabin, mast and aft
+# missile canisters, with a small central gun mount. 32-facing hull + turret. Shared by the pt-based boats
+# HOUBEI/BARBAROS. PT keeps Armament MuzzleSequence: muzzle, so provide one (stock gunfire SHP).
+ptbody:
+	idle:
+		Filename: ptbody.png
+		Facings: 32
+	turret:
+		Start: 0
+		Filename: ptbody-turret.png
+		Facings: 32
+	muzzle:
+		Filename: muzzleflash.png
+		Length: 5
+	roundel:
+		Filename: roundel.shp
+		Length: 1
+	houbei-icon:
+		Filename: houbei-cameo.png
+	barbaros-icon:
+		Filename: barbaros-cameo.png
+
+# Ground body: cheap mass-produced LIGHT tank (China DONGFENG) — small boxy welded turret + medium gun,
+# grey-green primer. 32-facing hull + turret, rendered from the same origin so WithSpriteTurret (Offset
+# 0,0,0) composites them. 1TNK keeps MuzzleSequence: muzzle; cameo re-homed here (was under 1tnk).
+dongfengbody:
+	idle:
+		Filename: dongfengbody.png
+		Facings: 32
+	turret:
+		Start: 0
+		Filename: dongfengbody-turret.png
+		Facings: 32
+	muzzle:
+		Filename: muzzleflash.png
+		Length: 5
+	dongfeng-icon:
+		Filename: dongfeng-cameo.png
+
+# Ground body: modern MEDIUM tank (TURRETED) — sleeker hull with side skirts and a low, flat sloped turret, so
+# it reads distinctly from the heavy mbtbody. 32-facing hull + turret, centred turret (3TNK default Offset).
+# Shared by the 3tnk-based command/medium tanks BASTION/LOEWE/BMPT. 3TNK keeps MuzzleSequence: muzzle.
+tankbody:
+	idle:
+		Filename: tankbody.png
+		Facings: 32
+	turret:
+		Start: 0
+		Filename: tankbody-turret.png
+		Facings: 32
+	muzzle:
+		Filename: muzzleflash.png
+		Length: 5
+	roundel:
+		Filename: roundel.shp
+		Length: 1
+	bastion-icon:
+		Filename: bastion-cameo.png
+	loewe-icon:
+		Filename: loewe-cameo.png
+	bmpt-icon:
+		Filename: bmpt-cameo.png
+
+# Ground body: modern 8x8 wheeled IFV/APC — angular hull, sloped glacis, eight road wheels, a small fixed
+# remote weapon station. Single-body (APC has no turret), 32-facing. Shared by the apc-based carriers
+# REDOUBT/IFV/BRADLEY/NAMICA so they read as modern wheeled IFVs, distinct from the tracked tanks.
+apcbody:
+	idle:
+		Filename: apcbody.png
+		Facings: 32
+	muzzle:
+		Filename: muzzleflash.png
+		Length: 5
+	roundel:
+		Filename: roundel.shp
+		Length: 1
+	redoubt-icon:
+		Filename: redoubt-cameo.png
+	ifv-icon:
+		Filename: ifv-cameo.png
+	# Comms + Koral EW vans now use apcbody, so their sidebar cameos must resolve on this image.
+	comms-icon:
+		Filename: comms-cameo.png
+	koral-icon:
+		Filename: koral-cameo.png
+	bradley-icon:
+		Filename: bradley-cameo.png
+	namica-icon:
+		Filename: namica-cameo.png
+
+# Ground body: modern 4x4 tactical vehicle (TURRETED roof weapon station) — small cab+bed chassis, four wheels,
+# a roof RWS. 32-facing hull + turret, turret Offset overridden to 0,0,0. Shared by the jeep-based scouts/
+# technicals JTAC/COBRA/JACKAL/LOITER/MOBSAM so they read as modern light vehicles, distinct from the IFV.
+jeepbody:
+	idle:
+		Filename: jeepbody.png
+		Facings: 32
+	turret:
+		Start: 0
+		Filename: jeepbody-turret.png
+		Facings: 32
+	muzzle:
+		Filename: muzzleflash.png
+		Length: 5
+	roundel:
+		Filename: roundel.shp
+		Length: 1
+	jtac-icon:
+		Filename: jtac-cameo.png
+	cobra-icon:
+		Filename: cobra-cameo.png
+	jackal-icon:
+		Filename: jackal-cameo.png
+	loiter-icon:
+		Filename: loiter-cameo.png
+	mobsam-icon:
+		Filename: mobsam-cameo.png
+
+# Ground body: modern self-propelled AA system (SPAAG, TURRETED) — tracked chassis + an air-defence turret with
+# side missile tube banks, twin autocannons and a tracking radar panel, so it reads as an AA system, not a tank.
+# 32-facing hull + turret (centred). Used by TUNGUSKA (Russia mobile SPAAG). 2TNK keeps MuzzleSequence: muzzle.
+spaagbody:
+	idle:
+		Filename: spaagbody.png
+		Facings: 32
+	turret:
+		Start: 0
+		Filename: spaagbody-turret.png
+		Facings: 32
+	muzzle:
+		Filename: muzzleflash.png
+		Length: 5
+	roundel:
+		Filename: roundel.shp
+		Length: 1
+	tunguska-icon:
+		Filename: tunguska-cameo.png
+
+# P4 SPECTACLE body: the LEVIATHAN arsenal dreadnought — rendered at DOUBLE size (128px frames, FrameSize
+# 128,128) so it dwarfs every other unit on the battlefield. Single-body (all gun batteries baked into the
+# hull), 32-facing. The "look at this HUGE ship" apex reward.
+leviathanbody:
+	idle:
+		Filename: leviathanbody.png
+		Facings: 32
+	# the cruiser armaments keep MuzzleSequence: muzzle (gun-flash), so provide one (stock gunfire SHP).
+	muzzle:
+		Filename: muzzleflash.png
+		Length: 5
+	leviathan-icon:
+		Filename: leviathan-cameo.png
+
+# P4 SPECTACLE body: the CITADEL mobile fortress — a gargantuan tracked land dreadnought at DOUBLE size
+# (128px). Single-body (turret + secondaries baked in), 32-facing. The land "look at this HUGE thing" payoff.
+citadelbody:
+	idle:
+		Filename: citadelbody.png
+		Facings: 32
+	# 4TNK keeps MuzzleSequence: muzzle on its armaments, so provide one (stock gunfire SHP).
+	muzzle:
+		Filename: muzzleflash.png
+		Length: 5
+	citadel-icon:
+		Filename: citadel-cameo.png
+
+# P4 SPECTACLE body: the ARCHANGEL heavy gunship — a gargantuan flying fortress at DOUBLE size (128px).
+# Single-body (weapon blisters baked in), 32-facing. The air "look at this HUGE thing" payoff.
+archangelbody:
+	idle:
+		Filename: archangelbody.png
+		Facings: 32
+	# MH60 keeps MuzzleSequence: muzzle, so provide one (stock gunfire SHP).
+	muzzle:
+		Filename: muzzleflash.png
+		Length: 5
+	archangel-icon:
+		Filename: archangel-cameo.png
+
+# P4 SPECTACLE body: the TEMPEST rocket-artillery platform — a gargantuan mobile launcher at DOUBLE size
+# (128px). Single-body, 32-facing. V2RL has a loaded (idle) + reload (empty-idle) state — reuse one strip.
+tempestbody:
+	idle:
+		Filename: tempestbody.png
+		Facings: 32
+	empty-idle:
+		Filename: tempestbody.png
+		Facings: 32
+	tempest-icon:
+		Filename: tempest-cameo.png

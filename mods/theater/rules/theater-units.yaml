@@ -1,0 +1,604 @@
+# THEATER — one signature unique unit per contemporary faction.
+# Each reuses an existing RA body (art ceiling) with a modern name, gated to its faction via the
+# tech.<faction> prerequisite from theater-factions.yaml. Modern cameos get wired once generated.
+
+# Federation (USA) — stealth strike jet.
+SPECTER:
+	Inherits: MIG
+	# Battlefield body: spawns as a modern fighter jet (jetbody), not the stock MIG.
+	RenderSprites:
+		Image: jetbody
+	Tooltip:
+		Name: actor-specter.name
+	# Player/faction colour: indexed roundel overlay on the `player` palette (the TrueColor body can't remap).
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 90
+		Prerequisites: tech.federation, afld
+		Description: actor-specter.description
+	# TOY — stealth strike jet: cloaks when idle, snaps visible the instant it fires or is hit.
+	Cloak:
+		InitialDelay: 125
+		CloakDelay: 175
+		UncloakOn: Attack, Damage
+		DetectionTypes: Cloak
+		CloakSound: appear1.aud
+		UncloakSound: appear1.aud
+		PauseOnCondition: cloak-force-disabled
+	GrantConditionOnDamageState@UNCLOAK:
+		Condition: cloak-force-disabled
+		ValidDamageStates: Critical
+
+# Northern Union (Russia) — EW heavy command tank.
+BASTION:
+	Inherits: 3TNK
+	# Battlefield body: spawns as a modern medium tank (tankbody hull + turret), not the stock 3tnk.
+	RenderSprites:
+		Image: tankbody
+	Tooltip:
+		Name: actor-bastion.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 90
+		Prerequisites: tech.northern_union, weap
+		Description: actor-bastion.description
+	# TOY — electronic warfare: enemy guided missiles (AA/rockets) veer off near this tank.
+	JamsMissiles:
+		Range: 5c0
+		DeflectionRelationships: Neutral, Enemy
+	ProximityExternalCondition@JAMMER:
+		Range: 14c0
+		ValidRelationships: Enemy, Neutral
+		Condition: jammed
+	WithRangeCircle@JAMMER:
+		Type: jammer
+		Range: 14c0
+		Color: 0000FF80
+	RenderJammerCircle:
+
+# Continental Bloc (China) — cheap mass strike drone.
+WINGLOONG:
+	Inherits: YAK
+	# Battlefield body: spawns as a UAV drone (dronebody), not the stock YAK. Drop the gun muzzle-flash
+	# overlay (the drone body has no muzzle sequence; it fires a guided missile now).
+	-WithMuzzleOverlay:
+	RenderSprites:
+		Image: dronebody
+	Tooltip:
+		Name: actor-wingloong.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 91
+		Prerequisites: tech.continental_bloc, afld
+		Description: actor-wingloong.description
+	# Cheap ATTRITABLE strike DRONE (NOT a YAK strafer clone): cheap + fragile, fires a small guided missile
+	# (HellfireAG) at armour/structures and reveals ground. Sent in numbers, expected to die — China's mass
+	# air identity. (Stock YAK was a 1350-cost 8000-HP hitscan strafer; this is the opposite.)
+	Valued:
+		Cost: 650
+	Health:
+		HP: 4000
+	Armament:
+		Weapon: HellfireAG
+	RevealsShroud:
+		Range: 9c0
+		Type: GroundPosition
+	# TOY — drone hive: while a Wing Loong is alive, call in a small loiter-drone strike. Kept early (the
+	# weaker per-unit version), but de-spammed (longer charge) and unified to the China drone silhouette
+	# (strike.shahed). The heavy LATE swarm is the tech.center ChnDroneSwarm power.
+	AirstrikePower@dronehive:
+		OrderName: WingloongDroneSwarm
+		Prerequisites: tech.continental_bloc
+		Icon: parabombs
+		ChargeInterval: 6000
+		Name: actor-wingloong.dronehive-name
+		Description: actor-wingloong.dronehive-description
+		SelectTargetSpeechNotification: SelectTarget
+		SelectTargetTextNotification: notification-select-target
+		UnitType: strike.shahed
+		SquadSize: 3
+		SquadOffset: 1792,1792,0
+		QuantizedFacings: 8
+		CameraActor: camera
+		CameraRemoveDelay: 150
+		DisplayBeacon: true
+		BeaconPoster: pbmbicon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+
+# Rhine Compact (Germany) — most durable MBT, now an ACTIVE-DEFENCE brawler (not just a 3TNK reskin).
+LOEWE:
+	Inherits: 3TNK
+	RenderSprites:
+		Image: tankbody
+	Tooltip:
+		Name: actor-loewe.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 91
+		Prerequisites: tech.rhine_compact, weap
+		Description: actor-loewe.description
+	# Germany's identity is "durable but expensive" — justify the cost with a networked active-protection
+	# system (same JamsMissiles trait as AMX/BASTION): enemy guided ATGMs/AA/SAMs veer off near it, so the
+	# Rhine MBT is genuinely hard to kill by missile and must be brought down by massed cannon fire (its counter).
+	JamsMissiles:
+		Range: 4c0
+		DeflectionRelationships: Enemy
+
+# Isles Coalition (UK) — elite infiltration team.
+PATHFINDER:
+	Inherits: E6
+	RenderSprites:
+		Image: e6
+	Tooltip:
+		Name: actor-pathfinder.name
+	Buildable:
+		Queue: Infantry
+		BuildPaletteOrder: 90
+		Prerequisites: tech.isles_coalition, tent
+		Description: actor-pathfinder.description
+	# TOY — stealth recon infiltrator: cloaks (breaks on move/attack), sees far, and detects enemy stealth.
+	Cloak:
+		InitialDelay: 250
+		CloakDelay: 120
+		UncloakOn: Attack, Move, Unload, Infiltrate, Demolish
+		DetectionTypes: Cloak
+		PauseOnCondition: cloak-force-disabled
+	GrantConditionOnDamageState@UNCLOAK:
+		Condition: cloak-force-disabled
+		ValidDamageStates: Critical
+	RevealsShroud:
+		Range: 9c0
+		Type: CenterPosition
+	DetectCloaked:
+		Range: 6c0
+		DetectionTypes: Cloak
+	RenderDetectionCircle:
+
+# Eastern Maritime Pact (Japan) — grounded JGSDF anti-tank team (no sci-fi robot; internal id is legacy).
+KUNAI:
+	Inherits: E3
+	RenderSprites:
+		Image: e3
+	Tooltip:
+		Name: actor-kunai.name
+	Buildable:
+		Queue: Infantry
+		BuildPaletteOrder: 91
+		Prerequisites: tech.eastern_maritime, tent
+		Description: actor-kunai.description
+		Icon: kunai-icon
+	# A DEDICATED anti-tank team, not the dual-purpose E3 rocket soldier: drop the RedEye AA missiles so it commits
+	# fully to the Dragon ATGM — a pure tank-hunter (the mirror of `manpads`, which kept AA and dropped AT). It can
+	# no longer touch aircraft, so it must be screened from air — that is its counter.
+	-Armament@PRIMARY:
+	-Armament@GARRISONED:
+
+# Subcontinent Federation (India) — supersonic cruise-missile launcher (precision, not the stock SCUD).
+GARUDA:
+	Inherits: V2RL
+	# Battlefield body: spawns as a modern road-mobile missile launcher (telbody), not the stock V2 rocket truck.
+	RenderSprites:
+		Image: telbody
+	Tooltip:
+		Name: actor-garuda.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 92
+		Prerequisites: tech.subcontinent_federation, weap
+		Description: actor-garuda.description
+	# India = standoff/precision. One fast, accurate, long-reach guided cruise missile with high single-target
+	# punch — the SURGICAL launcher. Distinct from GRAD's area salvo, DAZHBOG's cheap mass, and AGNI's apex ballistic.
+	Armament:
+		Weapon: GarudaCruise
+
+# Anatolian Alliance (Turkey) — cheap armed loiter drone.
+BAYRAK:
+	Inherits: YAK
+	-WithMuzzleOverlay:
+	RenderSprites:
+		Image: dronebody
+	Tooltip:
+		Name: actor-bayrak.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 92
+		Prerequisites: tech.anatolian_alliance, afld
+		Description: actor-bayrak.description
+	# Cheap fragile RECON drone (NOT a YAK clone): its value is the huge sight below, not firepower — it is
+	# cheap and folds to any AA. Scouts first, plinks soft targets, attritable.
+	Valued:
+		Cost: 700
+	Health:
+		HP: 3500
+	# Commit fully to recon-harasser, not strafer: drop the YAK hitscan gun for a single light guided missile
+	# (HellfireAG) so it plinks armour/soft targets from its huge sight but can no longer make strafing runs.
+	Armament:
+		Weapon: HellfireAG
+	# TOY — cheap loiter recon drone: huge sight radius, sees the battlefield first.
+	RevealsShroud:
+		MinRange: 0
+		Range: 14c0
+
+# ============================================================================
+# Additional faction uniques (each faction gets 2-3 total). All reuse complete
+# stock RA bodies and are faction-gated by tech.<faction>; identity in v1 comes
+# from faction-exclusivity + the doctrine modifiers (theater-doctrines.yaml).
+# Bespoke cameos/reskins are a later art pass.
+# ============================================================================
+
+# Federation (USA) — persistent close-air-support gunship (precision anti-armour, not the stock chaingun).
+REAPER:
+	Inherits: MH60
+	# MQ-9 surveillance/strike drone — render as the fixed-wing UAV body, not the MH60 helicopter.
+	RenderSprites:
+		Image: dronebody
+	# dronebody has no rotor sequence; MH60's rotor overlays build their animation at creation
+	# regardless of condition, so strip them (the Archangel crash class).
+	-WithIdleOverlay@ROTORAIR:
+	-WithIdleOverlay@ROTORGROUND:
+	Tooltip:
+		Name: actor-reaper.name
+	Buildable:
+		Queue: Aircraft
+		BuildAtProductionType: Helicopter
+		BuildPaletteOrder: 93
+		Prerequisites: tech.federation, hpad
+		Description: actor-reaper.description
+	# Make it the standing anti-tank gunship it claims: swap the stock MH60 ChainGun for precision HellfireAG so
+	# it kills armour from standoff rather than hosing infantry. The persistent USA CAS asset (counter: SAM/MANPADS).
+	Armament:
+		Weapon: HellfireAG
+		LocalOffset: 85,-213,-85, 85,213,-85
+
+# Federation (USA) — air-superiority fighter (the air-dominance identity). A dedicated air-to-air
+# interceptor — the role NO other faction fields a fighter for (everyone else denies air with ground
+# SAMs). Pure anti-air: helpless vs ground, so it owns the sky for SPECTER/REAPER to strike under, and
+# it is still killable by enemy SAMs/MANPADS. Ammo-limited (rearms at the airfield). Reuses the MIG body.
+RAPTOR:
+	Inherits: MIG
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	RenderSprites:
+		Image: jetbody
+	Tooltip:
+		Name: actor-raptor.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
+	Buildable:
+		Queue: Aircraft
+		BuildAtProductionType: Plane
+		BuildPaletteOrder: 89
+		Prerequisites: tech.federation, afld
+		Description: actor-raptor.description
+	Valued:
+		Cost: 1800
+	Armament:
+		Weapon: Nike
+	AutoTarget:
+		InitialStance: Defend
+		InitialStanceAI: Defend
+
+# Northern Union (Russia) — salvo rocket battery (mass area fires, not a single SCUD).
+GRAD:
+	Inherits: V2RL
+	RenderSprites:
+		Image: telbody
+	Tooltip:
+		Name: actor-grad.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 93
+		Prerequisites: tech.northern_union, weap
+		Description: actor-grad.description
+	# A true MLRS: a 5-rocket salvo with wide spread that SATURATES an area, then a long reload (a missed salvo
+	# is punished). Area-suppression — thin vs single targets, devastating vs clumped infantry/bases. Counter: spread out.
+	Armament:
+		Weapon: GradSalvo
+
+# Northern Union (Russia) — mobile BUNKER: a heavily-armoured assault transport, not a stock M60 APC.
+REDOUBT:
+	Inherits: APC
+	# Battlefield body: spawns as a modern 8x8 wheeled IFV (apcbody), not the stock APC.
+	RenderSprites:
+		Image: apcbody
+	Tooltip:
+		Name: actor-redoubt.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 94
+		Prerequisites: tech.northern_union, weap
+		Description: actor-redoubt.description
+	# A true armoured bunker, distinct from the light autocannon `ifv`: much tankier and up-gunned to a 25mm so it
+	# leads the Russian push and shields its cargo. Still carries infantry — a mobile strongpoint. Counter: AT/artillery.
+	Health:
+		HP: 55000
+	Armament:
+		Weapon: 25mm
+
+# Northern Union (Russia) — heavy mobile air-defense (Tunguska/Pantsir-class SPAAG). A long-range anti-air
+# missile on a tanky tracked chassis (Russia's baseline armor bonus applies), so it umbrellas the slow
+# Russian advance and makes Russian airspace deadly. Pure AA — helpless vs ground attack, so it must be
+# escorted; that is its counter. Russia is the air-DENIAL faction (it fields no offensive aircraft). Mirrors
+# the proven Mobile SAM pattern (ground body + ^AutoTargetAllAssaultMove + AA missile) on a heavier chassis.
+TUNGUSKA:
+	Inherits: 2TNK
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	# Battlefield body: spawns as a modern tracked SPAAG (spaagbody — missile tubes + radar), not the stock 2tnk.
+	RenderSprites:
+		Image: spaagbody
+	Tooltip:
+		Name: actor-tunguska.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 96
+		Prerequisites: tech.northern_union, dome, weap
+		Description: actor-tunguska.description
+	Valued:
+		Cost: 950
+	Armament:
+		Weapon: Nike
+	# DUAL-PURPOSE tracked SPAAG (NOT just another Nike SAM like AKASH/MOBSAM): a real Tunguska also rakes
+	# ground — add a 25mm autocannon so it shreds infantry/light armour while its Nike covers the sky. The
+	# only SAM that can defend itself on the ground; it advances WITH the Russian push, not behind it.
+	Armament@GUN:
+		Weapon: 25mm
+		LocalOffset: 0,0,256
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 9c0
+	AutoTarget:
+		InitialStance: Defend
+		InitialStanceAI: Defend
+
+# Continental Bloc (China) — cheap printed mass artillery (expendable volume, not a single SCUD).
+DAZHBOG:
+	Inherits: V2RL
+	RenderSprites:
+		Image: telbody
+	Tooltip:
+		Name: actor-dazhbog.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 93
+		Prerequisites: tech.continental_bloc, weap
+		Description: actor-dazhbog.description
+	# China's cheap-mass identity: a cheaper, shorter-range 2-rocket burst with low per-shot damage but fast reload —
+	# expendable artillery you flood the field with. Folds to any fast push (glass) — that is the price of the spam.
+	Valued:
+		Cost: 560
+	Armament:
+		Weapon: DazhbogRocket
+
+# Rhine Compact (Germany) — forward combat engineer (capture + field repair).
+PIONEER:
+	Inherits: MECH
+	RenderSprites:
+		Image: mech
+	Tooltip:
+		Name: actor-pioneer.name
+	Buildable:
+		Queue: Infantry
+		BuildPaletteOrder: 93
+		Prerequisites: tech.rhine_compact, fix
+		Description: actor-pioneer.description
+
+# Isles Coalition (UK) — mobile SENSOR / intel van (the "eyes", not a jammer — that is Turkey's KORAL).
+COMMS:
+	Inherits: MRJ
+	RenderSprites:
+		Image: apcbody
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
+	Tooltip:
+		Name: actor-comms.name
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 93
+		Prerequisites: tech.isles_coalition, dome
+		Description: actor-comms.description
+	# UK = intel/networked. Strip the inherited radar-JAMMER aura and rebuild this as a forward SENSOR: long-range
+	# vision + stealth detection. It finds the enemy and lights them for the army, distinct from KORAL's EW jamming.
+	-JamsMissiles:
+	-ProximityExternalCondition@JAMMER:
+	-WithRangeCircle@JAMMER:
+	-RenderJammerCircle:
+	RevealsShroud:
+		Range: 12c0
+	DetectCloaked:
+		Range: 7c0
+		DetectionTypes: Cloak
+	RenderDetectionCircle:
+
+# Eastern Maritime (Japan) — point-defence missile turret (hardened APS node, not a reskinned SAM).
+AEGIS:
+	Inherits: SAM
+	# Static point-defense battery — bespoke fixed interceptor body instead of the stock RA SAM turret.
+	# Keep the logical Turreted/AttackTurreted (aiming) but drop the VISIBLE rotating turret + muzzle;
+	# vertical-launch interceptors fire upward regardless of bearing, so a fixed emplacement reads right.
+	RenderSprites:
+		Image: aegisbody
+	-WithSpriteTurret:
+	-WithMuzzleOverlay:
+	WithSpriteBody:
+	Tooltip:
+		Name: actor-aegis.name
+	Buildable:
+		Queue: Defense
+		BuildPaletteOrder: 93
+		Prerequisites: tech.eastern_maritime, dome
+		Description: actor-aegis.description
+	# Japan = durable defensive turtle. Harden it well past a stock SAM and add active missile-defence (JamsMissiles)
+	# so it deflects incoming guided munitions while it shoots down aircraft — the apex APS air-defence node.
+	# (India's AKASH owns the longest-RANGE niche; AEGIS owns DURABILITY + projectile defence.)
+	Health:
+		HP: 70000
+	JamsMissiles:
+		Range: 5c0
+		DeflectionRelationships: Enemy
+
+# Eastern Maritime (Japan) — autonomous interceptor drone (anti-air).
+HAYABUSA:
+	Inherits: YAK
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	# Autonomous interceptor drone — render as the UAV body, not the stock YAK fighter.
+	RenderSprites:
+		Image: dronebody
+	Tooltip:
+		Name: actor-hayabusa.name
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 93
+		Prerequisites: tech.eastern_maritime, afld
+		Description: actor-hayabusa.description
+	# Real interceptor: the YAK body is a GROUND strafer by default — swap in an air-to-air missile and
+	# air-targeting so it actually shoots down aircraft (the anti-air drone its name implies). Pure AA.
+	Armament:
+		Weapon: Nike
+	AutoTarget:
+		InitialStance: Defend
+		InitialStanceAI: Defend
+
+# Subcontinent Federation (India) — layered SAM battery.
+AKASH:
+	Inherits: AGUN
+	# Static SAM battery — bespoke fixed-launcher body instead of the stock RA AA-gun turret. Keep the
+	# logical Turreted/AttackTurreted (aiming) but drop the VISIBLE rotating turret + muzzle flash;
+	# SAMs launch upward regardless of bearing, so a fixed launcher reads correctly.
+	RenderSprites:
+		Image: akashbody
+	# (the visible turret + muzzle overlay are now stripped on the base AGUN reskin in theater-structures.yaml;
+	# AKASH inherits AGUN, so re-stripping them here would double-remove. WithSpriteBody is restated for clarity.)
+	WithSpriteBody:
+	Tooltip:
+		Name: actor-akash.name
+	Buildable:
+		Queue: Defense
+		BuildPaletteOrder: 94
+		Prerequisites: tech.subcontinent_federation, dome
+		Description: actor-akash.description
+	# Layered air defense: a long-range standoff SAM (Nike) on a hardened battery — outranges and outlasts
+	# the flak AA gun it replaces, so India's airspace is tiered (this on top; shared MANPADS / Mobile SAM
+	# / AA-gun form the short-range layer below). India is the layered-air-defense faction.
+	Health:
+		HP: 60000
+	# LONGEST-reach AA in the game, fired as a 2-missile salvo (AkashSAM) — out-ranges every mobile SAM
+	# (TUNGUSKA's Nike, MOBSAM's RedEye), leaning into its immobility as a static apex layer. NOT the same
+	# Nike as the mobile SAMs: India's layered air defence has a distinct top tier.
+	Armament:
+		Weapon: AkashSAM
+	RevealsShroud:
+		MinRange: 5c0
+		Range: 11c0
+
+# Subcontinent Federation (India) — multirole strike fighter (upper air layer).
+TEJAS:
+	Inherits: MIG
+	RenderSprites:
+		Image: jetbody
+	Tooltip:
+		Name: actor-tejas.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
+	Buildable:
+		Queue: Aircraft
+		BuildPaletteOrder: 94
+		Prerequisites: tech.subcontinent_federation, afld
+		Description: actor-tejas.description
+	# Resilient conventional air: a hardened airframe (more HP than the baseline strike jet) so India's
+	# strike fighter survives a SAM pass and keeps fighting — the "resilient air power" identity.
+	Health:
+		HP: 11000
+	# Standoff identity (not a stock close-in MIG): a 2-missile guided salvo fired from beyond short-range AA
+	# (bigger MinRange), so TEJAS commits from distance and reinforces India's layered/standoff air doctrine.
+	Armament:
+		Weapon: TejasStandoff
+
+# Anatolian Alliance (Turkey) — dedicated electronic-warfare van (a WIDE missile-jamming umbrella).
+KORAL:
+	Inherits: MRJ
+	RenderSprites:
+		Image: apcbody
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
+	Tooltip:
+		Name: actor-koral.name
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 93
+		Prerequisites: tech.anatolian_alliance, dome
+		Description: actor-koral.description
+	# Turkey's offensive EW screen: widen the inherited missile-jamming umbrella so enemy guided ATGMs/AA/SAMs
+	# veer off across the whole task force it escorts — the active counter to a missile-heavy army. (COMMS is the
+	# passive UK sensor; KORAL is the protective jammer.) Unarmed and fragile — must travel inside the formation.
+	JamsMissiles:
+		Range: 7c0
+		DeflectionRelationships: Enemy
+	ProximityExternalCondition@JAMMER:
+		Range: 16c0
+	WithRangeCircle@JAMMER:
+		Range: 16c0

@@ -1,0 +1,271 @@
+# THEATER — faction DOCTRINES.
+#
+# Each faction's whole army behaves differently, so an experienced player can read the faction from how
+# it fights. Pure data: a per-faction condition (doctrine-<faction>) is granted to every unit a faction
+# owns (GrantConditionOnPrerequisite keyed on the conyard's tech.<faction> token), and stock conditional
+# multiplier traits apply the strengths AND tradeoffs. Production cost/time multipliers are read off the
+# unit being built and gated by the same tech.<faction> prerequisite. Everything here applies identically
+# to human and AI armies (the AI's conyard provides the same token). Determinism-safe (stock sim traits,
+# integer modifiers, no float/Random/DateTime).
+#
+# Design rule: every strength is paired with a weakness — no faction is just "stronger numbers".
+#   Federation (USA)        : far-seeing, long-range, cheap/fast AIR — but FRAGILE ground vehicles.
+#   Northern Union (Russia) : TANKY, hard-hitting vehicles — but SLOW.
+#   Continental Bloc (China): everything CHEAP + builds FAST — but FRAGILE (the printed-attrition army).
+#   Rhine Compact (Germany) : DURABLE units — but EXPENSIVE and slow to build (fewer, harder to kill).
+#   Isles Coalition (UK)    : long-range, far-seeing, cheaper INFANTRY — but WEAK vehicles.
+#   Eastern Maritime (Japan): DURABLE units — but LOW damage output (holds ground, can't brawl forward).
+#   Subcontinent (India)    : long REACH vehicles — but SLOW (layered, deliberate).
+#   Anatolian (Turkey)      : cheap/fast, far-seeing AIR + attritable everything — but FRAGILE all over.
+
+# ============================ VEHICLE TIER ============================
+^Vehicle:
+	GrantConditionOnPrerequisite@doc-fed:
+		Condition: doctrine-federation
+		Prerequisites: tech.federation
+	GrantConditionOnPrerequisite@doc-nu:
+		Condition: doctrine-northern_union
+		Prerequisites: tech.northern_union
+	GrantConditionOnPrerequisite@doc-cb:
+		Condition: doctrine-continental_bloc
+		Prerequisites: tech.continental_bloc
+	GrantConditionOnPrerequisite@doc-rc:
+		Condition: doctrine-rhine_compact
+		Prerequisites: tech.rhine_compact
+	GrantConditionOnPrerequisite@doc-ic:
+		Condition: doctrine-isles_coalition
+		Prerequisites: tech.isles_coalition
+	GrantConditionOnPrerequisite@doc-em:
+		Condition: doctrine-eastern_maritime
+		Prerequisites: tech.eastern_maritime
+	GrantConditionOnPrerequisite@doc-sf:
+		Condition: doctrine-subcontinent_federation
+		Prerequisites: tech.subcontinent_federation
+	GrantConditionOnPrerequisite@doc-aa:
+		Condition: doctrine-anatolian_alliance
+		Prerequisites: tech.anatolian_alliance
+	# Federation — fragile ground (air is the strength, paid for here).
+	DamageMultiplier@doc-fed:
+		RequiresCondition: doctrine-federation
+		Modifier: 110
+	# Northern Union — tanky, hard-hitting, but slow.
+	DamageMultiplier@doc-nu:
+		RequiresCondition: doctrine-northern_union
+		Modifier: 82
+	FirepowerMultiplier@doc-nu:
+		RequiresCondition: doctrine-northern_union
+		Modifier: 112
+	SpeedMultiplier@doc-nu:
+		RequiresCondition: doctrine-northern_union
+		Modifier: 85
+	# Continental Bloc — cheap, fast to build, fragile.
+	DamageMultiplier@doc-cb:
+		RequiresCondition: doctrine-continental_bloc
+		Modifier: 120
+	ProductionCostMultiplier@doc-cb:
+		Prerequisites: tech.continental_bloc
+		Multiplier: 80
+	ProductionTimeMultiplier@doc-cb:
+		Prerequisites: tech.continental_bloc
+		Multiplier: 80
+	# Rhine Compact — durable, but expensive and slow to build.
+	DamageMultiplier@doc-rc:
+		RequiresCondition: doctrine-rhine_compact
+		Modifier: 82
+	ProductionCostMultiplier@doc-rc:
+		Prerequisites: tech.rhine_compact
+		Multiplier: 118
+	ProductionTimeMultiplier@doc-rc:
+		Prerequisites: tech.rhine_compact
+		Multiplier: 112
+	# Isles Coalition — weak vehicles (infantry/intel is the strength).
+	DamageMultiplier@doc-ic:
+		RequiresCondition: doctrine-isles_coalition
+		Modifier: 112
+	# Eastern Maritime — durable but low offense (turtle/hold).
+	DamageMultiplier@doc-em:
+		RequiresCondition: doctrine-eastern_maritime
+		Modifier: 85
+	FirepowerMultiplier@doc-em:
+		RequiresCondition: doctrine-eastern_maritime
+		Modifier: 90
+	# Subcontinent Federation — long reach, but slow.
+	RangeMultiplier@doc-sf:
+		RequiresCondition: doctrine-subcontinent_federation
+		Modifier: 115
+	SpeedMultiplier@doc-sf:
+		RequiresCondition: doctrine-subcontinent_federation
+		Modifier: 88
+	# Anatolian Alliance — attritable (cheap eyes, dies fast) BUT FAST: rapid-response mobility is the
+	# identity that separates Turkey from USA (durable long-range air) and China (slow mass ground).
+	DamageMultiplier@doc-aa:
+		RequiresCondition: doctrine-anatolian_alliance
+		Modifier: 115
+	SpeedMultiplier@doc-aa:
+		RequiresCondition: doctrine-anatolian_alliance
+		Modifier: 112
+
+# ============================ INFANTRY TIER ============================
+^Infantry:
+	GrantConditionOnPrerequisite@doc-cb:
+		Condition: doctrine-continental_bloc
+		Prerequisites: tech.continental_bloc
+	GrantConditionOnPrerequisite@doc-rc:
+		Condition: doctrine-rhine_compact
+		Prerequisites: tech.rhine_compact
+	GrantConditionOnPrerequisite@doc-ic:
+		Condition: doctrine-isles_coalition
+		Prerequisites: tech.isles_coalition
+	GrantConditionOnPrerequisite@doc-em:
+		Condition: doctrine-eastern_maritime
+		Prerequisites: tech.eastern_maritime
+	GrantConditionOnPrerequisite@doc-aa:
+		Condition: doctrine-anatolian_alliance
+		Prerequisites: tech.anatolian_alliance
+	# Continental Bloc — cheap, fast, fragile.
+	DamageMultiplier@doc-cb:
+		RequiresCondition: doctrine-continental_bloc
+		Modifier: 120
+	ProductionCostMultiplier@doc-cb:
+		Prerequisites: tech.continental_bloc
+		Multiplier: 80
+	ProductionTimeMultiplier@doc-cb:
+		Prerequisites: tech.continental_bloc
+		Multiplier: 80
+	# Rhine Compact — durable, expensive, slow.
+	DamageMultiplier@doc-rc:
+		RequiresCondition: doctrine-rhine_compact
+		Modifier: 82
+	ProductionCostMultiplier@doc-rc:
+		Prerequisites: tech.rhine_compact
+		Multiplier: 118
+	ProductionTimeMultiplier@doc-rc:
+		Prerequisites: tech.rhine_compact
+		Multiplier: 112
+	# Isles Coalition — long-range, far-seeing, cheaper infantry (the core strength).
+	RangeMultiplier@doc-ic:
+		RequiresCondition: doctrine-isles_coalition
+		Modifier: 120
+	RevealsShroudMultiplier@doc-ic:
+		RequiresCondition: doctrine-isles_coalition
+		Modifier: 125
+	ProductionCostMultiplier@doc-ic:
+		Prerequisites: tech.isles_coalition
+		Multiplier: 88
+	# Eastern Maritime — durable but low offense.
+	DamageMultiplier@doc-em:
+		RequiresCondition: doctrine-eastern_maritime
+		Modifier: 85
+	FirepowerMultiplier@doc-em:
+		RequiresCondition: doctrine-eastern_maritime
+		Modifier: 90
+	# Anatolian Alliance — attritable BUT FAST (rapid-response mobility).
+	DamageMultiplier@doc-aa:
+		RequiresCondition: doctrine-anatolian_alliance
+		Modifier: 115
+	SpeedMultiplier@doc-aa:
+		RequiresCondition: doctrine-anatolian_alliance
+		Modifier: 112
+
+# ============================ AIR TIER (planes + helicopters) ============================
+^Plane:
+	GrantConditionOnPrerequisite@doc-fed:
+		Condition: doctrine-federation
+		Prerequisites: tech.federation
+	GrantConditionOnPrerequisite@doc-aa:
+		Condition: doctrine-anatolian_alliance
+		Prerequisites: tech.anatolian_alliance
+	# Federation — long reach, far-seeing, PRECISE, cheap/fast air (the doctrine's core). The precision
+	# (tighter aim) is what separates USA's quality air from Turkey's cheap, expendable far-seeing air.
+	RangeMultiplier@doc-fed:
+		RequiresCondition: doctrine-federation
+		Modifier: 115
+	InaccuracyMultiplier@doc-fed:
+		RequiresCondition: doctrine-federation
+		Modifier: 90
+	RevealsShroudMultiplier@doc-fed:
+		RequiresCondition: doctrine-federation
+		Modifier: 120
+	ProductionCostMultiplier@doc-fed:
+		Prerequisites: tech.federation
+		Multiplier: 90
+	ProductionTimeMultiplier@doc-fed:
+		Prerequisites: tech.federation
+		Multiplier: 85
+	# Anatolian Alliance — cheap, fast, far-seeing, fragile drones.
+	RevealsShroudMultiplier@doc-aa:
+		RequiresCondition: doctrine-anatolian_alliance
+		Modifier: 120
+	DamageMultiplier@doc-aa:
+		RequiresCondition: doctrine-anatolian_alliance
+		Modifier: 120
+	ProductionCostMultiplier@doc-aa:
+		Prerequisites: tech.anatolian_alliance
+		Multiplier: 82
+	ProductionTimeMultiplier@doc-aa:
+		Prerequisites: tech.anatolian_alliance
+		Multiplier: 80
+	# Continental Bloc — cheap/fast air too (prerequisite-only; no doctrine condition needed here).
+	ProductionCostMultiplier@doc-cb:
+		Prerequisites: tech.continental_bloc
+		Multiplier: 80
+	ProductionTimeMultiplier@doc-cb:
+		Prerequisites: tech.continental_bloc
+		Multiplier: 80
+
+# ============================ NAVAL TIER (surface ships + submarines) ============================
+# ^Submarine Inherits ^Ship, so these national profiles apply to BOTH surface ships and the faction subs
+# (AKULA/ASTUTE). Conditions mirror the other tiers (granted on this template from the faction's tech token);
+# ProductionCost/Time are prerequisite-gated (no condition needed). baseline = 100. Integer, determinism-safe.
+^Ship:
+	GrantConditionOnPrerequisite@doc-nu:
+		Condition: doctrine-northern_union
+		Prerequisites: tech.northern_union
+	GrantConditionOnPrerequisite@doc-sf:
+		Condition: doctrine-subcontinent_federation
+		Prerequisites: tech.subcontinent_federation
+	GrantConditionOnPrerequisite@doc-aa:
+		Condition: doctrine-anatolian_alliance
+		Prerequisites: tech.anatolian_alliance
+	GrantConditionOnPrerequisite@doc-fed:
+		Condition: doctrine-federation
+		Prerequisites: tech.federation
+	GrantConditionOnPrerequisite@doc-ic:
+		Condition: doctrine-isles_coalition
+		Prerequisites: tech.isles_coalition
+	# Northern Union (Russia) — heavy, hard-hitting warships (tanky hulls + more firepower): heavy naval strike.
+	DamageMultiplier@doc-nu:
+		RequiresCondition: doctrine-northern_union
+		Modifier: 88
+	FirepowerMultiplier@doc-nu:
+		RequiresCondition: doctrine-northern_union
+		Modifier: 110
+	# Continental Bloc (China) — cheap, fast-built mass naval (prerequisite-gated; no condition needed).
+	ProductionCostMultiplier@doc-cb:
+		Prerequisites: tech.continental_bloc
+		Multiplier: 85
+	ProductionTimeMultiplier@doc-cb:
+		Prerequisites: tech.continental_bloc
+		Multiplier: 85
+	# Subcontinent Federation (India) — long naval reach (layered sea control), but slower hulls.
+	RangeMultiplier@doc-sf:
+		RequiresCondition: doctrine-subcontinent_federation
+		Modifier: 112
+	SpeedMultiplier@doc-sf:
+		RequiresCondition: doctrine-subcontinent_federation
+		Modifier: 92
+	# Anatolian Alliance (Turkey) — cheap, far-seeing littoral patrol fleet.
+	ProductionCostMultiplier@doc-aa:
+		Prerequisites: tech.anatolian_alliance
+		Multiplier: 88
+	RevealsShroudMultiplier@doc-aa:
+		RequiresCondition: doctrine-anatolian_alliance
+		Modifier: 115
+	# Federation (USA) — superior naval sensors (the air-naval picture).
+	RevealsShroudMultiplier@doc-fed:
+		RequiresCondition: doctrine-federation
+		Modifier: 115
+	# Isles Coalition (UK) — naval intelligence: wide sensors across the fleet.
+	RevealsShroudMultiplier@doc-ic:
+		RequiresCondition: doctrine-isles_coalition
+		Modifier: 115

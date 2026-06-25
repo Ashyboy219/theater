@@ -1,0 +1,47 @@
+# ============================================================================
+# THEATER — Tech tree FORK C: POSTURE (off the Autonomous age, tier 3).
+# A mutually-exclusive content choice. Picking one lists ~!research.<other>, so it vanishes the other — one
+# posture per match. NO stat modifiers: each branch UNLOCKS a different Theater Command support power
+# (see theater-techtree.yaml), an offensive-mobility verb vs a defensive-firepower verb.
+#
+#   Maneuver Doctrine — unlocks a fast light Rapid-Deploy paradrop (mobile insertion, short charge).
+#   Fortress Doctrine — unlocks a defensive carpet barrage to break an assault on your own lines.
+# ============================================================================
+
+research.maneuver:
+	Interactable:
+	Tooltip:
+		Name: actor-research-maneuver.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 57
+		BuildLimit: 1
+		BuildDuration: 500
+		BuildDurationModifier: 100
+		Prerequisites: rlab, age.autonomous, ~!research.fortress
+		Description: actor-research-maneuver.description
+		Icon: research-maneuver-icon
+	Valued:
+		Cost: 1200
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:
+
+research.fortress:
+	Interactable:
+	Tooltip:
+		Name: actor-research-fortress.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 58
+		BuildLimit: 1
+		BuildDuration: 500
+		BuildDurationModifier: 100
+		Prerequisites: rlab, age.autonomous, ~!research.maneuver
+		Description: actor-research-fortress.description
+		Icon: research-fortress-icon
+	Valued:
+		Cost: 1200
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:

@@ -1,0 +1,121 @@
+MapFormat: 12
+
+RequiresMod: theater
+
+Title: THEATER Sandbox - Test Range
+
+Author: THEATER (land + water test map; cheats + full tech ON)
+
+Tileset: TEMPERAT
+
+MapSize: 128,128
+
+Bounds: 16,16,96,96
+
+Visibility: Lobby
+
+Categories: Conquest
+
+Rules: theater|rules/theater-sandbox.yaml
+
+Players:
+	PlayerReference@Neutral:
+		Name: Neutral
+		OwnsWorld: True
+		NonCombatant: True
+		Faction: allies
+	PlayerReference@Creeps:
+		Name: Creeps
+		NonCombatant: True
+		Faction: Random
+		Enemies: Multi0, Multi1, Multi2, Multi3, Multi4, Multi5, Multi6, Multi7
+	PlayerReference@Multi0:
+		Name: Multi0
+		Playable: True
+		Faction: Random
+		Enemies: Creeps
+	PlayerReference@Multi1:
+		Name: Multi1
+		Playable: True
+		Faction: Random
+		Enemies: Creeps
+	PlayerReference@Multi2:
+		Name: Multi2
+		Playable: True
+		Faction: Random
+		Enemies: Creeps
+	PlayerReference@Multi3:
+		Name: Multi3
+		Playable: True
+		Faction: Random
+		Enemies: Creeps
+	PlayerReference@Multi4:
+		Name: Multi4
+		Playable: True
+		Faction: Random
+		Enemies: Creeps
+	PlayerReference@Multi5:
+		Name: Multi5
+		Playable: True
+		Faction: Random
+		Enemies: Creeps
+	PlayerReference@Multi6:
+		Name: Multi6
+		Playable: True
+		Faction: Random
+		Enemies: Creeps
+	PlayerReference@Multi7:
+		Name: Multi7
+		Playable: True
+		Faction: Random
+		Enemies: Creeps
+
+Actors:
+	Actor28: mine
+		Location: 94,44
+		Owner: Neutral
+	Actor29: mine
+		Location: 62,51
+		Owner: Neutral
+	Actor30: mine
+		Location: 69,45
+		Owner: Neutral
+	Actor31: mine
+		Location: 52,27
+		Owner: Neutral
+	Actor32: mine
+		Location: 30,50
+		Owner: Neutral
+	Actor33: mine
+		Location: 39,80
+		Owner: Neutral
+	Actor34: mine
+		Location: 80,90
+		Owner: Neutral
+	Actor35: mine
+		Location: 94,76
+		Owner: Neutral
+	Actor60: mpspawn
+		Owner: Neutral
+		Location: 33,32
+	Actor52: mpspawn
+		Owner: Neutral
+		Location: 33,63
+	Actor53: mpspawn
+		Owner: Neutral
+		Location: 35,93
+	Actor54: mpspawn
+		Owner: Neutral
+		Location: 66,95
+	Actor55: mpspawn
+		Owner: Neutral
+		Location: 66,31
+	Actor56: mpspawn
+		Owner: Neutral
+		Location: 94,28
+	Actor57: mpspawn
+		Owner: Neutral
+		Location: 91,60
+	Actor58: mpspawn
+		Owner: Neutral
+		Location: 97,97

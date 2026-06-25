@@ -1,0 +1,145 @@
+# THEATER — point each unique unit/structure at its bespoke cameo (see sequences/theater.yaml).
+# Field-merges Buildable.Icon onto the actors defined in theater-units.yaml / theater-structures.yaml.
+
+SPECTER:
+	Buildable:
+		Icon: specter-icon
+BASTION:
+	Buildable:
+		Icon: bastion-icon
+WINGLOONG:
+	Buildable:
+		Icon: wingloong-icon
+LOEWE:
+	Buildable:
+		Icon: loewe-icon
+PATHFINDER:
+	Buildable:
+		Icon: pathfinder-icon
+GARUDA:
+	Buildable:
+		Icon: garuda-icon
+BAYRAK:
+	Buildable:
+		Icon: bayrak-icon
+REAPER:
+	Buildable:
+		Icon: reaper-icon
+GRAD:
+	Buildable:
+		Icon: grad-icon
+REDOUBT:
+	Buildable:
+		Icon: redoubt-icon
+DAZHBOG:
+	Buildable:
+		Icon: dazhbog-icon
+PIONEER:
+	Buildable:
+		Icon: pioneer-icon
+COMMS:
+	Buildable:
+		Icon: comms-icon
+AEGIS:
+	Buildable:
+		Icon: aegis-icon
+HAYABUSA:
+	Buildable:
+		Icon: hayabusa-icon
+AKASH:
+	Buildable:
+		Icon: akash-icon
+TEJAS:
+	Buildable:
+		Icon: tejas-icon
+KORAL:
+	Buildable:
+		Icon: koral-icon
+THCOM:
+	Buildable:
+		Icon: thcom-icon
+
+# --- Visual-identity pass: land variants, shared roster, air, naval, doctrine unlocks ---
+bradley:
+	Buildable:
+		Icon: bradley-icon
+jtac:
+	Buildable:
+		Icon: jtac-icon
+bmpt:
+	Buildable:
+		Icon: bmpt-icon
+loiter:
+	Buildable:
+		Icon: loiter-icon
+cobra:
+	Buildable:
+		Icon: cobra-icon
+jackal:
+	Buildable:
+		Icon: jackal-icon
+namica:
+	Buildable:
+		Icon: namica-icon
+manpads:
+	Buildable:
+		Icon: manpads-icon
+scout:
+	Buildable:
+		Icon: scout-icon
+ifv:
+	Buildable:
+		Icon: ifv-icon
+mobsam:
+	Buildable:
+		Icon: mobsam-icon
+RAPTOR:
+	Buildable:
+		Icon: raptor-icon
+TUNGUSKA:
+	Buildable:
+		Icon: tunguska-icon
+BURKE:
+	Buildable:
+		Icon: burke-icon
+AKULA:
+	Buildable:
+		Icon: akula-icon
+HOUBEI:
+	Buildable:
+		Icon: houbei-icon
+BARBAROS:
+	Buildable:
+		Icon: barbaros-icon
+ASTUTE:
+	Buildable:
+		Icon: astute-icon
+KOLKATA:
+	Buildable:
+		Icon: kolkata-icon
+DONGFENG:
+	Buildable:
+		Icon: dongfeng-icon
+RAIDER:
+	Buildable:
+		Icon: raider-icon
+
+# --- Late-game flagships ---
+AMX:
+	Buildable:
+		Icon: amx-icon
+ARMATA:
+	Buildable:
+		Icon: armata-icon
+B21:
+	Buildable:
+		Icon: b21-icon
+GJ11:
+	Buildable:
+		Icon: gj11-icon
+AKINCI:
+	Buildable:
+		Icon: akinci-icon
+AGNI:
+	Buildable:
+		Icon: agni-icon

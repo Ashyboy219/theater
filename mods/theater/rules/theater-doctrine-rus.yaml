@@ -1,0 +1,150 @@
+# ============================================================================
+# THEATER — Northern Union (Russia) EXCLUSIVE mid-game doctrine choice.
+# Two non-occupying buildables sold from the Theater Command's "Command" queue.
+# Buying one provides its doctrine.rus.<branch> prerequisite (ProvidesPrerequisite
+# defaults to the actor name); the other lists !doctrine.rus.<other> in its Buildable
+# Prerequisites, so it VANISHES from the sidebar — exactly ONE branch per match.
+# Mirrors the verified cap.firecontrol pattern in theater-capabilities.yaml.
+# ============================================================================
+
+# --- Armored Breakthrough: heavy, fast armored fist. Hook = unlocks the T-14 Molot
+#     heavy MBT (see unit-unlock block). Tradeoff = expensive + half-blind vehicles.
+doctrine.rus.armor:
+	Interactable:
+	Tooltip:
+		Name: actor-doctrine-rus-armor.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 20
+		BuildLimit: 1
+		BuildDuration: 250
+		BuildDurationModifier: 100
+		Prerequisites: ~tech.northern_union, ~!doctrine.rus.arty
+		Description: actor-doctrine-rus-armor.description
+		Icon: loewe-icon
+	Valued:
+		Cost: 2500
+	RenderSprites:
+		Image: 3tnk
+	ProvidesPrerequisite@self:
+
+# --- Artillery Saturation: massed long-range fires. Hook = Saturation Barrage support
+#     power on THCOM (see thcomYaml). Tradeoff = fragile front line + even slower.
+doctrine.rus.arty:
+	Interactable:
+	Tooltip:
+		Name: actor-doctrine-rus-arty.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 21
+		BuildLimit: 1
+		BuildDuration: 250
+		BuildDurationModifier: 100
+		Prerequisites: ~tech.northern_union, ~!doctrine.rus.armor
+		Description: actor-doctrine-rus-arty.description
+		Icon: grad-icon
+	Valued:
+		Cost: 2500
+	RenderSprites:
+		Image: v2rl
+	ProvidesPrerequisite@self:
+
+# Branch stat profiles LAYER on top of the always-on Northern Union national doctrine
+# (theater-doctrines.yaml ^Vehicle: DamageMultiplier 82 / FirepowerMultiplier 112 /
+# SpeedMultiplier 85). All conditional multipliers, baseline Modifier 100, integer-only,
+# deterministic. ProductionCostMultiplier is prerequisite-gated (read off the unit built).
+^Vehicle:
+	# Condition grants on the TEMPLATE (not Player) so the RequiresCondition multipliers below resolve.
+	GrantConditionOnPrerequisite@grant-rus-armor:
+		Condition: doc-rus-armor
+		Prerequisites: doctrine.rus.armor
+	GrantConditionOnPrerequisite@grant-rus-arty:
+		Condition: doc-rus-arty
+		Prerequisites: doctrine.rus.arty
+	# ---- Armored Breakthrough: tankier + faster spearhead; expensive + shorter sight. ----
+	DamageMultiplier@doc-rus-armor:
+		RequiresCondition: doc-rus-armor
+		Modifier: 90
+	SpeedMultiplier@doc-rus-armor:
+		RequiresCondition: doc-rus-armor
+		Modifier: 118
+	RevealsShroudMultiplier@doc-rus-armor:
+		RequiresCondition: doc-rus-armor
+		Modifier: 85
+	ProductionCostMultiplier@doc-rus-armor:
+		Prerequisites: doctrine.rus.armor
+		Multiplier: 115
+	# ---- Artillery Saturation: more range + firepower; fragile + even slower. ----
+	RangeMultiplier@doc-rus-arty:
+		RequiresCondition: doc-rus-arty
+		Modifier: 118
+	FirepowerMultiplier@doc-rus-arty:
+		RequiresCondition: doc-rus-arty
+		Modifier: 112
+	DamageMultiplier@doc-rus-arty:
+		RequiresCondition: doc-rus-arty
+		Modifier: 122
+	SpeedMultiplier@doc-rus-arty:
+		RequiresCondition: doc-rus-arty
+		Modifier: 88
+
+# Artillery Saturation visible hook — a support power added to the Theater Command,
+# gated on the doctrine. Reuses the verified AirstrikePower delivery config from
+# WINGLOONG's AirstrikePower@dronehive (badr.bomber salvo). Grounded: a timed off-map
+# rocket-artillery strike on a target area — NOT a superweapon, NOT a nuke.
+# Icon MUST be one of the allowed support-power icons; 'parabombs' = a strike run.
+THCOM:
+	AirstrikePower@rusbarrage:
+		OrderName: NorthernUnionSaturationBarrage
+		# LATE-tier (tech.center) + long charge: the heavy saturation barrage is now an earned strategic
+		# asset, delivered by a distinct lumbering heavy bomber (strike.lancer) laying a carpet, not a
+		# turn-0 triple badr run.
+		Prerequisites: doctrine.rus.arty, tech.center
+		Icon: parabombs
+		ChargeInterval: 8000
+		Name: actor-thcom.rusbarrage-name
+		Description: actor-thcom.rusbarrage-description
+		SelectTargetSpeechNotification: SelectTarget
+		SelectTargetTextNotification: notification-select-target
+		UnitType: strike.lancer
+		SquadSize: 3
+		SquadOffset: 1792,1792,0
+		QuantizedFacings: 8
+		CameraActor: camera
+		CameraRemoveDelay: 150
+		DisplayBeacon: true
+		BeaconPoster: pbmbicon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		SupportPowerPaletteOrder: 55
+	SupportPowerChargeBar:
+
+# Armored Breakthrough visible hook — a NEW grounded heavy MBT, unlocked only once the
+# armor doctrine is bought (Buildable.Prerequisites gates on doctrine.rus.armor). Reuses
+# the stock 4TNK "Mammoth" body — a plausible 2030s heavy breakthrough tank. Grounded:
+# 120mm gun tank, no sci-fi. Faction-gated to Russia + the doctrine.
+MOLOT:
+	Inherits: 4TNK
+	RenderSprites:
+		Image: mbtbody
+	Tooltip:
+		Name: actor-molot.name
+	WithIdleOverlay@ROUNDEL:
+		Sequence: roundel
+		Palette: player
+		IsPlayerPalette: True
+		Offset: 0,0,86
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 95
+		Prerequisites: tech.northern_union, doctrine.rus.armor, weap
+		Description: actor-molot.description
+		Icon: molot-icon
+	# Distinct from ARMATA (close-in thermobaric siege): MOLOT is the long-reach BREAKTHROUGH mammoth — keeps the
+	# 120mm + tusk AA and ADDS a guided ATGM so it cracks armour at standoff and spearheads the Russian advance.
+	Armament@ATGM:
+		Weapon: Dragon
+		LocalOffset: 0,0,200

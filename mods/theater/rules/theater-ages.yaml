@@ -1,0 +1,69 @@
+# THEATER — 4X: AGES / ERAS (the horizontal tech-tree SPINE).
+#
+# You start in the MODERN age (the Research Lab). Researched at the Research Lab (Command queue), you ADVANCE
+# through three eras — Information -> Autonomous -> Orbital — each gated on the previous, each a real cost+time
+# investment. Advancing is now PURE GATING: each age provides an `age.<era>` token that UNLOCKS new content
+# further down the tech tree (new buildable units, structures and support powers — see theater-techtree.yaml
+# and the re-gated content). Ages NO LONGER apply any army-wide stat modifier — the reward for climbing the
+# ladder is NEW THINGS TO BUILD, never bigger numbers on the units you already have.
+#
+# The spine: Production -> Radar -> Research Lab -> Information -> (Tech Center) -> Autonomous -> Orbital.
+# Data-only buy-once Command-queue actors, shown left-to-right in the F8 tech-tree flowchart.
+
+# =================================== The age advances (Command queue) ===================================
+age.information:
+	Interactable:
+	Tooltip:
+		Name: actor-age-information.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 40
+		BuildLimit: 1
+		BuildDuration: 600
+		BuildDurationModifier: 100
+		Prerequisites: rlab
+		Description: actor-age-information.description
+		Icon: age-information-icon
+	Valued:
+		Cost: 1500
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:
+
+age.autonomous:
+	Interactable:
+	Tooltip:
+		Name: actor-age-autonomous.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 41
+		BuildLimit: 1
+		BuildDuration: 800
+		BuildDurationModifier: 100
+		Prerequisites: age.information, tech.center
+		Description: actor-age-autonomous.description
+		Icon: age-autonomous-icon
+	Valued:
+		Cost: 2500
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:
+
+age.orbital:
+	Interactable:
+	Tooltip:
+		Name: actor-age-orbital.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 42
+		BuildLimit: 1
+		BuildDuration: 1000
+		BuildDurationModifier: 100
+		Prerequisites: age.autonomous, alloys
+		Description: actor-age-orbital.description
+		Icon: age-orbital-icon
+	Valued:
+		Cost: 3500
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:

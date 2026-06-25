@@ -1,0 +1,47 @@
+# ============================================================================
+# THEATER — Tech tree FORK B: ECONOMY (off the Tech Center, tier 2).
+# A mutually-exclusive content choice. Buying one provides research.<branch> and lists ~!research.<other>,
+# so picking one VANISHES the other — exactly one economic path per match. NO stat modifiers: each branch
+# simply UNLOCKS a different economy structure/upgrade (see the re-gates in theater-economy.yaml).
+#
+#   War Economy    — unlocks the Bank (a stackable passive-income building).
+#   Industrial Base — unlocks the Economy Network upgrade (boosts your income buildings).
+# ============================================================================
+
+research.wareconomy:
+	Interactable:
+	Tooltip:
+		Name: actor-research-wareconomy.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 55
+		BuildLimit: 1
+		BuildDuration: 500
+		BuildDurationModifier: 100
+		Prerequisites: rlab, age.information, tech.center, ~!research.industrial
+		Description: actor-research-wareconomy.description
+		Icon: research-wareconomy-icon
+	Valued:
+		Cost: 1200
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:
+
+research.industrial:
+	Interactable:
+	Tooltip:
+		Name: actor-research-industrial.name
+	Buildable:
+		Queue: Command
+		BuildPaletteOrder: 56
+		BuildLimit: 1
+		BuildDuration: 500
+		BuildDurationModifier: 100
+		Prerequisites: rlab, age.information, tech.center, ~!research.wareconomy
+		Description: actor-research-industrial.description
+		Icon: research-industrial-icon
+	Valued:
+		Cost: 1200
+	RenderSprites:
+		Image: dome
+	ProvidesPrerequisite@self:

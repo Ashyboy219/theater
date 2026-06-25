@@ -1,3 +1,9 @@
+> ## 🎯 This is the THEATER mod
+> **THEATER — Contemporary Command** is a grounded modern-warfare reimagining of Red Alert that evolves into a 4X-flavored RTS (real-country factions, a research tech tree, advancing eras, a strategic-resource economy, and gargantuan apex units). **→ See [THEATER.md](THEATER.md) for what this project is.**
+> The rest of this README is the upstream OpenRA engine documentation that THEATER is built on.
+
+---
+
 # OpenRA
 
 A Libre/Free Real Time Strategy game engine supporting early Westwood classics.

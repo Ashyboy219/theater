@@ -1,0 +1,185 @@
+# THEATER — 4X P4: GARGANTUAN SPECTACLE UNITS (the "look at this HUGE ship" payoff).
+#
+# The apex reward at the top of the 4X ladder. The first spectacle unit is the LEVIATHAN — an arsenal
+# dreadnought rendered at DOUBLE size (128px body, ~2x every other unit on the battlefield) so it is
+# genuinely awe-inspiring on screen. Gated behind the ENTIRE progression: Naval Yard + the Orbital age
+# (which itself required Research Lab → Information → Tech Center → Autonomous) + the `alloys` strategic
+# resource. Reaching it means you built the whole 4X engine — and it shows.
+#
+# Data + art (no new C#): inherits the stock Cruiser (CA, naval artillery) for the ship base, swaps in the
+# 128px leviathanbody (all gun batteries baked into the hull, so the turret sprites are removed), a heavier
+# main battery (LeviathanGun) + AA self-defence, gargantuan HP, and a hard BuildLimit so it stays special.
+
+LEVIATHAN:
+	Inherits: CA
+	# Engage both ground/water (main guns) and air (AA secondary).
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
+	# 128px gargantuan body; all gun batteries are baked into the hull, so drop the cruiser's turret sprites.
+	RenderSprites:
+		Image: leviathanbody
+	-WithSpriteTurret@PRIMARY:
+	-WithSpriteTurret@SECONDARY:
+	Tooltip:
+		Name: actor-leviathan.name
+	# Spends 100 banked alloys on build (gated by the alloys.stockpile threshold).
+	ConsumesAlloys:
+		Cost: 100
+	FireWarheadsOnDeath:
+		Weapon: TitanBlast
+		EmptyWeapon: TitanBlast
+	Buildable:
+		Queue: Ship
+		BuildAtProductionType: Boat
+		BuildPaletteOrder: 60
+		BuildLimit: 2
+		Prerequisites: ~syrd, age.orbital, ~structures.allies, alloys.stockpile
+		Description: actor-leviathan.description
+		Icon: leviathan-icon
+	Valued:
+		Cost: 6000
+	Health:
+		HP: 500000
+	Mobile:
+		Speed: 28
+		TurnSpeed: 6
+	# Devastating main battery (longest reach in the game) + AA self-defence so it isn't air-helpless.
+	Armament@PRIMARY:
+		Weapon: LeviathanGun
+	Armament@SECONDARY:
+		Weapon: Nike
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 9c0
+	# Huge selection/decoration footprint to match the 128px sprite.
+	Selectable:
+		Bounds: 3072, 2048
+		DecorationBounds: 3072, 2560, 0, -256
+
+# CITADEL — the LAND apex: a gargantuan tracked mobile fortress (128px / 2x size), the land equivalent of the
+# Leviathan, so land-only games get the same "look at this HUGE thing" payoff. Inherits the 4TNK Mammoth for
+# the tank base; 128px citadelbody (turret baked into the hull, turret sprite dropped), a devastating siege
+# cannon (CitadelCannon) + the Mammoth's anti-air tusk missiles, gargantuan HP, BuildLimit 2. Gated behind the
+# land ladder: War Factory + the Orbital age (which required Research Lab -> ages -> Tech Center -> alloys).
+CITADEL:
+	Inherits: 4TNK
+	RenderSprites:
+		Image: citadelbody
+	-WithSpriteTurret:
+	Tooltip:
+		Name: actor-citadel.name
+	# Spends 100 banked alloys on build (gated by the alloys.stockpile threshold).
+	ConsumesAlloys:
+		Cost: 100
+	FireWarheadsOnDeath:
+		Weapon: TitanBlast
+		EmptyWeapon: TitanBlast
+	# Don't leave a tiny stock Mammoth wreck under a 128px fortress — it goes out in the TitanBlast instead.
+	-SpawnActorOnDeath:
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 61
+		BuildLimit: 2
+		Prerequisites: weap, age.orbital, ~structures.allies, alloys.stockpile
+		Description: actor-citadel.description
+		Icon: citadel-icon
+	Valued:
+		Cost: 5500
+	Health:
+		HP: 480000
+	Mobile:
+		Speed: 22
+		TurnSpeed: 5
+	Armament@PRIMARY:
+		Weapon: CitadelCannon
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 8c0
+	Selectable:
+		Bounds: 2560, 2048
+		DecorationBounds: 2560, 2304, 0, -256
+
+# ARCHANGEL — the AIR apex: a gargantuan flying fortress / heavy gunship (128px / 2x size) that loiters and
+# RAINS sustained fire, completing the spectacle trio (sea Leviathan / land Citadel / air Archangel). Inherits
+# the MH60 (hovering gunship base); 128px archangelbody, a devastating sustained barrage (ArchangelGun), big
+# ammo so it loiters, huge HP — though as a slow flyer it is the most exposed of the three (SAMs/AA are its
+# counter). BuildLimit 2, gated behind the air ladder: Helipad + the Orbital age.
+ARCHANGEL:
+	Inherits: MH60
+	RenderSprites:
+		Image: archangelbody
+	# archangelbody is a baked 128px gunship body with no stock `rotor`/`slow-rotor` sequence, so MH60's rotor
+	# overlays CRASH the moment it is built (the overlay animation is created regardless of its airborne
+	# condition). Drop them — a tiny stock rotor would be misplaced/wrong-scale on a 2x body anyway.
+	-WithIdleOverlay@ROTORAIR:
+	-WithIdleOverlay@ROTORGROUND:
+	Tooltip:
+		Name: actor-archangel.name
+	# Spends 100 banked alloys on build (gated by the alloys.stockpile threshold).
+	ConsumesAlloys:
+		Cost: 100
+	FireWarheadsOnDeath:
+		Weapon: TitanBlast
+		EmptyWeapon: TitanBlast
+	# Don't leave a tiny stock helicopter wreck under a 128px gunship — it goes out in the TitanBlast instead.
+	-SpawnActorOnDeath:
+	Buildable:
+		Queue: Aircraft
+		BuildAtProductionType: Helicopter
+		BuildPaletteOrder: 62
+		BuildLimit: 2
+		Prerequisites: hpad, age.orbital, ~structures.allies, alloys.stockpile
+		Description: actor-archangel.description
+		Icon: archangel-icon
+	Valued:
+		Cost: 5000
+	Health:
+		HP: 220000
+	Aircraft:
+		Speed: 70
+		TurnSpeed: 8
+	Armament:
+		Weapon: ArchangelGun
+	AmmoPool:
+		Ammo: 40
+	RevealsShroud:
+		Range: 9c0
+
+# TEMPEST — the long-range STRATEGIC BOMBARDMENT apex: a gargantuan rocket-artillery platform (128px / 2x size)
+# that rains a 12-rocket salvo across most of the map (vs the Citadel's direct-fire cannon). The one apex role
+# the sea/land/air combat trio lacks. Inherits V2RL (rocket-launcher base, loaded/empty body states); tempestbody
+# 128px, a colossal long-reload barrage, big HP but slow and far-deployed (its long reload + exposure are the
+# counter). BuildLimit 2, gated behind the land ladder (War Factory + Orbital age).
+TEMPEST:
+	Inherits: V2RL
+	RenderSprites:
+		Image: tempestbody
+	Tooltip:
+		Name: actor-tempest.name
+	# Spends 100 banked alloys on build (gated by the alloys.stockpile threshold).
+	ConsumesAlloys:
+		Cost: 100
+	FireWarheadsOnDeath:
+		Weapon: TitanBlast
+		EmptyWeapon: TitanBlast
+	Buildable:
+		Queue: Vehicle
+		BuildPaletteOrder: 63
+		BuildLimit: 2
+		Prerequisites: weap, age.orbital, ~structures.allies, alloys.stockpile
+		Description: actor-tempest.description
+		Icon: tempest-icon
+	Valued:
+		Cost: 5000
+	Health:
+		HP: 200000
+	Mobile:
+		Speed: 24
+		TurnSpeed: 5
+	Armament:
+		Weapon: TempestBarrage
+	RevealsShroud:
+		MinRange: 4c0
+		Range: 7c0
+	Selectable:
+		Bounds: 2560, 2048
+		DecorationBounds: 2560, 2304, 0, -256

@@ -1,0 +1,51 @@
+# THEATER — Phase 0 "Zero-Art Thesis Slice" ruleset.
+#
+# Goal: prove the core thesis — "territory IS the economy" beats "mass-and-A-move" —
+# using ONLY stock Red Alert art. Income no longer comes from harvesting; it comes from
+# capturing CONTROL NODES spread across the map and keeping them SUPPLY-CONNECTED back to
+# your Construction Yard through a chain of owned nodes. Cut the chain (capture/kill a
+# relaying node) and everything downstream stops paying — without touching the enemy base.
+#
+# This file is OPT-IN: include it from a map's `Rules:` (it is intentionally NOT listed in
+# mod.yaml, so the shipping RA mod and `make check` are unaffected). See design/PHASE0-README.md.
+
+# --- Turn OFF the harvester economy: harvested ore/gems are now worthless, so the only
+#     meaningful income is territory control. (Maps for this mode should also carry little
+#     or no ore; harvesters/refineries simply become a dead end rather than a strategy.)
+^BasePlayer:
+	PlayerResources:
+		ResourceValues:
+			Ore: 0
+			Gems: 0
+
+# --- Stand up the supply-connectivity manager on the world, and auto-place Control Nodes
+#     on any skirmish map via Lua (so no manual editor placement is needed).
+World:
+	SupplyNetwork:
+		Interval: 25
+	LuaScript:
+		Scripts: territory-setup.lua
+
+# --- The base is the origin of your supply network.
+FACT:
+	SupplyNode:
+		IsSource: true
+		LinkRange: 12c0
+
+# --- The Control Node: a capturable territory structure that pays income only while it is
+#     owned by a combatant (`enabled`) AND supply-connected to your base (`supplied`).
+#     Reuses the Oil Derrick (OILB) art and capture plumbing — zero new art.
+CTRL:
+	Inherits: OILB
+	RenderSprites:
+		Image: oilb
+	SupplyNode:
+		SuppliedCondition: supplied
+		LinkRange: 12c0
+	CashTrickler:
+		Interval: 25
+		Amount: 35
+		RequiresCondition: enabled && supplied
+		ShowTicks: true
+	-GivesCashOnCapture:
+	-UpdatesDerrickCount:

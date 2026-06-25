@@ -1,0 +1,560 @@
+# THEATER — grounded late-game / flagship weapons + DISTINCT strike-power munitions.
+# All data-only (no C#); clone stock templates (^Cannon, ^Artillery, ^AntiGroundMissile, GravityBomb).
+# Loaded via mod.yaml Weapons. Grounded modern: heavy conventional HE, fuel-air, cruise/ballistic — no nukes,
+# lasers, tesla. The four "strike.*" munitions give each faction's airstrike power a DIFFERENT feel/effect.
+
+# ===================== Flagship unit weapons =====================
+
+# ARMATA (Russia T-14) secondary — thermobaric fuel-air shell: devastating vs infantry & structures, big blast.
+Thermobaric:
+	Inherits: ^Cannon
+	ReloadDelay: 90
+	Range: 5c512
+	Report: turret1.aud
+	Projectile: Bullet
+		Speed: 455
+		Inaccuracy: 256
+	Warhead@1Dam: SpreadDamage
+		Spread: 597
+		Damage: 9000
+		Falloff: 100, 80, 55, 30, 12, 0
+		Versus:
+			None: 100
+			Wood: 100
+			Light: 65
+			Heavy: 40
+			Concrete: 95
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+		ValidTargets: Ground, Infantry
+	Warhead@3Eff: CreateEffect
+		Explosions: artillery_explosion
+		ImpactSounds: kaboom25.aud
+		ValidTargets: Ground, GroundActor, WaterActor, Trees
+
+# B-21 (USA) heavy precision bomb stick — a strategic stealth bomber's payload: heavy vs armor/structures.
+HeavyJDAM:
+	Inherits: ^AntiGroundMissile
+	ReloadDelay: 45
+	Range: 8c0
+	Burst: 4
+	BurstDelays: 5
+	Projectile: Missile
+		Speed: 213
+		Inaccuracy: 299
+		CruiseAltitude: 1c0
+		RangeLimit: 12c0
+	Warhead@1Dam: SpreadDamage
+		Spread: 426
+		Damage: 9000
+		Falloff: 100, 75, 50, 25, 0
+		Versus:
+			None: 50
+			Wood: 100
+			Light: 90
+			Heavy: 100
+			Concrete: 120
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3Eff: CreateEffect
+		Explosions: artillery_explosion
+		ImpactSounds: kaboom25.aud
+
+# AGNI (India) road-mobile ballistic launcher — longest reach in the game, slow, heavy conventional warhead.
+AgniBallistic:
+	Inherits: ^Artillery
+	MinRange: 5c0
+	ReloadDelay: 320
+	Range: 20c0
+	Burst: 1
+	Report: turret1.aud
+	TargetActorCenter: true
+	InvalidTargets: Air, AirborneActor
+	# VISIBLE ballistic missile: a Bullet projectile with no Image renders NOTHING (the longest-range weapon
+	# in the game was firing an invisible shell). Use a homing Missile with the MISSILE sprite + a long smoke
+	# contrail so the strike reads as an arcing ballistic missile streaking in from off-screen.
+	Projectile: Missile
+		Image: MISSILE
+		Speed: 213
+		Arm: 6
+		Inaccuracy: 1c256
+		RangeLimit: 26c0
+		TrailImage: smokey
+		ContrailLength: 48
+	Warhead@1Dam: SpreadDamage
+		Spread: 511
+		Damage: 13000
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		Versus:
+			None: 70
+			Wood: 90
+			Light: 70
+			Heavy: 55
+			Concrete: 120
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3Eff: CreateEffect
+		Explosions: artillery_explosion
+		ImpactSounds: kaboom25.aud
+		ValidTargets: Ground, GroundActor, WaterActor, Trees
+
+# ===================== Distinct strike-power munitions (dropped by the strike.* delivery planes) =====================
+
+# USA precision JDAM — tight, high single-target damage vs armour/structures (a surgical strike, not carpet).
+JDAM:
+	ReloadDelay: 8
+	Range: 6c0
+	ValidTargets: Ground, Water, GroundActor, WaterActor
+	Projectile: GravityBomb
+		Image: PARABOMB
+		OpenSequence: open
+		Velocity: 0, 0, -50
+		Shadow: False
+	Warhead@1Dam: SpreadDamage
+		Spread: 256
+		Damage: 22000
+		Falloff: 100, 50, 20, 0
+		ValidTargets: GroundActor, WaterActor
+		Versus:
+			None: 40
+			Wood: 90
+			Light: 100
+			Heavy: 110
+			Concrete: 110
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+		ValidTargets: Ground, Infantry
+	Warhead@3Eff: CreateEffect
+		Explosions: artillery_explosion
+		ImpactSounds: kaboom25.aud
+		ValidTargets: Ground, GroundActor, WaterActor, Trees
+
+# Russia area carpet — wide cluster of moderate-damage bomblets (lumbering heavy bomber laying a box of fire).
+AreaCarpet:
+	ReloadDelay: 8
+	Range: 6c0
+	ValidTargets: Ground, Water, GroundActor, WaterActor
+	Projectile: GravityBomb
+		Image: PARABOMB
+		OpenSequence: open
+		Velocity: 0, 0, -50
+		Shadow: False
+	Warhead@1Dam: SpreadDamage
+		Spread: 1280
+		Damage: 14000
+		ValidTargets: GroundActor, WaterActor
+		Versus:
+			None: 55
+			Wood: 75
+			Light: 70
+			Heavy: 35
+			Concrete: 60
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+		Size: 2, 1
+		ValidTargets: Ground, Infantry
+	Warhead@3Eff: CreateEffect
+		Explosions: artillery_explosion
+		ImpactSounds: kaboom15.aud
+		ValidTargets: Ground, GroundActor, WaterActor, Trees
+
+# China loitering munition — many small, low-damage drone impacts (the swarm reads as volume, not big bombs).
+LoiterMunition:
+	ReloadDelay: 8
+	Range: 6c0
+	ValidTargets: Ground, Water, GroundActor, WaterActor
+	Projectile: GravityBomb
+		Image: PARABOMB
+		OpenSequence: open
+		Velocity: 0, 0, -50
+		Shadow: False
+	Warhead@1Dam: SpreadDamage
+		Spread: 384
+		Damage: 5500
+		ValidTargets: GroundActor, WaterActor
+		Versus:
+			None: 70
+			Wood: 60
+			Light: 80
+			Heavy: 45
+			Concrete: 35
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@3Eff: CreateEffect
+		Explosions: napalm
+		ImpactSounds: kaboom12.aud
+		ValidTargets: Ground, GroundActor, WaterActor, Trees
+
+# India cruise/hypersonic — one large, devastating conventional blast (a single lone inbound, not a wing).
+CruiseHeavy:
+	ReloadDelay: 8
+	Range: 6c0
+	ValidTargets: Ground, Water, GroundActor, WaterActor
+	Projectile: GravityBomb
+		Image: PARABOMB
+		OpenSequence: open
+		Velocity: 0, 0, -60
+		Shadow: False
+	Warhead@1Dam: SpreadDamage
+		Spread: 768
+		Damage: 30000
+		Falloff: 1000, 500, 250, 90, 30, 0
+		ValidTargets: GroundActor, WaterActor
+		Versus:
+			None: 60
+			Wood: 100
+			Light: 100
+			Heavy: 90
+			Concrete: 130
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+		Size: 2, 1
+		ValidTargets: Ground, Infantry
+	Warhead@3Eff: CreateEffect
+		Explosions: artillery_explosion
+		ImpactSounds: kaboom25.aud
+		ValidTargets: Ground, GroundActor, WaterActor, Trees
+
+# AKULA (Russia) heavy hunter-killer torpedo — a 3-torpedo alpha salvo (vs the stock SS's 2), heavier hit,
+# but slow to reload. The biggest single naval alpha-strike; a missed ambush is punished by the long reload.
+HeavyTorp:
+	Inherits: TorpTube
+	ReloadDelay: 160
+	Burst: 3
+	BurstDelays: 6
+	Warhead@1Dam: SpreadDamage
+		Damage: 26000
+
+# AKINCI (Turkey UCAV) — a 4-missile precision ATGM salvo (vs the stock MIG's 2-burst Maverick): a fan of
+# smoke-trailing guided missiles, lower per-hit but more of them, the standoff-drone signature.
+AkinciATGM:
+	Inherits: Maverick
+	Range: 10c0
+	Burst: 4
+	BurstDelays: 6
+	# Distinct projectile read: a long-trailing guided missile (Maverick already uses a Missile + smokey
+	# contrail) with a heavier impact effect, so an AKINCI salvo looks like a fan of precision drone missiles.
+	Projectile: Missile
+		TrailImage: smokey
+		ContrailLength: 24
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000
+	Warhead@3Eff: CreateEffect
+		Explosions: artillery_explosion
+		ImpactSounds: kaboom25.aud
+		ValidTargets: Ground, GroundActor, WaterActor, Trees
+
+# AKASH (India static SAM battery) — longest-reach AA in the game, fired as a 2-missile salvo from the tower.
+# Out-ranges every mobile SAM (TUNGUSKA Nike / MOBSAM RedEye) = the apex static layer of India's air defence.
+AkashSAM:
+	Inherits: Nike
+	Range: 9c512
+	Burst: 2
+	BurstDelays: 8
+
+# ===================== Clone-divergence weapons (give reskins distinct battlefield behaviour) =====================
+
+# B-21 (USA) — a REAL gravity-bomb stick, not an air-launched missile. A short weapon range forces the bomber
+# to overfly, and a 6-bomb Burst walks a carpet across the target as it passes — bombing that reads as bombing.
+B21Bombs:
+	ReloadDelay: 40
+	Range: 2c0
+	Burst: 6
+	BurstDelays: 4
+	ValidTargets: Ground, Water, GroundActor, WaterActor
+	Projectile: GravityBomb
+		Image: PARABOMB
+		OpenSequence: open
+		Velocity: 0, 0, -85
+		Shadow: False
+	Warhead@1Dam: SpreadDamage
+		Spread: 384
+		Damage: 13000
+		Falloff: 100, 70, 40, 15, 0
+		ValidTargets: GroundActor, WaterActor
+		Versus:
+			None: 45
+			Wood: 100
+			Light: 100
+			Heavy: 110
+			Concrete: 130
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+		ValidTargets: Ground, Infantry
+	Warhead@3Eff: CreateEffect
+		Explosions: artillery_explosion
+		ImpactSounds: kaboom25.aud
+		ValidTargets: Ground, GroundActor, WaterActor, Trees
+
+# GARUDA (India) — supersonic precision CRUISE missile: one fast, accurate, long-reach guided missile with high
+# single-target punch. The "surgical standoff" artillery — distinct from GRAD's area salvo and DAZHBOG's cheap mass.
+GarudaCruise:
+	Inherits: Maverick
+	ReloadDelay: 110
+	Range: 12c0
+	MinRange: 4c0
+	Burst: 1
+	Report: missile1.aud
+	Projectile: Missile
+		Speed: 384
+		Inaccuracy: 80
+		TrailImage: smokey
+		ContrailLength: 32
+		RangeLimit: 16c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 9000
+		Versus:
+			None: 40
+			Wood: 100
+			Light: 100
+			Heavy: 130
+			Concrete: 130
+	Warhead@3Eff: CreateEffect
+		Explosions: artillery_explosion
+		ImpactSounds: kaboom25.aud
+		ValidTargets: Ground, GroundActor, WaterActor, Trees
+
+# GRAD (Russia) — multiple-launch rocket SALVO: a wide spread of many small rockets that saturates an area.
+# Long reload punishes a miss; spreads thin vs single targets. Russia's area-suppression artillery.
+GradSalvo:
+	Inherits: SCUD
+	ReloadDelay: 210
+	Range: 11c0
+	MinRange: 3c0
+	Burst: 5
+	BurstDelays: 4
+	Projectile: Bullet
+		Speed: 200
+		Image: V2
+		Shadow: True
+		TrailImage: smokey
+		TrailDelay: 5
+		Inaccuracy: 597
+		LaunchAngle: 60
+	Warhead@1Dam: SpreadDamage
+		Spread: 341
+		Damage: 2800
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		ValidTargets: GroundActor, WaterActor, Trees
+
+# DAZHBOG (China) — cheap printed mass artillery: a short-range 2-rocket burst, low per-shot damage, fast reload.
+# Expendable volume you flood the field with (China cost doctrine). Folds to any push — that is its counter.
+DazhbogRocket:
+	Inherits: SCUD
+	ReloadDelay: 110
+	Range: 7c0
+	MinRange: 2c0
+	Burst: 2
+	BurstDelays: 6
+	Projectile: Bullet
+		Speed: 170
+		Image: V2
+		Shadow: True
+		TrailImage: smokey
+		TrailDelay: 5
+		Inaccuracy: 384
+		LaunchAngle: 64
+	Warhead@1Dam: SpreadDamage
+		Spread: 256
+		Damage: 2400
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		ValidTargets: GroundActor, WaterActor, Trees
+
+# ASTUTE (UK) — a QUIET single precision torpedo: faster cadence + longer reach than the stock 2-tube boat, lower
+# alpha than AKULA's 3-torp salvo. The patient hunter-killer that snipes subs/scouts from sonar range, not an alpha-striker.
+QuietTorp:
+	Inherits: TorpTube
+	ReloadDelay: 70
+	Range: 11c0
+	Burst: 1
+	Projectile: Missile
+		Speed: 95
+		TrailImage: bubbles
+		RangeLimit: 13c0
+	Warhead@1Dam: SpreadDamage
+		Spread: 341
+		Damage: 15000
+
+# TEJAS (India) — standoff air-to-ground salvo: a 2-missile guided strike fired from beyond short-range AA, with a
+# bigger MinRange so it commits from distance. The "resilient standoff" jet, distinct from a stock close-in MIG.
+TejasStandoff:
+	Inherits: Maverick
+	ReloadDelay: 55
+	Range: 11c0
+	MinRange: 4c0
+	Burst: 2
+	BurstDelays: 8
+	Projectile: Missile
+		Speed: 298
+		TrailImage: smokey
+		ContrailLength: 24
+		RangeLimit: 15c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 6000
+
+# ===================== P4 SPECTACLE: Leviathan main battery =====================
+# LEVIATHAN arsenal dreadnought main guns — gargantuan naval artillery: the longest reach and heaviest shells
+# in the game, a 3-gun salvo, slow to reload. The apex bombardment platform.
+LeviathanGun:
+	Inherits: 8Inch
+	ReloadDelay: 180
+	Range: 26c0
+	MinRange: 4c0
+	Burst: 3
+	BurstDelays: 7
+	Warhead@1Dam: SpreadDamage
+		Spread: 512
+		Damage: 7000
+		Falloff: 1000, 500, 250, 90, 30, 0
+	Warhead@3Eff: CreateEffect
+		# Big-ship main gun — a larger impact bloom than a normal artillery shell, to match the hull.
+		Explosions: large_explosion
+		ImpactSounds: kaboom25.aud
+		ValidTargets: Ground, GroundActor, WaterActor, Trees
+
+# CITADEL mobile-fortress main gun — a devastating siege cannon: heavy twin-shell salvo, long reach, big
+# splash. The land equivalent of the Leviathan's battery.
+CitadelCannon:
+	Inherits: ^Cannon
+	ReloadDelay: 100
+	Range: 13c0
+	MinRange: 2c0
+	Burst: 2
+	BurstDelays: 6
+	Report: turret1.aud
+	Projectile: Bullet
+		Speed: 510
+		Inaccuracy: 213
+	Warhead@1Dam: SpreadDamage
+		Spread: 597
+		Damage: 9000
+		Falloff: 100, 75, 50, 25, 8, 0
+		Versus:
+			None: 90
+			Wood: 100
+			Light: 90
+			Heavy: 100
+			Concrete: 120
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+	Warhead@3Eff: CreateEffect
+		# Siege-cannon impact — the land equivalent of the Leviathan's big bloom.
+		Explosions: large_explosion
+		ImpactSounds: kaboom25.aud
+		ValidTargets: Ground, GroundActor, WaterActor, Trees
+
+# ARCHANGEL gunship battery — a sustained heavy barrage: a 5-round salvo on a fast cycle, so the flying
+# fortress loiters and RAINS fire on a target area. Devastating sustained DPS; the gunship's signature.
+ArchangelGun:
+	Inherits: ^AntiGroundMissile
+	ReloadDelay: 25
+	Range: 9c0
+	MinRange: 0
+	Burst: 5
+	BurstDelays: 3
+	Projectile: Missile
+		Speed: 298
+		Inaccuracy: 256
+		TrailImage: smokey
+		ContrailLength: 16
+		RangeLimit: 11c0
+	Warhead@1Dam: SpreadDamage
+		Spread: 298
+		Damage: 4000
+		Falloff: 100, 70, 40, 15, 0
+		Versus:
+			None: 70
+			Wood: 90
+			Light: 90
+			Heavy: 80
+			Concrete: 100
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@3Eff: CreateEffect
+		Explosions: artillery_explosion
+		ImpactSounds: kaboom15.aud
+		ValidTargets: Ground, GroundActor, WaterActor, Trees
+
+# TEMPEST barrage — a colossal 12-rocket strategic salvo at extreme range (across most maps), wide spread for
+# area saturation, very long reload. The apex long-range bombardment weapon (vs the Citadel's direct cannon).
+TempestBarrage:
+	Inherits: SCUD
+	ReloadDelay: 400
+	Range: 28c0
+	MinRange: 8c0
+	Burst: 12
+	BurstDelays: 4
+	Report: missile1.aud
+	Projectile: Bullet
+		Speed: 290
+		Image: V2
+		Shadow: True
+		TrailImage: smokey
+		TrailDelay: 5
+		Inaccuracy: 768
+		LaunchAngle: 64
+	Warhead@1Dam: SpreadDamage
+		Spread: 426
+		Damage: 5000
+		Falloff: 1000, 368, 135, 50, 18, 7, 0
+		ValidTargets: GroundActor, WaterActor, Trees
+
+# Spectacle-unit death blast — a big VISUAL-ONLY explosion (no splash damage, so no friendly-fire grief):
+# when a gargantuan apex unit dies it goes out in a huge multi-blast fireball + crater. Pure spectacle.
+TitanBlast:
+	ValidTargets: Ground, Water, Air, GroundActor, WaterActor, Trees
+	Warhead@1Eff: CreateEffect
+		Explosions: artillery_explosion
+		ImpactSounds: kaboom25.aud
+		ValidTargets: Ground, Water, Air, GroundActor, WaterActor, Trees
+	Warhead@2Eff: CreateEffect
+		Explosions: napalm
+		ImpactSounds: kaboom25.aud
+		ValidTargets: Ground, Water, Air, GroundActor, WaterActor, Trees
+	Warhead@3Eff: CreateEffect
+		Explosions: large_explosion
+		ValidTargets: Ground, Water, Air, GroundActor, WaterActor, Trees
+	Warhead@4Smu: LeaveSmudge
+		SmudgeType: Crater
+		Size: 2, 1
+		ValidTargets: Ground, Infantry
+
+# OrbitalLance — the Space Program capstone strike (see theater-spaceprogram.yaml). A single devastating
+# kinetic bombardment dropped vertically "from orbit": heavier and wider than the doctrine cruise strikes
+# (a CruiseHeavy clone bumped to 45000 dmg / 1024 spread, faster descent, big blast). Conventional — a huge
+# kinetic blow, NO nuclear fire or fallout. Earned behind the full Space Program + a long charge.
+OrbitalLance:
+	ReloadDelay: 8
+	Range: 6c0
+	ValidTargets: Ground, Water, GroundActor, WaterActor
+	Projectile: GravityBomb
+		Image: PARABOMB
+		OpenSequence: open
+		Velocity: 0, 0, -90
+		Shadow: False
+	Warhead@1Dam: SpreadDamage
+		Spread: 1024
+		Damage: 45000
+		Falloff: 1000, 500, 250, 90, 30, 0
+		ValidTargets: GroundActor, WaterActor
+		Versus:
+			None: 70
+			Wood: 100
+			Light: 100
+			Heavy: 100
+			Concrete: 130
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+		Size: 3, 2
+		ValidTargets: Ground, Infantry
+	Warhead@3Eff: CreateEffect
+		Explosions: large_explosion
+		ImpactSounds: kaboom25.aud
+		ValidTargets: Ground, GroundActor, WaterActor, Trees

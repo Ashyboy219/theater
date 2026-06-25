@@ -1,0 +1,17 @@
+# THEATER — SANDBOX / TEST RANGE ruleset (referenced ONLY by the theater-sandbox map; not in mod.yaml).
+# Layers dev conveniences on top of the standard theater ruleset so the test map is zero-friction:
+#   - DeveloperMode cheats ON by default + the THEATER "Sandbox" master toggle: instant build, build
+#     anywhere, unlimited power, fast support-power charge, and a continuous cash top-up (SandboxCash 1M)
+#     so money never runs dry. The /dev chat command toggles it; here it starts ON.
+#   - The devunlock checkbox ON by default → grants every building-name + tech-level prerequisite, so the
+#     WHOLE faction roster (early → mid → late) is buildable immediately with no building grind.
+# Net: pick a faction, deploy your MCV, and instantly build & test ANY land/air/naval unit, doctrine,
+# support power, stealth/detection/EW, or formation. Faction/side gating still applies (you build the
+# faction you picked) — choose a different faction in the lobby to test it. Add an AI for a live enemy;
+# the Kill / Heal / Dispose dev orders work on any unit on the field for fast iteration.
+Player:
+	DeveloperMode:
+		CheckboxEnabled: True
+		Sandbox: True
+	LobbyPrerequisiteCheckbox@DEVUNLOCK:
+		Enabled: True
